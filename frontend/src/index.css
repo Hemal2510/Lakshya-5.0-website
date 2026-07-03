@@ -8,26 +8,31 @@ body,
     margin: 0;
     padding: 0;
 }
-
 body {
     background:
             radial-gradient(
-                    circle at 50% -10%,
-                    rgba(255, 170, 60, 0.35) 0%,
-                    rgba(255, 110, 30, 0.28) 20%,
-                    rgba(210, 60, 20, 0.20) 45%,
-                    rgba(120, 20, 15, 0.12) 65%,
-                    transparent 80%
+                    circle at 50% -20%,
+                    rgba(255, 120, 20, 0.08) 0%,
+                    rgba(255, 90, 0, 0.04) 20%,
+                    transparent 45%
             ),
+
+            radial-gradient(
+                    circle at 50% 20%,
+                    rgba(255,255,255,0.015) 0%,
+                    transparent 55%
+            ),
+
             linear-gradient(
                     180deg,
-                    #3b0d05 0%,
-                    #52130b 18%,
-                    #3a0f09 38%,
-                    #210806 60%,
-                    #120404 82%,
-                    #070707 100%
+                    #111111 0%,
+                    #0c0c0c 25%,
+                    #090909 50%,
+                    #060606 75%,
+                    #040404 100%
             );
+
+    background-attachment: fixed;
 }
 
 .font-manrope {
