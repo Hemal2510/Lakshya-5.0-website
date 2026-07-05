@@ -1,12 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { navItems } from "./navItems";
+import GlassContainer from "./GlassContainer";
 import EmberIndicator from "./EmberIndicator";
 const Navbar = () => {
     const location = useLocation();
 
     // Target position coordinates for EmberIndicator
     const [coords, setCoords] = useState({ left: 0, width: 0 });
+
+
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     // Hover track index state
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -138,7 +142,10 @@ const Navbar = () => {
                 </defs>
             </svg>
             {/* Main Glass Container */}
-            <div
+
+            {/* Desktop Navbar */}
+            <div className="hidden md:flex">
+             <div
                 ref={containerRef}
                 className="
                     relative
@@ -146,11 +153,16 @@ const Navbar = () => {
                     h-[78px]
                     w-full
                     items-center
-                    justify-center gap-14
+                    justify-between
+                    gap-2
+                    lg:gap-5
+                    xl:gap-14
                     overflow-hidden
                     rounded-[999px]
                     border border-white/[0.09]
-                    px-8
+                    px-4
+                    lg:px-6
+                    xl:px-8
                     shadow-[
                             0_28px_70px_rgba(0,0,0,.45),
                             0_2px_8px_rgba(255,255,255,.03),
@@ -216,34 +228,169 @@ const Navbar = () => {
                     left={coords.left}
                     width={coords.width}
                 />
-                {/* ================================
-                    NAVIGATION LINKS
-                ================================ */}
-                {navItems.map((item, index) => (
-                    <NavLink
-                        key={item.name}
-                        to={item.path}
-                        ref={(el) => { linkRefs.current[index] = el; }}
-                        onMouseEnter={() => setHoveredIndex(index)}
-                        onMouseLeave={() => setHoveredIndex(null)}
-                        className="
-                            ember-nav-link
-                            relative
-                            z-10
-                            rounded-full
-                            px-3
-                            py-2
-                            font-manrope
-                            text-[14px]
-                            font-[600]
-                            uppercase
-                            tracking-[0.16em]
-                        "
-                    >
-                        {item.name}
-                    </NavLink>
-                ))}
+
+
+                 {/* Left Side */}
+                 <div className="relative z-10 flex items-center">
+    <span
+        className="
+            ember-nav-link
+            active
+            font-manrope
+            text-[18px]
+            xl:text-[20px]
+            font-[700]
+            tracking-[0.12em]
+            uppercase
+        "
+    >
+        Lakshya 5.0
+    </span>
+                 </div>
+
+                 {/* Right Side */}
+                 <div
+                     className="
+        relative
+        z-10
+        flex
+        items-center
+        gap-2
+        lg:gap-5
+        xl:gap-14
+    "
+                 >
+                     {navItems.map((item, index) => (
+                         <NavLink
+                             key={item.name}
+                             to={item.path}
+                             ref={(el) => {
+                                 linkRefs.current[index] = el;
+                             }}
+                             onMouseEnter={() => setHoveredIndex(index)}
+                             onMouseLeave={() => setHoveredIndex(null)}
+                             className="
+                ember-nav-link
+                rounded-full
+                px-2
+                lg:px-3
+                py-2
+
+                font-manrope
+
+                text-[11px]
+                lg:text-[13px]
+                xl:text-[14px]
+
+                font-[600]
+
+                uppercase
+
+                tracking-[0.08em]
+                lg:tracking-[0.12em]
+                xl:tracking-[0.16em]
+            "
+                         >
+                             {item.name}
+                         </NavLink>
+                     ))}
+                 </div>
+
             </div>
+                </div>
+
+
+            {/* Mobile  Navbar */}
+
+            <div className="md:hidden">
+                <GlassContainer
+                    className={`
+            overflow-hidden
+            px-6
+            transition-all
+            duration-500
+
+            ${
+                        isMobileMenuOpen
+                            ? "h-[420px] rounded-[36px]"
+                            : "h-[72px] rounded-[999px]"
+                    }
+        `}
+                >
+
+                    <div className="flex h-[72px] items-center justify-between">
+
+        <span
+            className="
+                ember-nav-link
+                active
+                font-manrope
+                text-[16px]
+                font-[700]
+                uppercase
+                tracking-[0.12em]
+            "
+        >
+            Lakshya 5.0
+        </span>
+
+                        <button
+                            onClick={() =>
+                                setIsMobileMenuOpen(!isMobileMenuOpen)
+                            }
+                            className="
+                text-white
+                text-3xl
+                leading-none
+            "
+                        >
+                            {isMobileMenuOpen ? "✕" : "☰"}
+                        </button>
+
+                    </div>
+
+                    <div
+                        className={`
+        overflow-hidden
+        transition-all
+        duration-500
+
+        ${
+                            isMobileMenuOpen
+                                ? "max-h-[320px] opacity-100 pt-6"
+                                : "max-h-0 opacity-0"
+                        }
+    `}
+                    >
+                        <div
+                            className="
+                            flex
+                            flex-col
+                            items-center
+                            gap-4
+
+                        "
+                        >
+
+                            {navItems.map((item) => (
+                                <NavLink
+                                    key={item.name}
+                                    to={item.path}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="ember-nav-link text-lg font-semibold"
+                                >
+                                    {item.name}
+                                </NavLink>
+                            ))}
+
+                        </div>
+                    </div>
+
+                </GlassContainer>
+            </div>
+
+
+
         </nav>
     );
 };

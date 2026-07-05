@@ -65,7 +65,7 @@ export const EmberIndicator: React.FC<EmberIndicatorProps> = ({
             const vx = (Math.random() - 0.5) * 0.6 + velocityBiasX * 0.18;
 
             // Delicate spark size
-            const size = 0.5 + Math.random() * 1.1;
+            const size = 0.7 + Math.random() * 1.1;
             const colors = ["#fff7e6", "#ffca3a", "#ff9f1c", "#ff5a1f", "#e63946"];
             const color = colors[Math.floor(Math.random() * colors.length)];
             return {
