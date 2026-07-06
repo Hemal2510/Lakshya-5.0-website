@@ -2,13 +2,13 @@ import { Routes, Route } from "react-router-dom";
 
 import Navbar from "../components/navbar/Navbar";
 
-import Home from "../pages/Home/Home";
-import Legacy from "../pages/Legacy/Legacy";
-import Sports from "../pages/Sports/Sports";
-import Gallery from "../pages/Gallery/Gallery";
-import Team from "../pages/Team/Team";
-import Sponsors from "../pages/Sponsors/Sponsors";
-import Live from "../pages/Live/Live";
+import Home from "../pages/Home/home";
+import Legacy from "../pages/Legacy/legacy";
+import Sports from "../pages/Sports/sports";
+import Gallery from "../pages/Gallery/gallery";
+import Team from "../pages/Team/team";
+import Sponsors from "../pages/Sponsors/sponsors";
+import Live from "../pages/Live/live";
 
 export default function AppRoutes() {
     return (
