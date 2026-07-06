@@ -8,6 +8,7 @@ import FuzzyText from "../../assets/FuzzyText";
 import { motion } from "framer-motion";
 
 
+
 const team = [
     {
         name: "member1",
@@ -55,8 +56,9 @@ const team = [
 
 export default function Team() {
     return (
-        <div>
-            <div className=" fixed inset-0 ">
+        <div className="relative">
+
+        <div className="absolute top-0 left-0 w-full h-full">
                 <ShapeGrid
                     speed={0.5}
                     squareSize={23}
@@ -68,9 +70,9 @@ export default function Team() {
                 />
             </div>
 
-            <div className="relative z-10">
+            <div className="relative pointer-events-auto">
 
-                <header className="px-[5%] pb-[70px] pt-[180px] text-center">
+                <header className=" pb-[70px] pt-[180px] text-center">
                     <motion.div
                         initial={{ opacity: 0, y: -60 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -180,7 +182,7 @@ export default function Team() {
                     </div>
                     <TeamInfiniteScroll members={team} speed={40} cardScale={0.8} />;
 
-                    import FireHexBadge from "./FireHexBadge";
+
 
 
 

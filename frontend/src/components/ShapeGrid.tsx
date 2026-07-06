@@ -44,16 +44,20 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
         const isTri = shape === 'triangle';
         const hexHoriz = squareSize * 1.5;
         const hexVert = squareSize * Math.sqrt(3);
-
         const resizeCanvas = () => {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-            numSquaresX.current = Math.ceil(canvas.width / squareSize) + 1;
-            numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1;
+            const parent = canvas.parentElement;
+            if (!parent) return;
+            canvas.width = parent.offsetWidth;
+            canvas.height = parent.offsetHeight;
+            numSquaresX.current = Math.ceil(canvas.width / squareSize) + 5;
+            numSquaresY.current = Math.ceil(canvas.height / squareSize) + 5;
         };
 
-        window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
+
+        const resizeObserver = new ResizeObserver(resizeCanvas);
+        if (canvas.parentElement) resizeObserver.observe(canvas.parentElement);
+
 
         const drawHex = (cx: number, cy: number, size: number) => {
             if (!ctx) return;
@@ -290,6 +294,7 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
         };
 
         const handleMouseMove = (event: MouseEvent) => {
+            console.log("mousemove");
             const rect = canvas.getBoundingClientRect();
             const mouseX = event.clientX - rect.left;
             const mouseY = event.clientY - rect.top;
@@ -391,15 +396,15 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
             hoveredSquareRef.current = null;
         };
 
-        canvas.addEventListener('mousemove', handleMouseMove);
-        canvas.addEventListener('mouseleave', handleMouseLeave);
+        window.addEventListener("mousemove", handleMouseMove);
+        window.addEventListener("mouseleave", handleMouseLeave);
         requestRef.current = requestAnimationFrame(updateAnimation);
 
         return () => {
             window.removeEventListener('resize', resizeCanvas);
             if (requestRef.current) cancelAnimationFrame(requestRef.current);
-            canvas.removeEventListener('mousemove', handleMouseMove);
-            canvas.removeEventListener('mouseleave', handleMouseLeave);
+            window.removeEventListener("mousemove", handleMouseMove);
+            window.removeEventListener("mouseleave", handleMouseLeave);
         };
     }, [direction, speed, borderColor, hoverFillColor, squareSize, shape, hoverTrailAmount]);
 
