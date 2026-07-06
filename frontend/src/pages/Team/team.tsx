@@ -1,12 +1,12 @@
 import React from "react";
-import ShapeGrid from "../../components/ShapeGrid";
-import FireSealBadge from "../../components/FireSealBadge";
-import TeamInfiniteScroll from "../../components/TeamInfiniteScroll";
-import FireHexBadge from "../../components/FireHexBadge";
-import TeamWheel from "../../components/TeamWheel";
+import ShapeGrid from "../../components/teams/ShapeGrid.tsx";
+import FireSealBadge from "../../components/teams/FireSealBadge.tsx";
+import TeamInfiniteScroll from "../../components/teams/TeamInfiniteScroll";
+import FireHexBadge from "../../components/teams/FireHexBadge";
+import TeamWheel from "../../components/teams/TeamWheel";
 import FuzzyText from "../../assets/FuzzyText";
 import { motion } from "framer-motion";
-
+import SparksBackground from "../../components/background/SparksBackground.tsx";
 
 
 const team = [
@@ -69,6 +69,8 @@ export default function Team() {
                     hoverTrailAmount={2}
                 />
             </div>
+
+            <SparksBackground />
 
             <div className="relative pointer-events-auto">
 

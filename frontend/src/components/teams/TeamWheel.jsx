@@ -1,5 +1,5 @@
 import React from "react";
-import FireHexBadge from "./FireHexBadge";
+import FireHexBadge from "./FireHexBadge.jsx";
 
 
 export default function TeamWheel({
