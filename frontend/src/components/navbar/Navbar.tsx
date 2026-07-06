@@ -48,7 +48,8 @@ const Navbar = () => {
             {/* ========================================================
                 BULLETPROOF CSS OVERRIDES FOR EXTERNAL `.active` STYLES
             ======================================================== */}
-            <style dangerouslySetInnerHTML={{ __html: `
+            <style dangerouslySetInnerHTML={{
+                __html: `
                 /* Base state override - neutral gray text and transparent bg */
                 .ember-nav-link {
                     display: inline-block !important;

@@ -1,40 +1,39 @@
 @import "tailwindcss";
 
+@theme {
+        --font-grotesk: 'Space Grotesk', sans-serif;
+}
+
 html,
 body,
 #root {
-    width: 100%;
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
 }
+
 body {
-    background:
-            radial-gradient(
-                    circle at 50% -20%,
-                    rgba(255, 120, 20, 0.08) 0%,
-                    rgba(255, 90, 0, 0.04) 20%,
-                    transparent 45%
-            ),
+        background:
+                radial-gradient(circle at 50% -20%,
+                        rgba(255, 120, 20, 0.08) 0%,
+                        rgba(255, 90, 0, 0.04) 20%,
+                        transparent 45%),
 
-            radial-gradient(
-                    circle at 50% 20%,
-                    rgba(255,255,255,0.015) 0%,
-                    transparent 55%
-            ),
+                radial-gradient(circle at 50% 20%,
+                        rgba(255, 255, 255, 0.015) 0%,
+                        transparent 55%),
 
-            linear-gradient(
-                    180deg,
-                    #111111 0%,
-                    #0c0c0c 25%,
-                    #090909 50%,
-                    #060606 75%,
-                    #040404 100%
-            );
+                linear-gradient(180deg,
+                        #111111 0%,
+                        #0c0c0c 25%,
+                        #090909 50%,
+                        #060606 75%,
+                        #040404 100%);
 
-    background-attachment: fixed;
+        background-attachment: fixed;
 }
 
 .font-manrope {
-    font-family: "Manrope", sans-serif;
+        font-family: "Manrope", sans-serif;
 }
