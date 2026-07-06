@@ -294,7 +294,7 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
         };
 
         const handleMouseMove = (event: MouseEvent) => {
-            console.log("mousemove");
+
             const rect = canvas.getBoundingClientRect();
             const mouseX = event.clientX - rect.left;
             const mouseY = event.clientY - rect.top;

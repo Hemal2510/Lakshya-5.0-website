@@ -1,12 +1,11 @@
 import React from "react";
-import ShapeGrid from "../../components/teams/ShapeGrid.tsx";
+
 import FireSealBadge from "../../components/teams/FireSealBadge.tsx";
 import TeamInfiniteScroll from "../../components/teams/TeamInfiniteScroll";
 import FireHexBadge from "../../components/teams/FireHexBadge";
 import TeamWheel from "../../components/teams/TeamWheel";
 import FuzzyText from "../../assets/FuzzyText";
 import { motion } from "framer-motion";
-import SparksBackground from "../../components/background/SparksBackground.tsx";
 
 
 const team = [
@@ -56,21 +55,8 @@ const team = [
 
 export default function Team() {
     return (
-        <div className="relative">
 
-        <div className="absolute top-0 left-0 w-full h-full">
-                <ShapeGrid
-                    speed={0.5}
-                    squareSize={23}
-                    direction="up"
-                    borderColor="#600707"
-                    hoverFillColor="#c3621f"
-                    shape="hexagon"
-                    hoverTrailAmount={2}
-                />
-            </div>
 
-            <SparksBackground />
 
             <div className="relative pointer-events-auto">
 
@@ -197,7 +183,7 @@ export default function Team() {
 
 
             </div >
-        </div >
+
 
 
     );

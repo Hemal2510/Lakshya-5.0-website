@@ -105,7 +105,7 @@ const Navbar = () => {
                             <animate
                                 attributeName="baseFrequency"
                                 values="0.03 0.08; 0.03 0.12; 0.03 0.08"
-                                dur="2.4s"
+                                dur="12s"
                                 repeatCount="indefinite"
                             />
                         </feTurbulence>
@@ -128,7 +128,7 @@ const Navbar = () => {
                             <animate
                                 attributeName="baseFrequency"
                                 values="0.04 0.1; 0.04 0.14; 0.04 0.1"
-                                dur="3s"
+                                dur="24s"
                                 repeatCount="indefinite"
                             />
                         </feTurbulence>
