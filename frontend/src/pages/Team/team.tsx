@@ -88,51 +88,61 @@ export default function Team() {
                     </motion.div>
 
 
+                    <div className="mt-[50px] mb-[50px] grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-                    <div className="flex justify-center mt-[50px] mb-[50px] text-[40px]">
+                        {/* Overall Coordinator */}
+                        <div className="flex flex-col items-center">
+                            <FuzzyText
+                                baseIntensity={0.1}
+                                hoverIntensity={0.2}
+                                enableHover
+                                fontSize={40}
+                            >
+                                OVERALL COORDINATOR
+                            </FuzzyText>
 
-                        <FuzzyText
-                            baseIntensity={0.1}
-                            hoverIntensity={0.2}
-                            enableHover
-                            fontSize={40}
-                        >
+                            <div className="mt-10">
+                                <FireSealBadge
+                                    eyebrow="LAKSHAYA · 2026"
+                                    name="OC 1"
+                                    role="Overall Coordinator"
+                                    photoUrl=""
+                                    socials={[
+                                        { label: "LinkedIn", href: ".", icon: "linkedin" },
+                                        { label: "GitHub", href: "", icon: "github" },
+                                    ]}
+                                    scale={0.8}
+                                />
+                            </div>
+                        </div>
 
+                        {/* Co-Overall Coordinator */}
+                        <div className="flex flex-col items-center">
+                            <FuzzyText
+                                baseIntensity={0.1}
+                                hoverIntensity={0.2}
+                                enableHover
+                                fontSize={40}
+                            >
+                                CO-OVERALL COORDINATOR
+                            </FuzzyText>
 
-                            OVERALL CORDINATORS
+                            <div className="mt-10">
+                                <FireSealBadge
+                                    eyebrow="LAKSHAYA · 2026"
+                                    name="OC 2"
+                                    role="Co-Overall Coordinator"
+                                    photoUrl=""
+                                    socials={[
+                                        { label: "LinkedIn", href: ".", icon: "linkedin" },
+                                        { label: "GitHub", href: "", icon: "github" },
+                                    ]}
+                                    scale={0.8}
+                                />
+                            </div>
+                        </div>
 
-
-
-                        </FuzzyText>
                     </div>
-
-
-
-                    <FireSealBadge
-                        eyebrow="LAKSHAYA · 2026"
-                        name="oc1"
-                        role="Team Lead"
-                        photoUrl=""
-                        socials={[
-                            { label: "LinkedIn", href: ".", icon: "linkedin" },
-                            { label: "GitHub", href: "", icon: "github" },
-
-                        ]}
-                        scale={0.8}
-                    />
-                    <FireSealBadge
-                        eyebrow="LAKSHAYA · 2026"
-                        name="oc2"
-                        role="Team Lead"
-                        photoUrl=""
-                        socials={[
-                            { label: "LinkedIn", href: ".", icon: "linkedin" },
-                            { label: "GitHub", href: "", icon: "github" },
-
-                        ]}
-                        scale={0.8}
-
-                    />
 
                     <div className="flex justify-center mt-[50px] mb-[200px]">
 
