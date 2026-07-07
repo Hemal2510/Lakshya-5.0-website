@@ -1,3 +1,5 @@
-export default function Sponsors() {
-    return <div>Sponsors Page</div>;
+import PendulumTextReveal from "../../components/pendulum.tsx";
+
+export default function Gallery() {
+    return <PendulumTextReveal />;
 }

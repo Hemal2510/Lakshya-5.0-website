@@ -1,6 +1,3 @@
-"use client";
-
-
 import React, { useEffect, useRef, useState } from "react";
 
 const PendulumTextReveal: React.FC = () => {
@@ -14,23 +11,22 @@ const PendulumTextReveal: React.FC = () => {
     useEffect(() => {
         const pendulum = pendulumRef.current;
         const string = stringRef.current;
-        if (!pendulum || !string) return;
+        const container = string?.parentElement;
+        if (!pendulum || !string || !container) return;
 
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        const containerHeight = container.clientHeight;
 
-        // 🔁 CONFIG BASED ON DEVICE
         const config = {
             length: isMobile ? 120 : 150,
-            stringHeight: isMobile ? 280 : 370,
-            ballSize: isMobile ? 120 : 140,
-            ballTop: isMobile ? 340 : 440,
+            stringHeight: isMobile ? containerHeight * 0.6 : (window.innerWidth > 740 ? 290 : 370),
+            ballSize: isMobile ? 80 : 140,
+            ballTop: isMobile ? containerHeight * 0.6: 300,
             gravity: 0.5,
             damping: 0.998,
         };
 
-        // Apply static styles
         string.style.height = `${config.stringHeight}px`;
-
         pendulum.style.width = `${config.ballSize}px`;
         pendulum.style.height = `${config.ballSize}px`;
         pendulum.style.top = `${config.ballTop}px`;
@@ -74,17 +70,18 @@ const PendulumTextReveal: React.FC = () => {
     }, [letters.length]);
 
     return (
-        <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center p-4 overflow-hidden">
+        <div className="relative w-full min-h-screen flex flex-col items-center pt-[70px] p-4 overflow-hidden">
             <div className="relative w-full max-w-2xl h-[22rem] md:h-[28rem] flex items-start justify-center">
                 {/* STRING */}
                 <div
                     ref={stringRef}
-                    className="absolute bg-white/60"
+                    className="absolute"
                     style={{
-                        top: "-110px",
+                        top: "0px",
                         width: "2px",
                         transformOrigin: "top center",
-                        backdropFilter: "brightness(2)",
+                        background: "linear-gradient(to bottom, rgba(255,178,94,0.5), rgba(255,77,77,0.35))",
+                        boxShadow: "0 0 6px rgba(255,120,60,0.4)",
                     }}
                 >
                     {/* BALL */}
@@ -96,22 +93,22 @@ const PendulumTextReveal: React.FC = () => {
                             transform: "translate(-50%, -50%)",
                             pointerEvents: "none",
                             background: `
-                radial-gradient(circle at 30% 28%, rgba(255,255,255,0.35), rgba(255,255,255,0.05) 35%, transparent 70%),
-                radial-gradient(circle at 80% 80%, rgba(120,200,255,0.22), transparent 60%)
+                radial-gradient(circle at 30% 25%, rgba(255,220,180,0.4), rgba(255,150,80,0.08) 35%, transparent 70%),
+                radial-gradient(circle at 75% 80%, rgba(255,60,40,0.28), transparent 60%)
               `,
                             backdropFilter: "blur(22px) saturate(190%) contrast(1.2)",
-                            border: "2px solid rgba(255,255,255,0.3)",
+                            border: "2px solid rgba(255,160,100,0.3)",
                             boxShadow: `
-                inset 0 0 22px rgba(255,255,255,0.25),
-                inset 0 -18px 25px rgba(80,140,255,0.18),
-                0 0 40px rgba(110,170,255,0.12)
+                inset 0 0 22px rgba(255,180,120,0.22),
+                inset 0 -18px 25px rgba(255,60,40,0.2),
+                0 0 45px rgba(255,100,50,0.18)
               `,
                         }}
                     />
                 </div>
 
                 {/* TEXT */}
-                <div className="absolute bottom-8 md:bottom-10 w-full flex justify-center items-center space-x-1.5 md:space-x-3 px-2 md:px-4">
+                <div className="absolute bottom-8 md:bottom-10 w-full flex justify-center items-center space-x-1.5 md:space-x-3.5 px-2 md:px-4">
                     {letters.map((letter, index) => {
                         const active = activeLetters.has(index);
                         return (
@@ -119,35 +116,30 @@ const PendulumTextReveal: React.FC = () => {
                                 key={index}
                                 className={`relative transition-all duration-75 ease-out font-black ${
                                     active
-                                        ? "text-4xl md:text-6xl text-cyan-200 scale-[1.15]"
-                                        : "text-2xl md:text-4xl text-white/80"
+                                        ? "text-4xl md:text-8xl scale-[1]"
+                                        : "text-2xl md:text-6xl text-white/50"
                                 }`}
-                                style={{
-                                    textShadow: active
-                                        ? "0 0 22px rgba(0,255,255,1), 0 0 45px rgba(0,255,255,0.8)"
-                                        : "0 0 5px rgba(255,255,255,0.05)",
-                                }}
+                                style={
+                                    active
+                                        ? {
+                                            backgroundImage:
+                                                "linear-gradient(90deg, #ffb15e, #ff4d4d)",
+                                            WebkitBackgroundClip: "text",
+                                            backgroundClip: "text",
+                                            color: "transparent",
+                                            textShadow:
+                                                "0 0 22px rgba(255,140,60,0.9), 0 0 45px rgba(255,60,40,0.7)",
+                                        }
+                                        : {
+                                            textShadow: "0 0 5px rgba(255,255,255,0.05)",
+                                        }
+                                }
                             >
                                 {letter}
                             </div>
                         );
                     })}
                 </div>
-            </div>
-
-            {/* BUTTONS */}
-            <div className="mt-10 mb-16 flex flex-col sm:flex-row gap-4 sm:gap-10">
-                <Link href="/legacy">
-                    <button className="w-52 sm:w-56 px-8 py-3 sm:py-4 font-semibold rounded-full bg-white text-black hover:scale-105 transition">
-                        EXPLORE
-                    </button>
-                </Link>
-
-                <Link href="/home">
-                    <button className="w-52 sm:w-56 px-8 py-3 sm:py-4 font-semibold rounded-full border border-white/30 text-white/70 bg-white/5 hover:scale-105 transition">
-                        KNOW ABOUT US
-                    </button>
-                </Link>
             </div>
         </div>
     );
