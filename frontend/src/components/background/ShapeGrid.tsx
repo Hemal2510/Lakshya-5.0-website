@@ -232,7 +232,7 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
             const effectiveSpeed = Math.max(speed, 0.1);
             const wrapX = isHex ? hexHoriz * 2 : squareSize;
             const wrapY = isHex ? hexVert : isTri ? squareSize * 2 : squareSize;
-
+/*
             switch (direction) {
                 case 'right':
                     gridOffset.current.x = (gridOffset.current.x - effectiveSpeed + wrapX) % wrapX;
@@ -253,6 +253,8 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
                 default:
                     break;
             }
+
+ */
 
             updateCellOpacities();
             drawGrid();
@@ -401,7 +403,7 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
         requestRef.current = requestAnimationFrame(updateAnimation);
 
         return () => {
-            window.removeEventListener('resize', resizeCanvas);
+            resizeObserver.disconnect();
             if (requestRef.current) cancelAnimationFrame(requestRef.current);
             window.removeEventListener("mousemove", handleMouseMove);
             window.removeEventListener("mouseleave", handleMouseLeave);

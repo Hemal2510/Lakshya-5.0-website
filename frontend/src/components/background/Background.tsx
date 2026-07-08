@@ -3,7 +3,7 @@ import SparksBackground from "./SparksBackground";
 
 export default function Background() {
     return (
-        <div className="absolute inset-0 -z-10">
+        <div className="fixed  inset-0 -z-10">
             <ShapeGrid
                 speed={0.5}
                 squareSize={23}
@@ -13,9 +13,13 @@ export default function Background() {
                 shape="hexagon"
                 hoverTrailAmount={2}
             />
+
+            <SparksBackground />
+
             <div className="pointer-events-none absolute inset-0">
 
             </div>
+
         </div>
     );
 }

@@ -67,7 +67,7 @@ export default function FireHexBadge({
 
       <div className="fbc-group relative" style={{ width: 360 * scale, height: 460 * scale }}>
         <div style={{ transform: `scale(${scale})`, transformOrigin: "top center" }}>
-          <Embers />
+
 
           {/* halo behind the badge */}
           <div

@@ -83,7 +83,7 @@ export default function FireSealBadge({
       {/* ambient embers */}
       <div className="fbc-group relative" style={{ width: 360 * scale, height: 500 * scale }}>
         <div style={{ transform: `scale(${scale})`, transformOrigin: "top center" }}>
-          <Embers />
+
 
           {/* corner ticks */}
           <span className="fbc-flicker absolute -top-3 -left-3 z-10 h-6 w-6 border-t-2 border-l-2 border-[#ffb627]" />

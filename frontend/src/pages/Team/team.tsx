@@ -142,6 +142,36 @@ export default function Team() {
                             </div>
                         </div>
 
+
+
+                    </div>
+
+                    {/* General Secretary of Sports */}
+                    <div className="w-full flex flex-col items-center justify-center mb-[60px]">
+
+                        <FuzzyText
+                            baseIntensity={0.1}
+                            hoverIntensity={0.2}
+                            enableHover
+                            fontSize={36}
+                        >
+                            GENERAL SECRETARY OF SPORTS
+                        </FuzzyText>
+
+                        <div className="mt-10">
+                            <FireSealBadge
+                                eyebrow="LAKSHAYA · 2026"
+                                name="Name"
+                                role="General Secretary of Sports"
+                                photoUrl=""
+                                socials={[
+                                    { label: "LinkedIn", href: ".", icon: "linkedin" },
+                                    { label: "GitHub", href: "", icon: "github" },
+                                ]}
+                                scale={0.8}
+                            />
+                        </div>
+
                     </div>
 
                     <div className="flex justify-center mt-[50px] mb-[200px]">
