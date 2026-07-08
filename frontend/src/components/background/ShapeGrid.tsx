@@ -232,7 +232,7 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
             const effectiveSpeed = Math.max(speed, 0.1);
             const wrapX = isHex ? hexHoriz * 2 : squareSize;
             const wrapY = isHex ? hexVert : isTri ? squareSize * 2 : squareSize;
-/*
+
             switch (direction) {
                 case 'right':
                     gridOffset.current.x = (gridOffset.current.x - effectiveSpeed + wrapX) % wrapX;
@@ -254,7 +254,6 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
                     break;
             }
 
- */
 
             updateCellOpacities();
             drawGrid();

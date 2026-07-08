@@ -64,11 +64,11 @@ export default function FireSealBadge({
           55% { filter: brightness(.96); }
         }
         .fbc-ember { animation: fbc-rise linear infinite; }
-        .fbc-ring { animation: fbc-spin 6s linear infinite; }
+        .fbc-ring { animation: none ; }
         .fbc-flicker { animation: fbc-flicker 3.4s ease-in-out infinite; }
         .fbc-seal { transition: transform .5s cubic-bezier(.22,1,.36,1), filter .5s ease; }
         .fbc-group:hover .fbc-seal { transform: translateY(-8px) scale(1.015); }
-        .fbc-group:hover .fbc-ring { animation-duration: 1.6s; }
+        .fbc-group:hover .fbc-ring {animation: fbc-spin 1.8s linear infinite; }
         .fbc-group:hover .fbc-ember { animation-duration: 2.4s !important; }
         .fbc-group:hover .fbc-glow { opacity: 1; transform: scale(1.15); }
         .fbc-group:hover .fbc-drip { transform: scaleY(1.12); }
