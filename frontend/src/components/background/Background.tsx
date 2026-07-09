@@ -18,7 +18,7 @@ export default function Background({
         hoverTrailAmount={2}
         showGradient={fixed}
       />
-        <SparksBackground />
+
     </div>
   );
 }

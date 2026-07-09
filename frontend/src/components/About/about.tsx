@@ -23,13 +23,9 @@ export default function About() {
   return (
     <section className="about-section relative overflow-hidden">
 
-      {/* Hexagon Background */}
-      <div className="about-bg">
-    <Background fixed={false} />
-</div>
 
       {/* Dark Overlay */}
-      <div className="about-overlay" />
+
 
 <div className="about-top-glow" />
 

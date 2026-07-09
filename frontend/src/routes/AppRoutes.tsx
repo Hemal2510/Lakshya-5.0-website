@@ -19,8 +19,8 @@ export default function AppRoutes() {
     return (
         <div className="relative">
 
-            {/* Hide global background on Home */}
-            {!isHome && <Background />}
+
+             <Background />
 
             <Navbar />
 

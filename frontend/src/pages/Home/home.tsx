@@ -1,12 +1,13 @@
 import HeroSection from "./HeroSection";
 import HeroTransition from "./HeroTransition";
 import About from "../../components/About/about";
+import Background from "../../components/background/Background.tsx"
 export default function Home() {
     return (
-        <main className="bg-[#0A0503]">
+        <main className="">
             {/* 1. The Hero Section */}
             <HeroSection />
-            <HeroTransition />
+
             <About />
 
         </main>
