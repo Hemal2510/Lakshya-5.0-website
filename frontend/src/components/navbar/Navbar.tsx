@@ -43,7 +43,7 @@ const Navbar = () => {
         };
     }, [targetIndex, location.pathname]);
     return (
-        <nav className="fixed left-1/2 top-7 z-50 w-[min(90%,1250px)] -translate-x-1/2">
+        <nav className="fixed left-1/2 top-4 z-50 w-[min(90%,1250px)] -translate-x-1/2">
 
             {/* ========================================================
                 BULLETPROOF CSS OVERRIDES FOR EXTERNAL `.active` STYLES
