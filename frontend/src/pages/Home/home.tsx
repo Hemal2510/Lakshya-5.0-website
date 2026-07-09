@@ -1,5 +1,11 @@
-import PendulumTextReveal from "../../components/pendulum.tsx";
+import HeroSection from "./HeroSection";
 
-export default function Gallery() {
-    return <PendulumTextReveal />;
+export default function Home() {
+    return (
+        <main className="bg-[#0A0503]">
+            {/* 1. The Hero Section */}
+            <HeroSection />
+
+        </main>
+    );
 }
