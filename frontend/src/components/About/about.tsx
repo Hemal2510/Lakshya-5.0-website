@@ -1,7 +1,8 @@
 import "./About.css";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import AuroraBackground from "../AuroraBackground";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import CountUp from "../CountUp";
 
 const images = [
   "/images/sports1.JPG",
@@ -11,14 +12,19 @@ const images = [
 
 export default function About() {
   const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 3500);
+const next = () => {
+  setDirection(1);
+  setCurrent((prev) => (prev + 1) % images.length);
+};
 
-    return () => clearInterval(interval);
-  }, []);
+const previous = () => {
+  setDirection(-1);
+  setCurrent((prev) => (prev - 1 + images.length) % images.length);
+};
+
+  
 
   return (
     <section className="about-section relative overflow-hidden">
@@ -32,15 +38,72 @@ export default function About() {
 
         {/* LEFT - Image Slider */}
         <motion.div
-          className="about-slider"
-          initial={{ x: -100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.9 }}
-          viewport={{ once: true }}
-        >
-          <img src={images[current]} alt="Lakshaya" />
-        </motion.div>
+  className="about-slider"
+  initial={{ x: -100, opacity: 0 }}
+  whileInView={{ x: 0, opacity: 1 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+>
 
+  {/* Back Card */}
+  <div className="card-back" />
+
+  <AnimatePresence mode="wait">
+
+    <motion.img
+      key={current}
+      src={images[current]}
+      alt="Lakshaya"
+
+      initial={{
+        opacity: 0,
+        y: direction === 1 ? 120 : -120,
+        rotate: direction === 1 ? -6 : 6,
+        scale: .9
+      }}
+
+      animate={{
+        opacity: 1,
+        y: 0,
+        rotate: 0,
+        scale: 1
+      }}
+
+      exit={{
+        opacity: 0,
+        y: direction === 1 ? -220 : 220,
+        rotate: direction === 1 ? 10 : -10,
+        scale: .85
+      }}
+
+      transition={{
+        duration: .6,
+        ease: "easeInOut"
+      }}
+
+      className="slider-image"
+    />
+
+  </AnimatePresence>
+
+  <button
+    className="nav-btn left"
+    onClick={previous}
+  >
+    ❮
+  </button>
+
+  <button
+    className="nav-btn right"
+    onClick={next}
+  >
+    ❯
+  </button>
+  <div className="image-counter">
+  {current + 1} / {images.length}
+</div>
+
+</motion.div>
         {/* RIGHT - Content */}
         <motion.div
   className="about-content"
@@ -78,17 +141,23 @@ export default function About() {
   <div className="stats">
 
       <div className="stat">
-          <span>2500+</span>
+          <span>
+    <CountUp end={2500} suffix="+" />
+</span>
           <p>Participants</p>
       </div>
 
       <div className="stat">
-          <span>12+</span>
+          <span>
+    <CountUp end={12} suffix="+" />
+</span>
           <p>Sports</p>
       </div>
 
       <div className="stat">
-          <span>50+</span>
+          <span>
+    <CountUp end={50} suffix="+" />
+</span>
           <p>Institutes</p>
       </div>
 

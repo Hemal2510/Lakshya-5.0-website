@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import "./AuroraBackground.css";
 
-const particles = Array.from({ length: 40 }, (_, i) => ({
+const particles = Array.from({ length: 20 }, (_, i) => ({
   id: i,
   left: Math.random() * 100,
   size: 2 + Math.random() * 5,
@@ -9,14 +9,14 @@ const particles = Array.from({ length: 40 }, (_, i) => ({
   delay: Math.random() * 8,
 }));
 
-const embers = Array.from({ length: 6 }, (_, i) => ({
+const embers = Array.from({ length: 3 }, (_, i) => ({
   id: i,
   left: Math.random() * 100,
   duration: 12 + Math.random() * 8,
   delay: Math.random() * 8,
 }));
 
-const streaks = Array.from({ length: 10 }, (_, i) => ({
+const streaks = Array.from({ length: 5 }, (_, i) => ({
   id: i,
   left: Math.random() * 100,
   duration: 3 + Math.random() * 3,
@@ -75,8 +75,7 @@ export default function AuroraBackground() {
       {/* Grid */}
       <div className="grid" />
 
-      {/* Noise */}
-      <div className="noise" />
+      
 
       {/* Floating Sparks */}
       {particles.map((particle) => (
