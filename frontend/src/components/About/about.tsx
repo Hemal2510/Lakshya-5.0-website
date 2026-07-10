@@ -1,5 +1,5 @@
 import "./About.css";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion} from "framer-motion";
 import AuroraBackground from "../AuroraBackground";
 import { useState } from "react";
 import CountUp from "../CountUp";
@@ -12,16 +12,30 @@ const images = [
 
 export default function About() {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(1);
+const [isAnimating, setIsAnimating] = useState(false);
 
 const next = () => {
-  setDirection(1);
+  if (isAnimating) return;
+
+  setIsAnimating(true);
+
   setCurrent((prev) => (prev + 1) % images.length);
+
+  setTimeout(() => {
+    setIsAnimating(false);
+  }, 350);
 };
 
 const previous = () => {
-  setDirection(-1);
+  if (isAnimating) return;
+
+  setIsAnimating(true);
+
   setCurrent((prev) => (prev - 1 + images.length) % images.length);
+
+  setTimeout(() => {
+    setIsAnimating(false);
+  }, 350);
 };
 
   
@@ -39,52 +53,21 @@ const previous = () => {
         {/* LEFT - Image Slider */}
         <motion.div
   className="about-slider"
-  initial={{ x: -100, opacity: 0 }}
+  initial={{ x: -80, opacity: 0 }}
   whileInView={{ x: 0, opacity: 1 }}
-  transition={{ duration: 0.8 }}
+  transition={{ duration: 0.6 }}
   viewport={{ once: true }}
 >
 
-  {/* Back Card */}
-  <div className="card-back" />
-
-  <AnimatePresence mode="wait">
-
-    <motion.img
-      key={current}
-      src={images[current]}
-      alt="Lakshaya"
-
-      initial={{
-        opacity: 0,
-        y: direction === 1 ? 120 : -120,
-        rotate: direction === 1 ? -6 : 6,
-        scale: .9
-      }}
-
-      animate={{
-        opacity: 1,
-        y: 0,
-        rotate: 0,
-        scale: 1
-      }}
-
-      exit={{
-        opacity: 0,
-        y: direction === 1 ? -220 : 220,
-        rotate: direction === 1 ? 10 : -10,
-        scale: .85
-      }}
-
-      transition={{
-        duration: .6,
-        ease: "easeInOut"
-      }}
-
-      className="slider-image"
-    />
-
-  </AnimatePresence>
+  <motion.img
+  key={current}
+  src={images[current]}
+  alt="Lakshaya"
+  className="slider-image"
+  initial={{ opacity: 0, scale: 1.05 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.35, ease: "easeOut" }}
+/>
 
   <button
     className="nav-btn left"
@@ -99,11 +82,19 @@ const previous = () => {
   >
     ❯
   </button>
-  <div className="image-counter">
-  {current + 1} / {images.length}
-</div>
+
+  <div className="slider-dots">
+    {images.map((_, index) => (
+      <span
+        key={index}
+        className={current === index ? "dot active" : "dot"}
+        onClick={() => setCurrent(index)}
+      />
+    ))}
+  </div>
 
 </motion.div>
+
         {/* RIGHT - Content */}
         <motion.div
   className="about-content"
@@ -135,33 +126,37 @@ const previous = () => {
     to compete, inspire, and create unforgettable
     moments that define the spirit of champions.
   </p>
+<div className="stats">
+<div className="stat">
+  <span>
+    <span className="count-number">
+      <CountUp end={2500} suffix="+" />
+    </span>
+  </span>
+  <p>Participants</p>
+</div>
 
+<div className="stat">
+  <span>
+    <span className="count-number">
+      <CountUp end={12} suffix="+" />
+    </span>
+  </span>
+  <p>Sports</p>
+</div>
+
+<div className="stat">
+  <span>
+    <span className="count-number">
+      <CountUp end={50} suffix="+" />
+    </span>
+  </span>
+  <p>Institutes</p>
+</div>
+</div>
   
 
-  <div className="stats">
-
-      <div className="stat">
-          <span>
-    <CountUp end={2500} suffix="+" />
-</span>
-          <p>Participants</p>
-      </div>
-
-      <div className="stat">
-          <span>
-    <CountUp end={12} suffix="+" />
-</span>
-          <p>Sports</p>
-      </div>
-
-      <div className="stat">
-          <span>
-    <CountUp end={50} suffix="+" />
-</span>
-          <p>Institutes</p>
-      </div>
-
-  </div>
+  
 
 </motion.div>
 
