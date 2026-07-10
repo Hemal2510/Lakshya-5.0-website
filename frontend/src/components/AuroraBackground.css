@@ -1,0 +1,194 @@
+.aurora-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #060606;
+  z-index: -1;
+}
+
+/* ===========================
+   Smoke
+=========================== */
+
+.smoke {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 120, 0, 0.08), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(255, 80, 0, 0.06), transparent 45%);
+  filter: blur(50px);
+  animation: smokeMove 18s ease-in-out infinite alternate;
+}
+
+@keyframes smokeMove {
+  from {
+    transform: translate(-40px, -20px) scale(1);
+  }
+  to {
+    transform: translate(40px, 30px) scale(1.2);
+  }
+}
+
+/* ===========================
+   Aurora
+=========================== */
+
+.aurora {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  filter: blur(70px);
+  mix-blend-mode: screen;
+  opacity: .35;
+}
+
+.aurora1 {
+  left: -200px;
+  top: -150px;
+  background:
+    radial-gradient(circle,
+      rgba(255,120,0,.9),
+      rgba(255,120,0,.15),
+      transparent 70%);
+}
+
+.aurora2 {
+  right: -180px;
+  bottom: -150px;
+  background:
+    radial-gradient(circle,
+      rgba(255,60,0,.8),
+      rgba(255,180,0,.12),
+      transparent 70%);
+}
+
+/* ===========================
+   Moving Beam
+=========================== */
+
+.light-beam {
+  position: absolute;
+  top: -50%;
+  width: 350px;
+  height: 200%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,170,40,.18),
+      transparent
+    );
+  transform: rotate(-35deg);
+  filter: blur(45px);
+}
+
+/* ===========================
+   Grid
+=========================== */
+
+.grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+
+  background-size: 60px 60px;
+
+  opacity: .22;
+}
+
+/* ===========================
+   Noise
+=========================== */
+
+.noise {
+  position: absolute;
+  inset: 0;
+
+  opacity: .04;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ===========================
+   Small Sparks
+=========================== */
+
+.particle {
+  position: absolute;
+  bottom: -30px;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle,
+      #ffe8a3,
+      #ff9d00 70%);
+
+  opacity: .9;
+
+  box-shadow:
+    0 0 8px #ff9d00,
+    0 0 18px #ff6a00,
+    0 0 35px rgba(255,120,0,.55);
+
+  filter: blur(.3px);
+}
+
+/* ===========================
+   Big Embers
+=========================== */
+
+.big-ember {
+  position: absolute;
+  bottom: -80px;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle,
+      #ffd27a,
+      #ff7300);
+
+  opacity: .35;
+
+  filter: blur(4px);
+
+  box-shadow:
+    0 0 40px #ff7300,
+    0 0 80px #ff3d00;
+}
+
+/* ===========================
+   Fire Streaks
+=========================== */
+
+.spark-streak {
+  position: absolute;
+
+  width: 2px;
+  height: 55px;
+
+  transform: rotate(-25deg);
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(255,140,0,0),
+      rgba(255,220,120,.95)
+    );
+
+  filter: blur(.6px);
+
+  box-shadow:
+    0 0 12px #ff9800,
+    0 0 25px #ff5e00;
+
+  opacity: .8;
+}

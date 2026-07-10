@@ -1,6 +1,6 @@
 import "./About.css";
 import { motion } from "framer-motion";
-import Background from "../background/Background";
+import AuroraBackground from "../AuroraBackground";
 import { useEffect, useState } from "react";
 
 const images = [
@@ -23,13 +23,11 @@ export default function About() {
   return (
     <section className="about-section relative overflow-hidden">
 
-
+    <AuroraBackground />
       {/* Dark Overlay */}
 
 
-<div className="about-top-glow" />
 
-<div className="about-side-glow" />
       <div className="about-container">
 
         {/* LEFT - Image Slider */}
