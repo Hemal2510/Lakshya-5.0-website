@@ -1,7 +1,7 @@
 import "./About.css";
 import { motion} from "framer-motion";
 import AuroraBackground from "../AuroraBackground";
-import { useState } from "react";
+import { useState,useEffect,useRef } from "react";
 import CountUp from "../CountUp";
 
 const images = [
@@ -9,17 +9,50 @@ const images = [
   "/images/sports2.JPG",
   "/images/sports3.JPG",
 ];
+const aboutStories = [
+  {
+    title: "Beyond Competition",
+    text: "Lakshya is more than a sports festival—it's where passion meets perseverance. Every match, every cheer, and every victory celebrates the relentless spirit of champions."
+  },
+  {
+    title: "A Legacy of Excellence",
+    text: "Hosted at IIT Indore, Lakshya has become one of Central India's premier inter-collegiate sporting events, bringing together thousands of athletes every year."
+  },
+  {
+    title: "Where Champions Rise",
+    text: "From intense rivalries to unforgettable victories, Lakshya inspires athletes to challenge their limits and create lifelong memories."
+  },
+  {
+    title: "United Through Sport",
+    text: "Lakshya celebrates teamwork, leadership, resilience, and friendships that continue long after the final whistle."
+  }
+];
+
 
 export default function About() {
   const [current, setCurrent] = useState(0);
+  const [currentStory, setCurrentStory] = useState(0);
 const [isAnimating, setIsAnimating] = useState(false);
+const autoSlide = useRef<number | null>(null);
+const startAutoSlide = () => {
+  if (autoSlide.current) clearInterval(autoSlide.current);
 
+  autoSlide.current = window.setInterval(() => {
+    setCurrent((prev) => (prev + 1) % images.length);
+  }, 3000); // Change every 3 seconds
+};
+
+const resetAutoSlide = () => {
+  startAutoSlide();
+};
 const next = () => {
   if (isAnimating) return;
 
   setIsAnimating(true);
 
   setCurrent((prev) => (prev + 1) % images.length);
+
+  resetAutoSlide();
 
   setTimeout(() => {
     setIsAnimating(false);
@@ -33,12 +66,33 @@ const previous = () => {
 
   setCurrent((prev) => (prev - 1 + images.length) % images.length);
 
+  resetAutoSlide();
+
   setTimeout(() => {
     setIsAnimating(false);
   }, 350);
 };
+useEffect(() => {
 
-  
+  const interval = setInterval(() => {
+
+    setCurrentStory((prev) => (prev + 1) % aboutStories.length);
+
+  }, 3000);
+
+  return () => clearInterval(interval);
+
+}, []);
+
+  useEffect(() => {
+  startAutoSlide();
+
+  return () => {
+    if (autoSlide.current) {
+      clearInterval(autoSlide.current);
+    }
+  };
+}, []);
 
   return (
     <section className="about-section relative overflow-hidden">
@@ -88,7 +142,10 @@ const previous = () => {
       <span
         key={index}
         className={current === index ? "dot active" : "dot"}
-        onClick={() => setCurrent(index)}
+        onClick={() => {
+  setCurrent(index);
+  resetAutoSlide();
+}}
       />
     ))}
   </div>
@@ -114,18 +171,32 @@ const previous = () => {
 
   <div className="heading-line"></div>
 
-  <p>
-    Lakshya is more than just a sports festival—
-    it's a celebration of passion, perseverance,
-    and the relentless pursuit of excellence.
+  <motion.div
+  key={currentStory}
+  className="about-story"
+  initial={{ opacity: 0, y: 25 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
 
-    <br /><br />
+  <h3>{aboutStories[currentStory].title}</h3>
 
-    Every year, thousands of athletes from premier
-    institutes across India gather at IIT Indore
-    to compete, inspire, and create unforgettable
-    moments that define the spirit of champions.
-  </p>
+  <p>{aboutStories[currentStory].text}</p>
+
+</motion.div>
+<div className="story-nav">
+
+  {aboutStories.map((_, index) => (
+
+    <button
+      key={index}
+      className={currentStory === index ? "active" : ""}
+      onClick={() => setCurrentStory(index)}
+    />
+
+  ))}
+
+</div>
 <div className="stats">
 <div className="stat">
   <span>
