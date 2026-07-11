@@ -184,19 +184,17 @@ useEffect(() => {
   <p>{aboutStories[currentStory].text}</p>
 
 </motion.div>
+{/* 
 <div className="story-nav">
-
   {aboutStories.map((_, index) => (
-
     <button
       key={index}
       className={currentStory === index ? "active" : ""}
       onClick={() => setCurrentStory(index)}
     />
-
   ))}
-
 </div>
+*/}
 <div className="stats">
 <div className="stat">
   <span>
