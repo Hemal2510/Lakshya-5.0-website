@@ -15,6 +15,7 @@ interface ShapeGridProps {
     hoverFillColor?: CanvasStrokeStyle;
     shape?: 'square' | 'hexagon' | 'circle' | 'triangle';
     hoverTrailAmount?: number;
+    showGradient?: boolean;
 }
 
 const ShapeGrid: React.FC<ShapeGridProps> = ({
@@ -24,7 +25,8 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
     squareSize = 40,
     hoverFillColor = '#222',
     shape = 'square',
-    hoverTrailAmount = 0
+    hoverTrailAmount = 0,
+    showGradient = true,
 }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const requestRef = useRef<number | null>(null);
@@ -212,7 +214,7 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
                     }
                 }
             }
-
+            if (showGradient) {
             const gradient = ctx.createRadialGradient(
                 canvas.width / 2,
                 canvas.height / 2,
@@ -226,6 +228,7 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
 
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
         };
 
         const updateAnimation = () => {

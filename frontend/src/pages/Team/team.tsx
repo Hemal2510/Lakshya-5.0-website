@@ -6,51 +6,15 @@ import FireHexBadge from "../../components/teams/FireHexBadge";
 import TeamWheel from "../../components/teams/TeamWheel";
 import FuzzyText from "../../assets/FuzzyText";
 import { motion } from "framer-motion";
+import Background from "@/components/background/Background.tsx";
+
+import {
+    leadership,
+    heads,
+    coreMembers,
+} from "@/data/teamsData.ts";
 
 
-const team = [
-    {
-        name: "member1",
-        role: "OC1",
-        photoUrl: "",
-        socials: [{ label: "LinkedIn", href: "#", icon: "linkedin" }],
-    },
-    {
-        name: "member 2",
-        role: "OC2",
-        photoUrl: "/photos/.jpg",
-    },
-    {
-        name: "member 3",
-        role: "role",
-        photoUrl: "",
-    },
-    {
-        name: "member 4",
-        role: "role",
-        photoUrl: "/photosjpg",
-    },
-    {
-        name: "member 5",
-        role: "role",
-        photoUrl: "",
-    },
-    {
-        name: "member 6",
-        role: "role",
-        photoUrl: "",
-    },
-    {
-        name: "member 7",
-        role: "role",
-        photoUrl: "",
-    },
-    {
-        name: "member 8",
-        role: "role",
-        photoUrl: "",
-    },
-];
 
 
 export default function Team() {
@@ -59,6 +23,8 @@ export default function Team() {
 
 
             <div className="relative pointer-events-auto">
+
+                <Background />
 
                 <header className=" pb-[70px] pt-[180px] text-center">
                     <motion.div
@@ -104,13 +70,7 @@ export default function Team() {
                             <div className="mt-10">
                                 <FireSealBadge
                                     eyebrow="LAKSHAYA · 2026"
-                                    name="OC 1"
-                                    role="Overall Coordinator"
-                                    photoUrl=""
-                                    socials={[
-                                        { label: "LinkedIn", href: ".", icon: "linkedin" },
-                                        { label: "GitHub", href: "", icon: "github" },
-                                    ]}
+                                    {...leadership.overallCoordinator}
                                     scale={0.8}
                                 />
                             </div>
@@ -130,15 +90,9 @@ export default function Team() {
                             <div className="mt-10">
                                 <FireSealBadge
                                     eyebrow="LAKSHAYA · 2026"
-                                    name="OC 2"
-                                    role="Co-Overall Coordinator"
-                                    photoUrl=""
-                                    socials={[
-                                        { label: "LinkedIn", href: ".", icon: "linkedin" },
-                                        { label: "GitHub", href: "", icon: "github" },
-                                    ]}
+                                    {...leadership.coOverallCoordinator}
                                     scale={0.8}
-                                />
+                                    />
                             </div>
                         </div>
 
@@ -161,13 +115,7 @@ export default function Team() {
                         <div className="mt-10">
                             <FireSealBadge
                                 eyebrow="LAKSHAYA · 2026"
-                                name="Name"
-                                role="General Secretary of Sports"
-                                photoUrl=""
-                                socials={[
-                                    { label: "LinkedIn", href: ".", icon: "linkedin" },
-                                    { label: "GitHub", href: "", icon: "github" },
-                                ]}
+                                {...leadership.generalSecretary}
                                 scale={0.8}
                             />
                         </div>
@@ -190,7 +138,7 @@ export default function Team() {
 
                         </FuzzyText>
                     </div>
-                    <TeamWheel members={team} centerImage="../../assets/lakshya-flame.jpg" radius={400} badgeScale={0.7} />
+                    <TeamWheel members={heads} centerImage="../../assets/lakshya-flame.jpg" radius={400} badgeScale={0.7} />
 
                     <div className="flex justify-center mt-[50px] mb-[50px]">
 
@@ -208,7 +156,7 @@ export default function Team() {
 
                         </FuzzyText>
                     </div>
-                    <TeamInfiniteScroll members={team} speed={40} cardScale={0.8} />;
+                    <TeamInfiniteScroll members={coreMembers} speed={40} cardScale={0.8} />;
 
 
 

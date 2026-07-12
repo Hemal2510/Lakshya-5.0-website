@@ -95,7 +95,7 @@ const Navbar = () => {
             <svg className="absolute w-0 h-0" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     {/* Active route premium shimmer (stronger waving) */}
-                    <filter id="premium-heat-shimmer">
+                    <filter id="subtle-heat-shimmer">
                         <feTurbulence
                             type="fractalNoise"
                             baseFrequency="0.03 0.08"

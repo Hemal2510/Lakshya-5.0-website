@@ -1,0 +1,276 @@
+.venue-section{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+
+    padding:20px 8% 60px;
+
+    background:#050505;
+}
+.venue-section::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at 15% 20%,
+    rgba(255,140,20,.12),
+    transparent 35%),
+
+    radial-gradient(circle at 85% 75%,
+    rgba(255,180,60,.08),
+    transparent 35%),
+
+    linear-gradient(
+        180deg,
+        #050505 0%,
+        #080808 55%,
+        #050505 100%
+    );
+
+    z-index:-3;
+}
+.venue-section::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+        rgba(255,180,60,.025) 1px,
+        transparent 1px
+    ),
+
+    linear-gradient(
+        90deg,
+        rgba(255,180,60,.025) 1px,
+        transparent 1px
+    );
+
+    background-size:70px 70px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        transparent,
+        black 20%,
+        black 80%,
+        transparent
+    );
+
+    opacity:.45;
+
+    z-index:-2;
+}
+
+.venue-card{
+
+    max-width:1000px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:40px;
+
+    padding:30px 40px;
+
+    border-radius:22px;
+
+    text-decoration:none;
+
+   background:
+
+linear-gradient(
+145deg,
+rgba(20,20,20,.94),
+rgba(10,10,10,.97)
+);
+
+backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,180,60,.18);
+
+    transition:.35s;
+}
+.venue-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    border-radius:24px;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,180,60,.18),
+        transparent
+    );
+
+    opacity:0;
+
+    transition:.4s;
+
+    z-index:-1;
+}
+
+.venue-card:hover::before{
+
+    opacity:1;
+
+}
+
+.venue-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#ffb347;
+
+    box-shadow:
+        0 0 30px rgba(255,170,40,.18),
+        0 25px 60px rgba(0,0,0,.55);
+
+}
+
+.venue-tag{
+
+    color:#ffbe58;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+.venue-left h2{
+
+    font-size:42px;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #ffe2a8,
+        #ffb347
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+        0 0 20px rgba(255,180,60,.18);
+}
+
+.venue-left p{
+
+    color:#cfcfcf;
+
+    line-height:1.8;
+
+    font-size:16px;
+}
+
+.venue-right{
+
+    display:flex;
+
+    gap:18px;
+}
+
+.coordinate{
+
+    width:170px;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,180,60,.12);
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.coordinate:hover{
+
+    border-color:#ffb347;
+
+    box-shadow:
+        0 0 18px rgba(255,170,40,.25);
+
+}
+
+.coordinate span{
+
+    display:block;
+
+    color:#888;
+
+    font-size:13px;
+
+    margin-bottom:8px;
+}
+
+.coordinate strong{
+
+    color:white;
+
+    font-size:20px;
+}
+
+@media(max-width:900px){
+
+.venue-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.venue-right{
+
+flex-direction:column;
+
+width:100%;
+
+}
+
+.coordinate{
+
+width:100%;
+
+}
+
+}
+@keyframes venueGlow{
+
+0%{
+transform:translateX(-50%) translateY(0px);
+}
+
+50%{
+transform:translateX(-50%) translateY(18px);
+}
+
+100%{
+transform:translateX(-50%) translateY(0px);
+}
+
+}

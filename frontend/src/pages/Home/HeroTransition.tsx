@@ -1,63 +1,99 @@
 import Countdown from "@/components/Countdown";
+import { ChevronDown } from "lucide-react";
 
 export default function HeroTransition() {
-    return (
-        // Replaced rigid height with padding so it breathes naturally
-        <section className="relative flex flex-col items-center justify-center pt-32 pb-16">
+  return (
+    <section className="relative overflow-hidden bg-transparent pt-28 pb-24">
 
-            {/* Fade Mask (The Glue) */}
-            <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    background: `
-                        linear-gradient(
-                            to bottom,
-                            transparent 0%,
-                            rgba(9,5,3,0.8) 45%,
-                            #090503 100%
-                        )
-                    `,
-                }}
-            />
+      {/* Fire → Night Fade */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            linear-gradient(
+              to bottom,
+              rgba(0,0,0,0) 0%,
+              rgba(24,8,2,.35) 18%,
+              rgba(18,10,5,.75) 45%,
+              rgba(7,17,41,.92) 82%,
+              #071229 100%
+            )
+          `,
+        }}
+      />
 
-            {/* Forge Glow */}
-            <div
-                className="
-                    absolute
-                    left-1/2
-                    top-1/4
-                    h-72
-                    w-[850px]
-                    -translate-x-1/2
-                    rounded-full
-                    blur-[110px]
-                    opacity-30
-                    pointer-events-none
-                "
-                style={{
-                    background:
-                        "radial-gradient(circle, rgba(240,181,43,.22), transparent 72%)",
-                }}
-            />
+      {/* Orange Forge Glow */}
+      <div
+        className="
+          absolute
+          left-1/2
+          top-8
+          h-72
+          w-[900px]
+          -translate-x-1/2
+          rounded-full
+          blur-[120px]
+          opacity-40
+          pointer-events-none
+          animate-pulse
+        "
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,170,40,.28), transparent 72%)",
+        }}
+      />
 
-            {/* Countdown Content */}
-            <div className="relative z-10 flex h-full flex-col items-center justify-center">
-                <Countdown />
+      {/* Blue Ambient Glow */}
+      <div
+        className="
+          absolute
+          left-1/2
+          bottom-0
+          h-96
+          w-[1100px]
+          -translate-x-1/2
+          rounded-full
+          blur-[160px]
+          opacity-30
+          pointer-events-none
+        "
+        style={{
+          background:
+            "radial-gradient(circle, rgba(37,99,235,.18), transparent 70%)",
+        }}
+      />
 
-                <div
-                    className="
-                        mt-10
-                        text-xs
-                        uppercase
-                        tracking-[0.45em]
-                        text-[#C98C2B]/60
-                        animate-pulse
-                    "
-                >
-                    Scroll
-                </div>
-            </div>
+      {/* Decorative Divider */}
+      <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-[#D9A441]/40 to-transparent" />
 
-        </section>
-    );
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center">
+
+        <Countdown />
+
+        {/* Scroll Indicator */}
+        <div className="mt-16 flex flex-col items-center">
+
+          <p
+            className="
+              text-[11px]
+              uppercase
+              tracking-[0.45em]
+              text-[#D9A441]/70
+            "
+          >
+            Scroll Down
+          </p>
+
+          <ChevronDown
+            size={34}
+            className="mt-3 text-[#D9A441] animate-bounce"
+          />
+
+        </div>
+
+      </div>
+
+    </section>
+  );
 }

@@ -228,10 +228,10 @@ export default function TeamInfiniteScroll({ members, speed = 40, gap = 40, card
         @keyframes fbc-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         .fbc-ember { animation: fbc-rise linear infinite; }
-        .fbc-ring { animation: fbc-spin 6s linear infinite; }
+        .fbc-ring { animation: none; }
         .fbc-seal { transition: transform .5s cubic-bezier(.22,1,.36,1), filter .5s ease; }
         .fbc-group:hover .fbc-seal { transform: translateY(-8px) scale(1.015); }
-        .fbc-group:hover .fbc-ring { animation-duration: 1.6s; }
+        .fbc-group:hover .fbc-ring { animation-duration: none; }
         .fbc-group:hover .fbc-ember { animation-duration: 2.4s !important; }
         .fbc-group:hover .fbc-glow { opacity: 1; transform: scale(1.15); }
         .fbc-group:hover .fbc-drip { transform: scaleY(1.12); }
