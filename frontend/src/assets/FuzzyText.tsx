@@ -326,7 +326,16 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
         letterSpacing
     ]);
 
-    return <canvas ref={canvasRef} className={className} />;
+    return (
+        <canvas
+            ref={canvasRef}
+            className={`block mx-auto max-w-full ${className}`}
+            style={{
+                height: typeof fontSize === 'number' ? fontSize * 1.4 : '1.4em',
+                minHeight: typeof fontSize === 'number' ? fontSize * 1.4 : '1.4em',
+            }}
+        />
+    );
 };
 
 export default FuzzyText;

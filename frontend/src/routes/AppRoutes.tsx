@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "../components/navbar/Navbar";
-import Background from "../components/background/Background";
+
 
 import Home from "../pages/Home/home";
 import Legacy from "../pages/Legacy/legacy";
@@ -20,7 +20,7 @@ export default function AppRoutes() {
         <div className="relative">
 
 
-             <Background />
+
 
             <Navbar />
 

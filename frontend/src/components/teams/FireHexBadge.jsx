@@ -17,12 +17,7 @@ const ICONS = {
   instagram: (
     <path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 015.45.53C6.09.28 6.82.11 7.88.06 8.94.01 9.3 0 12 0zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.17 1.17 0 100-2.34 1.17 1.17 0 000 2.34z" />
   ),
-  github: (
-    <path d="M12 .3a12 12 0 00-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.53.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0012 .3z" />
-  ),
-  twitter: (
-    <path d="M23.5 3.6c-.8.36-1.7.6-2.6.7a4.6 4.6 0 002-2.5c-.87.5-1.83.87-2.86 1.07a4.5 4.5 0 00-7.7 4.1A12.8 12.8 0 011.6 2.16a4.5 4.5 0 001.4 6 4.4 4.4 0 01-2.04-.56v.06a4.5 4.5 0 003.6 4.4 4.5 4.5 0 01-2.03.08 4.5 4.5 0 004.2 3.13A9.05 9.05 0 010 17.55 12.75 12.75 0 006.9 19.6c8.3 0 12.85-6.87 12.85-12.83 0-.2 0-.39-.01-.58a9.2 9.2 0 002.26-2.34c-.82.36-1.7.6-2.5.7z" />
-  ),
+
 };
 
 const DEFAULT_SOCIALS = [
@@ -51,10 +46,9 @@ export default function FireHexBadge({
         }
         @keyframes fbc-spin { to { transform: rotate(360deg); } }
         .fbc-ember { animation: fbc-rise linear infinite; }
-        .fbc-ring {animation: none; }
+        .fbc-ring {animation: none } 
         .fbc-seal { transition: transform .5s cubic-bezier(.22,1,.36,1), filter .5s ease; }
         .fbc-group:hover .fbc-seal { transform: translateY(-8px) scale(1.015); }
-        .fbc-group:hover .fbc-ring {animation: fbc-spin 1.8s linear infinite; }
         .fbc-group:hover .fbc-ember { animation-duration: 2.4s !important; }
         .fbc-group:hover .fbc-glow { opacity: 1; transform: scale(1.15); }
         .fbc-social-item { transform: translateY(14px); opacity: 0; transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .4s ease; }
@@ -65,7 +59,7 @@ export default function FireHexBadge({
         .fbc-hex-icon:hover { transform: translateY(-4px) scale(1.08); border-color: #ff7a00; box-shadow: 0 10px 24px -6px rgba(255,122,0,.6); }
       `}</style>
 
-      <div className="fbc-group relative" style={{ width: 360 * scale, height: 460 * scale }}>
+      <div className="fbc-group relative" style={{ width: 420 * scale, height: 520 * scale }}>
         <div style={{ transform: `scale(${scale})`, transformOrigin: "top center" }}>
 
 
@@ -79,8 +73,8 @@ export default function FireHexBadge({
           <div
             className="fbc-seal relative z-[2] mx-auto"
             style={{
-              width: 340,
-              height: 440,
+              width: 380,
+              height: 480,
               clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
             }}
           >
@@ -109,9 +103,9 @@ export default function FireHexBadge({
                   }}
                 />
 
-                <div className="flex h-full flex-col items-center pt-14 px-8 pb-8">
+                <div className="flex h-full flex-col items-center pt-12 px-6 pb-6">
                   {/* photo */}
-                  <div className="relative mb-4 h-[140px] w-[140px]">
+                  <div className="relative mb-4 h-[200px] w-[200px]">
                     <div
                       className="fbc-ring absolute inset-0 rounded-full p-[4px]"
                       style={{
@@ -134,7 +128,7 @@ export default function FireHexBadge({
                     {eyebrow}
                   </p>
                   <h1
-                    className="mb-2 text-center text-[28px] font-normal uppercase leading-[0.92] tracking-wide"
+                    className="mb-2 text-center text-[25px] font-normal uppercase leading-[0.92] tracking-[0.10em]"
                     style={{
                       fontFamily: "'Anton', 'Arial Narrow', sans-serif",
                       backgroundImage:
@@ -153,30 +147,52 @@ export default function FireHexBadge({
                       </>
                     ) : null}
                   </h1>
-                  <p className="mb-5 flex items-center justify-center gap-2 text-center font-mono text-[11px] tracking-[0.26em] text-[#ffd9a8]">
+                  <p className="mb-5 flex items-center justify-center gap-2 text-center font-mono text-[15px] tracking-[0.26em] text-[#ffd9a8]">
                     <span className="h-px w-4 bg-gradient-to-r from-transparent to-[#ff7a00]" />
                     {role}
                     <span className="h-px w-4 bg-gradient-to-l from-transparent to-[#ff7a00]" />
                   </p>
 
                   {/* socials — hidden until hover, rise in staggered */}
-                  <div className="flex justify-center gap-3">
-                    {socials.map((s) => (
-                      <a
-                        key={s.label}
-                        href={s.href}
-                        aria-label={s.label}
-                        className="fbc-social-item fbc-hex-icon flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(255,150,60,.4)] transition-all duration-300"
-                        style={{
-                          background: "linear-gradient(155deg,rgba(255,122,0,.18),rgba(232,54,0,.05))",
-                        }}
-                      >
-                        <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-[#ffb627]">
-                          {ICONS[s.icon]}
-                        </svg>
-                      </a>
-                    ))}
-                  </div>
+                    <div className="flex justify-center gap-3">
+
+                        {socials?.linkedin && (
+                            <a
+                                href={socials.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="LinkedIn"
+                                className="fbc-social-item fbc-hex flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(255,150,60,.4)] transition-all duration-300"
+                                style={{
+                                    background:
+                                        "linear-gradient(155deg,rgba(255,122,0,.18),rgba(232,54,0,.05))",
+                                }}
+                            >
+                                <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-[#ffb627]">
+                                    {ICONS.linkedin}
+                                </svg>
+                            </a>
+                        )}
+
+                        {socials?.instagram && (
+                            <a
+                                href={socials.instagram}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Instagram"
+                                className="fbc-social-item fbc-hex flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(255,150,60,.4)] transition-all duration-300"
+                                style={{
+                                    background:
+                                        "linear-gradient(155deg,rgba(255,122,0,.18),rgba(232,54,0,.05))",
+                                }}
+                            >
+                                <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-[#ffb627]">
+                                    {ICONS.instagram}
+                                </svg>
+                            </a>
+                        )}
+
+                    </div>
                 </div>
               </div>
             </div>
