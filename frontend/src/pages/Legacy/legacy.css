@@ -408,15 +408,21 @@ box-shadow:
 
 .timeline-center{
 
-position:relative;
+    position: relative;
 
-height:100%;
+    width: 90px;
 
-display:flex;
+    height: 100%;
 
-justify-content:center;
+    display: flex;
 
-align-items:center;
+    justify-content: center;
+
+    align-items: center;
+
+    flex-shrink: 0;
+
+    overflow: visible;
 }
 
 .fire-line{
@@ -480,36 +486,62 @@ animation:firePulse 2s infinite;
 
 .year-pill{
 
-position:absolute;
+    position:absolute;
 
-top:40px;
+    top:-22px;
 
-left:90px;
+    width:120px;
 
-padding:12px 28px;
+    height:50px;
 
-border-radius:999px;
+    display:flex;
 
-background:
+    justify-content:center;
 
-linear-gradient(
-135deg,
-#ff9a00,
-#ff5e00
-);
+    align-items:center;
 
-font-weight:700;
+    border-radius:999px;
 
-color:white;
+    background:linear-gradient(135deg,#ffb000,#ff7600);
 
-box-shadow:
+    color:#fff;
 
-0 0 25px rgba(255,120,0,.45);
+    font-weight:800;
+
+    font-size:.95rem;
+
+    z-index:999;
+
+    box-shadow:
+        0 0 18px rgba(255,120,0,.45),
+        0 0 40px rgba(255,120,0,.25);
+}
+
+.year-left{
+
+    top:-22px;
+
+    left:34px;
+}
+
+.year-right{
+
+    top:-22px;
+
+    right:34px;
 }
 
 /* CARD */
+.timeline-content{
 
+    position:relative;
+
+    overflow:visible;
+} 
 .content-card{
+position:relative;
+ 
+overflow:hidden;
 
 padding:40px;
 
@@ -618,7 +650,7 @@ transform:scale(1);
 }
 .timeline-section{
 
-margin-top:140px;
+margin-top:60px;
 
 position:relative;
 
@@ -626,14 +658,10 @@ z-index:2;
 }
 
 .timeline-header{
-
-max-width:900px;
-
-margin:auto;
-
-text-align:center;
-
-margin-bottom:100px;
+    max-width:900px;
+    margin:0 auto;
+    text-align:center;
+    margin-bottom:70px;
 }
 
 .timeline-badge{
@@ -703,7 +731,7 @@ margin:auto;
 
     position:relative;
 
-    padding-bottom:50px;
+    padding-bottom:15px;
 }
 
 @media(max-width:1000px){
@@ -734,7 +762,8 @@ font-size:1rem;
 
 @media (max-width: 1400px) {
 
-    .timeline-row{
+    .timeline-row,
+    .timeline-row.reverse{
 
         grid-template-columns:1fr 100px 1fr;
 
@@ -762,7 +791,8 @@ font-size:1rem;
 
 @media (max-width:1200px){
 
-    .timeline-row{
+    .timeline-row,
+    .timeline-row.reverse{
 
         grid-template-columns:1fr 90px 1fr;
 
@@ -810,7 +840,8 @@ font-size:1rem;
 
 @media (max-width:992px){
 
-    .timeline-row{
+    .timeline-row,
+    .timeline-row.reverse{
 
         display:flex;
 
@@ -845,6 +876,17 @@ font-size:1rem;
         height:110px;
     }
 
+    .timeline-row.reverse .timeline-video,
+    .timeline-row.reverse .timeline-content{
+
+        order:unset;
+    }
+
+    .timeline-row.reverse .timeline-center{
+
+        order:-1;
+    }
+
     .fire-line{
 
         height:100%;
@@ -858,7 +900,7 @@ font-size:1rem;
 
         position:absolute;
 
-        top:12px;
+        top:-20px;
 
         left:50%;
 
@@ -1297,34 +1339,30 @@ font-size:1rem;
 
     position:absolute;
 
-    top:-100%;
+    top:0;
 
-    left:-100%;
+    left:-120%;
 
-    width:60%;
+    width:50%;
 
-    height:250%;
+    height:100%;
 
-    transform:rotate(28deg);
+    transform:skewX(-25deg);
 
-    background:
-
-        linear-gradient(
-
+    background:linear-gradient(
+        90deg,
         transparent,
-
-        rgba(255,255,255,.08),
-
+        rgba(255,255,255,.12),
         transparent
+    );
 
-        );
+    transition:left .8s ease;
 
-    transition:.8s;
+    pointer-events:none;
 }
-
 .content-card:hover::before{
 
-    left:180%;
+    left:150%;
 }
 
 
@@ -1486,12 +1524,12 @@ font-size:1rem;
 
 .timeline-section{
     position:relative;
-    padding:100px 0 140px;
+    padding:30px 0 120px;
 }
 
 /* ---------- Soft Background Glow ---------- */
 
-.timeline-section::before{
+/* .timeline-section::before{
     content:"";
     position:absolute;
     top:0;
@@ -1506,7 +1544,7 @@ font-size:1rem;
     filter:blur(90px);
     pointer-events:none;
     z-index:0;
-}
+} */
 
 /* ---------- Header ---------- */
 
@@ -1759,7 +1797,7 @@ font-size:1rem;
 
     position:relative;
 
-    height:40px;
+    height:15px;
 
     display:flex;
 

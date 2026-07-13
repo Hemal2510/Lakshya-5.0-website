@@ -58,9 +58,7 @@ export default function TimelineCard({
           🔥
         </div>
 
-        <div className="year-pill">
-          {year}
-        </div>
+        
 
       </div>
 
@@ -68,25 +66,29 @@ export default function TimelineCard({
 
       <div className="timeline-content">
 
-        <div className="content-card">
+    <div className={`year-pill ${reverse ? "year-right" : "year-left"}`}>
+        {year}
+    </div>
 
-          <h2>{title}</h2>
+    <div className="content-card">
 
-          <h4>{subtitle}</h4>
+        <h2>{title}</h2>
 
-          <p>{description}</p>
+        <h4>{subtitle}</h4>
 
-          <h5>HIGHLIGHTS</h5>
+        <p>{description}</p>
 
-          <ul>
+        <h5>HIGHLIGHTS</h5>
+
+        <ul>
             {highlights.map((item, i) => (
-              <li key={i}>{item}</li>
+                <li key={i}>{item}</li>
             ))}
-          </ul>
+        </ul>
 
-        </div>
+    </div>
 
-      </div>
+</div>
 
     </motion.div>
   );
