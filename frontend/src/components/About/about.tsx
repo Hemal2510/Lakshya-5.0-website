@@ -107,8 +107,8 @@ useEffect(() => {
         {/* LEFT - Image Slider */}
         <motion.div
   className="about-slider"
-  initial={{ x: -80, opacity: 0 }}
-  whileInView={{ x: 0, opacity: 1 }}
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
   viewport={{ once: true }}
 >
@@ -155,8 +155,8 @@ useEffect(() => {
         {/* RIGHT - Content */}
         <motion.div
   className="about-content"
-  initial={{ x: 100, opacity: 0 }}
-  whileInView={{ x: 0, opacity: 1 }}
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.9 }}
   viewport={{ once: true }}
 >

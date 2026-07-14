@@ -78,6 +78,7 @@ z-index:-2;
     margin:auto;
 
     display:flex;
+    flex-direction: row;
     align-items:center;
     justify-content:space-between;
 
@@ -329,27 +330,108 @@ box-shadow:
 
 /* Responsive */
 
-@media (max-width:1000px){
+@media (max-width: 1200px) {
+
+    .about-section{
+        padding:80px 5% !important;
+    }
 
     .about-container{
-        flex-direction:column;
+        flex-direction:column !important;
+        align-items:center !important;
+        gap:40px !important;
+    }
+
+    .about-slider{
+        order:1 !important;
+        position:relative !important;
+        width:100% !important;
+        max-width:650px !important;
+        height:350px !important;
+        flex:none !important;
+    }
+
+    .slider-image{
+        position:relative !important;
+        width:100% !important;
+        height:100% !important;
+        display:block !important;
     }
 
     .about-content{
-        margin-top:50px;
+        order:2 !important;
+        position:relative !important;
+        width:100% !important;
+        flex:none !important;
+        margin-top:30px !important;
+        text-align:center;
     }
 
-    .stats{
-        grid-template-columns:repeat(3,1fr);
-        gap:24px;
+    .about-story p{
+        text-align:center;
     }
 
     .about-content h1{
         font-size:48px;
     }
 
-    .about-slider{
-        height:320px;
+    .stats{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:30px;
+    }
+
+    .stat span{
+        width:120px;
+        height:120px;
+    }
+
+    .count-number{
+        font-size:32px;
+    }
+}
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 5% !important;
+    }
+
+    .about-slider {
+        height: 300px !important;
+    }
+
+    .about-content h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-section {
+        padding: 50px 4% !important;
+    }
+
+    .about-slider {
+        height: 240px !important;
+    }
+
+    .about-content h1 {
+        font-size: 32px;
+    }
+
+    .stats {
+        gap: 16px;
+    }
+
+    .stat span {
+        width: 90px;
+        height: 90px;
+    }
+
+    .count-number {
+        font-size: 24px;
+    }
+
+    .stat p {
+        font-size: 12px;
     }
 }
 
