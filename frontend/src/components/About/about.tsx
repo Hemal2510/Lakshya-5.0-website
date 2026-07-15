@@ -104,6 +104,23 @@ useEffect(() => {
 
       <div className="about-container">
 
+  {/* Mobile Heading */}
+  <div className="about-mobile-heading">
+
+  <span className="about-tag">
+    IIT INDORE'S FLAGSHIP SPORTS FEST
+  </span>
+
+  <h1>
+    About <span>Lakshya</span>
+  </h1>
+
+  <div className="heading-line"></div>
+
+</div>
+
+  {/* Left - Image Slider */}
+
         {/* LEFT - Image Slider */}
         <motion.div
   className="about-slider"

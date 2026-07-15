@@ -1792,6 +1792,22 @@ font-size:1rem;
 
         border-radius:18px;
     }
+
+    /* Hide the vertical orange line on mobile */
+    .fire-line{
+        display:none !important;
+    }
+
+    /* Optional: remove the floating embers around the line */
+    .timeline-row::before,
+    .timeline-row::after{
+        display:none !important;
+    }
+
+    /* Keep only the glowing circle */
+    .timeline-center{
+        height:auto;
+    }
 }
 .timeline-end{
 
