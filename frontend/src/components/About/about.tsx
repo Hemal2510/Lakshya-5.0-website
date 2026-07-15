@@ -104,11 +104,28 @@ useEffect(() => {
 
       <div className="about-container">
 
+  {/* Mobile Heading */}
+  <div className="about-mobile-heading">
+
+  <span className="about-tag">
+    IIT INDORE'S FLAGSHIP SPORTS FEST
+  </span>
+
+  <h1>
+    About <span>Lakshya</span>
+  </h1>
+
+  <div className="heading-line"></div>
+
+</div>
+
+  {/* Left - Image Slider */}
+
         {/* LEFT - Image Slider */}
         <motion.div
   className="about-slider"
-  initial={{ x: -80, opacity: 0 }}
-  whileInView={{ x: 0, opacity: 1 }}
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
   viewport={{ once: true }}
 >
@@ -155,8 +172,8 @@ useEffect(() => {
         {/* RIGHT - Content */}
         <motion.div
   className="about-content"
-  initial={{ x: 100, opacity: 0 }}
-  whileInView={{ x: 0, opacity: 1 }}
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.9 }}
   viewport={{ once: true }}
 >
