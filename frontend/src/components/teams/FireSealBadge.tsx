@@ -2,8 +2,8 @@ import React from "react";
 
 
 type Social = {
-    instagram?: string;
-    linkedin?: string;
+  instagram?: string;
+  linkedin?: string;
 };
 
 export interface FireSealBadgeProps {
@@ -15,7 +15,7 @@ export interface FireSealBadgeProps {
   scale?: number;
 }
 
-const ICONS= {
+const ICONS = {
   linkedin: (
     <path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.06 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zM8.5 8h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V23h-4V8z" />
   ),
@@ -26,9 +26,35 @@ const ICONS= {
 };
 
 const DEFAULT_SOCIALS: Social = {
-    instagram: "#",
-    linkedin: "#",
+  instagram: "#",
+  linkedin: "#",
 };
+
+// Pixel-flash overlay: invisible at rest, softly pops in tile-by-tile the
+// moment you hover (staggered outward from center) in pastel tones, then
+// dissolves away again — pixels are only ever seen mid-transition.
+const PIXEL_COLS = 18;
+const PIXEL_ROWS = 24;
+const PIXEL_PALETTE = ["#ffe3c9", "#ffd4c2", "#f7c9b8", "#fbe8d3", "#e9d3c0"];
+
+function usePixelCells() {
+  return React.useMemo(() => {
+    const cells: { id: string; delay: number; color: string }[] = [];
+    const centerR = (PIXEL_ROWS - 1) / 2;
+    const centerC = (PIXEL_COLS - 1) / 2;
+    const maxDist = Math.hypot(centerR, centerC);
+    for (let r = 0; r < PIXEL_ROWS; r++) {
+      for (let c = 0; c < PIXEL_COLS; c++) {
+        const dist = Math.hypot(r - centerR, c - centerC) / maxDist;
+        const delay = dist * 420 + Math.random() * 140;
+        const color = PIXEL_PALETTE[Math.floor(Math.random() * PIXEL_PALETTE.length)];
+        cells.push({ id: `${r}-${c}`, delay, color });
+      }
+    }
+    return cells;
+  }, []);
+}
+
 export default function FireSealBadge({
   eyebrow = "LAKSHAYA · 2026",
   name = "Suryansh Nagar",
@@ -40,6 +66,7 @@ export default function FireSealBadge({
 }: FireSealBadgeProps) {
   const [first, ...rest] = name.split(" ");
   const last = rest.join(" ");
+  const pixelCells = usePixelCells();
 
   return (
     <div className="fbc-root inline-block overflow-visible">
@@ -56,63 +83,113 @@ export default function FireSealBadge({
           45% { filter: brightness(1.08); }
           55% { filter: brightness(.96); }
         }
+        @keyframes fbc-pixel-pop {
+          0%   { opacity: 0; transform: scale(.6); }
+          40%  { opacity: .55; transform: scale(1); }
+          100% { opacity: 0; transform: scale(1.3); }
+        }
         .fbc-ember { animation: fbc-rise linear infinite; }
         .fbc-ring { animation: none ; }
         .fbc-flicker { animation: fbc-flicker 3.4s ease-in-out infinite; }
-        .fbc-seal { transition: transform .5s cubic-bezier(.22,1,.36,1), filter .5s ease; }
-        .fbc-group:hover .fbc-seal { transform: translateY(-8px) scale(1.015); }
+        .fbc-seal { transition: transform 1s cubic-bezier(.22,1,.36,1); }
+        .fbc-group:hover .fbc-seal { transform: translateY(-4px) scale(1.008); }
         .fbc-group:hover .fbc-ring {animation: none ; }
         .fbc-group:hover .fbc-ember { animation-duration: 2.4s !important; }
-        .fbc-group:hover .fbc-glow { opacity: 1; transform: scale(1.15); }
-        .fbc-group:hover .fbc-drip { transform: scaleY(1.12); }
+        .fbc-group:hover .fbc-glow { opacity: 1; transform: scale(1.06); }
+        .fbc-group:hover .fbc-drip { transform: scaleY(1.04); }
         .fbc-social-item { transform: translateY(14px); opacity: 0; transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .4s ease; }
         .fbc-group:hover .fbc-social-item { transform: translateY(0); opacity: 1; }
         .fbc-social-item:nth-child(1) { transition-delay: .05s; }
         .fbc-social-item:nth-child(2) { transition-delay: .12s; }
         .fbc-social-item:nth-child(3) { transition-delay: .19s; }
         .fbc-hex:hover { transform: translateY(-4px) scale(1.08); border-color: #ff7a00; box-shadow: 0 10px 24px -6px rgba(255,122,0,.6); }
+
+        /* black & white by default, color revealed slowly on hover — applied
+           to the elements that should switch (photo, secondary text, fx),
+           NOT the name heading or the outer border/ring, which stay colorful */
+        .fbc-bw {
+          filter: grayscale(1);
+          transition: filter 1.6s ease;
+        }
+        .fbc-group:hover .fbc-bw {
+          filter: grayscale(0);
+        }
+
+        /* scrim that desaturates only the card's own background layer
+           (behind it) without affecting the name text or ring on top of it */
+        .fbc-bg-scrim {
+          backdrop-filter: grayscale(1);
+          -webkit-backdrop-filter: grayscale(1);
+          transition: backdrop-filter 1.6s ease, -webkit-backdrop-filter 1.6s ease;
+        }
+        .fbc-group:hover .fbc-bg-scrim {
+          backdrop-filter: grayscale(0);
+          -webkit-backdrop-filter: grayscale(0);
+        }
+
+        .fbc-photo-img {
+          transform: scale(1);
+          transition: transform 1.6s cubic-bezier(.22,1,.36,1), filter 1.6s ease;
+        }
+        .fbc-group:hover .fbc-photo-img {
+          transform: scale(1.05);
+        }
+
+        /* pixel flash — invisible at rest, pops per-tile only during hover transition */
+        .fbc-pixel-grid {
+          position: absolute;
+          inset: 0;
+          z-index: 40;
+          display: grid;
+          grid-template-columns: repeat(${PIXEL_COLS}, 1fr);
+          grid-template-rows: repeat(${PIXEL_ROWS}, 1fr);
+          pointer-events: none;
+        }
+        .fbc-pixel {
+          opacity: 0;
+        }
+        .fbc-group:hover .fbc-pixel {
+          animation: fbc-pixel-pop 1.4s ease forwards;
+        }
       `}</style>
 
       {/* ambient embers */}
       <div className="fbc-group relative" style={{ width: 360 * scale, height: 500 * scale }}>
         <div style={{ transform: `scale(${scale})`, transformOrigin: "top center" }}>
 
-
-          {/* corner ticks */}
-          <span className="fbc-flicker absolute -top-3 -left-3 z-10 h-6 w-6 border-t-2 border-l-2 border-[#ffb627]" />
-          <span className="fbc-flicker absolute -top-3 -right-3 z-10 h-6 w-6 border-t-2 border-r-2 border-[#ffb627]" />
-
           {/* halo behind the seal */}
-          <div className="fbc-glow pointer-events-none absolute left-1/2 top-[38%] -z-10 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-2xl transition-all duration-500"
+          <div className="fbc-glow fbc-bw pointer-events-none absolute left-1/2 top-[38%] -z-10 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-2xl transition-all duration-500"
             style={{ background: "radial-gradient(circle, rgba(255,122,0,.55) 0%, transparent 70%)" }} />
 
-          {/* THE SEAL — oval plate with a drippy, uneven bottom edge */}
+          {/* THE SEAL — rectangular card with a colorful outer border */}
           <div
             className="fbc-seal relative z-[2] mx-auto"
             style={{
               width: 340,
               height: 460,
-              clipPath:
-                "path('M170,0 C260,0 320,40 330,110 C338,165 320,205 326,250 C332,300 312,330 300,360 C288,392 300,420 270,438 C230,462 210,440 195,458 C180,474 160,474 148,456 C132,434 108,458 76,436 C46,416 58,388 42,360 C26,332 8,300 14,250 C20,205 2,165 10,110 C20,40 80,0 170,0 Z')",
+              borderRadius: 28,
             }}
           >
             <div
-              className="h-full w-full"
+              className="h-full w-full overflow-hidden"
               style={{
                 background:
                   "linear-gradient(155deg,#ffb627 0%,#e83600 42%,#7a0c02 100%)",
                 padding: 3,
-                clipPath: "inherit",
+                borderRadius: "inherit",
               }}
             >
               <div
                 className="relative h-full w-full overflow-hidden"
                 style={{
-                  clipPath: "inherit",
+                  borderRadius: "inherit",
                   background:
                     "radial-gradient(120% 70% at 50% 100%, rgba(232,54,0,.35) 0%, transparent 60%), linear-gradient(180deg,#0c0603 0%,#160b06 55%,#1e0d05 100%)",
                 }}
               >
+                {/* scrim: desaturates the background above, sits below all foreground content */}
+                <div className="fbc-bg-scrim pointer-events-none absolute inset-0" />
+
                 {/* heat-line texture */}
                 <div
                   className="pointer-events-none absolute inset-0 opacity-[0.06]"
@@ -129,21 +206,23 @@ export default function FireSealBadge({
                 />
 
                 <div className="flex h-full flex-col items-center pt-9 px-6 pb-7">
-                  {/* photo */}
+                  {/* photo — grayscale by default, ring around it stays colorful */}
                   <div className="relative mb-4 h-[170px] w-[170px]">
                     <div className="fbc-ring absolute inset-0 rounded-full p-[4px]"
                       style={{ background: "conic-gradient(from 0deg, #ffb627, #e83600, #7a0c02, #ff7a00, #ffb627)" }}>
                       <div className="h-full w-full overflow-hidden rounded-full border-[3px] border-[#070402] bg-black">
-                        <img src={photoUrl} alt={name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <img src={photoUrl} alt={name} className="fbc-photo-img fbc-bw h-full w-full object-cover" />
                       </div>
                     </div>
 
                   </div>
 
-                  {/* text */}
-                  <p className="mb-1.5 text-center font-mono text-[10px] font-bold tracking-[0.32em] text-[#ffb627]">
+                  {/* eyebrow — grayscale by default */}
+                  <p className="fbc-bw mb-1.5 text-center font-mono text-[10px] font-bold tracking-[0.32em] text-[#ffb627]">
                     {eyebrow}
                   </p>
+
+                  {/* name — always colorful, even before hover */}
                   <h1
                     className="mb-2 text-center text-[40px] font-normal uppercase leading-[0.92] tracking-wide"
                     style={{
@@ -159,52 +238,68 @@ export default function FireSealBadge({
                     {first}
                     {last ? <><br />{last}</> : null}
                   </h1>
-                  <p className="mb-5 flex items-center justify-center gap-2 text-center font-mono text-[15px] tracking-[0.26em] text-[#ffd9a8]">
+
+                  {/* role — grayscale by default */}
+                  <p className="fbc-bw mb-5 flex items-center justify-center gap-2 text-center font-mono text-[15px] tracking-[0.26em] text-[#ffd9a8]">
                     <span className="h-px w-4 bg-gradient-to-r from-transparent to-[#ff7a00]" />
                     {role}
                     <span className="h-px w-4 bg-gradient-to-l from-transparent to-[#ff7a00]" />
                   </p>
 
                   {/* socials — hidden until hover, rise in staggered */}
-                    <div className="flex justify-center gap-3">
+                  <div className="flex justify-center gap-3">
 
-                        {socials?.linkedin && (
-                            <a
-                                href={socials.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="LinkedIn"
-                                className="fbc-social-item fbc-hex flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(255,150,60,.4)] transition-all duration-300"
-                                style={{
-                                    background:
-                                        "linear-gradient(155deg,rgba(255,122,0,.18),rgba(232,54,0,.05))",
-                                }}
-                            >
-                                <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-[#ffb627]">
-                                    {ICONS.linkedin}
-                                </svg>
-                            </a>
-                        )}
+                    {socials?.linkedin && (
+                      <a
+                        href={socials.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        className="fbc-social-item fbc-hex flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(255,150,60,.4)] transition-all duration-300"
+                        style={{
+                          background:
+                            "linear-gradient(155deg,rgba(255,122,0,.18),rgba(232,54,0,.05))",
+                        }}
+                      >
+                        <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-[#ffb627]">
+                          {ICONS.linkedin}
+                        </svg>
+                      </a>
+                    )}
 
-                        {socials?.instagram && (
-                            <a
-                                href={socials.instagram}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Instagram"
-                                className="fbc-social-item fbc-hex flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(255,150,60,.4)] transition-all duration-300"
-                                style={{
-                                    background:
-                                        "linear-gradient(155deg,rgba(255,122,0,.18),rgba(232,54,0,.05))",
-                                }}
-                            >
-                                <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-[#ffb627]">
-                                    {ICONS.instagram}
-                                </svg>
-                            </a>
-                        )}
+                    {socials?.instagram && (
+                      <a
+                        href={socials.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                        className="fbc-social-item fbc-hex flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(255,150,60,.4)] transition-all duration-300"
+                        style={{
+                          background:
+                            "linear-gradient(155deg,rgba(255,122,0,.18),rgba(232,54,0,.05))",
+                        }}
+                      >
+                        <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-[#ffb627]">
+                          {ICONS.instagram}
+                        </svg>
+                      </a>
+                    )}
 
-                    </div>
+                  </div>
+                </div>
+
+                {/* pixel flash — invisible at rest, pops per-tile only during hover transition */}
+                <div className="fbc-pixel-grid">
+                  {pixelCells.map((cell) => (
+                    <div
+                      key={cell.id}
+                      className="fbc-pixel"
+                      style={{
+                        backgroundColor: cell.color,
+                        animationDelay: `${cell.delay}ms`,
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
