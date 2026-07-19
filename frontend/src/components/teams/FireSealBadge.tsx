@@ -1,4 +1,9 @@
 import React from "react";
+import {
+    CardContainer,
+    CardBody,
+    CardItem,
+} from "@/components/ui/3d-card";
 
 
 type Social = {
@@ -68,8 +73,15 @@ export default function FireSealBadge({
   const last = rest.join(" ");
   const pixelCells = usePixelCells();
 
-  return (
-    <div className="fbc-root inline-block overflow-visible">
+
+    return (
+        <CardContainer
+            className="inter-var"
+            containerClassName="py-0"
+        >
+            <CardBody className="w-auto h-auto bg-transparent">
+
+                <div className="fbc-root inline-block overflow-visible">
       <style>{`
         @keyframes fbc-rise {
           0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
@@ -207,7 +219,8 @@ export default function FireSealBadge({
 
                 <div className="flex h-full flex-col items-center pt-9 px-6 pb-7">
                   {/* photo — grayscale by default, ring around it stays colorful */}
-                  <div className="relative mb-4 h-[170px] w-[170px]">
+                    <CardItem translateZ={90}>
+                        <div className="relative mb-4 h-[170px] w-[170px]">
                     <div className="fbc-ring absolute inset-0 rounded-full p-[4px]"
                       style={{ background: "conic-gradient(from 0deg, #ffb627, #e83600, #7a0c02, #ff7a00, #ffb627)" }}>
                       <div className="h-full w-full overflow-hidden rounded-full border-[3px] border-[#070402] bg-black">
@@ -216,6 +229,7 @@ export default function FireSealBadge({
                     </div>
 
                   </div>
+                        </CardItem>
 
                   {/* eyebrow — grayscale by default */}
                   <p className="fbc-bw mb-1.5 text-center font-mono text-[10px] font-bold tracking-[0.32em] text-[#ffb627]">
@@ -223,6 +237,7 @@ export default function FireSealBadge({
                   </p>
 
                   {/* name — always colorful, even before hover */}
+                    <CardItem translateZ={140}>
                   <h1
                     className="mb-2 text-center text-[40px] font-normal uppercase leading-[0.92] tracking-wide"
                     style={{
@@ -238,13 +253,16 @@ export default function FireSealBadge({
                     {first}
                     {last ? <><br />{last}</> : null}
                   </h1>
+                        </CardItem>
 
                   {/* role — grayscale by default */}
+                    <CardItem translateZ={40}>
                   <p className="fbc-bw mb-5 flex items-center justify-center gap-2 text-center font-mono text-[15px] tracking-[0.26em] text-[#ffd9a8]">
                     <span className="h-px w-4 bg-gradient-to-r from-transparent to-[#ff7a00]" />
                     {role}
                     <span className="h-px w-4 bg-gradient-to-l from-transparent to-[#ff7a00]" />
                   </p>
+                        </CardItem>
 
                   {/* socials — hidden until hover, rise in staggered */}
                   <div className="flex justify-center gap-3">
@@ -307,7 +325,10 @@ export default function FireSealBadge({
         </div>
       </div>
     </div>
-  );
+</CardBody>
+</CardContainer>
+);
+
 }
 
 function Embers() {
