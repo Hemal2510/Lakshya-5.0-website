@@ -1,4 +1,9 @@
 import React from "react";
+import {
+    CardContainer,
+    CardBody,
+    CardItem,
+} from "@/components/ui/3d-card";
 
 const ICONS = {
   linkedin: (
@@ -8,6 +13,8 @@ const ICONS = {
     <path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 015.45.53C6.09.28 6.82.11 7.88.06 8.94.01 9.3 0 12 0zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.17 1.17 0 100-2.34 1.17 1.17 0 000 2.34z" />
   ),
 };
+
+
 
 const DEFAULT_SOCIALS = [
   { label: "LinkedIn", href: "#", icon: "linkedin" },
@@ -55,7 +62,13 @@ export default function FireHexBadge({
   const instagramUrl = isArraySocials ? socials.find(s => s.icon === 'instagram')?.href : socials?.instagram;
 
   return (
-    <div className="fbc-root inline-block overflow-visible">
+      <CardContainer
+          className="inter-var"
+          containerClassName="py-0"
+      >
+          <CardBody className="w-auto h-auto bg-transparent">
+
+              <div className="fbc-root inline-block overflow-visible">
       <style>{`
         @keyframes fbc-rise {
           0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
@@ -291,5 +304,8 @@ export default function FireHexBadge({
         </div>
       </div>
     </div>
+</CardBody>
+</CardContainer>
+
   );
 }
