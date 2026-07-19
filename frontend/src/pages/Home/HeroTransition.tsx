@@ -1,4 +1,4 @@
-import Countdown from "@/components/Countdown";
+import Countdown from "@/components/ui/Countdown.tsx";
 import { ChevronDown } from "lucide-react";
 
 export default function HeroTransition() {

@@ -1,7 +1,7 @@
 import Lightfall from "@/components/ui/Lightfall";
 import TextType from "@/components/ui/TextType.tsx";
 import { Button } from "@/components/ui/moving-border";
-import Countdown from "@/components/Countdown.tsx";
+import Countdown from "@/components/ui/Countdown.tsx";
 
 export default function HeroSection() {
     return (

@@ -1,8 +1,8 @@
 import "./About.css";
 import { motion} from "framer-motion";
-import AuroraBackground from "../AuroraBackground";
+import AuroraBackground from "../background/AuroraBackground.tsx";
 import { useState,useEffect,useRef } from "react";
-import CountUp from "../CountUp";
+import CountUp from "../ui/CountUp.tsx";
 
 const images = [
   "/images/sports1.JPG",

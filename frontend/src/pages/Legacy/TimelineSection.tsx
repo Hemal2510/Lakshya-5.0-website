@@ -1,4 +1,4 @@
-import TimelineCard from "./TimelineCard";
+import TimelineCard from "./TimelineCard.tsx";
 import { motion } from "framer-motion";
 
 const timelineData = [

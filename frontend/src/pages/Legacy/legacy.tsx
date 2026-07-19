@@ -1,7 +1,7 @@
 import "./Legacy.css";
-import TimelineSection from "../../components/TimelineSection";
+import TimelineSection from "./TimelineSection.tsx";
 import { Trophy, Calendar, Users, Zap } from "lucide-react";
-import Footer from "@/components/Footer";
+
 
 const stats = [
   {
