@@ -61,6 +61,22 @@ const timelineData = [
     ],
     videoId: "rSAFSGDltkU",
   },
+
+  {
+    year: "LAKSHYA 5.0",
+    title: "Lakshaya 5.0 – The Ultimate Showdown",
+    subtitle: '"Ignite The Future"',
+    description:
+      "Prepare for the grandest, most high-octane edition of IIT Indore's premier sports festival! Lakshya 5.0 returns to redefine athletic excellence with state-of-the-art arenas, unprecedented rivalries, and unforgettable celebrations.",
+    highlights: [
+      "🔥 3500+ Athletes Expected",
+      "⚡ 22+ Championship Sports Disciplines",
+      "🏆 Record Grand Prize Pool & Trophies",
+      "🚀 High-Octane Arena Battles & Pro Nights",
+    ],
+    videoId: "Adc-OIDQPWo",
+    isUpcoming: true,
+  },
 ];
 
 export default function TimelineSection() {
@@ -100,13 +116,26 @@ export default function TimelineSection() {
       highlights={item.highlights}
       videoId={item.videoId}
       reverse={index % 2 !== 0}
+      isUpcoming={item.isUpcoming}
     />
   ))}
 
-  {/* Timeline End */}
-  <div className="timeline-end">
-    <div className="timeline-fire"></div>
-  </div>
+  {/* Timeline End Grand Finale Emblem */}
+  <motion.div
+    className="timeline-finale"
+    initial={{ opacity: 0, scale: 0.85 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+  >
+    <div className="finale-pulse-ring"></div>
+    <div className="finale-pulse-ring delay-ring"></div>
+    <div className="finale-badge">
+      <div className="finale-icon">🔥</div>
+      <span className="finale-text">THE LEGACY CONTINUES • LAKSHYA 5.0</span>
+      <div className="finale-spark">⚡</div>
+    </div>
+  </motion.div>
 
 </div>
 

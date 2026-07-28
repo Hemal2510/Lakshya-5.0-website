@@ -9,6 +9,7 @@ interface TimelineCardProps {
   highlights: string[];
   videoId: string;
   reverse?: boolean;
+  isUpcoming?: boolean;
 }
 
 export default function TimelineCard({
@@ -19,10 +20,11 @@ export default function TimelineCard({
   highlights,
   videoId,
   reverse = false,
+  isUpcoming = false,
 }: TimelineCardProps) {
   return (
     <motion.div
-      className={`timeline-row ${reverse ? "reverse" : ""}`}
+      className={`timeline-row ${reverse ? "reverse" : ""} ${isUpcoming ? "upcoming-row" : ""}`}
       initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -54,11 +56,9 @@ export default function TimelineCard({
 
         <div className="fire-line"></div>
 
-        <div className="fire-node">
-          🔥
+        <div className={`fire-node ${isUpcoming ? "upcoming-node" : ""}`}>
+          {isUpcoming ? "⚡" : "🔥"}
         </div>
-
-        
 
       </div>
 
@@ -66,29 +66,35 @@ export default function TimelineCard({
 
       <div className="timeline-content">
 
-    <div className={`year-pill ${reverse ? "year-right" : "year-left"}`}>
-        {year}
-    </div>
+        <div className={`year-pill ${reverse ? "year-right" : "year-left"} ${isUpcoming ? "upcoming-pill" : ""}`}>
+            {year}
+        </div>
 
-    <div className="content-card">
+        <div className={`content-card ${isUpcoming ? "upcoming-card" : ""}`}>
 
-        <h2>{title}</h2>
+            {isUpcoming && (
+              <div className="upcoming-badge">
+                <span>🔥 THE NEXT ERA IS HERE</span>
+              </div>
+            )}
 
-        <h4>{subtitle}</h4>
+            <h2 className={isUpcoming ? "upcoming-title" : ""}>{title}</h2>
 
-        <p>{description}</p>
+            <h4 className={isUpcoming ? "upcoming-subtitle" : ""}>{subtitle}</h4>
 
-        <h5>HIGHLIGHTS</h5>
+            <p>{description}</p>
 
-        <ul>
-            {highlights.map((item, i) => (
-                <li key={i}>{item}</li>
-            ))}
-        </ul>
+            <h5>{isUpcoming ? "WHAT TO EXPECT" : "HIGHLIGHTS"}</h5>
 
-    </div>
+            <ul>
+                {highlights.map((item, i) => (
+                    <li key={i}>{item}</li>
+                ))}
+            </ul>
 
-</div>
+        </div>
+
+      </div>
 
     </motion.div>
   );
