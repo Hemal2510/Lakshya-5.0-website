@@ -182,3 +182,225 @@
     border-right-color: var(--border);
   }
 }
+   
+
+/* =========================================================
+   LAKSHYA 5.0 — SUBTLE PREMIUM HERO ANIMATIONS
+   ContainerScroll is NOT modified
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   Main title entrance + very subtle floating
+   --------------------------------------------------------- */
+
+.lakshya-premium-title {
+    animation:
+        lakshyaEntrance 1.1s cubic-bezier(.22, 1, .36, 1) both,
+        lakshyaFloat 6s ease-in-out 1.1s infinite;
+}
+
+
+@keyframes lakshyaEntrance {
+
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes lakshyaFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Defy The Odds — slow elegant shimmer
+   --------------------------------------------------------- */
+
+.lakshya-tagline-premium {
+
+    background-size: 220% auto;
+
+    animation:
+        taglineEntrance .9s .25s cubic-bezier(.22, 1, .36, 1) both,
+        taglineShimmer 7s ease-in-out infinite;
+}
+
+
+@keyframes taglineEntrance {
+
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes taglineShimmer {
+
+    0% {
+        background-position: 200% center;
+    }
+
+    50% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: -200% center;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Description entrance
+   --------------------------------------------------------- */
+
+.lakshya-description-premium {
+
+    animation:
+        descriptionEntrance .9s .4s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+
+@keyframes descriptionEntrance {
+
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Badge entrance + tiny floating movement
+   --------------------------------------------------------- */
+
+.lakshya-badge-premium {
+
+    animation:
+        badgeEntrance .8s cubic-bezier(.22, 1, .36, 1) both,
+        badgeFloat 5s ease-in-out .8s infinite;
+}
+
+
+@keyframes badgeEntrance {
+
+    0% {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes badgeFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Badge dot
+   --------------------------------------------------------- */
+
+.lakshya-badge-dot {
+
+    animation:
+        badgeDotPulse 2.2s ease-in-out infinite;
+}
+
+
+@keyframes badgeDotPulse {
+
+    0%,
+    100% {
+        opacity: .65;
+        transform: scale(.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Background stadium glow
+   --------------------------------------------------------- */
+
+.lakshya-ambient-glow {
+
+    animation:
+        ambientGlow 6s ease-in-out infinite;
+}
+
+
+@keyframes ambientGlow {
+
+    0%,
+    100% {
+        opacity: .55;
+        transform: scale(.96);
+    }
+
+    50% {
+        opacity: .8;
+        transform: scale(1.04);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Accessibility
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .lakshya-premium-title,
+    .lakshya-tagline-premium,
+    .lakshya-description-premium,
+    .lakshya-badge-premium,
+    .lakshya-badge-dot,
+    .lakshya-ambient-glow {
+
+        animation: none !important;
+    }
+}

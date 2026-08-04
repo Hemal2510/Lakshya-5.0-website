@@ -353,3 +353,158 @@ body {
 
     animation: metallicSweep 6s ease-in-out infinite;
 }
+
+
+
+/* ===========================
+   Premium Hero Badge
+=========================== */
+
+.lakshya-badge-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 34px;
+
+  border-radius: 999px;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+
+  
+  background:
+linear-gradient(
+    180deg,
+    rgba(38,18,18,.90),
+    rgba(24,12,12,.92)
+);
+
+  border: 1px solid rgba(175,35,35,.65);
+  backdrop-filter: blur(14px);
+
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,0.15),
+    inset 0 -10px 15px rgba(0,0,0,0.3),
+    0 0 18px rgba(160,25,25,.25);
+
+  transition: all .35s ease;
+}
+
+/* Moving Metallic Shine */
+
+.lakshya-badge-premium::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -130%;
+
+  width: 60%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,220,180,.45)
+    transparent
+  );
+
+  transform: skewX(-25deg);
+
+  animation: badgeShine 4s linear infinite;
+}
+
+/* Premium Glow */
+
+.lakshya-badge-premium::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -2px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,215,106,.8),
+    transparent
+  );
+
+  filter: blur(14px);
+
+  opacity: .35;
+
+  z-index: -1;
+}
+
+/* Golden Dot */
+
+ .lakshya-badge-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#C73A2E;
+
+    box-shadow:
+        0 0 8px rgba(199,58,46,.7),
+        0 0 18px rgba(199,58,46,.45);
+}
+/* Hover Effect */
+
+.lakshya-badge-premium:hover {
+
+  transform: translateY(-2px) scale(1.03);
+
+  border-color: #FFD76A;
+
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.18),
+    0 0 25px rgba(240,181,43,.35),
+    0 0 60px rgba(240,181,43,.18);
+}
+
+/* Shine Animation */
+
+@keyframes badgeShine {
+
+  from {
+    left: -130%;
+  }
+
+  to {
+    left: 180%;
+  }
+
+}
+.lakshya-badge-text{
+    color:#FFD76A !important;
+    position:relative;
+    z-index:2;
+}
+.lakshya-badge-text{
+    background: linear-gradient(
+        180deg,
+        #F7D8A0 0%,
+        #D68A47 35%,
+        #A84828 65%,
+        #F0B37A 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    position: relative;
+    z-index: 2;
+}
