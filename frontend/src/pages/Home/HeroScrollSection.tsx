@@ -85,7 +85,7 @@ export default function HeroScrollSection() {
       >
         {/* Premium Scroll Card */}
         <div
-          className="relative w-full h-full overflow-hidden rounded-[34px] mt-14"
+          className="relative w-full h-full overflow-hidden rounded-[34px]"
           style={{
             border: "1px solid rgba(240,181,43,.22)",
             boxShadow:
@@ -99,6 +99,7 @@ export default function HeroScrollSection() {
             className="w-full h-full object-cover transition-all duration-700"
             style={{
               filter: "brightness(.88) contrast(1.08) saturate(1.18)",
+              objectPosition: "center 70%",
             }}
           />
 
@@ -128,12 +129,12 @@ export default function HeroScrollSection() {
           />
 
           {/* Bottom Content */}
-          <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between px-8 md:px-12 py-8">
+          <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between px-6 md:px-12 py-5 md:py-8">
 
             {/* Left Side */}
-            <div>
+            <div className="flex-shrink-0 max-w-[55%]">
               <p
-                className="uppercase tracking-[0.35em] text-xs mb-2"
+                className="uppercase tracking-[0.25em] text-[10px] md:text-xs mb-1 md:mb-2"
                 style={{
                   color: "#FFD76A",
                 }}
@@ -144,7 +145,7 @@ export default function HeroScrollSection() {
               <h3
                 className="text-white font-black leading-tight"
                 style={{
-                  fontSize: "clamp(2rem,4vw,3rem)",
+                  fontSize: "clamp(1.2rem, 3vw, 2.8rem)",
                   textShadow: "0 0 25px rgba(0,0,0,.45)",
                 }}
               >
@@ -155,7 +156,7 @@ export default function HeroScrollSection() {
             </div>
 
             {/* Right Stats */}
-            <div className="flex gap-8">
+            <div className="flex gap-4 md:gap-8 flex-shrink-0">
 
               {[
                 {
@@ -176,7 +177,7 @@ export default function HeroScrollSection() {
                   className="text-center"
                 >
                   <h4
-                    className="text-3xl md:text-4xl font-black"
+                    className="text-xl sm:text-2xl md:text-4xl font-black"
                     style={{
                       background:
                         "linear-gradient(180deg,#FFF8D6,#FFD76A,#F0B52B)",
@@ -189,7 +190,7 @@ export default function HeroScrollSection() {
                   </h4>
 
                   <p
-                    className="uppercase tracking-[0.18em] text-xs mt-1"
+                    className="uppercase tracking-[0.12em] md:tracking-[0.18em] text-[9px] md:text-xs mt-1"
                     style={{
                       color: "rgba(255,246,196,.72)",
                     }}
