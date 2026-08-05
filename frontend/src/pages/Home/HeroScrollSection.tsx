@@ -2,7 +2,38 @@ import { ContainerScroll } from "@/components/ui/ContainerScrollAnimation";
 
 export default function HeroScrollSection() {
   return (
-    <div className="flex flex-col overflow-hidden bg-transparent">
+    <section className="relative flex flex-col overflow-hidden bg-transparent">
+
+<div
+className="absolute inset-0 -z-10 overflow-hidden"
+>
+
+    <div
+        className="absolute inset-0"
+        style={{
+            background: `
+linear-gradient(
+180deg,
+#2A0909 0%,
+#1B0808 18%,
+#120707 38%,
+#0B0909 65%,
+#050505 100%
+)
+`
+        }}
+    />
+
+    <div
+        className="absolute top-0 left-0 right-0 h-[320px]"
+        style={{
+            background:
+            "linear-gradient(to bottom, rgba(240,181,43,.18), transparent)",
+            filter:"blur(70px)"
+        }}
+    />
+
+</div>
       <ContainerScroll
         titleComponent={
           <div className="relative flex flex-col items-center">
@@ -15,7 +46,7 @@ export default function HeroScrollSection() {
                   "radial-gradient(circle, rgba(240,181,43,0.10) 0%, rgba(240,181,43,0.035) 45%, transparent 75%)",
               }}
             />
-<span className="lakshya-badge-premium">
+<span className="lakshya-badge-premium mt-8 md:mt-10">
   <span className="lakshya-badge-dot"></span>
 
   <span className="lakshya-badge-text">
@@ -25,7 +56,7 @@ export default function HeroScrollSection() {
            
             {/* Premium Heading */}
             <h2
-              className="mt-8 text-center font-black leading-none tracking-tight lakshya-premium-title"
+className="mt-14 md:mt-16 text-center font-black leading-none tracking-tight lakshya-premium-title"
               style={{
                 fontSize: "clamp(4rem, 9vw, 7rem)",
 
@@ -70,7 +101,7 @@ export default function HeroScrollSection() {
             {/* Description */}
             {/* Description */}
 <p
-  className="mt-5 mb-3 md:mb-4 max-w-3xl text-center text-lg md:text-xl leading-8"
+  className="mt-8 mb-3 md:mb-4 max-w-3xl text-center text-lg md:text-xl leading-8"
   style={{
     color: "rgba(255,246,196,0.82)",
   }}
@@ -100,22 +131,20 @@ and unforgettable moments that define every edition of Lakshya.
               objectPosition: "center 70%",
             }}
           />
+          <div
+className="absolute bottom-0 left-0 right-0 h-52 pointer-events-none"
+style={{
+background:
+"linear-gradient(to bottom, transparent 0%, rgba(8,8,8,.96) 100%)"
+}}
+/>
 
           {/* Premium Golden Overlay */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `
-                linear-gradient(
-                  to top,
-                  rgba(5,5,5,.88) 0%,
-                  rgba(15,10,5,.45) 40%,
-                  rgba(0,0,0,.15) 70%,
-                  transparent 100%
-                )
-              `,
-            }}
-          />
+          {/* Premium Hero → Scroll Transition */}
+
+
+
+
 
           {/* Golden vignette */}
           <div
@@ -234,9 +263,9 @@ and unforgettable moments that define every edition of Lakshya.
 
           </div>
 
-        </div>
-
+        
+</div>
       </ContainerScroll>
-    </div>
+    </section>
   );
 }

@@ -54,15 +54,28 @@ const cardTranslate = useTransform(
 
   return (
     <div
-      className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2 md:p-20"
-      ref={containerRef}
-    >
+  ref={containerRef}
+  className="
+    relative
+    z-20
+    h-auto
+    pb-12
+    md:pb-20
+    flex
+    items-start
+    justify-center
+    px-4
+    md:px-8
+    lg:px-12
+    overflow-visible
+  "
+>
       <div
-        className="py-10 md:py-40 w-full relative"
-        style={{
-         perspective: isMobile ? "1200px" : "2200px",
-        }}
-      >
+  className="relative w-full pt-4 md:pt-6"
+  style={{
+    perspective: isMobile ? "1400px" : "2200px",
+  }}
+>
         <Header
   translate={headerTranslate}
   titleComponent={titleComponent}
@@ -92,7 +105,7 @@ export const Header = ({
       style={{
         translateY: translate,
       }}
-      className="div max-w-5xl mx-auto text-center"
+      
     >
       {titleComponent}
     </motion.div>

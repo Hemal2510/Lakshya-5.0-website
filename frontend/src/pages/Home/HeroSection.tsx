@@ -27,7 +27,7 @@ export default function HeroSection() {
             />
 
             {/* Hero Content */}
-            <div className="absolute inset-0 z-10 pointer-events-none flex flex-col items-center justify-center -translate-y-8">
+            <div className="absolute inset-0 z-10 pointer-events-none flex flex-col items-center justify-center translate-y-2">
 
                 {/* Logo */}
                 <img
@@ -100,6 +100,22 @@ export default function HeroSection() {
 
 
             </div>
+
+
+            <div
+  className="absolute bottom-0 left-0 w-full h-48 md:h-64 pointer-events-none z-20"
+  style={{
+    background: `
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%,
+        rgba(25,10,8,.35) 30%,
+        rgba(10,8,8,.75) 70%,
+        #090909 100%
+      )
+    `,
+  }}
+/>
 
         </section>
     );
