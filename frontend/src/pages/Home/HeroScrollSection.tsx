@@ -41,7 +41,7 @@ export default function HeroScrollSection() {
                   "drop-shadow(0 2px 5px rgba(0,0,0,.28)) drop-shadow(0 0 10px rgba(240,181,43,.22))",
               }}
             >
-              Lakshya 5.0
+              The Arena Awaits
 
               <br />
 
@@ -63,7 +63,7 @@ export default function HeroScrollSection() {
                   backgroundClip: "text",
                 }}
               >
-                Defy The Odds
+                Compete. Conquer. Inspire.
               </span>
             </h2>
 
@@ -75,9 +75,8 @@ export default function HeroScrollSection() {
     color: "rgba(255,246,196,0.82)",
   }}
 >
-  Central India's largest inter-collegiate sports festival where
-  champions are forged, records are shattered, and legends are
-  born.
+  Experience the thrill of elite competition, unwavering determination,
+and unforgettable moments that define every edition of Lakshya.
 </p>
           </div>
         }
@@ -93,7 +92,7 @@ export default function HeroScrollSection() {
         >
           {/* Background image */}
           <img
-            src="/images/sports1.JPG"
+            src="/images/sports3.JPG"
             alt="Lakshya Sports Festival"
             className="w-full h-full object-cover transition-all duration-700"
             style={{
@@ -143,15 +142,17 @@ export default function HeroScrollSection() {
     </p>
 
     <h3
-      className="text-white font-black leading-tight"
-      style={{
-        fontSize: "clamp(1.2rem, 2.5vw, 2.5rem)",
-        textShadow: "0 0 25px rgba(0,0,0,.45)",
-      }}
-    >
-      Compete. Conquer.
+  className="font-black leading-tight"
+  style={{
+    fontSize: "clamp(1.2rem, 2.5vw, 2.5rem)",
+    color: "#FFF4DC",
+    textShadow:
+      "0 0 12px rgba(240,181,43,.15), 0 2px 10px rgba(0,0,0,.55)",
+  }}
+>
+      Rise Beyond Limits.
       <br />
-      Create History.
+      Leave Your Legacy.
     </h3>
 
   </div>

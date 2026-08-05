@@ -11,7 +11,7 @@ export const ContainerScroll = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"],
+    offset: ["start 90%", "end 20%"],
   });
   const [isMobile, setIsMobile] = React.useState(false);
 
@@ -30,20 +30,26 @@ export const ContainerScroll = ({
 
 const rotate = useTransform(
   scrollYProgress,
-  [0, 1],
-  isMobile ? [28, 0] : [50, 0]
+  [0, 0.8, 1],
+  isMobile ? [28, 0, 0] : [50, 0, 0]
 );
 
 const scale = useTransform(
   scrollYProgress,
-  [0, 1],
-  isMobile ? [0.88, 1] : [0.82, 1]
+  [0, 0.8, 1],
+  isMobile ? [0.88, 1, 1] : [0.82, 1, 1]
 );
 
-const translate = useTransform(
+const headerTranslate = useTransform(
   scrollYProgress,
-  [0, 1],
-  isMobile ? [40, -60] : [100, -120]
+  [0, 0.5],
+  [0, -40]
+);
+
+const cardTranslate = useTransform(
+  scrollYProgress,
+  [0, 0.8, 1],
+  isMobile ? [40, 0, 0] : [100, 0, 0]
 );
 
   return (
@@ -54,11 +60,19 @@ const translate = useTransform(
       <div
         className="py-10 md:py-40 w-full relative"
         style={{
-         perspective: isMobile ? "1200px" : "1800px",
+         perspective: isMobile ? "1200px" : "2200px",
         }}
       >
-        <Header translate={translate} titleComponent={titleComponent} />
-        <Card rotate={rotate} translate={translate} scale={scale}>
+        <Header
+  translate={headerTranslate}
+  titleComponent={titleComponent}
+/>
+
+<Card
+  rotate={rotate}
+  translate={cardTranslate}
+  scale={scale}
+>
           {children}
         </Card>
       </div>
