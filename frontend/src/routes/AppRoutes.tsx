@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "../components/navbar/Navbar";
-
+import Footer from "../components/Footer";
 
 import Home from "../pages/Home/home";
 import Legacy from "../pages/Legacy/legacy";
@@ -14,17 +14,11 @@ import Live from "../pages/Live/live";
 export default function AppRoutes() {
     const location = useLocation();
 
-    const isHome = location.pathname === "/";
-
     return (
-        <div className="relative">
-
-
-
-
+        <div className="relative min-h-screen flex flex-col justify-between">
             <Navbar />
 
-            <main className="relative z-10">
+            <main className="relative z-10 flex-grow">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/legacy" element={<Legacy />} />
@@ -36,6 +30,7 @@ export default function AppRoutes() {
                 </Routes>
             </main>
 
+            <Footer />
         </div>
     );
-}
+}

@@ -75,7 +75,7 @@ export default function HeroSection() {
                     <TextType
                         text={[
                             "Central India's Largest Sports Fest",
-                            "Defy The ODDS ",
+                            "Chase What Lies Beyond",
                         ]}
                         typingSpeed={45}
                         deletingSpeed={28}
