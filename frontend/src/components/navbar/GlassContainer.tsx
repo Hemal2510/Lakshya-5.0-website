@@ -14,74 +14,69 @@ const GlassContainer = ({
             className={`
                 relative
                 overflow-hidden
-                border border-white/[0.09]
+                border border-[#8c531b]/60
+                bg-gradient-to-b from-[#241309]/85 via-[#160b05]/90 to-[#0c0502]/95
                 shadow-[
-                    0_28px_70px_rgba(0,0,0,.45),
-                    0_2px_8px_rgba(255,255,255,.03),
-                    inset_0_1px_0_rgba(255,255,255,.08),
-                    inset_0_-10px_24px_rgba(0,0,0,.18)
+                    0_24px_60px_rgba(0,0,0,.85),
+                    0_0_25px_rgba(184,84,31,.15),
+                    inset_0_1px_0_rgba(255,225,160,.2),
+                    inset_0_-8px_20px_rgba(0,0,0,.5)
                 ]
-                backdrop-blur-[28px]
-                transition-colors
+                backdrop-blur-[24px]
+                transition-all
                 duration-500
                 ${className}
             `}
         >
-            {/* Main Glass Background */}
+            {/* Main Western Glass Tint */}
             <div
                 className="pointer-events-none absolute inset-0 z-0"
                 style={{
                     borderRadius: "inherit",
                     background: `
-            linear-gradient(
-                180deg,
-                rgba(32,32,32,0.22) 0%,
-                rgba(18,18,18,0.16) 45%,
-                rgba(8,8,8,0.24) 100%
-            )
-        `,
+                        linear-gradient(
+                            180deg,
+                            rgba(42, 22, 12, 0.45) 0%,
+                            rgba(22, 11, 6, 0.35) 45%,
+                            rgba(10, 5, 2, 0.55) 100%
+                        )
+                    `,
                 }}
             />
 
-            {/* Large Reflection */}
+            {/* Warm Lantern Specular Reflection */}
             <div
-                className="pointer-events-none absolute left-1/2 top-0 h-[80px] w-[92%] -translate-x-1/2 rounded-full z-0"
+                className="pointer-events-none absolute left-1/2 top-0 h-[70px] w-[92%] -translate-x-1/2 rounded-full z-0"
                 style={{
                     background: `
-                    borderRadius: "inherit",
                         radial-gradient(
                             ellipse at top,
-                            rgba(255,255,255,.16) 0%,
-                            rgba(255,255,255,.07) 28%,
-                            rgba(255,255,255,.025) 55%,
-                            transparent 82%\
-                           
+                            rgba(255, 220, 140, 0.16) 0%,
+                            rgba(220, 120, 40, 0.08) 32%,
+                            rgba(180, 80, 20, 0.02) 60%,
+                            transparent 80%
                         )
-                        
                     `,
-                    filter: "blur(10px)",
+                    filter: "blur(8px)",
                 }}
             />
 
-            {/* Highlights */}
-            <div className="pointer-events-none absolute top-[2px] left-8 right-8 h-px rounded-full bg-white/15 blur-[0.5px] opacity-80 z-0" />
+            {/* Specular Edge Highlights */}
+            <div className="pointer-events-none absolute top-[2px] left-8 right-8 h-px rounded-full bg-amber-200/20 blur-[0.5px] opacity-90 z-0" />
+            <div className="pointer-events-none absolute top-[12px] left-10 right-10 h-px rounded-full bg-amber-400/10 blur-[1px] opacity-70 z-0" />
 
-            <div className="pointer-events-none absolute top-[14px] left-10 right-10 h-px rounded-full bg-white/10 blur-[1px] opacity-70 z-0" />
-
-            {/* Bottom Depth */}
+            {/* Bottom Dark Wood Depth */}
             <div
-                className="pointer-events-none absolute bottom-0 left-8 right-8 h-[22px] z-0"
+                className="pointer-events-none absolute bottom-0 left-8 right-8 h-[20px] z-0"
                 style={{
-                    background:
-                        "linear-gradient(to top, rgba(0,0,0,.32), transparent)",
-                    filter: "blur(10px)",
+                    background: "linear-gradient(to top, rgba(0,0,0,.6), transparent)",
+                    filter: "blur(8px)",
                 }}
             />
 
-            {/* Borders */}
-            <div className="pointer-events-none absolute inset-[1px] rounded-inherit border border-white/[0.04] z-0" />
-
-            <div className="pointer-events-none absolute inset-0 rounded-inherit border border-white/[0.08] z-0" />
+            {/* Brass Inner & Outer Accent Borders */}
+            <div className="pointer-events-none absolute inset-[1px] rounded-inherit border border-[#d49b55]/15 z-0" />
+            <div className="pointer-events-none absolute inset-0 rounded-inherit border border-[#522a0c]/60 z-0" />
 
             <div className="relative z-10">
                 {children}
@@ -90,4 +85,4 @@ const GlassContainer = ({
     );
 };
 
-export default GlassContainer;
+export default GlassContainer;
