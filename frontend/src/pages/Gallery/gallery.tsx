@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PendulumTextReveal from "../../components/ui/pendulum.tsx";
 import { motion } from "framer-motion";
+import { Sparkles, Camera } from "lucide-react";
 
 import photo1 from "../../data/TeamsPhoto/photo1.jpeg";
 import photo2 from "../../data/TeamsPhoto/photo2.jpeg";
@@ -44,95 +44,106 @@ const galleryItems = photos.map((photo, index) => ({
     image: photo,
 }));
 
-const embers = [
-    { left: "8%", size: 3, delay: 0, duration: 6 },
-    { left: "18%", size: 5, delay: 1.2, duration: 7.5 },
-    { left: "30%", size: 2, delay: 0.5, duration: 5.5 },
-    { left: "42%", size: 4, delay: 2, duration: 8 },
-    { left: "55%", size: 3, delay: 0.8, duration: 6.5 },
-    { left: "67%", size: 5, delay: 1.6, duration: 7 },
-    { left: "78%", size: 2, delay: 0.2, duration: 5 },
-    { left: "88%", size: 4, delay: 2.4, duration: 7.8 },
-];
-
 export default function Gallery() {
     const [hoveredId, setHoveredId] = useState<number | null>(null);
 
     return (
-        <>
+        <div className="min-h-screen bg-[#090909] text-white">
+            {/* Top Hero Banner with Navbar Clearance */}
             <div
-                className="relative flex flex-col items-center justify-center h-[45vh] m-0 p-0 overflow-hidden "
+                className="relative flex flex-col items-center justify-center min-h-[48vh] md:min-h-[55vh] pt-32 pb-16 px-4 overflow-hidden"
                 style={{
                     backgroundImage: `url(${herobg})`,
-                    backgroundSize: "contain",
+                    backgroundSize: "cover",
                     backgroundPosition: "center",
                 }}
             >
-                <div className="absolute inset-0 bg-black/50 pointer-events-none" />
+                {/* Gradient overlay for navbar contrast & readability */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-[#090909] pointer-events-none" />
 
                 <motion.div
-                    initial={{ opacity: 0, y: -60 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="z-10 text-6xl font-bold text-white"
+                    className="relative z-10 flex flex-col items-center text-center mt-6"
                 >
-                    <h1 className="text-[#dd8a20] text-[clamp(120px,9vw,120px)] font-extrabold leading-[1.05] tracking-[0.12em] mt-[20vh] flex justify-center items-center z-10">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-1.5 text-xs md:text-sm font-semibold tracking-widest text-amber-300 backdrop-blur-md mb-4 shadow-[0_0_20px_rgba(255,140,0,0.15)]">
+                        <Camera className="w-4 h-4 text-amber-400" />
+                        <span>CAPTURED MOMENTS</span>
+                    </div>
+
+                    <h1 className="bg-gradient-to-r from-amber-200 via-orange-400 to-red-500 bg-clip-text text-transparent text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-wider uppercase drop-shadow-[0_4px_25px_rgba(255,140,0,0.3)]">
                         GALLERY
                     </h1>
 
-
+                    <p className="mt-3 text-orange-200/80 text-xs sm:text-sm md:text-base font-semibold tracking-[0.35em] uppercase">
+                        Scroll to relive the spirit & intensity
+                    </p>
                 </motion.div>
             </div>
-            <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-center text-orange-100/60 text-sm tracking-[0.3em] uppercase mt-4"
-            >
-                <span className="relative z-10 text-orange-200/80 text-xl tracking-[0.35em] uppercase">
-                    Scroll to relive it
-                </span>
-            </motion.p>
 
+            {/* Featured Creative Team Collage Container (Expanded Height) */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-8 my-10">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="relative flex flex-col items-center justify-center min-h-[55vh] md:min-h-[62vh] rounded-3xl overflow-hidden border-2 border-dashed border-orange-500/30 bg-gradient-to-b from-[#180e07]/70 via-[#100904]/80 to-[#0a0502]/90 backdrop-blur-md shadow-[0_0_40px_rgba(255,120,0,0.12)] p-6 text-center group"
+                >
+                    <div className="pointer-events-none absolute inset-0 bg-radial from-orange-500/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="relative flex flex-col items-center justify-center h-[35vh] m-10 rounded-lg overflow-hidden border border-orange-300/40 ">
-
+                    <div className="relative z-10 flex flex-col items-center gap-3">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/15 border border-orange-500/30 shadow-[0_0_20px_rgba(255,120,0,0.3)]">
+                            <Sparkles className="w-7 h-7 text-amber-400 animate-pulse" />
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
+                            Featured Creative Collage Spotlight
+                        </h3>
+                        <p className="max-w-md text-xs sm:text-sm text-zinc-400">
+                            Upcoming high-res showcase banner designed by the Lakshya Creative Team.
+                        </p>
+                    </div>
+                </motion.div>
             </div>
 
-            <div className="columns-2 sm:columns-3 lg:columns-3 xl:columns-3 gap-4 px-10 pb-10">
-                {galleryItems.map((item) => (
-                    <motion.div
-                        key={item.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: 0.5, delay: (item.id % 6) * 0.06 }}
-                        onMouseEnter={() => setHoveredId(item.id)}
-                        onMouseLeave={() => setHoveredId(null)}
-                        className="group relative mb-4 break-inside-avoid rounded-xl overflow-hidden shadow-sm bg-white cursor-pointer"
-                        style={{
-                            boxShadow:
-                                hoveredId === item.id
-                                    ? "0 12px 30px -8px rgba(255,110,60,0.45)"
-                                    : "0 1px 3px rgba(0,0,0,0.08)",
-                            transition: "box-shadow 0.3s ease",
-                        }}
-                    >
-                        <motion.img
-                            src={item.image}
-                            alt={`Gallery photo ${item.id}`}
-                            loading="lazy"
-                            className="w-full block"
-                            animate={{
-                                scale: hoveredId === item.id ? 1.12 : 1,
+            {/* Pinterest-Style Masonry Photo Grid */}
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 pb-20">
+                <div className="columns-2 sm:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
+                    {galleryItems.map((item) => (
+                        <motion.div
+                            key={item.id}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-40px" }}
+                            transition={{ duration: 0.5, delay: (item.id % 4) * 0.05 }}
+                            onMouseEnter={() => setHoveredId(item.id)}
+                            onMouseLeave={() => setHoveredId(null)}
+                            className="group relative break-inside-avoid rounded-2xl overflow-hidden bg-[#161616] border border-white/5 cursor-pointer transition-all duration-300"
+                            style={{
+                                boxShadow:
+                                    hoveredId === item.id
+                                        ? "0 16px 36px -8px rgba(255,120,30,0.45)"
+                                        : "0 4px 12px rgba(0,0,0,0.4)",
                             }}
-                            transition={{ duration: 0.45, ease: "easeOut" }}
-                        />
+                        >
+                            <motion.img
+                                src={item.image}
+                                alt={`Lakshya moment ${item.id}`}
+                                loading="lazy"
+                                className="w-full h-auto block object-cover"
+                                animate={{
+                                    scale: hoveredId === item.id ? 1.08 : 1,
+                                }}
+                                transition={{ duration: 0.4, ease: "easeOut" }}
+                            />
 
-
-                    </motion.div>
-                ))}
+                            {/* Subtle Ambient Hover Glow Overlay */}
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-        </>
+        </div>
     );
 }

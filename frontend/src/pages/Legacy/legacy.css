@@ -1809,67 +1809,12 @@ font-size:1rem;
         height:auto;
     }
 }
-.timeline-end{
 
-    position:relative;
-
-    height:15px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:flex-end;
+/* Caps for vertical timeline line so it begins at the first node and stops cleanly at the last node */
+.timeline-row:first-child .fire-line {
+    top: 50%;
 }
 
-.timeline-end::before{
-
-    content:"";
-
-    width:4px;
-
-    height:90px;
-
-    border-radius:10px;
-
-    background:linear-gradient(
-        to bottom,
-        #ff7a00,
-        rgba(255,122,0,0)
-    );
-}
-
-.timeline-fire{
-
-    position:absolute;
-
-    top:82px;
-
-    width:28px;
-
-    height:28px;
-
-    border-radius:50%;
-
-    background:#ff7a00;
-
-    box-shadow:
-        0 0 15px #ff7a00,
-        0 0 35px rgba(255,120,0,.6),
-        0 0 70px rgba(255,90,0,.35);
-
-    animation:firePulse 2s ease-in-out infinite;
-}
-
-@keyframes firePulse{
-
-    0%,100%{
-
-        transform:scale(1);
-    }
-
-    50%{
-
-        transform:scale(1.2);
-    }
-}
+.timeline-row:last-child .fire-line {
+    bottom: 50%;
+}

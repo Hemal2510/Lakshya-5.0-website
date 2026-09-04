@@ -103,11 +103,6 @@ export default function TimelineSection() {
     />
   ))}
 
-  {/* Timeline End */}
-  <div className="timeline-end">
-    <div className="timeline-fire"></div>
-  </div>
-
 </div>
 
     </section>

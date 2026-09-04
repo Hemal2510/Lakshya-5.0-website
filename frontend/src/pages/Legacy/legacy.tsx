@@ -1,5 +1,6 @@
 import "./Legacy.css";
 import TimelineSection from "./TimelineSection.tsx";
+import Lakshya5Promo from "./Lakshya5Promo.tsx";
 import { Trophy, Calendar, Users, Zap } from "lucide-react";
 
 
@@ -74,6 +75,7 @@ export default function Legacy() {
 
       <TimelineSection />
 
+      <Lakshya5Promo />
 
     </section>
   );
