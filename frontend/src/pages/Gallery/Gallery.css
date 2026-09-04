@@ -1,0 +1,576 @@
+/* =========================================================================
+   GALLERY PAGE - VINTAGE WESTERN / RED DEAD REDEMPTION RETRO THEME
+========================================================================= */
+
+.gallery-page {
+    position: relative;
+    min-height: 100vh;
+    background-color: #0a0604;
+    color: #e6c594;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+/* =========================================================================
+   BACKGROUND TEXTURES & AMBIANCE (Matching Footer & Legacy)
+========================================================================= */
+
+.gallery-bg-backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-color: #0a0604;
+}
+
+.gallery-bg-glow {
+    position: absolute;
+    inset: 0;
+    background: 
+        /* Soft Saloon Gas-Lamp Glow at Top */
+        radial-gradient(ellipse at 50% 0%, rgba(200, 95, 25, 0.22) 0%, rgba(120, 50, 15, 0.1) 40%, transparent 70%),
+        /* Left Canyon Ambient Spot */
+        radial-gradient(circle at 15% 35%, rgba(220, 120, 30, 0.12) 0%, transparent 45%),
+        /* Right Canyon Ambient Spot */
+        radial-gradient(circle at 85% 65%, rgba(200, 100, 25, 0.12) 0%, transparent 45%),
+        /* Soft Horizon Glow */
+        radial-gradient(ellipse at 50% 100%, rgba(160, 70, 20, 0.15) 0%, transparent 60%);
+}
+
+.gallery-bg-stripes {
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 28px,
+        rgba(212, 155, 85, 0.6) 28px,
+        rgba(212, 155, 85, 0.6) 29px
+    );
+}
+
+/* =========================================================================
+   HERO SECTION
+========================================================================= */
+
+.gallery-hero {
+    position: relative;
+    padding-top: 130px;
+    padding-bottom: 40px;
+    text-align: center;
+    max-width: 960px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.gallery-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 24px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(50, 26, 12, 0.85) 0%, rgba(28, 14, 6, 0.95) 100%);
+    border: 1.5px solid #d49b55;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7), 0 0 15px rgba(212, 155, 85, 0.2);
+    color: #ffd580;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+    transition: 0.4s ease;
+}
+
+.gallery-badge:hover {
+    transform: scale(1.04);
+    border-color: #ffd580;
+    box-shadow: 0 0 22px rgba(245, 200, 121, 0.35);
+}
+
+.gallery-title {
+    font-family: 'Cinzel Decorative', 'Rye', Georgia, serif;
+    font-size: clamp(2.4rem, 6vw, 4.8rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: 1px;
+    color: #fff4df;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 35px rgba(184, 84, 31, 0.3);
+}
+
+.gallery-desc {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    max-width: 760px;
+    margin: 16px auto 0;
+    line-height: 1.8;
+    color: #c7b299;
+}
+
+/* =========================================================================
+   MASTER GILDED SALOON COLLAGE FRAME
+========================================================================= */
+
+.master-collage-container {
+    max-width: 1280px;
+    margin: 30px auto 60px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.master-gilded-frame {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #2a160b 0%, #120904 100%);
+    border: 2px solid #8c531b;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85), 0 0 30px rgba(184, 84, 31, 0.15), inset 0 1px 0 rgba(255, 230, 170, 0.15);
+    padding: 14px;
+    transition: all 0.4s ease;
+}
+
+.master-gilded-frame:hover {
+    border-color: #d49b55;
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.95), 0 0 35px rgba(245, 200, 121, 0.3);
+}
+
+.master-inner-matting {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #572d0e;
+}
+
+.master-collage-img {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.master-gilded-frame:hover .master-collage-img {
+    transform: scale(1.02);
+}
+
+.master-plaque-banner {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 24px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(38, 20, 10, 0.92) 0%, rgba(18, 9, 4, 0.95) 100%);
+    border: 1.5px solid #d49b55;
+    color: #ffd580;
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 155, 85, 0.3);
+    backdrop-filter: blur(8px);
+    white-space: nowrap;
+}
+
+/* =========================================================================
+   RUSTIC SALOON WOODEN PINBOARD CONTAINER
+========================================================================= */
+
+.saloon-pinboard-outer {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+    position: relative;
+    z-index: 2;
+}
+
+.pinboard-header-plaque {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.pinboard-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #ffd580;
+    padding: 8px 28px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #2b170c 0%, #140a05 100%);
+    border: 1px solid #8c521b;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 220, 150, 0.15);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.pinboard-bracket {
+    height: 2px;
+    flex: 1;
+    max-width: 140px;
+    background: linear-gradient(90deg, transparent, #8c521b, transparent);
+}
+
+/* =========================================================================
+   PUNCHED WALL PHOTO CARD (MASONRY GRID & 3D TACKS)
+========================================================================= */
+
+.gallery-grid-wrapper {
+    margin: 0 auto;
+    padding-bottom: 110px;
+    position: relative;
+}
+
+.gallery-masonry {
+    columns: 1;
+    column-gap: 28px;
+}
+
+@media (min-width: 640px) {
+    .gallery-masonry {
+        columns: 2;
+        column-gap: 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .gallery-masonry {
+        columns: 3;
+        column-gap: 32px;
+    }
+}
+
+@media (min-width: 1360px) {
+    .gallery-masonry {
+        columns: 4;
+        column-gap: 32px;
+    }
+}
+
+.punched-photo-card {
+    break-inside: avoid;
+    margin-bottom: 34px;
+    position: relative;
+    border-radius: 12px;
+    background: linear-gradient(
+        180deg,
+        #24140b 0%,
+        #150a04 100%
+    );
+    border: 1.5px solid #5a2e0e;
+    box-shadow: 
+        0 14px 28px rgba(0, 0, 0, 0.85),
+        0 4px 10px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 220, 150, 0.12);
+    padding: 14px 10px 10px;
+    cursor: pointer;
+    transform: rotate(var(--card-tilt, 0deg));
+    transform-origin: top center;
+    transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease;
+    will-change: transform;
+}
+
+.punched-photo-card:hover {
+    transform: rotate(0deg) translateY(-10px) scale(1.04) !important;
+    border-color: #d49b55;
+    box-shadow: 
+        0 24px 50px rgba(0, 0, 0, 0.98),
+        0 0 35px rgba(212, 155, 85, 0.35),
+        inset 0 1px 0 rgba(255, 240, 180, 0.25);
+    z-index: 20;
+}
+
+/* =========================================================================
+   3D WALL TACK / IRON RAILROAD SPIKE HEAD ASSEMBLY
+========================================================================= */
+
+.wall-tack-assembly {
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Dark puncture hole where nail pierced paper */
+.tack-puncture-hole {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #080301;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
+}
+
+/* 3D Metallic Tack Head with Radial Highlight */
+.tack-head {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff4db 0%, #d49b55 35%, #7a4214 70%, #291204 100%);
+    border: 1px solid #1c0a02;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.9), 
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Slotted Hammer / Screw Indent */
+.tack-slot {
+    width: 8px;
+    height: 1.5px;
+    background: #1c0a02;
+    box-shadow: 0 0.5px 0 rgba(255, 230, 180, 0.4);
+    transform: rotate(35deg);
+}
+
+/* Diagonal Drop Shadow cast by Saloon Light */
+.tack-cast-shadow {
+    position: absolute;
+    top: 14px;
+    left: 2px;
+    width: 22px;
+    height: 12px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(0, 0, 0, 0.75) 0%, transparent 75%);
+    transform: rotate(20deg);
+}
+
+/* =========================================================================
+   PHOTO INSET & HOVER OVERLAYS
+========================================================================= */
+
+.tintype-img-box {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #080402;
+    border: 1px solid #42210b;
+}
+
+.tintype-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.5s ease;
+    filter: sepia(18%) contrast(105%) brightness(96%);
+}
+
+.punched-photo-card:hover .tintype-img {
+    transform: scale(1.05);
+    filter: sepia(0%) contrast(110%) brightness(102%);
+}
+
+/* Hover Darkroom Ambient Overlay */
+.tintype-hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(30, 14, 6, 0.5) 70%,
+        rgba(10, 5, 2, 0.85) 100%
+    );
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 14px;
+    transition: opacity 0.35s ease;
+}
+
+.punched-photo-card:hover .tintype-hover-overlay {
+    opacity: 1;
+}
+
+.tintype-inspect-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(50, 26, 12, 0.95) 0%, rgba(24, 12, 5, 0.98) 100%);
+    border: 1px solid #ffd580;
+    color: #fff0d0;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* Card Bottom Plate */
+.tintype-caption-plate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 4px 2px;
+}
+
+.tintype-num {
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: #ffd580;
+    letter-spacing: 1.5px;
+}
+
+.tintype-seal {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #9e7f60;
+    letter-spacing: 1px;
+}
+
+/* =========================================================================
+   SALOON LIGHTBOX MODAL (PORTAL RENDERED - OPAQUE & HIGHEST Z-INDEX)
+========================================================================= */
+
+.saloon-lightbox-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 2, 1, 0.96);
+    backdrop-filter: blur(18px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overscroll-behavior: contain;
+}
+
+.saloon-lightbox-card {
+    position: relative;
+    max-width: 94vw;
+    max-height: 90vh;
+    border-radius: 18px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #221209 0%, #0d0603 100%);
+    border: 2px solid #d49b55;
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.98), 
+        0 0 50px rgba(212, 155, 85, 0.35);
+    display: flex;
+    flex-direction: column;
+}
+
+.lightbox-header {
+    padding: 12px 20px;
+    background: linear-gradient(180deg, #381f0f 0%, #201007 100%);
+    border-bottom: 1.5px solid #6b3812;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lightbox-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #ffd580;
+    letter-spacing: 2px;
+}
+
+.lightbox-close-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(45, 22, 10, 0.8);
+    border: 1px solid #d49b55;
+    color: #ffd580;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lightbox-close-btn:hover {
+    background: #522b0c;
+    border-color: #fff;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.lightbox-img-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 75vh;
+    background: #040201;
+    padding: 14px;
+}
+
+.lightbox-full-img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid #4a270f;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(36, 18, 8, 0.88);
+    border: 1.5px solid #d49b55;
+    color: #ffd580;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.lightbox-nav-btn:hover {
+    background: rgba(70, 36, 16, 0.98);
+    border-color: #fff;
+    color: #fff;
+    transform: translateY(-50%) scale(1.12);
+}
+
+.lightbox-nav-btn.prev {
+    left: 20px;
+}
+
+.lightbox-nav-btn.next {
+    right: 20px;
+}
+
+.lightbox-footer {
+    padding: 10px 20px;
+    background: #150a04;
+    border-top: 1px solid #47240d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: #c7b299;
+}
+
