@@ -7,17 +7,17 @@ export default function Footer() {
     };
 
     return (
-        <footer className="relative bg-[#070504] text-[#d6c7b2] overflow-hidden pt-10 pb-6 border-t-2 border-[#472513] select-none">
+        <footer className="relative z-30 bg-[#070504] text-[#d6c7b2] overflow-hidden pt-10 pb-6 border-t-2 border-[#472513] select-none">
             {/* =========================================================================
-                WESTERN ATMOSPHERIC BACKDROP & SUBTLE ENGRAVED WATERMARK
+                SOLID OPAQUE BACKDROP & WARM SALOON AMBIANCE (No Grid Bleed-Through)
             ========================================================================= */}
-            <div className="absolute inset-0 pointer-events-none z-0">
-                {/* Saloon Gas-Lamp Warmth */}
+            <div className="absolute inset-0 pointer-events-none z-0 bg-[#070504]">
+                {/* Saloon Gas-Lamp Warmth overlay on solid base */}
                 <div
                     className="absolute inset-0"
                     style={{
                         background:
-                            "radial-gradient(ellipse at 50% 0%, rgba(184, 84, 31, 0.15) 0%, rgba(7, 5, 4, 0.98) 75%)",
+                            "radial-gradient(ellipse at 50% 0%, rgba(184, 84, 31, 0.22) 0%, rgba(7, 5, 4, 1) 75%)",
                     }}
                 />
 
@@ -40,7 +40,7 @@ export default function Footer() {
                     <span
                         className="font-serif font-black text-6xl sm:text-8xl md:text-9xl leading-none uppercase tracking-[0.2em] text-[#d49b55]/[0.05]"
                         style={{
-                            fontFamily: "'Georgia', 'Playfair Display', serif",
+                            fontFamily: "'Playfair Display', 'Georgia', serif",
                         }}
                     >
                         LAKSHYA
@@ -52,19 +52,19 @@ export default function Footer() {
             </div>
 
             {/* =========================================================================
-                MAIN LAKSHYA 5.0 VINTAGE CONTAINER
+                MAIN LAKSHYA 5.0 VINTAGE NOTICE BOARD CONTAINER
             ========================================================================= */}
             <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Top Decorative Border */}
-                <div className="flex justify-between items-center max-w-md mx-auto px-6 mb-1 text-[#6e3c1d]/60 text-xs">
+                <div className="flex justify-between items-center max-w-md mx-auto px-6 mb-1 text-[#8a4a22]/70 text-xs">
                     <span>═════════════</span>
-                    <span className="text-[10px] tracking-[0.25em] font-serif text-[#d49b55]">★ LAKSHYA 2026 ★</span>
+                    <span className="text-[10px] tracking-[0.25em] font-serif text-[#d49b55] font-bold">★ LAKSHYA 2026 ★</span>
                     <span>═════════════</span>
                 </div>
 
                 {/* Header Badge & Title */}
                 <div className="flex flex-col items-center text-center mb-6">
-                    <div className="inline-flex items-center gap-2 px-3 py-0.5 border-y border-[#8a5229]/60 bg-[#160d07]/90 shadow-sm">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-0.5 border-y border-[#8a5229]/70 bg-[#160d07] shadow-sm">
                         <span className="text-[10px] sm:text-[11px] font-serif font-bold tracking-[0.28em] text-[#e0b070] uppercase">
                             IIT INDORE · 5TH EDITION
                         </span>
@@ -73,7 +73,7 @@ export default function Footer() {
                     <h2
                         className="mt-2 text-2xl sm:text-3xl md:text-4xl font-serif font-black tracking-[0.18em] text-[#f4e6d4] uppercase"
                         style={{
-                            fontFamily: "'Georgia', 'Playfair Display', serif",
+                            fontFamily: "'Playfair Display', 'Georgia', serif",
                             textShadow: "0 2px 10px rgba(0,0,0,0.9), 0 0 25px rgba(212,155,85,0.25)",
                         }}
                     >
@@ -86,12 +86,12 @@ export default function Footer() {
                 </div>
 
                 {/* The Frontier Ledger Board Container */}
-                <div className="relative rounded-sm border-2 border-[#54301a] bg-gradient-to-b from-[#140c08]/95 via-[#0e0805]/98 to-[#080503] p-5 sm:p-6 backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.9),inset_0_0_20px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(212,155,85,0.2)] mb-6">
+                <div className="relative rounded-xs border-2 border-[#54301a] bg-gradient-to-b from-[#160e09] via-[#0f0906] to-[#080503] p-5 sm:p-6 shadow-[0_12px_40px_rgba(0,0,0,0.95),inset_0_0_25px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(212,155,85,0.2)] mb-6">
                     {/* Antique Brass Corner Plates */}
-                    <span className="absolute top-1.5 left-1.5 w-3 h-3 border-t-2 border-l-2 border-[#a86536]" />
-                    <span className="absolute top-1.5 right-1.5 w-3 h-3 border-t-2 border-r-2 border-[#a86536]" />
-                    <span className="absolute bottom-1.5 left-1.5 w-3 h-3 border-b-2 border-l-2 border-[#a86536]" />
-                    <span className="absolute bottom-1.5 right-1.5 w-3 h-3 border-b-2 border-r-2 border-[#a86536]" />
+                    <span className="absolute top-1.5 left-1.5 w-3.5 h-3.5 border-t-2 border-l-2 border-[#c98342]" />
+                    <span className="absolute top-1.5 right-1.5 w-3.5 h-3.5 border-t-2 border-r-2 border-[#c98342]" />
+                    <span className="absolute bottom-1.5 left-1.5 w-3.5 h-3.5 border-b-2 border-l-2 border-[#c98342]" />
+                    <span className="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 border-b-2 border-r-2 border-[#c98342]" />
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-[#382012]">
                         {/* Column 1: About Lakshya */}
@@ -132,12 +132,12 @@ export default function Footer() {
 
                             <div className="space-y-3">
                                 {/* Samarth Sharma */}
-                                <div className="p-2.5 rounded-xs bg-[#170e08]/90 border border-[#381f10] shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)] hover:border-[#6e3c1d] transition-colors">
+                                <div className="p-2.5 rounded-xs bg-[#1a0f08] border border-[#3d2212] shadow-[inset_0_1px_3px_rgba(0,0,0,0.6)] hover:border-[#8a4e22] transition-colors">
                                     <div className="flex items-baseline justify-between gap-2">
                                         <div className="font-serif font-bold text-xs text-[#f0e2cf] tracking-wide">
                                             Samarth Sharma
                                         </div>
-                                        <div className="text-[9px] font-serif text-[#c7834a] uppercase tracking-wider">
+                                        <div className="text-[9px] font-serif text-[#c7834a] uppercase tracking-wider font-semibold">
                                             Public Relations
                                         </div>
                                     </div>
@@ -151,12 +151,12 @@ export default function Footer() {
                                 </div>
 
                                 {/* Sajal Jain */}
-                                <div className="p-2.5 rounded-xs bg-[#170e08]/90 border border-[#381f10] shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)] hover:border-[#6e3c1d] transition-colors">
+                                <div className="p-2.5 rounded-xs bg-[#1a0f08] border border-[#3d2212] shadow-[inset_0_1px_3px_rgba(0,0,0,0.6)] hover:border-[#8a4e22] transition-colors">
                                     <div className="flex items-baseline justify-between gap-2">
                                         <div className="font-serif font-bold text-xs text-[#f0e2cf] tracking-wide">
                                             Sajal Jain
                                         </div>
-                                        <div className="text-[9px] font-serif text-[#c7834a] uppercase tracking-wider">
+                                        <div className="text-[9px] font-serif text-[#c7834a] uppercase tracking-wider font-semibold">
                                             Accommodation
                                         </div>
                                     </div>
@@ -183,12 +183,12 @@ export default function Footer() {
 
                                 <div className="space-y-3 mb-4">
                                     {/* Jagrit */}
-                                    <div className="p-2.5 rounded-xs bg-[#170e08]/90 border border-[#381f10] shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)] hover:border-[#6e3c1d] transition-colors">
+                                    <div className="p-2.5 rounded-xs bg-[#1a0f08] border border-[#3d2212] shadow-[inset_0_1px_3px_rgba(0,0,0,0.6)] hover:border-[#8a4e22] transition-colors">
                                         <div className="flex items-baseline justify-between gap-2">
                                             <span className="font-serif font-bold text-xs text-[#f0e2cf] tracking-wide">
                                                 Jagrit
                                             </span>
-                                            <span className="text-[9px] font-serif text-[#c7834a] uppercase tracking-wider">
+                                            <span className="text-[9px] font-serif text-[#c7834a] uppercase tracking-wider font-semibold">
                                                 Overall Coordinator
                                             </span>
                                         </div>
@@ -202,12 +202,12 @@ export default function Footer() {
                                     </div>
 
                                     {/* Nishant Bhalani */}
-                                    <div className="p-2.5 rounded-xs bg-[#170e08]/90 border border-[#381f10] shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)] hover:border-[#6e3c1d] transition-colors">
+                                    <div className="p-2.5 rounded-xs bg-[#1a0f08] border border-[#3d2212] shadow-[inset_0_1px_3px_rgba(0,0,0,0.6)] hover:border-[#8a4e22] transition-colors">
                                         <div className="flex items-baseline justify-between gap-2">
                                             <span className="font-serif font-bold text-xs text-[#f0e2cf] tracking-wide">
                                                 Nishant Bhalani
                                             </span>
-                                            <span className="text-[9px] font-serif text-[#c7834a] uppercase tracking-wider">
+                                            <span className="text-[9px] font-serif text-[#c7834a] uppercase tracking-wider font-semibold">
                                                 Events Manager
                                             </span>
                                         </div>

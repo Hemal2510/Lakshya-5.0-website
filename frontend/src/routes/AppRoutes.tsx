@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
@@ -12,7 +12,6 @@ import Sponsors from "../pages/Sponsors/sponsors";
 import Live from "../pages/Live/live";
 
 export default function AppRoutes() {
-    const location = useLocation();
 
     return (
         <div className="relative min-h-screen flex flex-col justify-between">
