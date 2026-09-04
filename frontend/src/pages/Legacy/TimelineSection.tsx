@@ -4,60 +4,61 @@ import { motion } from "framer-motion";
 const timelineData = [
   {
     year: "2023",
-    title: "Lakshaya 1.0 – Breaking Barriers",
-    subtitle: '"Breaking Barriers"',
+    season: 1,
+    title: "Lakshya 1.0 – Breaking Barriers",
+    subtitle: '"The Pioneer Frontier"',
     description:
-      "The inaugural edition of Lakshaya brought together athletes from various institutes, laying the foundation for an annual celebration of sportsmanship.",
+      "The inaugural edition of Lakshya brought together athletes from across the territory, staking the initial claim and laying the bedrock for an annual celebration of frontier sportsmanship.",
     highlights: [
-      "500+ Participants",
-      "10 Sports Categories",
-      "Regional Recognition",
-      "Successful Opening Edition",
+      "500+ Frontier Athletes",
+      "10 Competitive Arenas",
+      "Regional Acclaim & Honor",
+      "Historic Maiden Edition",
     ],
     videoId: "Adc-OIDQPWo",
   },
-
   {
     year: "2024",
-    title: "Lakshaya 2.0 – Rise Together",
-    subtitle: '"Rise Together"',
+    season: 2,
+    title: "Lakshya 2.0 – Rise Together",
+    subtitle: '"United on the Frontier"',
     description:
-      "Lakshaya expanded with more competitions, larger participation, and unforgettable moments on and off the field.",
+      "Lakshya expanded across the state line with fierce rivalries, larger delegations, and legendary sporting battles etched into memory on and off the arena grounds.",
     highlights: [
-      "900+ Participants",
-      "15 Sports",
-      "National Participation",
-      "Bigger Prize Pool",
+      "900+ Enlisted Contenders",
+      "15 Sporting Disciplines",
+      "Nationwide Delegation Reach",
+      "Expanded Bounty & Prize Pool",
     ],
     videoId: "iz3SeNEjVr0",
   },
-
   {
     year: "2025",
-    title: "Lakshaya 3.0 – Beyond Limits",
-    subtitle: '"Beyond Limits"',
+    season: 3,
+    title: "Lakshya 3.0 – Beyond Limits",
+    subtitle: '"Forging New Horizons"',
     description:
-      "The festival reached new heights with record registrations and enhanced competitive spirit across every sporting event.",
+      "The festival scaled unmatched peaks with record-shattering registrations, ironclad grit, and relentless competitive fire across every duel and championship bout.",
     highlights: [
-      "1600+ Participants",
-      "18 Sports",
-      "Record Registrations",
-      "Expanded Cultural Events",
+      "1600+ Frontier Competitors",
+      "18 Sporting Categories",
+      "Historic High Turnout",
+      "Expanded Cultural Gatherings",
     ],
     videoId: "Jr9P5HL_3aw",
   },
-
   {
     year: "2026",
-    title: "Lakshaya 4.0 – Ignite the Legacy",
-    subtitle: '"Ignite the Legacy"',
+    season: 4,
+    title: "Lakshya 4.0 – Ignite the Legacy",
+    subtitle: '"The Grand Showdown"',
     description:
-      "Lakshaya evolved into one of the most anticipated collegiate sports festivals, inspiring athletes from across the country.",
+      "Lakshya cemented its status as one of the premier collegiate sporting festivals in the nation, drawing champion contingents from every corner of the country.",
     highlights: [
-      "2500+ Participants",
-      "20+ Sports",
-      "National Reach",
-      "Largest Edition Yet",
+      "2500+ Competing Athletes",
+      "20+ High-Stakes Arenas",
+      "National Prominence & Prestige",
+      "Largest Frontier Edition Yet",
     ],
     videoId: "rSAFSGDltkU",
   },
@@ -65,46 +66,59 @@ const timelineData = [
 
 export default function TimelineSection() {
   return (
-    <section className="timeline-section">
-
+    <section className="timeline-section relative z-10">
+      {/* Western Section Header */}
       <motion.div
         className="timeline-header"
-        initial={{ opacity: 0, y: 60 }}
+        initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
+        {/* Brass Header Badge */}
         <div className="timeline-badge">
-          🔥 Through the Years
+          <span>★ THE HISTORIC TRAIL ★</span>
         </div>
 
+        {/* Title */}
         <h2>
-          Lakshaya <span>Through the Years</span>
+          LAKSHYA <span className="gold-text">THROUGH THE AGES</span>
         </h2>
 
+        {/* Woodcut Decorative Divider */}
+        <div className="flex justify-center items-center gap-3 my-4 text-[#a35e2b] text-sm font-serif select-none">
+          <span>═════════</span>
+          <span className="text-[#ffd580] text-lg">❖</span>
+          <span>═════════</span>
+        </div>
+
         <p>
-          Every edition has added another chapter to the legacy of Lakshaya.
-          Relive the milestones, memories, and moments that shaped our journey.
+          Every edition inscribed into the archives tells a tale of courage, grit, and triumph.
+          Follow the trail through the milestones that forged the legend of Lakshya.
         </p>
       </motion.div>
 
+      {/* Timeline Rows Container with Central Continuous Spine Line */}
       <div className="timeline-wrapper">
+        {/* Continuous Unbroken Central Timeline Gold Spine */}
+        <div className="central-unbroken-spine" aria-hidden="true">
+          <div className="spine-glow-line" />
+        </div>
 
-  {timelineData.map((item, index) => (
-    <TimelineCard
-      key={item.year}
-      year={item.year}
-      title={item.title}
-      subtitle={item.subtitle}
-      description={item.description}
-      highlights={item.highlights}
-      videoId={item.videoId}
-      reverse={index % 2 !== 0}
-    />
-  ))}
-
-</div>
-
+        {timelineData.map((item, index) => (
+          <TimelineCard
+            key={item.year}
+            year={item.year}
+            season={item.season}
+            title={item.title}
+            subtitle={item.subtitle}
+            description={item.description}
+            highlights={item.highlights}
+            videoId={item.videoId}
+            reverse={index % 2 !== 0}
+          />
+        ))}
+      </div>
     </section>
   );
 }
