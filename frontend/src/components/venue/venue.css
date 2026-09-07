@@ -1,276 +1,265 @@
-.venue-section{
-    position:relative;
-    overflow:hidden;
-    isolation:isolate;
+/* =========================================================================
+   VINTAGE WESTERN TRAILHEAD & EXPEDITION POSTER: VENUE SECTION
+========================================================================= */
 
-    padding:20px 8% 60px;
-
-    background:#050505;
-}
-.venue-section::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-    radial-gradient(circle at 15% 20%,
-    rgba(255,140,20,.12),
-    transparent 35%),
-
-    radial-gradient(circle at 85% 75%,
-    rgba(255,180,60,.08),
-    transparent 35%),
-
-    linear-gradient(
-        180deg,
-        #050505 0%,
-        #080808 55%,
-        #050505 100%
-    );
-
-    z-index:-3;
-}
-.venue-section::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background-image:
-
-    linear-gradient(
-        rgba(255,180,60,.025) 1px,
-        transparent 1px
-    ),
-
-    linear-gradient(
-        90deg,
-        rgba(255,180,60,.025) 1px,
-        transparent 1px
-    );
-
-    background-size:70px 70px;
-
-    mask-image:linear-gradient(
-        to bottom,
-        transparent,
-        black 20%,
-        black 80%,
-        transparent
-    );
-
-    opacity:.45;
-
-    z-index:-2;
+.western-venue-poster-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 20px 5% 100px;
+    background: linear-gradient(180deg, #181009 0%, #22160d 50%, #140d07 100%);
 }
 
-.venue-card{
-
-    max-width:1000px;
-    margin:auto;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    gap:40px;
-
-    padding:30px 40px;
-
-    border-radius:22px;
-
-    text-decoration:none;
-
-   background:
-
-linear-gradient(
-145deg,
-rgba(20,20,20,.94),
-rgba(10,10,10,.97)
-);
-
-backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,180,60,.18);
-
-    transition:.35s;
-}
-.venue-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-2px;
-
-    border-radius:24px;
-
-    background:
-    linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,180,60,.18),
-        transparent
-    );
-
-    opacity:0;
-
-    transition:.4s;
-
-    z-index:-1;
+.venue-desert-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(245, 176, 65, 0.16) 0%, rgba(59, 130, 246, 0.12) 45%, transparent 70%);
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: 0;
 }
 
-.venue-card:hover::before{
-
-    opacity:1;
-
+.western-venue-container {
+    position: relative;
+    z-index: 5;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
-.venue-card:hover{
+/* =========================================================================
+   MAIN TRAILHEAD POSTER CARD
+========================================================================= */
 
-    transform:translateY(-6px);
-
-    border-color:#ffb347;
-
-    box-shadow:
-        0 0 30px rgba(255,170,40,.18),
-        0 25px 60px rgba(0,0,0,.55);
-
+.western-trailhead-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    padding: 34px 38px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #2a1b11 0%, #180f08 100%);
+    border: 1.5px solid #8c521b;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 213, 128, 0.2);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    backdrop-filter: blur(12px);
 }
 
-.venue-tag{
-
-    color:#ffbe58;
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
+@media (min-width: 1024px) {
+    .western-trailhead-card {
+        flex-direction: row;
+        align-items: center;
+        padding: 38px 46px;
+    }
 }
 
-.venue-left h2{
-
-    font-size:42px;
-
-    font-weight:800;
-
-    letter-spacing:-1px;
-
-    background:linear-gradient(
-        90deg,
-        #ffffff,
-        #ffe2a8,
-        #ffb347
-    );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    text-shadow:
-        0 0 20px rgba(255,180,60,.18);
+.western-trailhead-card:hover {
+    transform: translateY(-4px);
+    border-color: #ffd580;
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(59, 130, 246, 0.3);
 }
 
-.venue-left p{
-
-    color:#cfcfcf;
-
-    line-height:1.8;
-
-    font-size:16px;
+/* 4 Corner Rivets */
+.trailhead-rivet {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffd580;
+    box-shadow: 0 0 6px rgba(255, 213, 128, 0.6);
 }
 
-.venue-right{
+.trailhead-rivet.tl { top: 12px; left: 12px; }
+.trailhead-rivet.tr { top: 12px; right: 12px; }
+.trailhead-rivet.bl { bottom: 12px; left: 12px; }
+.trailhead-rivet.br { bottom: 12px; right: 12px; }
 
-    display:flex;
+/* =========================================================================
+   LEFT: VENUE INFO
+========================================================================= */
 
-    gap:18px;
+.trailhead-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.coordinate{
-
-    width:170px;
-
-    padding:18px;
-
-    border-radius:16px;
-
-    background:rgba(255,255,255,.03);
-
-    border:1px solid rgba(255,180,60,.12);
-
-    text-align:center;
-
-    transition:.3s;
+.trailhead-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #60a5fa;
+    font-family: 'Cinzel', serif;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-.coordinate:hover{
-
-    border-color:#ffb347;
-
-    box-shadow:
-        0 0 18px rgba(255,170,40,.25);
-
+.trailhead-title {
+    font-family: 'Cinzel Decorative', 'Cinzel', Georgia, serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    margin: 2px 0 4px;
+    line-height: 1.15;
 }
 
-.coordinate span{
-
-    display:block;
-
-    color:#888;
-
-    font-size:13px;
-
-    margin-bottom:8px;
+.trailhead-title span {
+    background: linear-gradient(180deg, #ffffff 15%, #ffd580 65%, #d49b55 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.coordinate strong{
-
-    color:white;
-
-    font-size:20px;
+.trailhead-address {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffd580;
+    letter-spacing: 1px;
 }
 
-@media(max-width:900px){
-
-.venue-card{
-
-flex-direction:column;
-
-text-align:center;
-
+.trailhead-desc {
+    font-family: Georgia, 'Cinzel', serif;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #e2d2be;
+    max-width: 540px;
 }
 
-.venue-right{
+/* =========================================================================
+   RIGHT: METRIC CARDS & BUTTON
+========================================================================= */
 
-flex-direction:column;
-
-width:100%;
-
+.trailhead-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
 }
 
-.coordinate{
-
-width:100%;
-
+@media (min-width: 1024px) {
+    .trailhead-right {
+        width: auto;
+        align-items: flex-end;
+    }
 }
 
-}
-@keyframes venueGlow{
-
-0%{
-transform:translateX(-50%) translateY(0px);
-}
-
-50%{
-transform:translateX(-50%) translateY(18px);
+.trailhead-coords-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
 }
 
-100%{
-transform:translateX(-50%) translateY(0px);
+.trailhead-coord-box {
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #342216 0%, #1c1109 100%);
+    border: 1px solid rgba(212, 155, 85, 0.35);
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
 }
 
+.western-trailhead-card:hover .trailhead-coord-box {
+    border-color: #ffd580;
 }
+
+.t-coord-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #60a5fa;
+    margin-bottom: 3px;
+}
+
+.t-coord-val {
+    display: block;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #fff6de;
+    letter-spacing: 0.5px;
+}
+
+/* Map Launch Button */
+.trailhead-map-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 26px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #3a2214 0%, #1e1109 100%);
+    border: 1.5px solid #d49b55;
+    color: #ffd580;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .trailhead-map-btn {
+        width: auto;
+    }
+}
+
+.western-trailhead-card:hover .trailhead-map-btn {
+    background: linear-gradient(180deg, #1e3a8a 0%, #0f172a 100%);
+    border-color: #ffd580;
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.85), 0 0 25px rgba(96, 165, 250, 0.45);
+}
+
+/* =========================================================================
+   RESPONSIVE
+========================================================================= */
+
+@media (max-width: 640px) {
+    .western-venue-poster-section {
+        padding: 10px 4% 60px;
+    }
+
+    .western-trailhead-card {
+        padding: 24px 20px;
+        text-align: center;
+    }
+
+    .trailhead-left {
+        align-items: center;
+    }
+
+    .trailhead-coords-strip {
+        gap: 8px;
+    }
+
+    .trailhead-coord-box {
+        padding: 10px 6px;
+    }
+
+    .t-coord-label {
+        font-size: 0.55rem;
+    }
+
+    .t-coord-val {
+        font-size: 0.82rem;
+    }
+}
+
