@@ -1,0 +1,267 @@
+/* ==========================================================================
+   Western Past Sponsors - High-Velocity Bullet Impact Spin Physics
+   ========================================================================== */
+
+/* Parent card container */
+.sponsor-card-container {
+    perspective: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* 3D Target Stage */
+.sponsor-target-stage {
+    position: relative;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+/* --------------------------------------------------------------------------
+   1. The Square Sponsor Card (High-Velocity Bullet Strike Inward Spin)
+   -------------------------------------------------------------------------- */
+.sponsor-target-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease;
+    will-change: transform, filter;
+    border-radius: 1.25rem;
+}
+
+/* On Hover: Instant Supersonic Kinetic Impulse (2 High-RPM Spins in ~0.44s) */
+.sponsor-card-container:hover .sponsor-target-card,
+.sponsor-card-container:focus-within .sponsor-target-card {
+    animation: bulletHitFastInward 0.44s cubic-bezier(0.08, 0.9, 0.15, 1) forwards;
+}
+
+@keyframes bulletHitFastInward {
+    0% {
+        transform: perspective(1000px) rotateX(0deg) translateZ(0);
+        filter: brightness(1);
+    }
+    8% {
+        /* Instantaneous Supersonic Kinetic Shockwave & Spark Flash */
+        transform: perspective(1000px) rotateX(-190deg) translateZ(-45px);
+        filter: brightness(1.3) drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+    }
+    22% {
+        /* High-RPM First Full Revolution (360deg+) */
+        transform: perspective(1000px) rotateX(-410deg) translateZ(-25px);
+        filter: brightness(1.1);
+    }
+    45% {
+        /* Second Revolution (720deg) completed rapidly */
+        transform: perspective(1000px) rotateX(-720deg) translateZ(-8px);
+        filter: brightness(1);
+    }
+    68% {
+        /* Physical Angular Momentum Overshoot */
+        transform: perspective(1000px) rotateX(-734deg) translateZ(3px);
+    }
+    84% {
+        /* Steel Target Friction Spring Wobble */
+        transform: perspective(1000px) rotateX(-716deg) translateZ(0);
+    }
+    100% {
+        /* Locked Dead Center at 720deg */
+        transform: perspective(1000px) rotateX(-720deg) translateZ(0);
+        filter: brightness(1);
+    }
+}
+
+/* Front & Back Faces */
+.sponsor-target-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.25rem;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Front Face: The Clean Sponsor Logo */
+.sponsor-target-front {
+    background: #18100a;
+    border: 2px solid rgba(140, 101, 52, 0.35);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.75),
+        inset 0 1px 2px rgba(255, 215, 0, 0.1);
+    transform: rotateX(0deg);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sponsor-card-container:hover .sponsor-target-front {
+    border-color: #ffd580;
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.85),
+        0 0 25px rgba(245, 158, 11, 0.45),
+        inset 0 0 15px rgba(251, 191, 36, 0.2);
+}
+
+/* Back Face: Forged Steel Target Plate (Visible during the 3D flip) */
+.sponsor-target-back {
+    background: linear-gradient(145deg, #2a1a10 0%, #150c06 100%);
+    border: 2px solid #b8860b;
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.85),
+        inset 0 0 20px rgba(0, 0, 0, 0.9);
+    transform: rotateX(180deg);
+}
+
+/* --------------------------------------------------------------------------
+   2. Sponsor Type Plate Down Below (High-Velocity Outward Bullet Spin)
+   -------------------------------------------------------------------------- */
+.sponsor-heading-plate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    background: linear-gradient(180deg, rgba(35, 20, 12, 0.95), rgba(18, 9, 4, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.6),
+        inset 0 1px 2px rgba(255, 255, 255, 0.08);
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+/* On Hover: Whips Outward Fast (+720deg) in opposite direction of logo */
+.sponsor-card-container:hover .sponsor-heading-plate,
+.sponsor-card-container:focus-within .sponsor-heading-plate {
+    animation: bulletHitFastOutward 0.44s cubic-bezier(0.08, 0.9, 0.15, 1) forwards;
+    border-color: #ffd580;
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.7),
+        0 0 16px rgba(245, 158, 11, 0.5),
+        inset 0 0 8px rgba(255, 215, 0, 0.2);
+    background: linear-gradient(180deg, rgba(50, 26, 12, 0.98), rgba(24, 11, 4, 0.98));
+}
+
+@keyframes bulletHitFastOutward {
+    0% {
+        transform: perspective(800px) rotateX(0deg) translateZ(0);
+        color: #ffffff;
+    }
+    8% {
+        transform: perspective(800px) rotateX(190deg) translateZ(35px);
+        color: #ffffff;
+    }
+    22% {
+        transform: perspective(800px) rotateX(410deg) translateZ(20px);
+        color: #ffffff;
+    }
+    45% {
+        transform: perspective(800px) rotateX(720deg) translateZ(6px);
+        color: #ffe082;
+    }
+    68% {
+        transform: perspective(800px) rotateX(734deg) translateZ(-2px);
+        color: #ffd580;
+    }
+    84% {
+        transform: perspective(800px) rotateX(716deg) translateZ(0);
+        color: #ffd580;
+    }
+    100% {
+        transform: perspective(800px) rotateX(720deg) translateZ(0);
+        color: #ffd580;
+        text-shadow:
+            0 0 10px rgba(255, 213, 128, 0.75),
+            0 0 20px rgba(245, 158, 11, 0.5);
+    }
+}
+
+/* Category Badge Typography: Starts WHITE, Turns GOLDEN after spin */
+.sponsor-category-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #ffffff; /* Default: Crisp White */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Turns Golden after spin on hover */
+.sponsor-card-container:hover .sponsor-category-badge,
+.sponsor-card-container:focus-within .sponsor-category-badge {
+    animation: textWhiteToGold 0.44s ease forwards;
+}
+
+@keyframes textWhiteToGold {
+    0% {
+        color: #ffffff;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+    55% {
+        color: #ffffff;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+    75% {
+        color: #ffe082;
+        text-shadow: 0 0 8px rgba(255, 213, 128, 0.6);
+    }
+    100% {
+        color: #ffd580;
+        text-shadow:
+            0 0 10px rgba(255, 213, 128, 0.75),
+            0 0 20px rgba(245, 158, 11, 0.5);
+    }
+}
+
+/* ==========================================================================
+   Western Desert Dust Background & Saloon Ambiance
+   ========================================================================== */
+.western-sponsors-page {
+    background:
+        radial-gradient(ellipse 90% 60% at 50% -10%, rgba(212, 140, 50, 0.14) 0%, transparent 65%),
+        radial-gradient(circle at 80% 40%, rgba(180, 100, 30, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 20% 70%, rgba(180, 100, 30, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #0e0906 0%, #150d08 30%, #100a06 70%, #080503 100%);
+    min-height: 100vh;
+}
+
+/* Ornate Western Section Banner */
+.western-banner-ribbon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 1.8rem;
+    background: linear-gradient(90deg, transparent 0%, rgba(65, 38, 18, 0.8) 20%, rgba(65, 38, 18, 0.8) 80%, transparent 100%);
+    border-top: 1px solid rgba(212, 175, 55, 0.4);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+/* Title Sponsor Grand Pedestal Glow */
+.title-sponsor-pedestal {
+    position: relative;
+}
+.title-sponsor-pedestal::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 25px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+    filter: blur(8px);
+    pointer-events: none;
+}

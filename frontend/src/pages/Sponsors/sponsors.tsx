@@ -1,5 +1,5 @@
-import PocketWatch from "../../components/PocketWatch/PocketWatch";
+import PastSponsors from "../../components/Sponsors/PastSponsors";
 
 export default function Sponsors() {
-    return <PocketWatch />;
-}
+    return <PastSponsors />;
+}
