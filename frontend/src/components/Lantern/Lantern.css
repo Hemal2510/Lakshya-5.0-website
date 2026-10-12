@@ -1,0 +1,256 @@
+/* Lantern.css - Dark Western Trail & Saloon Kerosene Lantern Styling */
+
+.lantern-container {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+  overflow: hidden;
+  user-select: none;
+  touch-action: pan-y;
+  background: radial-gradient(
+    circle at 50% 25%,
+    #13100c 0%,
+    #0a0806 45%,
+    #050403 80%,
+    #020202 100%
+  );
+}
+
+/* Deep atmospheric dark moody vignette */
+.lantern-dark-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Subtle, moody warm lamplight glow in the dark - NOT bright yellow */
+.lantern-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(230, 130, 35, 0.16) 0%,
+    rgba(140, 65, 15, 0.08) 40%,
+    rgba(50, 20, 5, 0.03) 65%,
+    transparent 80%
+  );
+  filter: blur(55px);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.4s ease;
+  will-change: transform, left, top;
+}
+
+/* Ceiling Mount (Dark Forged Iron Saloon Rafter Beam) */
+.lantern-ceiling-mount {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.lantern-iron-ring {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #423b32, #211c16 70%, #0d0a07);
+  border: 2px solid #574b3d;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.9),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15);
+}
+
+/* Main Interactive SVG Stage */
+.lantern-stage {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 5;
+  cursor: grab;
+}
+
+@media (max-width: 640px) {
+  .lantern-stage {
+    height: 440px;
+  }
+}
+
+.lantern-stage.dragging {
+  cursor: grabbing;
+}
+
+/* Living Flame Flickering Animations */
+@keyframes flameFlicker {
+  0% {
+    transform: scale(1) skewX(0deg);
+    opacity: 0.95;
+  }
+  20% {
+    transform: scale(0.97, 1.03) skewX(-1.5deg);
+    opacity: 0.88;
+  }
+  40% {
+    transform: scale(1.02, 0.98) skewX(2deg);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(0.98, 1.02) skewX(-1deg);
+    opacity: 0.92;
+  }
+  80% {
+    transform: scale(1.03, 0.99) skewX(1.8deg);
+    opacity: 0.97;
+  }
+  100% {
+    transform: scale(1) skewX(0deg);
+    opacity: 0.95;
+  }
+}
+
+@keyframes innerCorePulse {
+  0%, 100% {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.92);
+  }
+}
+
+.flame-outer {
+  transform-origin: center bottom;
+  animation: flameFlicker 2.4s ease-in-out infinite;
+}
+
+.flame-inner {
+  transform-origin: center bottom;
+  animation: innerCorePulse 1.6s ease-in-out infinite alternate;
+}
+
+/* Interactive Hint Badge - Dark Weathered Iron Style */
+.lantern-hint-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 9999px;
+  background: rgba(18, 14, 11, 0.9);
+  border: 1px solid rgba(130, 95, 55, 0.35);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  color: #b8966c;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.lantern-hint-badge:hover {
+  border-color: rgba(180, 130, 70, 0.6);
+  color: #d6b385;
+  box-shadow: 0 4px 20px rgba(180, 100, 25, 0.2);
+}
+
+/* Typography Reveal in the Dark Shadows */
+.lantern-letters-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: 950px;
+  margin: 1.2rem auto 0.4rem;
+  padding: 0 1rem;
+  z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .lantern-letters-row {
+    gap: 0.38rem;
+  }
+}
+
+.lantern-char {
+  display: inline-block;
+  font-family: var(--font-grotesk, "Space Grotesk", sans-serif);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1),
+              color 0.18s ease,
+              text-shadow 0.18s ease,
+              opacity 0.18s ease;
+  user-select: none;
+}
+
+/* Characters emerging from dark shadows when illuminated by the swinging lamplight */
+.lantern-char.illuminated {
+  color: #f7dfb8;
+  background: linear-gradient(180deg, #ffeed4 0%, #e2a853 45%, #9e5b15 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.06) translateY(-2px);
+  filter: drop-shadow(0 0 16px rgba(230, 130, 30, 0.75))
+          drop-shadow(0 0 32px rgba(170, 80, 10, 0.4));
+}
+
+/* Characters hidden in deep dark western shadow */
+.lantern-char.shadowed {
+  color: rgba(140, 120, 100, 0.16);
+  transform: scale(0.96);
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+}
+
+.lantern-space {
+  width: 0.6rem;
+}
+
+@media (min-width: 640px) {
+  .lantern-space {
+    width: 1.2rem;
+  }
+}
+
+/* Subtitle & Frontier Tag - Dark Muted Weathered Tones */
+.lantern-subtitle-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  z-index: 10;
+  text-align: center;
+}
+
+.lantern-subtitle-tag {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #a48259;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
+}
+
+.lantern-flourish {
+  color: #574127;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+}

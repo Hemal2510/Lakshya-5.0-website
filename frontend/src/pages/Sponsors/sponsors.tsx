@@ -1,5 +1,5 @@
-import PendulumTextReveal from "../../components/ui/pendulum.tsx";
+import PocketWatch from "../../components/PocketWatch/PocketWatch";
 
-export default function Gallery() {
-    return <PendulumTextReveal />;
+export default function Sponsors() {
+    return <PocketWatch />;
 }
