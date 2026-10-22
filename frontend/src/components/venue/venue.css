@@ -262,4 +262,924 @@
         font-size: 0.82rem;
     }
 }
-
+
+/* =============================================
+   LAKSHYA 5.0 — WESTERN FRONTIER VENUE
+   Visual redesign only: preserve existing motion
+   ============================================= */
+
+/* Outer venue section */
+.western-venue-poster-section {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      ellipse at 15% 20%,
+      rgb(118 68 28 / 12%),
+      transparent 48%
+    ),
+    linear-gradient(
+      180deg,
+      #17100b 0%,
+      #0e0a07 100%
+    );
+}
+
+/* Main frontier field-office plaque */
+.western-venue-poster-section .western-trailhead-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.9fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+
+  padding: clamp(24px, 3.2vw, 52px);
+
+  border: 1px solid #9b763e;
+  border-radius: 5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 49.8%,
+      rgb(207 164 92 / 8%) 50%,
+      transparent 50.2%
+    ),
+    radial-gradient(
+      ellipse at 12% 0%,
+      rgb(154 100 42 / 14%),
+      transparent 55%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgb(255 225 173 / 1.3%) 0px,
+      rgb(255 225 173 / 1.3%) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    linear-gradient(
+      135deg,
+      #291a10 0%,
+      #1c110a 50%,
+      #120c08 100%
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgb(255 228 180 / 12%),
+    inset 0 0 0 5px rgb(174 132 69 / 5%),
+    0 15px 38px rgb(0 0 0 / 30%);
+
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Subtle distressed texture over the plaque */
+.western-venue-poster-section
+.western-trailhead-card::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgb(194 153 88 / 16%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep content above the texture */
+.western-venue-poster-section
+.western-trailhead-card > .trailhead-left,
+.western-venue-poster-section
+.western-trailhead-card > .trailhead-right {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+/* Antique brass corner rivets */
+.western-venue-poster-section .trailhead-rivet {
+  position: absolute;
+  z-index: 2;
+
+  width: 9px;
+  height: 9px;
+  border: 1px solid #6d4c21;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at 35% 30%,
+    #fff0b9 0%,
+    #d5a653 35%,
+    #7e531f 72%,
+    #392310 100%
+  );
+
+  box-shadow:
+    0 0 8px rgb(224 177 89 / 18%),
+    inset 0 1px 1px rgb(255 242 203 / 60%);
+}
+
+/* Left-side venue information */
+.western-venue-poster-section .trailhead-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Location badge */
+.western-venue-poster-section .trailhead-tag {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  color: #d6ae6b;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.western-venue-poster-section .trailhead-tag svg {
+  color: #d4a352 !important;
+  flex-shrink: 0;
+}
+
+/* Venue title */
+.western-venue-poster-section .trailhead-title {
+  margin: 0;
+
+  color: #f2e0be;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(2rem, 3.4vw, 3.45rem);
+  font-weight: 900;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 1px 0 #60401f,
+    0 3px 12px rgb(0 0 0 / 50%);
+}
+
+/* Gold emphasis for IIT Indore */
+.western-venue-poster-section .trailhead-title span {
+  color: #d8af65;
+
+  background: linear-gradient(
+    180deg,
+    #ffedbd,
+    #d7ac60 55%,
+    #956329
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Address */
+.western-venue-poster-section .trailhead-address {
+  margin: 0;
+
+  color: #dbb46d;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(0.9rem, 1.15vw, 1.08rem);
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+/* Description */
+.western-venue-poster-section .trailhead-desc {
+  max-width: 600px;
+  margin: 0;
+
+  color: #ccbea7;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* Right-side coordinate instruments */
+.western-venue-poster-section .trailhead-right {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+/* Coordinate plate layout */
+.western-venue-poster-section .trailhead-coords-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* Individual brass coordinate plates */
+.western-venue-poster-section .trailhead-coord-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+
+  min-width: 0;
+  min-height: 82px;
+  padding: 12px 8px;
+
+  border: 1px solid #8b6939;
+  border-radius: 3px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgb(168 119 53 / 9%),
+      transparent 65%
+    ),
+    linear-gradient(
+      180deg,
+      #2a1b10,
+      #191008
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgb(255 227 174 / 8%),
+    0 5px 15px rgb(0 0 0 / 20%);
+}
+
+/* Coordinate labels */
+.western-venue-poster-section .t-coord-label {
+  color: #c7a363;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(0.56rem, 0.72vw, 0.72rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* Coordinate values */
+.western-venue-poster-section .t-coord-val {
+  color: #f0dfbf;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(0.8rem, 1vw, 1.05rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Expedition map button */
+.western-venue-poster-section .trailhead-map-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  min-height: 55px;
+  padding: 14px 18px;
+
+  border: 1px solid #bd9653;
+  border-radius: 3px;
+
+  background: linear-gradient(
+    180deg,
+    #3b2815 0%,
+    #25170c 50%,
+    #170e08 100%
+  );
+
+  color: #f0d6a0;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 0.83rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+
+  box-shadow:
+    inset 0 1px 0 rgb(255 226 177 / 12%),
+    0 5px 17px rgb(0 0 0 / 20%);
+
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.western-venue-poster-section .trailhead-map-btn svg {
+  flex-shrink: 0;
+}
+
+/* Retains an interactive hover state */
+.western-venue-poster-section
+.western-trailhead-card:hover .trailhead-map-btn {
+  border-color: #e5c17c;
+
+  background: linear-gradient(
+    180deg,
+    #50351b,
+    #2c1b0d
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgb(255 226 177 / 15%),
+    0 0 20px rgb(194 145 69 / 12%);
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .western-venue-poster-section
+  .western-trailhead-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .western-venue-poster-section .trailhead-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .western-venue-poster-section .trailhead-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .western-venue-poster-section
+  .western-trailhead-card {
+    padding: 23px 17px;
+  }
+
+  .western-venue-poster-section .trailhead-coords-strip {
+    gap: 6px;
+  }
+
+  .western-venue-poster-section .trailhead-coord-box {
+    padding: 10px 4px;
+    min-height: 74px;
+  }
+
+  .western-venue-poster-section .t-coord-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.03em;
+  }
+
+  .western-venue-poster-section .t-coord-val {
+    font-size: clamp(0.67rem, 3.2vw, 0.85rem);
+  }
+
+  .western-venue-poster-section .trailhead-map-btn {
+    gap: 8px;
+    padding: 13px 9px;
+    font-size: 0.69rem;
+    letter-spacing: 0.035em;
+  }
+}
+
+/* ============================================
+   LAKSHYA 5.0 — WANTED POSTER VENUE
+   Add at the bottom of venue.css
+   ============================================ */
+
+.western-venue-poster-section .western-trailhead-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: clamp(24px, 4vw, 58px);
+  align-items: center;
+
+  padding: clamp(32px, 4vw, 54px);
+
+  border: 0 !important;
+  border-radius: 2px !important;
+
+  /* Aged, stained paper */
+  background:
+    radial-gradient(
+      ellipse at 15% 20%,
+      rgb(255 248 205 / 42%),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 88% 85%,
+      rgb(114 66 23 / 15%),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 30% 75%,
+      rgb(105 72 35 / 9%) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 75% 20%,
+      rgb(105 72 35 / 10%) 0 1px,
+      transparent 2px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgb(85 54 25 / 3%) 0 1px,
+      transparent 1px 4px
+    ),
+    linear-gradient(
+      115deg,
+      #e8d3a4 0%,
+      #d9bd83 40%,
+      #ebd8ae 70%,
+      #d1b17a 100%
+    ) !important;
+
+  /* Irregular poster edges instead of a rounded rectangle */
+  clip-path: polygon(
+    0.5% 1%,
+    12% 0,
+    23% 0.6%,
+    39% 0,
+    53% 0.7%,
+    73% 0,
+    88% 0.5%,
+    99.6% 0,
+    100% 18%,
+    99.4% 36%,
+    100% 54%,
+    99.5% 78%,
+    100% 99%,
+    82% 100%,
+    65% 99.5%,
+    46% 100%,
+    28% 99.3%,
+    13% 100%,
+    0 99%,
+    0.5% 77%,
+    0 56%,
+    0.5% 35%
+  );
+
+  filter: drop-shadow(0 15px 22px rgb(0 0 0 / 38%));
+
+  color: #352113;
+  text-decoration: none;
+}
+
+/* Thin antique-ink frame printed onto the paper */
+.western-venue-poster-section
+.western-trailhead-card::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  z-index: 0;
+
+  border: 1px solid rgb(83 51 24 / 55%);
+  outline: 1px solid rgb(111 75 37 / 18%);
+  outline-offset: 4px;
+
+  pointer-events: none;
+}
+
+/* Make the poster heading span the entire card */
+.trailhead-poster-heading {
+  grid-column: 1 / -1;
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  padding: 0 12px 20px;
+  margin-bottom: 4px;
+  border-bottom: 2px solid rgb(77 46 22 / 65%);
+}
+
+/* Large, dramatic WANTED lettering */
+.trailhead-wanted-title {
+  font-family: "Rye", "Rockwell Extra Bold", Georgia, serif;
+  font-size: clamp(3.7rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: 0.075em;
+
+  color: #311c0e;
+
+  text-shadow:
+    1px 1px 0 #9d7541,
+    2px 2px 0 rgb(65 39 18 / 55%),
+    0 4px 5px rgb(77 47 20 / 15%);
+}
+
+/* Official venue identification */
+.trailhead-wanted-subtitle {
+  margin-top: 12px;
+
+  color: #68451f;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(0.65rem, 1vw, 0.84rem);
+  font-weight: 800;
+  letter-spacing: 0.19em;
+  line-height: 1.8;
+}
+
+/* Decorative Western ornament */
+.trailhead-poster-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: min(100%, 410px);
+  margin-top: 14px;
+  color: #65421e;
+}
+
+.trailhead-poster-ornament span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #75502a,
+    #75502a
+  );
+}
+
+.trailhead-poster-ornament span:last-child {
+  transform: scaleX(-1);
+}
+
+.trailhead-poster-ornament b {
+  font-size: 17px;
+}
+
+/* Existing venue text printed in dark ink */
+.western-venue-poster-section .trailhead-left,
+.western-venue-poster-section .trailhead-right {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.western-venue-poster-section .trailhead-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.western-venue-poster-section .trailhead-tag {
+  color: #66431e !important;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+
+.western-venue-poster-section .trailhead-tag svg {
+  color: #70441b !important;
+}
+
+.western-venue-poster-section .trailhead-title {
+  margin: 0;
+  color: #2e1a0d !important;
+
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 3.1rem);
+  font-weight: 900;
+  line-height: 1.13;
+  letter-spacing: -0.025em;
+
+  text-shadow: 0 1px 0 rgb(255 242 204 / 50%);
+}
+
+.western-venue-poster-section .trailhead-title span {
+  color: #67401b !important;
+  background: none !important;
+  -webkit-text-fill-color: #67401b !important;
+}
+
+.western-venue-poster-section .trailhead-address {
+  margin: 0;
+  color: #75451e !important;
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 800;
+  line-height: 1.8;
+}
+
+.western-venue-poster-section .trailhead-desc {
+  margin: 0;
+  color: #49331e !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* Coordinates become one printed instrument strip */
+.western-venue-poster-section .trailhead-coords-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+
+  border-top: 1px solid rgb(82 51 23 / 70%);
+  border-bottom: 1px solid rgb(82 51 23 / 70%);
+}
+
+/* No individual squares */
+.western-venue-poster-section .trailhead-coord-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-width: 0;
+  min-height: 75px;
+  padding: 12px 6px;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-right: 1px solid rgb(82 51 23 / 48%);
+
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.western-venue-poster-section
+.trailhead-coord-box:last-child {
+  border-right: 0;
+}
+
+.western-venue-poster-section .t-coord-label {
+  color: #77532a !important;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(0.55rem, 0.75vw, 0.7rem);
+  font-weight: 800;
+  letter-spacing: 0.075em;
+  text-align: center;
+}
+
+.western-venue-poster-section .t-coord-val {
+  color: #302011 !important;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(0.72rem, 1vw, 0.98rem);
+  font-weight: 900;
+  white-space: nowrap;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Dark ink-stamped map action */
+.western-venue-poster-section .trailhead-map-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+
+  min-height: 53px;
+  padding: 13px 18px;
+
+  border: 2px solid #51341b !important;
+  border-radius: 2px !important;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgb(255 235 190 / 3%) 0 1px,
+      transparent 1px 4px
+    ),
+    linear-gradient(
+      180deg,
+      #4a2c15,
+      #28170c
+    ) !important;
+
+  color: #f0d8a6 !important;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.075em;
+  text-align: center;
+  text-transform: uppercase;
+
+  box-shadow:
+    inset 0 1px 0 rgb(255 238 192 / 15%),
+    0 3px 0 rgb(91 57 27 / 25%);
+
+  transition:
+    background 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.western-venue-poster-section .trailhead-map-btn svg {
+  flex-shrink: 0;
+}
+
+.western-venue-poster-section
+.western-trailhead-card:hover .trailhead-map-btn {
+  border-color: #6b4725 !important;
+  background: linear-gradient(
+    180deg,
+    #65401f,
+    #352010
+  ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgb(255 238 192 / 20%),
+    0 0 12px rgb(102 66 29 / 15%);
+}
+
+/* Pressed-metal style corner fasteners */
+.western-venue-poster-section .trailhead-rivet {
+  z-index: 2;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #754c25;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at 35% 30%,
+    #f5d99b,
+    #a77639 55%,
+    #57351a 100%
+  );
+
+  box-shadow: inset 0 1px 1px rgb(255 239 196 / 50%);
+}
+
+/* Tablet and mobile poster */
+@media (max-width: 900px) {
+  .western-venue-poster-section .western-trailhead-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+    padding: 32px 26px;
+  }
+
+  .trailhead-poster-heading {
+    margin-bottom: 0;
+  }
+
+  .trailhead-wanted-title {
+    font-size: clamp(3.5rem, 12vw, 5rem);
+  }
+
+  .western-venue-poster-section .trailhead-title {
+    font-size: clamp(1.8rem, 6vw, 2.7rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .western-venue-poster-section .western-trailhead-card {
+    padding: 28px 20px;
+  }
+
+  .trailhead-wanted-title {
+    font-size: clamp(2.8rem, 13vw, 4rem);
+    letter-spacing: 0.035em;
+  }
+
+  .trailhead-wanted-subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  .western-venue-poster-section .trailhead-coord-box {
+    padding: 10px 3px;
+  }
+
+  .western-venue-poster-section .t-coord-label {
+    font-size: 0.49rem;
+    letter-spacing: 0.02em;
+  }
+
+  .western-venue-poster-section .t-coord-val {
+    font-size: clamp(0.64rem, 3.1vw, 0.8rem);
+  }
+
+  .western-venue-poster-section .trailhead-map-btn {
+    gap: 7px;
+    padding: 12px 8px;
+    font-size: 0.65rem;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ============================================
+   COMPACT WESTERN WANTED POSTER
+   Add at the bottom of venue.css
+   ============================================ */
+
+/* Narrow the overall poster and center it */
+.western-venue-container {
+  width: min(100% - 40px, 1180px) !important;
+  max-width: 1180px !important;
+  margin-inline: auto !important;
+  padding-inline: 0 !important;
+}
+
+/* Reduce poster padding and overall height */
+.western-venue-poster-section .western-trailhead-card {
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 28px !important;
+  padding: 26px 32px !important;
+}
+
+/* Smaller WANTED heading */
+.trailhead-poster-heading {
+  padding: 0 10px 13px !important;
+  margin-bottom: 0 !important;
+}
+
+.trailhead-wanted-title {
+  font-size: clamp(2.8rem, 5vw, 4.4rem) !important;
+  line-height: 1 !important;
+  letter-spacing: 0.055em !important;
+}
+
+.trailhead-wanted-subtitle {
+  margin-top: 6px !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.12em !important;
+}
+
+.trailhead-poster-ornament {
+  margin-top: 8px !important;
+}
+
+/* Tighter venue information */
+.western-venue-poster-section .trailhead-left {
+  gap: 8px !important;
+}
+
+.western-venue-poster-section .trailhead-title {
+  font-size: clamp(1.65rem, 2.5vw, 2.5rem) !important;
+  line-height: 1.12 !important;
+}
+
+.western-venue-poster-section .trailhead-address {
+  font-size: 0.86rem !important;
+  line-height: 1.6 !important;
+}
+
+.western-venue-poster-section .trailhead-desc {
+  font-size: 0.9rem !important;
+  line-height: 1.65 !important;
+}
+
+/* More compact coordinate strip */
+.western-venue-poster-section .trailhead-right {
+  gap: 13px !important;
+}
+
+.western-venue-poster-section .trailhead-coord-box {
+  min-height: 64px !important;
+  padding: 8px 5px !important;
+  gap: 5px !important;
+}
+
+/* Smaller map button */
+.western-venue-poster-section .trailhead-map-btn {
+  min-height: 46px !important;
+  padding: 10px 12px !important;
+  font-size: 0.72rem !important;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .western-venue-container {
+    width: calc(100% - 32px) !important;
+  }
+
+  .western-venue-poster-section .western-trailhead-card {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+    padding: 24px !important;
+  }
+
+  .trailhead-wanted-title {
+    font-size: clamp(2.8rem, 8vw, 4rem) !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .western-venue-container {
+    width: calc(100% - 24px) !important;
+  }
+
+  .western-venue-poster-section .western-trailhead-card {
+    padding: 22px 16px !important;
+  }
+
+  .trailhead-wanted-title {
+    font-size: clamp(2.3rem, 11vw, 3.2rem) !important;
+  }
+
+  .trailhead-wanted-subtitle {
+    font-size: 0.55rem !important;
+    letter-spacing: 0.06em !important;
+  }
+}
+

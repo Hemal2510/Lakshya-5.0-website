@@ -1,136 +1,220 @@
-import { motion } from "framer-motion";
-import { ChevronDown, ArrowRight, Compass } from "lucide-react";
-import { Link } from "react-router-dom";
-import TextType from "@/components/ui/TextType.tsx";
-import WesternCountdown from "./WesternCountdown";
-import NightSkyBackdrop from "./NightSkyBackdrop";
+import { useEffect, useState } from "react";
+import frontierBackground from "../../assets/frontier-bg.webp";
 import "./HeroSection.css";
+import { Link } from "react-router-dom";
 
-export default function HeroSection() {
-    return (
-        <section className="western-hero-section relative select-none">
-            {/* ========================================================
-                1. HANDCRAFTED CRYSTAL-SHARP NIGHT SKY BACKDROP
-            ======================================================== */}
-            <NightSkyBackdrop />
+const DEFAULT_EVENT_TIME = "2027-01-15T09:00:00+05:30"; // 15 Jan 2027, 9:00 AM IST
 
-            {/* ========================================================
-                2. AMBIENT VIGNETTE & SMOOTH PAGE BLEND
-            ======================================================== */}
-            <div className="starry-hero-vignette" />
+type TimeLeft = {
+  days: string;
+  hours: string;
+  minutes: string;
+  seconds: string;
+};
 
-            {/* ========================================================
-                3. MAIN HERO CENTERPIECE
-            ======================================================== */}
-            <div className="relative z-10 flex flex-col items-center justify-center px-4 max-w-5xl mx-auto text-center pt-8">
+type PosterUnit = "DAYS" | "HOURS" | "MINUTES" | "SECONDS";
 
-                {/* Western Top Star Badge */}
-                <motion.div
-                    initial={{ opacity: 0, y: -15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="western-top-badge"
-                >
-                    <span className="text-[#ffd580]">★</span>
-                    <span>5TH EDITION · IIT INDORE ATHLETIC EXPEDITION</span>
-                    <span className="text-[#ffd580]">★</span>
-                </motion.div>
+type PosterData = {
+  unit: PosterUnit;
+  value: string;
+};
 
-                {/* Grand Lakshya Blue Torch Logo Emblem */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    className="emblem-wrapper"
-                >
-                    <div className="emblem-sunburst-halo" />
-                    <img
-                        src="/lakshya-logo-blue.png"
-                        alt="Lakshya 5.0 Blue Torch Emblem"
-                        className="western-logo-img w-36 sm:w-44 md:w-50 lg:w-54 object-contain"
-                    />
-                </motion.div>
+export type LakshyaFrontierHeroProps = {
+  /** Optional URL/path to the official transparent Lakshya emblem. */
+  logoSrc?: string;
+  /** Countdown target. Include a timezone, e.g. 2027-01-15T09:00:00+05:30. */
+  eventTime?: string;
+  /** Anchor/link for the existing sports section. This component does not render that section. */
+  sportsHref?: string;
+};
 
-                {/* Chiseled Woodcut Title */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="western-hero-title"
-                >
-                    LAKSHYA 5.0
-                </motion.h1>
+type WantedPosterProps = {
+  unit: PosterUnit;
+  value: string;
+};
 
-                {/* Animated Typewriter Subtitle */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="western-typewriter-wrapper"
-                >
-                    <TextType
-                        text={[
-                            "Central India's Largest Sports Fest",
-                            "Chase What Lies Beyond",
-                            "Where Champions Forge Their Legacy",
-                        ]}
-                        typingSpeed={45}
-                        deletingSpeed={25}
-                        pauseDuration={2400}
-                        showCursor={true}
-                        cursorCharacter="|"
-                    />
-                </motion.div>
+function getTimeLeft(targetTime: string): TimeLeft {
+  const targetMs = new Date(targetTime).getTime();
+  const remaining = Number.isNaN(targetMs)
+    ? 0
+    : Math.max(0, targetMs - Date.now());
 
-                {/* Woodcut Decorative Star Divider */}
-                <motion.div
-                    initial={{ opacity: 0, scaleX: 0 }}
-                    animate={{ opacity: 1, scaleX: 1 }}
-                    transition={{ duration: 0.4, delay: 0.35 }}
-                    className="western-woodcut-divider select-none"
-                >
-                    <span>════════════</span>
-                    <span className="text-[#ffd580] text-base">❖</span>
-                    <span>════════════</span>
-                </motion.div>
+  return {
+    days: String(Math.floor(remaining / 86_400_000)).padStart(3, "0"),
+    hours: String(Math.floor((remaining % 86_400_000) / 3_600_000)).padStart(2, "0"),
+    minutes: String(Math.floor((remaining % 3_600_000) / 60_000)).padStart(2, "0"),
+    seconds: String(Math.floor((remaining % 60_000) / 1_000)).padStart(2, "0"),
+  };
+}
 
-                {/* Western Saloon Mechanical Countdown Timer */}
-                <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                >
-                    <WesternCountdown />
-                </motion.div>
+function WantedPoster({ unit, value }: WantedPosterProps) {
+  return (
+    <article className="lkh-poster" aria-label={`${value} ${unit}`}>
+      <div className="lkh-poster-frame" aria-hidden="true" />
+      <p className="lkh-poster-kicker">WANTED</p>
+      <p className="lkh-poster-name">THE FINAL STRETCH</p>
+      <div className="lkh-poster-stars" aria-hidden="true">
+        ✦ ✦ ✦
+      </div>
+      <div className="lkh-poster-number" aria-label={value}>
+        {value.split("").map((digit, index) => (
+          <span className="lkh-digit" key={`${index}-${digit}`}>
+            {digit}
+          </span>
+        ))}
+      </div>
+      <p className="lkh-poster-unit">{unit}</p>
+      <div className="lkh-poster-divider" aria-hidden="true">
+        <span>✦</span>
+      </div>
+      <p className="lkh-poster-footer">LAKSHYA 5.0 · IIT INDORE</p>
+    </article>
+  );
+}
 
-                {/* Call-to-Action Buttons */}
-                <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    className="western-cta-row"
-                >
-                    {/* Primary Registration Button */}
-                    <button className="western-primary-btn group">
-                        <span>REGISTER FOR FEST</span>
-                        <ArrowRight className="w-4 h-4 text-[#ffd580] group-hover:translate-x-1.5 transition-transform" />
-                    </button>
+/**
+ * Frontier-style Lakshya 5.0 hero and live countdown.
+ * Navbar, sports cards/"Choose Your Arena", and footer are intentionally excluded.
+ */
+export default function LakshyaFrontierHero({
+  logoSrc = "",
+  eventTime = DEFAULT_EVENT_TIME,
+  sportsHref = "#sports",
+}: LakshyaFrontierHeroProps) {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => getTimeLeft(eventTime));
 
-                    {/* Secondary Explore Sports Button */}
-                    <Link to="/sports" className="western-secondary-btn group">
-                        <Compass className="w-4 h-4 text-[#60a5fa] group-hover:rotate-45 transition-transform" />
-                        <span>EXPLORE ARENA</span>
-                    </Link>
-                </motion.div>
-            </div>
+  useEffect(() => {
+    const update = (): void => setTimeLeft(getTimeLeft(eventTime));
+    update();
+    const timerId = window.setInterval(update, 1000);
+    return () => window.clearInterval(timerId);
+  }, [eventTime]);
 
-            {/* ========================================================
-                4. SCROLL DOWN INDICATOR
-            ======================================================== */}
-            <div className="western-scroll-indicator">
-                <span className="scroll-text">DESCEND INTO ARENA</span>
-                <ChevronDown size={22} className="text-[#d49b55] animate-bounce" />
-            </div>
+  const posters: PosterData[] = [
+    { unit: "DAYS", value: timeLeft.days },
+    { unit: "HOURS", value: timeLeft.hours },
+    { unit: "MINUTES", value: timeLeft.minutes },
+    { unit: "SECONDS", value: timeLeft.seconds },
+  ];
+
+  return (
+    <section className="lkh-hero" id="lakshya-home" aria-label="Lakshya 5.0 home">
+      {/* Animated scenery layer */}
+      <div className="lkh-scene" aria-hidden="true">
+        <img className="lkh-scene-image" src={frontierBackground} alt="" />
+      </div>
+      <div className="lkh-shade" aria-hidden="true" />
+
+      {/* Lightweight dust and amber light effects */}
+      
+<div className="lkh-atmosphere" aria-hidden="true">
+  {/* Keep the existing light sweep */}
+  <span className="lkh-light-sweep" />
+  {/* Large Western decorative details */}
+<span className="lkh-western-seal" />
+<span className="lkh-western-corners" />
+<span className="lkh-frontier-rail">
+  THE FRONTIER · LAKSHYA V · IIT INDORE
+</span>
+  {/* New Western bullet-hole decorations */}
+  <span className="lkh-bullet-hole lkh-bullet-hole-1" />
+  <span className="lkh-bullet-hole lkh-bullet-hole-2" />
+  <span className="lkh-bullet-hole lkh-bullet-hole-3" />
+  <span className="lkh-bullet-hole lkh-bullet-hole-4" />
+
+  {/* Keep the existing floating dust particles */}
+  <span className="lkh-dust lkh-dust-1" />
+  <span className="lkh-dust lkh-dust-2" />
+  <span className="lkh-dust lkh-dust-3" />
+  <span className="lkh-dust lkh-dust-4" />
+  <span className="lkh-dust lkh-dust-5" />
+  <span className="lkh-dust lkh-dust-6" />
+  <span className="lkh-dust lkh-dust-7" />
+  <span className="lkh-dust lkh-dust-8" />
+</div>
+
+
+      <div className="lkh-hero-inner">
+        <div className="lkh-hero-copy">
+          {logoSrc ? (
+            <img className="lkh-hero-emblem lkh-reveal" src={logoSrc} alt="Lakshya emblem" />
+          ) : null}
+
+          <div className="lkh-edition-badge lkh-reveal">
+            <span aria-hidden="true">★</span>
+            <span>FIVE EDITIONS. ONE LEGACY.</span>
+            <span aria-hidden="true">★</span>
+          </div>
+
+          <p className="lkh-overline lkh-reveal lkh-delay-1">
+            THE FRONTIER IS YOURS TO CLAIM
+          </p>
+
+          
+<h1 className="lkh-brand-title lkh-reveal lkh-delay-1">
+  <span className="lkh-brand-name">LAKSHYA</span>
+  <span className="lkh-brand-version">5.0</span>
+</h1>
+
+<div
+  className="lkh-brand-divider lkh-reveal lkh-delay-2"
+  aria-hidden="true"
+>
+  <span />
+  <b>✥</b>
+  <span />
+</div>
+
+<p className="lkh-brand-tagline lkh-reveal lkh-delay-2">
+  CHASE WHAT LIES BEYOND
+</p>
+
+
+          <p className="lkh-description lkh-reveal lkh-delay-2">
+            A new frontier. A thousand stories. One unrelenting spirit.
+            Get ready for Central India’s biggest celebration of sport.
+          </p>
+
+          <div className="lkh-actions lkh-reveal lkh-delay-3">
+            <Link
+            className="lkh-action lkh-action-primary"
+            to="/sports"
+            >
+              EXPLORE THE GAMES <span aria-hidden="true">↗</span>
+            </Link>
+            <a className="lkh-action lkh-action-secondary" href="#lakshya-countdown">
+              COUNTDOWN <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </div>
+
+        <section
+          className="lkh-countdown lkh-reveal lkh-delay-4"
+          id="lakshya-countdown"
+          aria-label="Countdown to Lakshya 5.0"
+        >
+          <div className="lkh-countdown-heading">
+            <span aria-hidden="true">✦</span>
+            <p>THE EXPEDITION BEGINS IN</p>
+            <span aria-hidden="true">✦</span>
+          </div>
+
+          <div className="lkh-poster-row" aria-live="off">
+            {posters.map((poster) => (
+              <WantedPoster key={poster.unit} unit={poster.unit} value={poster.value} />
+            ))}
+          </div>
+
+          <p className="lkh-countdown-footnote">
+            15 JANUARY 2027 · 09:00 AM IST
+          </p>
         </section>
-    );
+      </div>
+
+      <div className="lkh-scroll-cue" aria-hidden="true">
+        <span>RIDE FURTHER</span>
+        <i />
+      </div>
+    </section>
+  );
 }

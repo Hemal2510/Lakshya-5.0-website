@@ -24,6 +24,19 @@ export default function Venue() {
           <span className="trailhead-rivet tr" />
           <span className="trailhead-rivet bl" />
           <span className="trailhead-rivet br" />
+          
+{/* Western wanted-poster heading */}
+<div className="trailhead-poster-heading">
+  <span className="trailhead-wanted-title">LAND OF CHAMPIONS</span>
+  <span className="trailhead-wanted-subtitle">
+    OFFICIAL FRONTIER GROUNDS · LAKSHYA 5.0
+  </span>
+  <div className="trailhead-poster-ornament" aria-hidden="true">
+    <span />
+    <b>✦</b>
+    <span />
+  </div>
+</div>
 
           {/* Left: Venue Information */}
           <div className="trailhead-left">
@@ -47,25 +60,24 @@ export default function Venue() {
 
           {/* Right: Coordinates & Launch Action */}
           <div className="trailhead-right">
-            <div className="trailhead-coords-strip">
-              {/* Latitude */}
-              <div className="trailhead-coord-box">
-                <span className="t-coord-label">LATITUDE</span>
-                <strong className="t-coord-val">22.5255° N</strong>
-              </div>
+            
+<div className="trailhead-coords-strip">
+  <div className="trailhead-coord-box">
+    <span className="t-coord-label">LATITUDE</span>
+    <strong className="t-coord-val">22.5255° N</strong>
+  </div>
 
-              {/* Longitude */}
-              <div className="trailhead-coord-box">
-                <span className="t-coord-label">LONGITUDE</span>
-                <strong className="t-coord-val">75.9200° E</strong>
-              </div>
+  <div className="trailhead-coord-box">
+    <span className="t-coord-label">LONGITUDE</span>
+    <strong className="t-coord-val">75.9200° E</strong>
+  </div>
 
-              {/* Elevation */}
-              <div className="trailhead-coord-box">
-                <span className="t-coord-label">ELEVATION</span>
-                <strong className="t-coord-val">560 M</strong>
-              </div>
-            </div>
+  <div className="trailhead-coord-box">
+    <span className="t-coord-label">ELEVATION</span>
+    <strong className="t-coord-val">560 M</strong>
+  </div>
+</div>
+
 
             {/* Launch Map Button */}
             <div className="trailhead-map-btn">
@@ -80,4 +92,4 @@ export default function Venue() {
   );
 }
 
-
+
