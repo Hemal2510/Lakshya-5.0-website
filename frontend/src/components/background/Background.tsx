@@ -1,5 +1,4 @@
 import ShapeGrid from "./ShapeGrid";
-import SparksBackground from "./SparksBackground";
 
 export default function Background({
   fixed = true,
@@ -7,18 +6,18 @@ export default function Background({
   fixed?: boolean;
 }) {
   return (
-    <div className={fixed ? "fixed inset-0 -z-10" : "absolute inset-0"}>
+    <div className={fixed ? "fixed inset-0 -z-10 bg-[#070402]" : "absolute inset-0 bg-[#070402]"}>
       <ShapeGrid
         speed={0.5}
-        squareSize={23}
+        squareSize={24}
         direction="up"
-        borderColor="#600707"
-        hoverFillColor="#c3621f"
+        borderColor="#7a3212"
+        hoverFillColor="#e67e22"
         shape="hexagon"
-        hoverTrailAmount={2}
+        hoverTrailAmount={3}
         showGradient={fixed}
+        gradientEdgeColor="#070402"
       />
-
     </div>
   );
 }

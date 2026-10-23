@@ -1,0 +1,244 @@
+/* PocketWatch.css - Authentic Western Mechanical Pendulum Watch with Subtle Frontier Ambience */
+
+.pocket-watch-page {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1rem 2rem;
+  overflow: hidden;
+  user-select: none;
+  background:
+    /* 1. Subtle desert dust speckle grid */
+    radial-gradient(rgba(200, 150, 90, 0.035) 1px, transparent 1px),
+    /* 2. Very subtle western saloon timber plank seams (3-4% opacity) */
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 118px,
+      rgba(180, 125, 70, 0.02) 119px,
+      rgba(0, 0, 0, 0.45) 120px
+    ),
+    /* 3. Deep midnight frontier vignette */
+    radial-gradient(
+      circle at 50% 25%,
+      #14110e 0%,
+      #0c0a08 45%,
+      #060504 80%,
+      #020202 100%
+    );
+  background-size: 32px 32px, 120px 100%, 100% 100%;
+}
+
+/* Atmospheric saloon background ambient */
+.watch-saloon-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Very subtle warm dust haze in the center */
+.watch-ambient-glow {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(185, 130, 75, 0.08) 0%,
+    rgba(110, 70, 35, 0.03) 45%,
+    transparent 75%
+  );
+  filter: blur(60px);
+  pointer-events: none;
+  transition: transform 1.2s ease, background 1.2s ease, opacity 1.2s ease;
+}
+
+.watch-ambient-glow.settled {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: radial-gradient(
+    circle,
+    rgba(220, 155, 75, 0.15) 0%,
+    rgba(140, 85, 38, 0.06) 50%,
+    transparent 75%
+  );
+}
+
+/* Subtle floating western dust motes */
+@keyframes dustFloat {
+  0% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.45;
+  }
+  80% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-90px) translateX(25px);
+    opacity: 0;
+  }
+}
+
+.dust-mote {
+  position: absolute;
+  border-radius: 50%;
+  background: #d8b88c;
+  pointer-events: none;
+  box-shadow: 0 0 4px rgba(216, 184, 140, 0.5);
+  animation: dustFloat linear infinite;
+}
+
+/* Ceiling Mount Iron Pin */
+.watch-ceiling-mount {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #524130, #251c13 70%, #0d0a07);
+  border: 2px solid #634f3a;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.9),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15);
+  z-index: 20;
+}
+
+/* Skeleton Gear Keyframes */
+@keyframes balanceOscillate {
+  0% {
+    transform: rotate(-38deg);
+  }
+  50% {
+    transform: rotate(38deg);
+  }
+  100% {
+    transform: rotate(-38deg);
+  }
+}
+
+@keyframes gearRotateClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gearRotateCounter {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.balance-wheel {
+  transform-origin: 0px 0px;
+  animation: balanceOscillate 0.36s ease-in-out infinite;
+}
+
+.gear-drive-main {
+  transform-origin: 0px 0px;
+  animation: gearRotateClockwise 12s linear infinite;
+}
+
+.gear-escapement {
+  transform-origin: 0px 0px;
+  animation: gearRotateCounter 5s linear infinite;
+}
+
+/* Roman Numerals Western Styling */
+.roman-numeral-western {
+  font-family: "Cinzel", "Playfair Display", "Times New Roman", Georgia, serif;
+  font-weight: 700;
+  fill: #cbb18a;
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-size: 13.5px;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* =========================================================================
+   COMING SOON TYPOGRAPHY - VINTAGE WESTERN SERIF / DESERT DUST PALETTE
+========================================================================= */
+.coming-soon-letters-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 950px;
+  margin: 1.5rem auto 0;
+  padding: 0 1rem;
+  z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .coming-soon-letters-row {
+    gap: 1rem;
+  }
+}
+
+.coming-soon-char {
+  display: inline-block;
+  font-family: "Cinzel", "Playfair Display", "Georgia", serif;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: transform 0.25s ease-out,
+              color 0.35s ease,
+              text-shadow 0.35s ease,
+              opacity 0.35s ease,
+              filter 0.35s ease;
+  user-select: none;
+}
+
+/* Active illuminated state - 100% Radiant Golden Desert Warmth */
+.coming-soon-char.lit {
+  color: #fffaf0;
+  background: linear-gradient(180deg, #fffaeb 0%, #f5c464 42%, #b57822 80%, #633f17 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.1) translateY(-2px);
+  filter: drop-shadow(0 0 18px rgba(225, 160, 55, 0.75))
+          drop-shadow(0 0 36px rgba(150, 90, 25, 0.4));
+}
+
+/* Base comfortable reading state - smoothly gains brightness as pendulum settles */
+.coming-soon-char.dim {
+  color: #c9ab86;
+  background: linear-gradient(180deg, #e8d5bf 0%, #bda07b 45%, #7a5a36 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(0.98);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.85);
+}
+
+.coming-soon-space {
+  width: 0.8rem;
+}
+
+@media (min-width: 640px) {
+  .coming-soon-space {
+    width: 1.8rem;
+  }
+}

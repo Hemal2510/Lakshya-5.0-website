@@ -1,179 +1,217 @@
-import React from "react";
-
 import FireSealBadge from "../../components/teams/FireSealBadge.tsx";
 import TeamInfiniteScroll from "../../components/teams/TeamInfiniteScroll";
-import FireHexBadge from "../../components/teams/FireHexBadge";
 import TeamWheel from "../../components/teams/TeamWheel";
-import FuzzyText from "../../assets/FuzzyText";
 import { motion } from "framer-motion";
-import Background from "@/components/background/Background.tsx";
+import frontierBg from "@/assets/frontier-bg.webp";
+import "./team.css";
 
 import {
-    leadership,
-    heads,
-    coreMembers,
+  leadership,
+  heads,
+  coreMembers,
 } from "@/data/teamsData.ts";
 
-
-
-
 export default function Team() {
-    return (
+  return (
+    <div className="lk-team-page relative pointer-events-auto min-h-screen pb-24 overflow-x-hidden">
+      {/* =========================================================================
+          WESTERN FRONTIER ATMOSPHERIC BACKGROUND
+          Frontier panorama, light sweeps, grain texture, and drifting dust embers
+      ========================================================================= */}
+      <div className="lk-team-scene">
+        <img
+          src={frontierBg}
+          alt="Frontier Landscape"
+          className="lk-team-scene-image"
+        />
+      </div>
 
+      <div className="lk-team-atmosphere">
+        <div className="lk-team-light-sweep" />
+        {/* Floating Golden Dust Particles / Warm Embers */}
+        <div className="lk-team-dust" style={{ top: "18%", left: "14%", animationDelay: "0s" }} />
+        <div className="lk-team-dust" style={{ top: "32%", left: "82%", animationDelay: "3s" }} />
+        <div className="lk-team-dust" style={{ top: "55%", left: "22%", animationDelay: "6s" }} />
+        <div className="lk-team-dust" style={{ top: "72%", left: "75%", animationDelay: "1.5s" }} />
+        <div className="lk-team-dust" style={{ top: "86%", left: "38%", animationDelay: "4.5s" }} />
+      </div>
 
+      <div className="lk-team-grain" />
 
-        <div className="relative pointer-events-auto">
+      {/* =========================================================================
+          PAGE CONTENT CONTAINER
+      ========================================================================= */}
+      <main className="relative z-10 pt-[130px] sm:pt-[150px] max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center">
+        
+        {/* -----------------------------------------------------------------------
+            PAGE HEADER: WESTERN WOODCUT TYPOGRAPHY & RIBBON
+        ----------------------------------------------------------------------- */}
+        <motion.header
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center flex flex-col items-center max-w-4xl mb-12 sm:mb-16"
+        >
+          {/* Western Dispatch Ribbon */}
+          <div className="lk-western-ribbon mb-4">
+            <span className="text-[10.5px] sm:text-xs font-serif font-black tracking-[0.32em] text-[#e0b070] uppercase">
+              ★ ❖ THE FRONTIER LEADERSHIP OF LAKSHYA 5.0 ❖ ★
+            </span>
+          </div>
 
-            <Background />
+          {/* Grand Woodcut Title */}
+          <h1
+            className="lk-western-title text-[clamp(44px,7.5vw,84px)] leading-none"
+            style={{
+              fontFamily: "'Cinzel', 'Playfair Display', Georgia, serif",
+            }}
+          >
+            MEET THE TEAM
+          </h1>
 
-            <header className=" pb-[70px] pt-[180px] text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: -60 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                        duration: 0.8,
-                        ease: "easeOut",
-                    }}
-                    className="text-6xl font-bold text-white"
-                >
-                    <div className="mb-[22px] text-xs font-semibold tracking-[0.25em] text-[#ff7a3d]">
-                        THE ONES BEHIND LAKSHAYA
-                    </div>
+          {/* Western Star Divider */}
+          <div className="lk-western-divider">
+            <span className="lk-western-divider-line" />
+            <span className="lk-western-divider-star">✦</span>
+            <span className="text-xs font-serif tracking-[0.3em] text-[#e3b86d]/90 uppercase">
+              IIT INDORE
+            </span>
+            <span className="lk-western-divider-star">✦</span>
+            <span className="lk-western-divider-line right" />
+          </div>
 
-                    <h1
-                        className="bg-gradient-to-r from-[#e9e6df] from-0% via-[#e9e6df] via-40% to-[#ff4d4d] bg-clip-text text-[clamp(48px,9vw,96px)] font-extrabold leading-[1.05] tracking-[0.12em] text-transparent"
-                        style={{
-                            backgroundImage:
-                                "linear-gradient(90deg, #e9e6df 0%, #e9e6df 40%, #ffb15e 65%, #ff4d4d 100%)",
-                        }}
-                    >
+          <p className="text-xs sm:text-sm font-serif italic tracking-[0.24em] text-[#d49b55]/90 max-w-xl text-center">
+            — DRIVEN BY RELENTLESS PASSION, HONOR & UNRIVALED EXCELLENCE —
+          </p>
+        </motion.header>
 
-                        MEET THE
-                        TEAM
-                    </h1>
-                </motion.div>
+        {/* -----------------------------------------------------------------------
+            EXECUTIVE DIRECTORS / LEADERSHIP SECTION
+        ----------------------------------------------------------------------- */}
+        <section className="w-full flex flex-col items-center mb-20 sm:mb-24">
+          <div className="text-center mb-10">
+            <h2 className="lk-section-heading text-lg sm:text-2xl">
+              EXECUTIVE LEADERSHIP
+            </h2>
+            <div className="lk-western-divider my-2">
+              <span className="lk-western-divider-line" />
+              <span className="lk-western-divider-star">★</span>
+              <span className="lk-western-divider-line right" />
+            </div>
+            <p className="text-[11px] sm:text-xs font-serif italic tracking-[0.2em] text-[#d49b55]/80 uppercase">
+              — COMMANDING CENTRAL INDIA'S LARGEST SPORTS FESTIVAL —
+            </p>
+          </div>
 
+          {/* Overall Coordinator & Co-Overall Coordinator */}
+          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-14 items-start justify-items-center max-w-4xl mb-12 sm:mb-14">
+            {/* Overall Coordinator */}
+            <div className="flex flex-col items-center">
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="h-px w-6 bg-gradient-to-r from-transparent to-[#e3b86d]" />
+                <span className="text-xs sm:text-sm font-serif font-black tracking-[0.24em] text-[#ffe4aa] uppercase">
+                  OVERALL COORDINATOR
+                </span>
+                <span className="h-px w-6 bg-gradient-to-l from-transparent to-[#e3b86d]" />
+              </div>
+              <FireSealBadge
+                {...leadership.overallCoordinator}
+                scale={1}
+                eyebrow="OVERALL COORDINATOR"
+              />
+            </div>
 
-                <div className="mt-[50px] mb-[50px] grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Co-Overall Coordinator */}
+            <div className="flex flex-col items-center">
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="h-px w-6 bg-gradient-to-r from-transparent to-[#e3b86d]" />
+                <span className="text-xs sm:text-sm font-serif font-black tracking-[0.24em] text-[#ffe4aa] uppercase">
+                  CO-OVERALL COORDINATOR
+                </span>
+                <span className="h-px w-6 bg-gradient-to-l from-transparent to-[#e3b86d]" />
+              </div>
+              <FireSealBadge
+                {...leadership.coOverallCoordinator}
+                scale={1}
+                eyebrow="CO-OVERALL COORDINATOR"
+              />
+            </div>
+          </div>
 
-                    {/* Overall Coordinator */}
-                    <div className="flex flex-col items-center">
-                        <FuzzyText
-                            baseIntensity={0.1}
-                            hoverIntensity={0.2}
-                            enableHover
-                            fontSize={40}
-                        >
-                            OVERALL COORDINATOR
-                        </FuzzyText>
+          {/* General Secretary of Sports */}
+          <div className="w-full flex flex-col items-center justify-center">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#e3b86d]" />
+              <span className="text-xs sm:text-sm font-serif font-black tracking-[0.24em] text-[#ffe4aa] uppercase">
+                GENERAL SECRETARY OF SPORTS
+              </span>
+              <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#e3b86d]" />
+            </div>
+            <FireSealBadge
+              {...leadership.generalSecretary}
+              scale={1}
+              eyebrow="GENERAL SECRETARY"
+            />
+          </div>
+        </section>
 
-                        <div className="mt-10">
-                            <FireSealBadge
-                                eyebrow="LAKSHAYA · 2026"
-                                {...leadership.overallCoordinator}
-                                scale={0.8}
-                            />
-                        </div>
-                    </div>
+        {/* -----------------------------------------------------------------------
+            HEADS OF COMMITTEES (TeamWheel - No Center Logo, Zero Overlap, Burnt Edges)
+        ----------------------------------------------------------------------- */}
+        <section className="w-full flex flex-col items-center justify-center mb-20 sm:mb-28">
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="lk-section-heading text-xl sm:text-3xl">
+              HEADS OF COMMITTEES
+            </h2>
+            <div className="lk-western-divider my-2">
+              <span className="lk-western-divider-line" />
+              <span className="lk-western-divider-star">✥</span>
+              <span className="lk-western-divider-line right" />
+            </div>
+            <p className="text-[11px] sm:text-xs font-serif italic tracking-[0.22em] text-[#d49b55]/85 uppercase">
+              — DIRECTING COMMITTEES & FRONTIER OPERATIONS —
+            </p>
+          </div>
 
-                    {/* Co-Overall Coordinator */}
-                    <div className="flex flex-col items-center">
-                        <FuzzyText
-                            baseIntensity={0.1}
-                            hoverIntensity={0.2}
-                            enableHover
-                            fontSize={40}
-                        >
-                            CO-OVERALL COORDINATOR
-                        </FuzzyText>
+          {/* The Spaced Wheel (Desktop Circular Wheel / Mobile Staggered Grid) */}
+          <div className="w-full overflow-x-auto overflow-y-visible flex justify-center py-4">
+            <TeamWheel
+              members={heads}
+              radius={500}
+              badgeScale={1.05}
+              size={1350}
+            />
+          </div>
+        </section>
 
-                        <div className="mt-10">
-                            <FireSealBadge
-                                eyebrow="LAKSHAYA · 2026"
-                                {...leadership.coOverallCoordinator}
-                                scale={0.8}
-                            />
-                        </div>
-                    </div>
+        {/* -----------------------------------------------------------------------
+            CORE COMMITTEE SECTION (Infinite Marquee)
+        ----------------------------------------------------------------------- */}
+        {coreMembers && coreMembers.length > 0 && (
+          <section className="w-full flex flex-col items-center justify-center mb-12">
+            <div className="text-center mb-8">
+              <h2 className="lk-section-heading text-xl sm:text-3xl">
+                CORE TEAM MEMBERS
+              </h2>
+              <div className="lk-western-divider my-2">
+                <span className="lk-western-divider-line" />
+                <span className="lk-western-divider-star">✥</span>
+                <span className="lk-western-divider-line right" />
+              </div>
+              <p className="text-[11px] sm:text-xs font-serif italic tracking-[0.22em] text-[#d49b55]/85 uppercase">
+                — THE PILLARS OF EXCELLENCE & DEDICATION —
+              </p>
+            </div>
 
+            <TeamInfiniteScroll
+              members={coreMembers}
+              speed={45}
+              cardScale={0.92}
+            />
+          </section>
+        )}
 
-
-                </div>
-
-                {/* General Secretary of Sports */}
-                <div className="w-full flex flex-col items-center justify-center mb-[60px]">
-
-                    <FuzzyText
-                        baseIntensity={0.1}
-                        hoverIntensity={0.2}
-                        enableHover
-                        fontSize={36}
-                    >
-                        GENERAL SECRETARY OF SPORTS
-                    </FuzzyText>
-
-                    <div className="mt-10">
-                        <FireSealBadge
-                            eyebrow="LAKSHAYA · 2026"
-                            {...leadership.generalSecretary}
-                            scale={0.8}
-                        />
-                    </div>
-
-                </div>
-
-                <div className="flex justify-center mt-[50px] mb-[200px]">
-
-                    <FuzzyText
-                        baseIntensity={0.1}
-                        hoverIntensity={0.2}
-                        enableHover
-                        fontSize={40}
-                    >
-
-
-                        HEADS
-
-
-
-                    </FuzzyText>
-                </div>
-                <TeamWheel members={heads} centerImage="../../assets/lakshya-flame.jpg" radius={400} badgeScale={0.7} />
-
-                <div className="flex justify-center mt-[50px] mb-[50px]">
-
-                    <FuzzyText
-                        baseIntensity={0.1}
-                        hoverIntensity={0.2}
-                        enableHover
-                        fontSize={40}
-                    >
-
-
-                        CORE MEMBERS
-
-
-
-                    </FuzzyText>
-                </div>
-                <TeamInfiniteScroll members={coreMembers} speed={40} cardScale={0.8} />;
-
-
-
-
-
-
-            </header>
-
-
-
-
-
-
-        </div >
-
-
-
-    );
+      </main>
+    </div>
+  );
 }
-

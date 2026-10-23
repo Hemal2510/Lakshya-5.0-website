@@ -1,0 +1,1039 @@
+/* Lakshya frontier hero. All selectors are namespaced to avoid altering your navbar or other sections. */
+.lkh-hero {
+  --lkh-gold: #e3b86d;
+  --lkh-gold-bright: #ffe4aa;
+  --lkh-ink: #080a0c;
+  --lkh-paper: #ddc79c;
+  --lkh-paper-shadow: #a38353;
+  position: relative;
+  isolation: isolate;
+  min-height: max(800px, 100svh);
+  overflow: hidden;
+  color: #f6edda;
+  background: #080b10;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.lkh-hero *, .lkh-hero *::before, .lkh-hero *::after { box-sizing: border-box; }
+.lkh-hero a { color: inherit; text-decoration: none; }
+
+/* The image is a real <img>, not a CSS background. Transforming it makes the slow camera move visible. */
+.lkh-scene {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #080b10;
+}
+.lkh-scene-image {
+  position: absolute;
+  top: -7%;
+  left: -7%;
+  width: 114%;
+  height: 114%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 53%;
+  filter: brightness(.83) saturate(.88) contrast(1.06);
+  transform: translate3d(-1.2%, .3%, 0) scale(1.06);
+  transform-origin: center;
+  animation: lkh-camera-drift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.lkh-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(4, 7, 11, .97) 0%, rgba(4, 7, 11, .91) 23%, rgba(4, 7, 11, .67) 42%, rgba(4, 7, 11, .20) 68%, rgba(4, 7, 11, .08) 100%),
+    linear-gradient(0deg, rgba(4, 6, 8, .96) 0%, rgba(4, 6, 8, .40) 25%, rgba(4, 6, 8, .02) 58%, rgba(4, 6, 8, .48) 100%);
+}
+.lkh-atmosphere {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.lkh-light-sweep {
+  position: absolute;
+  inset: 0;
+  opacity: .5;
+  background: linear-gradient(108deg, transparent 28%, rgba(255, 183, 91, .025) 39%, rgba(255, 193, 109, .13) 49%, rgba(255, 179, 83, .025) 58%, transparent 68%);
+  background-size: 230% 100%;
+  animation: lkh-light-sweep 17s ease-in-out infinite;
+}
+.lkh-atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .15;
+  background-image: radial-gradient(rgba(255, 238, 198, .36) .55px, transparent .8px);
+  background-size: 4px 4px;
+  mix-blend-mode: soft-light;
+}
+.lkh-dust {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ffd89c;
+  box-shadow: 0 0 9px 2px rgba(255, 179, 80, .32);
+  opacity: 0;
+  animation: lkh-dust-drift 12s linear infinite;
+}
+.lkh-dust-1 { left: 10%; top: 77%; animation-delay: -2s; }
+.lkh-dust-2 { left: 26%; top: 62%; animation-delay: -7s; transform: scale(.65); }
+.lkh-dust-3 { left: 42%; top: 85%; animation-delay: -4s; }
+.lkh-dust-4 { left: 56%; top: 71%; animation-delay: -9s; transform: scale(.7); }
+.lkh-dust-5 { left: 69%; top: 43%; animation-delay: -5s; }
+.lkh-dust-6 { left: 81%; top: 67%; animation-delay: -10s; transform: scale(.8); }
+.lkh-dust-7 { left: 35%; top: 37%; animation-delay: -1s; transform: scale(.6); }
+.lkh-dust-8 { left: 90%; top: 33%; animation-delay: -6s; }
+
+.lkh-hero-inner {
+  position: relative;
+  z-index: 3;
+  width: min(88%, 1440px);
+  min-height: max(800px, 100svh);
+  margin: 0 auto;
+  padding: clamp(118px, 15vh, 168px) 0 30px;
+}
+.lkh-hero-copy {
+  width: min(100%, 790px);
+  padding-bottom: 265px;
+}
+.lkh-hero-emblem {
+  display: block;
+  width: auto;
+  height: 56px;
+  max-width: 75px;
+  object-fit: contain;
+  object-position: left center;
+  margin: 0 0 14px;
+  filter: drop-shadow(0 0 18px rgba(83, 153, 255, .22));
+}
+.lkh-edition-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  max-width: 100%;
+  padding: 10px 15px;
+  border: 1px solid rgba(227, 184, 109, .74);
+  border-radius: 999px;
+  background: rgba(13, 12, 11, .58);
+  color: #f5d292;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, .19);
+  backdrop-filter: blur(7px);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+.lkh-edition-badge > span:first-child,
+.lkh-edition-badge > span:last-child { color: var(--lkh-gold-bright); }
+.lkh-overline {
+  margin: 25px 0 13px;
+  color: #d9b575;
+  font: 700 11px/1.4 Arial, Helvetica, sans-serif;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+}
+.lkh-title {
+  max-width: 790px;
+  margin: 0;
+  color: #f3e5c7;
+  font: 900 clamp(59px, 7.1vw, 108px)/.84 Georgia, "Times New Roman", serif;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+  text-shadow: 0 3px 0 rgba(77, 52, 27, .9), 0 8px 28px rgba(0, 0, 0, .8);
+}
+.lkh-title > span { display: block; }
+.lkh-title .lkh-title-gold {
+  margin-top: 9px;
+  color: #d7a85c;
+  background: linear-gradient(180deg, #fff0c9 0%, #dfb56e 48%, #93602b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 1px rgba(10, 7, 4, .8));
+}
+.lkh-title .lkh-period { display: inline; }
+.lkh-title-rule {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: min(100%, 420px);
+  margin: 22px 0 17px;
+  color: var(--lkh-gold);
+}
+.lkh-title-rule span { height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(227, 184, 109, .8)); }
+.lkh-title-rule span:last-child { background: linear-gradient(90deg, rgba(227, 184, 109, .8), transparent); }
+.lkh-title-rule b { font-size: 13px; font-weight: 400; }
+.lkh-description {
+  max-width: 475px;
+  margin: 0;
+  color: rgba(247, 239, 222, .85);
+  font: 16px/1.75 Georgia, "Times New Roman", serif;
+  letter-spacing: .015em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .9);
+}
+.lkh-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.lkh-action {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  padding: 0 19px;
+  border: 1px solid rgba(179, 130, 60, .86);
+  border-radius: 2px;
+  font: 800 10px/1 Arial, Helvetica, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: transform .22s ease, filter .22s ease, background-color .22s ease;
+}
+.lkh-action span { font-size: 16px; line-height: 1; }
+.lkh-action-primary { color: #21170b !important; background: linear-gradient(180deg, #f1ce88, #bf8b43); box-shadow: 0 8px 23px rgba(0, 0, 0, .25); }
+.lkh-action-secondary { color: #f1d29a !important; background: rgba(8, 9, 10, .44); border-color: rgba(226, 183, 107, .56); }
+.lkh-action:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.lkh-action:focus-visible { outline: 2px solid #ffe6b2; outline-offset: 4px; }
+
+.lkh-countdown {
+  position: absolute;
+  left: 0;
+  bottom: 27px;
+  width: min(645px, 58vw);
+}
+.lkh-countdown-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px;
+  color: #f2cc83;
+  text-align: center;
+  text-shadow: 0 2px 8px #000;
+}
+.lkh-countdown-heading p {
+  margin: 0;
+  font: 800 10px/1.4 Arial, Helvetica, sans-serif;
+  letter-spacing: .2em;
+  white-space: nowrap;
+}
+.lkh-countdown-heading > span { font-size: 13px; }
+.lkh-countdown-heading::before,
+.lkh-countdown-heading::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(227, 184, 109, .7)); }
+.lkh-countdown-heading::after { background: linear-gradient(90deg, rgba(227, 184, 109, .7), transparent); }
+.lkh-poster-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; gap: 11px; }
+.lkh-poster {
+  --lkh-poster-tilt: 0deg;
+  isolation: isolate;
+  position: relative;
+  display: flex;
+  min-height: 183px;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 12px 8px 9px;
+  border: 1px solid rgba(54, 36, 17, .9);
+  color: #2e2113;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 18% 11%, rgba(255, 251, 222, .62), transparent 47%),
+    radial-gradient(ellipse at 89% 92%, rgba(108, 73, 35, .2), transparent 58%),
+    repeating-linear-gradient(2deg, rgba(65, 45, 22, .035) 0 1px, transparent 1px 5px),
+    linear-gradient(138deg, #e9d9b3 0%, #d6bd8e 65%, #bd9b68 100%);
+  box-shadow: inset 0 0 0 3px rgba(64, 43, 22, .13), inset 0 0 0 5px rgba(255, 236, 190, .3), 0 10px 26px rgba(0, 0, 0, .35);
+  transform: rotate(var(--lkh-poster-tilt));
+}
+.lkh-poster:nth-child(1) { --lkh-poster-tilt: -1deg; }
+.lkh-poster:nth-child(2) { --lkh-poster-tilt: .65deg; }
+.lkh-poster:nth-child(3) { --lkh-poster-tilt: -.35deg; }
+.lkh-poster:nth-child(4) { --lkh-poster-tilt: .85deg; }
+.lkh-poster-frame { position: absolute; z-index: -1; inset: 8px; border: 1px solid rgba(46, 31, 17, .5); pointer-events: none; }
+.lkh-poster::after { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .16; background-image: repeating-linear-gradient(23deg, transparent 0 9px, rgba(51, 34, 18, .26) 10px, transparent 11px 19px); pointer-events: none; }
+.lkh-poster-kicker { margin: 1px 0 5px; font: 900 11px/1 Arial, Helvetica, sans-serif; letter-spacing: .22em; }
+.lkh-poster-name { margin: 0; font: 900 11px/1.25 Georgia, "Times New Roman", serif; letter-spacing: .08em; }
+.lkh-poster-stars { margin: 7px 0 6px; font-size: 8px; letter-spacing: .18em; }
+.lkh-poster-number {
+  display: flex;
+  width: 100%;
+  min-height: 55px;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  padding: 4px 0 3px;
+  border-top: 1px solid rgba(46, 33, 19, .42);
+  border-bottom: 1px solid rgba(46, 33, 19, .42);
+  color: #271a0e;
+  font: 900 clamp(35px, 4.2vw, 57px)/1 Georgia, "Times New Roman", serif;
+  letter-spacing: -.065em;
+  font-variant-numeric: tabular-nums;
+}
+.lkh-digit { display: inline-block; min-width: .53em; animation: lkh-digit-stamp .3s cubic-bezier(.2,.8,.2,1) both; }
+.lkh-poster-unit { margin: 7px 0 0; font: 900 10px/1 Arial, Helvetica, sans-serif; letter-spacing: .17em; }
+.lkh-poster-divider { display: flex; align-items: center; width: 90%; gap: 5px; margin-top: auto; padding-top: 7px; color: rgba(53, 35, 16, .68); }
+.lkh-poster-divider::before, .lkh-poster-divider::after { content: ""; height: 1px; flex: 1; background: rgba(53, 35, 16, .28); }
+.lkh-poster-divider span { font-size: 8px; }
+.lkh-poster-footer { margin: 4px 0 0; font: 800 6px/1.2 Arial, Helvetica, sans-serif; letter-spacing: .09em; opacity: .72; }
+.lkh-countdown-footnote { margin: 11px 0 0; color: rgba(243, 218, 171, .68); text-align: center; font: 700 8px/1.4 Arial, Helvetica, sans-serif; letter-spacing: .2em; text-shadow: 0 2px 8px #000; }
+.lkh-scroll-cue { position: absolute; z-index: 4; right: 3.5%; bottom: 44px; display: flex; align-items: center; gap: 10px; color: rgba(247, 225, 186, .68); writing-mode: vertical-rl; font: 700 8px/1 Arial, Helvetica, sans-serif; letter-spacing: .2em; }
+.lkh-scroll-cue i { display: block; width: 1px; height: 42px; background: linear-gradient(var(--lkh-gold), transparent); }
+
+.lkh-reveal { opacity: 0; transform: translateY(15px); animation: lkh-reveal-in .72s cubic-bezier(.2, .7, .2, 1) forwards; }
+.lkh-delay-1 { animation-delay: .12s; }
+.lkh-delay-2 { animation-delay: .24s; }
+.lkh-delay-3 { animation-delay: .36s; }
+.lkh-delay-4 { animation-delay: .48s; }
+
+@keyframes lkh-camera-drift {
+  0% { transform: translate3d(-1.6%, .7%, 0) scale(1.07); }
+  100% { transform: translate3d(1.4%, -.9%, 0) scale(1.19); }
+}
+@keyframes lkh-light-sweep {
+  0%, 64% { background-position: 135% 0; }
+  100% { background-position: -70% 0; }
+}
+@keyframes lkh-dust-drift {
+  0% { transform: translate3d(0, 35px, 0) scale(.8); opacity: 0; }
+  18% { opacity: .72; }
+  80% { opacity: .3; }
+  100% { transform: translate3d(32px, -135px, 0) scale(1.05); opacity: 0; }
+}
+@keyframes lkh-reveal-in { to { opacity: 1; transform: translateY(0); } }
+@keyframes lkh-digit-stamp {
+  0% { opacity: .2; transform: translateY(-7px) scale(1.04); filter: blur(1px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@media (max-width: 1100px) {
+  .lkh-hero-inner { width: 90%; }
+  .lkh-hero-copy { width: min(100%, 700px); }
+  .lkh-countdown { width: min(610px, 67vw); }
+  .lkh-title { font-size: clamp(58px, 7.4vw, 88px); }
+  .lkh-scroll-cue { display: none; }
+}
+@media (max-width: 760px) {
+  .lkh-hero { min-height: 0; }
+  .lkh-scene-image {
+    top: -3%; left: -25%; width: 150%; height: 106%;
+    object-position: 70% center;
+    filter: brightness(.72) saturate(.9) contrast(1.08);
+    animation-duration: 34s;
+  }
+  .lkh-shade {
+    background:
+      linear-gradient(90deg, rgba(4, 7, 11, .93) 0%, rgba(4, 7, 11, .75) 47%, rgba(4, 7, 11, .28) 100%),
+      linear-gradient(0deg, rgba(4, 6, 8, .98) 0%, rgba(4, 6, 8, .55) 30%, rgba(4, 6, 8, .22) 72%, rgba(4, 6, 8, .5) 100%);
+  }
+  .lkh-hero-inner { width: calc(100% - 34px); min-height: 100svh; padding: clamp(105px, 13vh, 138px) 0 25px; }
+  .lkh-hero-copy { width: 100%; padding-bottom: 0; }
+  .lkh-hero-emblem { height: 42px; max-width: 58px; margin-bottom: 11px; }
+  .lkh-edition-badge { padding: 8px 10px; gap: 7px; font-size: 8px; letter-spacing: .09em; }
+  .lkh-overline { margin: 23px 0 12px; font-size: 9px; letter-spacing: .18em; }
+  .lkh-title { font-size: clamp(47px, 12.3vw, 78px); line-height: .9; }
+  .lkh-title .lkh-title-gold { margin-top: 7px; }
+  .lkh-title-rule { margin: 17px 0 12px; }
+  .lkh-description { max-width: 390px; font-size: 14px; line-height: 1.58; }
+  .lkh-actions { gap: 8px; margin-top: 18px; }
+  .lkh-action { min-height: 42px; gap: 9px; padding: 0 12px; font-size: 9px; letter-spacing: .08em; }
+  .lkh-countdown { position: relative; left: auto; bottom: auto; width: 100%; margin: 35px auto 0; }
+  .lkh-countdown-heading { gap: 7px; margin-bottom: 10px; }
+  .lkh-countdown-heading p { font-size: 8px; letter-spacing: .12em; }
+  .lkh-countdown-heading > span { font-size: 10px; }
+  .lkh-poster-row { gap: 6px; }
+  .lkh-poster { min-height: 154px; padding: 10px 4px 8px; }
+  .lkh-poster-frame { inset: 6px; }
+  .lkh-poster-kicker { font-size: 8px; letter-spacing: .15em; }
+  .lkh-poster-name { font-size: clamp(7px, 2.1vw, 10px); letter-spacing: .04em; }
+  .lkh-poster-stars { margin: 5px 0; font-size: 6px; letter-spacing: .12em; }
+  .lkh-poster-number { min-height: 44px; font-size: clamp(27px, 8.6vw, 39px); }
+  .lkh-poster-unit { margin-top: 6px; font-size: 8px; letter-spacing: .1em; }
+  .lkh-poster-divider { padding-top: 5px; }
+  .lkh-poster-footer { font-size: 5px; letter-spacing: .02em; }
+  .lkh-countdown-footnote { margin-top: 9px; font-size: 7px; letter-spacing: .14em; }
+}
+@media (max-width: 370px) {
+  .lkh-hero-inner { width: calc(100% - 26px); }
+  .lkh-edition-badge { font-size: 7px; gap: 5px; }
+  .lkh-title { font-size: clamp(43px, 12vw, 48px); }
+  .lkh-description { font-size: 13px; }
+  .lkh-action { min-height: 40px; padding: 0 9px; font-size: 8px; }
+  .lkh-poster-row { gap: 4px; }
+  .lkh-poster { padding-left: 3px; padding-right: 3px; }
+  .lkh-poster-name { font-size: 7px; }
+  .lkh-poster-footer { font-size: 4.5px; }
+}
+@media (min-width: 761px) and (max-height: 820px) {
+  .lkh-hero, .lkh-hero-inner { min-height: 850px; }
+  .lkh-hero-inner { padding-top: 110px; }
+  .lkh-hero-copy { padding-bottom: 245px; }
+  .lkh-title { font-size: clamp(56px, 6.5vw, 85px); }
+  .lkh-countdown { bottom: 23px; }
+  .lkh-poster { min-height: 165px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lkh-scene-image, .lkh-light-sweep, .lkh-dust, .lkh-reveal, .lkh-digit { animation: none !important; }
+  .lkh-scene-image { transform: scale(1.08); }
+  .lkh-reveal { opacity: 1; transform: none; }
+  .lkh-action { transition: none; }
+}
+
+/* ============================================
+   LAKSHYA 5.0 — PREMIUM WESTERN WORDMARK
+   ============================================ */
+
+.lkh-brand-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: clamp(10px, 1vw, 18px);
+  width: fit-content;
+  max-width: 100%;
+  margin: 12px 0 8px;
+  line-height: 1.15;
+}
+
+/* Main LAKSHYA lettering */
+.lkh-brand-name {
+  font-family: "Alfa Slab One", Rockwell, Georgia, serif;
+  font-size: clamp(3.1rem, 6.2vw, 6.8rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.14;
+
+  /* Antique gold metal */
+  background: linear-gradient(
+    180deg,
+    #fff3c9 0%,
+    #e9c77c 13%,
+    #b77932 30%,
+    #fbe7ad 43%,
+    #d4a14c 54%,
+    #87511f 75%,
+    #e2b766 91%,
+    #fff0bd 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* Engraved edge and raised lettering */
+  -webkit-text-stroke: 0.8px #633d19;
+  paint-order: stroke fill;
+
+  text-shadow:
+    0 1px 0 #fff0bd,
+    0 3px 0 #976227,
+    0 5px 0 #4b2d14,
+    0 8px 12px rgb(0 0 0 / 75%);
+
+  filter: drop-shadow(0 0 12px rgb(210 157 68 / 10%));
+}
+
+/* Separate, refined edition number */
+.lkh-brand-version {
+  display: inline-block;
+  position: relative;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(1.8rem, 2.8vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  color: #e6bd70;
+
+  padding-left: 0.22em;
+  border-left: 1px solid rgb(222 172 89 / 75%);
+
+  text-shadow:
+    0 1px 0 #fff0bc,
+    0 3px 0 #8e5c25,
+    0 5px 10px rgb(0 0 0 / 75%);
+}
+
+/* Ornamental separator */
+.lkh-brand-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(100%, 440px);
+  margin: 16px 0 10px;
+  color: #dcb061;
+}
+
+.lkh-brand-divider span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #8b5c29,
+    #e0b15f,
+    #66421e
+  );
+}
+
+.lkh-brand-divider b {
+  font-size: 13px;
+  font-weight: 400;
+  text-shadow: 0 0 8px rgb(216 166 81 / 25%);
+}
+
+/* Slogan beneath the main wordmark */
+.lkh-brand-tagline {
+  margin: 0 0 20px;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(0.78rem, 1.25vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  line-height: 1.8;
+  color: #f0d7a3;
+
+  text-shadow: 0 2px 8px rgb(0 0 0 / 90%);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .lkh-brand-title {
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .lkh-brand-name {
+    font-size: clamp(2.4rem, 10vw, 3.8rem);
+    letter-spacing: -0.045em;
+  }
+
+  .lkh-brand-version {
+    font-size: 1.5rem;
+    padding-left: 0.18em;
+  }
+
+  .lkh-brand-divider {
+    margin: 12px 0 8px;
+  }
+
+  .lkh-brand-tagline {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+}
+
+/* Shift the hero content slightly right for a more balanced layout */
+@media (min-width: 1024px) {
+  .lkh-hero-inner {
+    transform: translateX(clamp(24px, 3vw, 56px));
+  }
+}
+
+/* Smaller adjustment on tablets */
+@media (min-width: 601px) and (max-width: 1023px) {
+  .lkh-hero-inner {
+    transform: translateX(20px);
+  }
+}
+
+/* Keep the content comfortable on mobile */
+@media (max-width: 600px) {
+  .lkh-hero-inner {
+    transform: none;
+  }
+}
+
+/* ============================================
+   LAKSHYA FRONTIER — ATMOSPHERIC LEFT SIDE
+   Paste at the bottom of HeroSection.css
+   ============================================ */
+
+.lkh-hero {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Keep the effects behind the hero text */
+.lkh-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Soft amber haze drifting through the dark space */
+.lkh-atmosphere::before {
+  content: "";
+  position: absolute;
+  left: -18%;
+  top: 4%;
+  width: 78%;
+  height: 90%;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at 28% 35%,
+      rgb(165 104 37 / 12%),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 54% 66%,
+      rgb(213 161 75 / 8%),
+      transparent 48%
+    );
+
+  filter: blur(28px);
+  opacity: 0.8;
+  animation: lkh-frontier-haze 23s ease-in-out infinite alternate;
+}
+
+/* Faint engraved map contours and scattered glints */
+.lkh-atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: -4% 25% -4% -8%;
+
+  background-image:
+    repeating-radial-gradient(
+      ellipse at 24% 48%,
+      transparent 0 32px,
+      rgb(221 177 104 / 5%) 33px 34px,
+      transparent 35px 58px
+    ),
+    radial-gradient(
+      circle at 11% 22%,
+      rgb(255 215 137 / 90%) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 32% 31%,
+      rgb(255 206 116 / 75%) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 17% 72%,
+      rgb(255 211 130 / 80%) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 47% 58%,
+      rgb(255 207 119 / 65%) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 38% 84%,
+      rgb(255 218 149 / 65%) 0 1px,
+      transparent 2px
+    );
+
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+
+  opacity: 0.42;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 48%,
+    transparent 95%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 48%,
+    transparent 95%
+  );
+
+  animation: lkh-frontier-map-drift 38s ease-in-out infinite alternate;
+}
+
+/* Existing particles become subtle floating embers */
+.lkh-atmosphere .lkh-dust {
+  position: absolute;
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #f4cb7d;
+
+  box-shadow:
+    0 0 5px 1px rgb(238 187 93 / 28%),
+    0 0 12px rgb(232 170 69 / 14%);
+
+  opacity: 0;
+  animation: lkh-ember-rise var(--ember-duration, 14s) linear infinite;
+}
+
+/* Spread the particles across the left side */
+.lkh-atmosphere .lkh-dust-1 {
+  left: 9%;
+  top: 68%;
+  --ember-duration: 14s;
+  animation-delay: -7s;
+}
+
+.lkh-atmosphere .lkh-dust-2 {
+  left: 24%;
+  top: 79%;
+  --ember-duration: 17s;
+  animation-delay: -12s;
+}
+
+.lkh-atmosphere .lkh-dust-3 {
+  left: 39%;
+  top: 56%;
+  --ember-duration: 12s;
+  animation-delay: -4s;
+}
+
+.lkh-atmosphere .lkh-dust-4 {
+  left: 15%;
+  top: 39%;
+  --ember-duration: 19s;
+  animation-delay: -15s;
+}
+
+.lkh-atmosphere .lkh-dust-5 {
+  left: 46%;
+  top: 73%;
+  --ember-duration: 16s;
+  animation-delay: -9s;
+}
+
+.lkh-atmosphere .lkh-dust-6 {
+  left: 30%;
+  top: 23%;
+  --ember-duration: 18s;
+  animation-delay: -6s;
+}
+
+.lkh-atmosphere .lkh-dust-7 {
+  left: 6%;
+  top: 51%;
+  --ember-duration: 15s;
+  animation-delay: -11s;
+}
+
+.lkh-atmosphere .lkh-dust-8 {
+  left: 43%;
+  top: 35%;
+  --ember-duration: 20s;
+  animation-delay: -17s;
+}
+
+@keyframes lkh-frontier-haze {
+  0% {
+    transform: translate3d(-2%, 1%, 0) scale(0.94);
+    opacity: 0.45;
+  }
+
+  100% {
+    transform: translate3d(7%, -3%, 0) scale(1.08);
+    opacity: 0.85;
+  }
+}
+
+@keyframes lkh-frontier-map-drift {
+  0% {
+    transform: translate3d(-1%, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(1.5%, -1%, 0) scale(1.025);
+  }
+}
+
+@keyframes lkh-ember-rise {
+  0% {
+    transform: translate3d(0, 25px, 0) scale(0.65);
+    opacity: 0;
+  }
+
+  22% {
+    opacity: 0.55;
+  }
+
+  72% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translate3d(24px, -105px, 0) scale(1.15);
+    opacity: 0;
+  }
+}
+
+/* Make sure your text remains sharp and readable */
+.lkh-hero-inner {
+  position: relative;
+  z-index: 3;
+}
+
+/* Reduce motion for visitors who request it */
+@media (prefers-reduced-motion: reduce) {
+  .lkh-atmosphere::before,
+  .lkh-atmosphere::after,
+  .lkh-atmosphere .lkh-dust {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   WESTERN BULLET IMPACTS
+   Replaces the ambient glow and map contours
+   ============================================ */
+
+/* Remove the previous glow and contour overlays */
+.lkh-atmosphere::before,
+.lkh-atmosphere::after {
+  display: none !important;
+}
+
+/* Keep the decorations behind the hero text */
+.lkh-atmosphere {
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lkh-hero-inner {
+  position: relative;
+  z-index: 3;
+}
+
+/* Individual bullet-impact marks */
+.lkh-bullet-hole {
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  opacity: 0.68;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle,
+      #030303 0 12%,
+      #100e0b 15% 25%,
+      rgb(181 155 114 / 50%) 27% 30%,
+      rgb(0 0 0 / 85%) 33% 43%,
+      transparent 65%
+    );
+
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 70%));
+}
+
+/* Irregular chipped edges and impact fractures */
+.lkh-bullet-hole::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+
+  background: conic-gradient(
+    from 8deg,
+    transparent 0deg 23deg,
+    rgb(0 0 0 / 80%) 24deg 28deg,
+    transparent 29deg 72deg,
+    rgb(172 139 91 / 35%) 73deg 76deg,
+    transparent 77deg 133deg,
+    rgb(0 0 0 / 85%) 134deg 140deg,
+    transparent 141deg 207deg,
+    rgb(184 151 100 / 35%) 208deg 212deg,
+    transparent 213deg 286deg,
+    rgb(0 0 0 / 80%) 287deg 293deg,
+    transparent 294deg 360deg
+  );
+
+  -webkit-mask: radial-gradient(
+    circle,
+    transparent 0 25%,
+    #000 32% 62%,
+    transparent 72%
+  );
+
+  mask: radial-gradient(
+    circle,
+    transparent 0 25%,
+    #000 32% 62%,
+    transparent 72%
+  );
+}
+
+/* Tiny brass-colored fragments beside the impact */
+.lkh-bullet-hole::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  top: 0;
+  right: -8px;
+  border-radius: 50%;
+
+  background: #c4a16a;
+  box-shadow:
+    -18px 8px 0 -0.5px rgb(174 137 79 / 70%),
+    12px 25px 0 -1px rgb(174 137 79 / 55%),
+    -9px -7px 0 -1px rgb(211 179 124 / 65%);
+}
+
+/* Keep the marks away from the central text block */
+.lkh-bullet-hole-1 {
+  left: 3.8%;
+  top: 37%;
+  transform: rotate(-14deg) scale(0.9);
+}
+
+.lkh-bullet-hole-2 {
+  left: 44%;
+  top: 47%;
+  transform: rotate(22deg) scale(1.08);
+}
+
+.lkh-bullet-hole-3 {
+  left: 4%;
+  top: 67%;
+  transform: rotate(-27deg) scale(0.76);
+}
+
+.lkh-bullet-hole-4 {
+  left: 46%;
+  top: 62%;
+  transform: rotate(11deg) scale(0.8);
+}
+
+/* Less decoration on smaller screens */
+@media (max-width: 700px) {
+  .lkh-bullet-hole {
+    opacity: 0.42;
+    transform: scale(0.68);
+  }
+
+  .lkh-bullet-hole-2,
+  .lkh-bullet-hole-4 {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lkh-atmosphere .lkh-dust,
+  .lkh-atmosphere .lkh-light-sweep {
+    animation: none !important;
+  }
+}
+
+/* Large, weathered Western medallion */
+.lkh-western-seal {
+  position: absolute;
+  left: -125px;
+  top: 51%;
+  width: clamp(220px, 19vw, 310px);
+  aspect-ratio: 1;
+  border: 1px solid rgb(210 170 101 / 22%);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 9px rgb(210 170 101 / 4%),
+    inset 0 0 0 11px rgb(210 170 101 / 14%),
+    0 0 35px rgb(0 0 0 / 18%);
+  transform: translateY(-50%);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+/* Concentric engraved rings and central star */
+.lkh-western-seal::before {
+  content: "";
+  position: absolute;
+  inset: 23px;
+  border: 1px solid rgb(210 170 101 / 18%);
+  border-radius: 50%;
+}
+
+.lkh-western-seal::after {
+  content: "★";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: Georgia, serif;
+  font-size: clamp(90px, 10vw, 155px);
+  color: rgb(210 170 101 / 8%);
+  -webkit-text-stroke: 1px rgb(210 170 101 / 17%);
+}
+
+/* Four subtle engraved corner brackets */
+.lkh-western-corners {
+  position: absolute;
+  inset: 14px 22px 18px;
+  background:
+    linear-gradient(#bd9559, #bd9559) left top / 42px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) left top / 1px 42px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right top / 42px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right top / 1px 42px no-repeat,
+    linear-gradient(#bd9559, #bd9559) left bottom / 42px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) left bottom / 1px 42px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right bottom / 42px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right bottom / 1px 42px no-repeat;
+  opacity: 0.27;
+  pointer-events: none;
+}
+
+/* Vertical expedition inscription */
+.lkh-frontier-rail {
+  position: absolute;
+  left: 22px;
+  top: 35%;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: Georgia, serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: rgb(224 187 118 / 50%);
+  pointer-events: none;
+}
+
+/* Keep all decoration beneath the content */
+.lkh-atmosphere {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.lkh-hero-inner {
+  position: relative;
+  z-index: 3;
+}
+
+@media (max-width: 700px) {
+  .lkh-western-seal {
+    left: -180px;
+    width: 245px;
+    opacity: 0.4;
+  }
+
+  .lkh-western-corners {
+    inset: 10px;
+    opacity: 0.18;
+  }
+
+  .lkh-frontier-rail {
+    left: 7px;
+    font-size: 7px;
+    opacity: 0.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lkh-western-seal {
+    animation: none;
+  }
+}
+
+

@@ -73,6 +73,15 @@ export const heads: TeamMember[] = [
         },
     },
     {
+        name: "Rashi Singh",
+        role: "Marketing Head",
+        photoUrl: "/teams/RashiSingh.jpg",
+        socials: {
+            instagram: "https://www.instagram.com/rashi_s2607/",
+            linkedin: "https://www.linkedin.com/in/rashi-singh26",
+        },
+    },
+    {
         name: "Vidushi Rajhans",
         role: "Operations and Logistics Head",
         photoUrl: "/teams/Vidushi.png",

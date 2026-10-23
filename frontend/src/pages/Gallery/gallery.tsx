@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Sparkles, Camera } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Camera, X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import "./Gallery.css";
 
 import photo1 from "../../data/TeamsPhoto/photo1.jpeg";
 import photo2 from "../../data/TeamsPhoto/photo2.jpeg";
@@ -32,118 +34,289 @@ import photo27 from "../../data/TeamsPhoto/photo27.jpeg";
 import herobg from "../../data/TeamsPhoto/collage.png";
 
 const photos = [
-    photo1, photo2, photo3, photo4, photo5,
-    photo6, photo7, photo8, photo9, photo10,
-    photo11, photo12, photo13, photo14, photo15,
-    photo16, photo17, photo18, photo19, photo20, photo21, photo22, photo23, photo24, photo25,
-    photo26, photo27
+  photo1, photo2, photo3, photo4, photo5,
+  photo6, photo7, photo8, photo9, photo10,
+  photo11, photo12, photo13, photo14, photo15,
+  photo16, photo17, photo18, photo19, photo20,
+  photo21, photo22, photo23, photo24, photo25,
+  photo26, photo27,
 ];
 
+// Natural wall-hanging tilt angles for realistic pinned-to-wood look
+const CARD_TILTS = [-2.8, 2.4, -1.6, 3.1, -2.2, 1.8, -3.2, 2.6, -1.9, 2.9, -2.5, 1.5];
+
 const galleryItems = photos.map((photo, index) => ({
-    id: index + 1,
-    image: photo,
+  id: index + 1,
+  image: photo,
+  numStr: String(index + 1).padStart(2, "0"),
+  tilt: CARD_TILTS[index % CARD_TILTS.length],
 }));
 
 export default function Gallery() {
-    const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
 
-    return (
-        <div className="min-h-screen bg-[#090909] text-white">
-            {/* Top Hero Banner with Navbar Clearance */}
-            <div
-                className="relative flex flex-col items-center justify-center min-h-[48vh] md:min-h-[55vh] pt-32 pb-16 px-4 overflow-hidden"
-                style={{
-                    backgroundImage: `url(${herobg})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                }}
-            >
-                {/* Gradient overlay for navbar contrast & readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-[#090909] pointer-events-none" />
+  const handlePrev = useCallback(() => {
+    if (selectedPhotoIndex === null) return;
+    setSelectedPhotoIndex((prev) => (prev! > 0 ? prev! - 1 : galleryItems.length - 1));
+  }, [selectedPhotoIndex]);
 
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative z-10 flex flex-col items-center text-center mt-6"
-                >
-                    <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-1.5 text-xs md:text-sm font-semibold tracking-widest text-amber-300 backdrop-blur-md mb-4 shadow-[0_0_20px_rgba(255,140,0,0.15)]">
-                        <Camera className="w-4 h-4 text-amber-400" />
-                        <span>CAPTURED MOMENTS</span>
-                    </div>
+  const handleNext = useCallback(() => {
+    if (selectedPhotoIndex === null) return;
+    setSelectedPhotoIndex((prev) => (prev! < galleryItems.length - 1 ? prev! + 1 : 0));
+  }, [selectedPhotoIndex]);
 
-                    <h1 className="bg-gradient-to-r from-amber-200 via-orange-400 to-red-500 bg-clip-text text-transparent text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-wider uppercase drop-shadow-[0_4px_25px_rgba(255,140,0,0.3)]">
-                        GALLERY
-                    </h1>
+  // Lock body scroll when Lightbox is open so page behind doesn't scroll
+  useEffect(() => {
+    if (selectedPhotoIndex !== null) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [selectedPhotoIndex]);
 
-                    <p className="mt-3 text-orange-200/80 text-xs sm:text-sm md:text-base font-semibold tracking-[0.35em] uppercase">
-                        Scroll to relive the spirit & intensity
-                    </p>
-                </motion.div>
-            </div>
+  // Keyboard navigation for Lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedPhotoIndex === null) return;
+      if (e.key === "Escape") setSelectedPhotoIndex(null);
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
 
-            {/* Featured Creative Team Collage Container (Expanded Height) */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-8 my-10">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="relative flex flex-col items-center justify-center min-h-[55vh] md:min-h-[62vh] rounded-3xl overflow-hidden border-2 border-dashed border-orange-500/30 bg-gradient-to-b from-[#180e07]/70 via-[#100904]/80 to-[#0a0502]/90 backdrop-blur-md shadow-[0_0_40px_rgba(255,120,0,0.12)] p-6 text-center group"
-                >
-                    <div className="pointer-events-none absolute inset-0 bg-radial from-orange-500/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedPhotoIndex, handlePrev, handleNext]);
 
-                    <div className="relative z-10 flex flex-col items-center gap-3">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/15 border border-orange-500/30 shadow-[0_0_20px_rgba(255,120,0,0.3)]">
-                            <Sparkles className="w-7 h-7 text-amber-400 animate-pulse" />
-                        </div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
-                            Featured Creative Collage Spotlight
-                        </h3>
-                        <p className="max-w-md text-xs sm:text-sm text-zinc-400">
-                            Upcoming high-res showcase banner designed by the Lakshya Creative Team.
-                        </p>
-                    </div>
-                </motion.div>
-            </div>
+  return (
+    <div className="gallery-page relative select-none">
+      {/* =========================================================================
+          ATMOSPHERIC DARK WESTERN BACKGROUND (Matches Legacy & Footer)
+      ========================================================================= */}
+      <div className="gallery-bg-backdrop">
+        <div className="gallery-bg-glow" />
+        <div className="gallery-bg-stripes" />
+      </div>
 
-            {/* Pinterest-Style Masonry Photo Grid */}
-            <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 pb-20">
-                <div className="columns-2 sm:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
-                    {galleryItems.map((item) => (
-                        <motion.div
-                            key={item.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-40px" }}
-                            transition={{ duration: 0.5, delay: (item.id % 4) * 0.05 }}
-                            onMouseEnter={() => setHoveredId(item.id)}
-                            onMouseLeave={() => setHoveredId(null)}
-                            className="group relative break-inside-avoid rounded-2xl overflow-hidden bg-[#161616] border border-white/5 cursor-pointer transition-all duration-300"
-                            style={{
-                                boxShadow:
-                                    hoveredId === item.id
-                                        ? "0 16px 36px -8px rgba(255,120,30,0.45)"
-                                        : "0 4px 12px rgba(0,0,0,0.4)",
-                            }}
-                        >
-                            <motion.img
-                                src={item.image}
-                                alt={`Lakshya moment ${item.id}`}
-                                loading="lazy"
-                                className="w-full h-auto block object-cover"
-                                animate={{
-                                    scale: hoveredId === item.id ? 1.08 : 1,
-                                }}
-                                transition={{ duration: 0.4, ease: "easeOut" }}
-                            />
-
-                            {/* Subtle Ambient Hover Glow Overlay */}
-                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
+      {/* =========================================================================
+          HERO SECTION (DAGUERREOTYPE ARCHIVES HEADER)
+      ========================================================================= */}
+      <div className="gallery-hero relative z-10 px-4">
+        {/* Top Western Badge */}
+        <div className="gallery-badge">
+          <Camera className="w-4 h-4 text-[#ffd580]" />
+          <span>DAGUERREOTYPE ARCHIVES · IIT INDORE</span>
         </div>
-    );
+
+        {/* Title */}
+        <h1 className="gallery-title">
+          FRONTIER <span className="gold-text">GALLERY</span>
+        </h1>
+
+        {/* Woodcut Decorative Divider */}
+        <div className="flex justify-center items-center gap-3 my-4 text-[#8c4e20] text-sm font-serif select-none">
+          <span>════════════</span>
+          <span className="text-[#ffd580] text-lg">❖</span>
+          <span>════════════</span>
+        </div>
+
+        <p className="gallery-desc">
+          A visual chronicle of grit, glory, and unforgettable moments pinned to the frontier wall.
+          Relive the historic memories captured across the proving grounds of Lakshya.
+        </p>
+      </div>
+
+      {/* =========================================================================
+          MASTER GILDED SALOON COLLAGE FRAME
+      ========================================================================= */}
+      <div className="master-collage-container">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="master-gilded-frame"
+        >
+          <div className="master-inner-matting">
+            <img
+              src={herobg}
+              alt="Lakshya Master Collage Showcase"
+              className="master-collage-img"
+              loading="eager"
+            />
+            {/* Commemorative Plaque Banner */}
+            <div className="master-plaque-banner">
+              <span>★ LAKSHYA COMMEMORATIVE EXHIBIT · MASTER COLLAGE ★</span>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* =========================================================================
+          RUSTIC SALOON WOODEN PINBOARD & PUNCHED TINTYPE PHOTOS
+      ========================================================================= */}
+      <div className="saloon-pinboard-outer">
+        {/* Wooden Board Header Bar */}
+        <div className="pinboard-header-plaque">
+          <div className="pinboard-bracket left" />
+          <span className="pinboard-title">
+            ★ THE FRONTIER PIN-BOARD · ARCHIVED EXPEDITIONS ★
+          </span>
+          <div className="pinboard-bracket right" />
+        </div>
+
+        {/* Pinned Photos Masonry Grid */}
+        <div className="gallery-grid-wrapper">
+          <div className="gallery-masonry">
+            {galleryItems.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: (index % 4) * 0.05 }}
+                style={{ "--card-tilt": `${item.tilt}deg` } as React.CSSProperties}
+                onClick={() => setSelectedPhotoIndex(index)}
+                className="punched-photo-card group"
+              >
+                {/* Real 3D Iron Railroad Spike / Brass Tack driven into the wall */}
+                <div className="wall-tack-assembly">
+                  {/* Puncture hole in paper and wall */}
+                  <div className="tack-puncture-hole" />
+                  {/* Metal Nail Head */}
+                  <div className="tack-head">
+                    <div className="tack-slot" />
+                  </div>
+                  {/* Drop Shadow cast on photo */}
+                  <div className="tack-cast-shadow" />
+                </div>
+
+                {/* Photo Inset Frame */}
+                <div className="tintype-img-box">
+                  <img
+                    src={item.image}
+                    alt={`Lakshya moment № ${item.numStr}`}
+                    loading="lazy"
+                    className="tintype-img"
+                  />
+
+                  {/* Darkroom Inspect Overlay */}
+                  <div className="tintype-hover-overlay">
+                    <span className="tintype-inspect-badge">
+                      <ZoomIn className="w-3.5 h-3.5 text-[#ffd580]" />
+                      <span>INSPECT PRINT</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Bottom Aged Cardstock Caption Plate */}
+                <div className="tintype-caption-plate">
+                  <div className="flex items-center gap-1.5">
+                    <span className="tintype-num font-mono">№ {item.numStr}</span>
+                    <span className="text-[#804a1f] text-xs">·</span>
+                    <span className="text-[10px] text-[#b8956e] font-serif uppercase tracking-wider">
+                      DISPATCH
+                    </span>
+                  </div>
+                  <span className="tintype-seal font-serif">★ LAKSHYA ★</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* =========================================================================
+          SALOON LIGHTBOX MODAL (RENDERED VIA PORTAL TO PREVENT FOOTER/NAV OVERLAP)
+      ========================================================================= */}
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {selectedPhotoIndex !== null && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedPhotoIndex(null)}
+                className="saloon-lightbox-backdrop"
+              >
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                  transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="saloon-lightbox-card"
+                >
+                  {/* Lightbox Header Bar */}
+                  <div className="lightbox-header">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#ffd580]">★</span>
+                      <span className="lightbox-title">
+                        DISPATCH № {galleryItems[selectedPhotoIndex].numStr} · ARCHIVE INSPECTION
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => setSelectedPhotoIndex(null)}
+                      className="lightbox-close-btn"
+                      title="Close (Esc)"
+                    >
+                      <X size={18} />
+                    </button>
+                  </div>
+
+                  {/* Image Viewport with Previous & Next Arrows */}
+                  <div className="lightbox-img-area">
+                    {/* Previous Button */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handlePrev();
+                      }}
+                      className="lightbox-nav-btn prev"
+                      title="Previous Photo (Left Arrow)"
+                    >
+                      <ChevronLeft size={24} />
+                    </button>
+
+                    {/* Main Full-Size Photo */}
+                    <motion.img
+                      key={selectedPhotoIndex}
+                      src={galleryItems[selectedPhotoIndex].image}
+                      alt={`Lakshya moment ${galleryItems[selectedPhotoIndex].id}`}
+                      initial={{ opacity: 0, scale: 0.97 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.2 }}
+                      className="lightbox-full-img"
+                    />
+
+                    {/* Next Button */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleNext();
+                      }}
+                      className="lightbox-nav-btn next"
+                      title="Next Photo (Right Arrow)"
+                    >
+                      <ChevronRight size={24} />
+                    </button>
+                  </div>
+
+                  {/* Lightbox Footer Bar */}
+                  <div className="lightbox-footer">
+                    <span>LAKSHYA 5.0 · IIT INDORE DAGUERREOTYPE ARCHIVE</span>
+                    <span className="font-mono text-xs text-[#ffd580] bg-[#3a1d0b] px-2.5 py-0.5 rounded-full border border-[#80451a]">
+                      PRINT {selectedPhotoIndex + 1} OF {galleryItems.length}
+                    </span>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
+    </div>
+  );
 }

@@ -1,108 +1,220 @@
-import Lightfall from "@/components/ui/Lightfall";
-import TextType from "@/components/ui/TextType.tsx";
-import { Button } from "@/components/ui/moving-border";
-import Countdown from "@/components/ui/Countdown.tsx";
+import { useEffect, useState } from "react";
+import frontierBackground from "../../assets/frontier-bg.webp";
+import "./HeroSection.css";
+import { Link } from "react-router-dom";
 
-export default function HeroSection() {
-    return (
-        <section className="relative h-screen w-full overflow-hidden">
-            <Lightfall
-                className="absolute inset-0"
-                colors={['#F0B52B', '#C97518', '#742F09']}
-                backgroundColor="#221005"
-                backgroundGlow={1}
-                streakCount={3}
-                streakWidth={1}
-                streakLength={1}
-                glow={1.5}
-                density={0.3}
-                twinkle={1}
-                zoom={3}
-                opacity={1}
-                speed={0.4}
-                mouseInteraction={true}
-                mouseStrength={0.5}
-                mouseRadius={1}
-                mouseDampening={0.15}
-            />
+const DEFAULT_EVENT_TIME = "2027-01-15T09:00:00+05:30"; // 15 Jan 2027, 9:00 AM IST
 
-            {/* Hero Content */}
-            <div className="absolute inset-0 z-10 pointer-events-none flex flex-col items-center justify-center -translate-y-8">
+type TimeLeft = {
+  days: string;
+  hours: string;
+  minutes: string;
+  seconds: string;
+};
 
-                {/* Logo */}
-                <img
-                    src="/lakshya-logo.png"
-                    alt="Lakshya Logo"
-                    className="w-60 md:w-50 lg:w-70 object-contain"
-                />
+type PosterUnit = "DAYS" | "HOURS" | "MINUTES" | "SECONDS";
 
-                <h1 className="metallic-text">
-                    LAKSHYA 5.0
-                </h1>
+type PosterData = {
+  unit: PosterUnit;
+  value: string;
+};
 
-                {/* Typewriter */}
-                <div
-                    className="
+export type LakshyaFrontierHeroProps = {
+  /** Optional URL/path to the official transparent Lakshya emblem. */
+  logoSrc?: string;
+  /** Countdown target. Include a timezone, e.g. 2027-01-15T09:00:00+05:30. */
+  eventTime?: string;
+  /** Anchor/link for the existing sports section. This component does not render that section. */
+  sportsHref?: string;
+};
 
-        text-lg
-        sm:text-xl
-        md:text-2xl
-        font-semibold
-        tracking-wide
-        text-center
-        bg-clip-text
-        text-transparent
-    "
-                    style={{
-                        backgroundImage: `
-            linear-gradient(
-                90deg,
-                #C9831E 0%,
-                #F4C85E 35%,
-                #FFF7D8 50%,
-                #F4C85E 65%,
-                #C9831E 100%
-            )
-        `,
-                        backgroundSize: "220% auto",
-                        animation: "goldSoftFlow 8s ease-in-out infinite",
-                        textShadow: `
-            0 0 8px rgba(244,200,94,.18),
-            0 0 20px rgba(201,131,30,.10)
-        `,
-                    }}
-                >
-                    <TextType
-                        text={[
-                            "Central India's Largest Sports Fest",
-                            "Defy The ODDS ",
-                        ]}
-                        typingSpeed={45}
-                        deletingSpeed={28}
-                        pauseDuration={2200}
-                        showCursor={true}
-                        cursorCharacter="|"
-                    />
-                </div>
+type WantedPosterProps = {
+  unit: PosterUnit;
+  value: string;
+};
 
-                {/* Register Button */}
-                <div className="mt-6 pointer-events-auto">
-                    <button className="register-btn group">
-        <span className="relative z-10 flex items-center gap-3">
-            REGISTER NOW
-            <span className="transition-transform duration-300 group-hover:translate-x-1.5">
-                →
-            </span>
-        </span>
-                    </button>
-                </div>
+function getTimeLeft(targetTime: string): TimeLeft {
+  const targetMs = new Date(targetTime).getTime();
+  const remaining = Number.isNaN(targetMs)
+    ? 0
+    : Math.max(0, targetMs - Date.now());
+
+  return {
+    days: String(Math.floor(remaining / 86_400_000)).padStart(3, "0"),
+    hours: String(Math.floor((remaining % 86_400_000) / 3_600_000)).padStart(2, "0"),
+    minutes: String(Math.floor((remaining % 3_600_000) / 60_000)).padStart(2, "0"),
+    seconds: String(Math.floor((remaining % 60_000) / 1_000)).padStart(2, "0"),
+  };
+}
+
+function WantedPoster({ unit, value }: WantedPosterProps) {
+  return (
+    <article className="lkh-poster" aria-label={`${value} ${unit}`}>
+      <div className="lkh-poster-frame" aria-hidden="true" />
+      <p className="lkh-poster-kicker">WANTED</p>
+      <p className="lkh-poster-name">THE FINAL STRETCH</p>
+      <div className="lkh-poster-stars" aria-hidden="true">
+        ✦ ✦ ✦
+      </div>
+      <div className="lkh-poster-number" aria-label={value}>
+        {value.split("").map((digit, index) => (
+          <span className="lkh-digit" key={`${index}-${digit}`}>
+            {digit}
+          </span>
+        ))}
+      </div>
+      <p className="lkh-poster-unit">{unit}</p>
+      <div className="lkh-poster-divider" aria-hidden="true">
+        <span>✦</span>
+      </div>
+      <p className="lkh-poster-footer">LAKSHYA 5.0 · IIT INDORE</p>
+    </article>
+  );
+}
+
+/**
+ * Frontier-style Lakshya 5.0 hero and live countdown.
+ * Navbar, sports cards/"Choose Your Arena", and footer are intentionally excluded.
+ */
+export default function LakshyaFrontierHero({
+  logoSrc = "",
+  eventTime = DEFAULT_EVENT_TIME,
+  sportsHref = "#sports",
+}: LakshyaFrontierHeroProps) {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => getTimeLeft(eventTime));
+
+  useEffect(() => {
+    const update = (): void => setTimeLeft(getTimeLeft(eventTime));
+    update();
+    const timerId = window.setInterval(update, 1000);
+    return () => window.clearInterval(timerId);
+  }, [eventTime]);
+
+  const posters: PosterData[] = [
+    { unit: "DAYS", value: timeLeft.days },
+    { unit: "HOURS", value: timeLeft.hours },
+    { unit: "MINUTES", value: timeLeft.minutes },
+    { unit: "SECONDS", value: timeLeft.seconds },
+  ];
+
+  return (
+    <section className="lkh-hero" id="lakshya-home" aria-label="Lakshya 5.0 home">
+      {/* Animated scenery layer */}
+      <div className="lkh-scene" aria-hidden="true">
+        <img className="lkh-scene-image" src={frontierBackground} alt="" />
+      </div>
+      <div className="lkh-shade" aria-hidden="true" />
+
+      {/* Lightweight dust and amber light effects */}
+      
+<div className="lkh-atmosphere" aria-hidden="true">
+  {/* Keep the existing light sweep */}
+  <span className="lkh-light-sweep" />
+  {/* Large Western decorative details */}
+<span className="lkh-western-seal" />
+<span className="lkh-western-corners" />
+<span className="lkh-frontier-rail">
+  THE FRONTIER · LAKSHYA V · IIT INDORE
+</span>
+  {/* New Western bullet-hole decorations */}
+  <span className="lkh-bullet-hole lkh-bullet-hole-1" />
+  <span className="lkh-bullet-hole lkh-bullet-hole-2" />
+  <span className="lkh-bullet-hole lkh-bullet-hole-3" />
+  <span className="lkh-bullet-hole lkh-bullet-hole-4" />
+
+  {/* Keep the existing floating dust particles */}
+  <span className="lkh-dust lkh-dust-1" />
+  <span className="lkh-dust lkh-dust-2" />
+  <span className="lkh-dust lkh-dust-3" />
+  <span className="lkh-dust lkh-dust-4" />
+  <span className="lkh-dust lkh-dust-5" />
+  <span className="lkh-dust lkh-dust-6" />
+  <span className="lkh-dust lkh-dust-7" />
+  <span className="lkh-dust lkh-dust-8" />
+</div>
 
 
+      <div className="lkh-hero-inner">
+        <div className="lkh-hero-copy">
+          {logoSrc ? (
+            <img className="lkh-hero-emblem lkh-reveal" src={logoSrc} alt="Lakshya emblem" />
+          ) : null}
+
+          <div className="lkh-edition-badge lkh-reveal">
+            <span aria-hidden="true">★</span>
+            <span>FIVE EDITIONS. ONE LEGACY.</span>
+            <span aria-hidden="true">★</span>
+          </div>
+
+          <p className="lkh-overline lkh-reveal lkh-delay-1">
+            THE FRONTIER IS YOURS TO CLAIM
+          </p>
+
+          
+<h1 className="lkh-brand-title lkh-reveal lkh-delay-1">
+  <span className="lkh-brand-name">LAKSHYA</span>
+  <span className="lkh-brand-version">5.0</span>
+</h1>
+
+<div
+  className="lkh-brand-divider lkh-reveal lkh-delay-2"
+  aria-hidden="true"
+>
+  <span />
+  <b>✥</b>
+  <span />
+</div>
+
+<p className="lkh-brand-tagline lkh-reveal lkh-delay-2">
+  CHASE WHAT LIES BEYOND
+</p>
 
 
+          <p className="lkh-description lkh-reveal lkh-delay-2">
+            A new frontier. A thousand stories. One unrelenting spirit.
+            Get ready for Central India’s biggest celebration of sport.
+          </p>
 
-            </div>
+          <div className="lkh-actions lkh-reveal lkh-delay-3">
+            <Link
+            className="lkh-action lkh-action-primary"
+            to={sportsHref.startsWith("#") ? "/sports" : sportsHref}
+            >
+              EXPLORE THE GAMES <span aria-hidden="true">↗</span>
+            </Link>
+            <a className="lkh-action lkh-action-secondary" href="#lakshya-countdown">
+              COUNTDOWN <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </div>
 
+        <section
+          className="lkh-countdown lkh-reveal lkh-delay-4"
+          id="lakshya-countdown"
+          aria-label="Countdown to Lakshya 5.0"
+        >
+          <div className="lkh-countdown-heading">
+            <span aria-hidden="true">✦</span>
+            <p>THE EXPEDITION BEGINS IN</p>
+            <span aria-hidden="true">✦</span>
+          </div>
+
+          <div className="lkh-poster-row" aria-live="off">
+            {posters.map((poster) => (
+              <WantedPoster key={poster.unit} unit={poster.unit} value={poster.value} />
+            ))}
+          </div>
+
+          <p className="lkh-countdown-footnote">
+            15 JANUARY 2027 · 09:00 AM IST
+          </p>
         </section>
-    );
+      </div>
+
+      <div className="lkh-scroll-cue" aria-hidden="true">
+        <span>RIDE FURTHER</span>
+        <i />
+      </div>
+    </section>
+  );
 }

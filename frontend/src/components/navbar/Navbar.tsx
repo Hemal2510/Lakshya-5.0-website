@@ -1,398 +1,447 @@
-import { useState, useEffect, useRef } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { navItems } from "./navItems";
-import GlassContainer from "./GlassContainer";
-import EmberIndicator from "./EmberIndicator";
-const Navbar = () => {
-    const location = useLocation();
 
-    // Target position coordinates for EmberIndicator
-    const [coords, setCoords] = useState({ left: 0, width: 0 });
+/* ============================================================
+   WESTERN AUTHENTIC SALOON SIGN NAVBAR
+   ────────────────────────────────────────────────────────────
+   • Pure floating torn aged parchment banner (no wooden board behind)
+   • Aged tea-stained warm parchment gradient with charred edges
+   • SVG feTurbulence organic torn & burnt edges
+   • Active Page: Real stitched leather pentagon badge
+     - Extends down below with chevron point
+     - Real saddle thread dashed stitching detail (#d1be9d)
+     - Rich dark saddle leather (#512c19 -> #220e06) with cream text
+   • No badges on hover (clean, only active page has the leather patch)
+   • Generous western spacing matching reference
+   ============================================================ */
 
+const NAV_H = 70;       // Height of the torn parchment strip
+const VB_W = 1200;      // SVG viewBox width
+const VB_H = 96;        // SVG viewBox height with bleed
+const BLEED_Y = 13;
 
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export default function Navbar() {
+    const [mobileOpen, setMobileOpen] = useState(false);
 
-    // Hover track index state
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    // Coordinate references
-    const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    // Active route lookup
-    const activeIndex = navItems.findIndex((item) => item.path === location.pathname);
-    // The ember source targets hovered item first, then falls back to active route
-    const targetIndex = hoveredIndex !== null ? hoveredIndex : (activeIndex !== -1 ? activeIndex : 0);
-    useEffect(() => {
-        const updateCoords = () => {
-            const container = containerRef.current;
-            const targetElement = linkRefs.current[targetIndex];
-            if (container && targetElement) {
-                const containerRect = container.getBoundingClientRect();
-                const targetRect = targetElement.getBoundingClientRect();
-                setCoords({
-                    left: targetRect.left - containerRect.left,
-                    width: targetRect.width,
-                });
-            }
-        };
-        updateCoords();
-        const timer = setTimeout(updateCoords, 50);
-        window.addEventListener("resize", updateCoords);
-        return () => {
-            clearTimeout(timer);
-            window.removeEventListener("resize", updateCoords);
-        };
-    }, [targetIndex, location.pathname]);
     return (
-        <nav className="fixed left-1/2 top-4 z-50 w-[min(90%,1250px)] -translate-x-1/2">
+        <>
+            {/* Google Fonts: Rye (Western display) + Cinzel (Serif) */}
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+            <link
+                href="https://fonts.googleapis.com/css2?family=Rye&family=Cinzel:wght@700;800;900&display=swap"
+                rel="stylesheet"
+            />
 
-            {/* ========================================================
-                BULLETPROOF CSS OVERRIDES FOR EXTERNAL `.active` STYLES
-            ======================================================== */}
-            <style dangerouslySetInnerHTML={{
-                __html: `
-                /* Base state override - neutral gray text and transparent bg */
-                .ember-nav-link {
-                    display: inline-block !important;
-                    background-color: transparent !important;
-                    background-image: none !important;
-                    background: transparent !important;
-                    color: #B5B7BD !important;
-                    -webkit-text-fill-color: initial !important;
-                    text-shadow: none !important;
-                    box-shadow: none !important;
-                    border: none !important;
-                    transition: all 0.3s ease-out !important;
-                }
-                /* Hover state - gold gradient text */
-                .ember-nav-link:hover {
-                    filter: url(#subtle-heat-shimmer) !important;
-                    background: linear-gradient(to bottom, #ffffff 50%, #ffd066 82%, #ff8c1a 100%) !important;
-                    -webkit-background-clip: text !important;
-                    background-clip: text !important;
-                    -webkit-text-fill-color: transparent !important;
-                    color: transparent !important;
-                    text-shadow: 0px 1px 3px rgba(0,0,0,0.5), 0px 0px 6px rgba(255, 175, 0, 0.45) !important;
-                }
-                /* Active state (highly specific override) - burnt campfire gradient */
-                .ember-nav-link.active,
-                a.ember-nav-link.active {
-                    filter: url(#premium-heat-shimmer) !important;
-                    background: linear-gradient(to bottom, #ffffff 40%, #ff953e 78%, #ff3b00 100%) !important;
-                    -webkit-background-clip: text !important;
-                    background-clip: text !important;
-                    -webkit-text-fill-color: transparent !important;
-                    color: transparent !important;
-                    text-shadow: 0px 1px 3px rgba(0,0,0,0.6), 0px 0px 8px rgba(255, 75, 0, 0.5), 0px 0px 14px rgba(255, 120, 0, 0.2) !important;
-                    
-                    /* Double guard against standard template pill backgrounds */
-                    background-color: transparent !important;
-                    box-shadow: none !important;
-                }
-            `}} />
-            {/* ========================================================
-                SVG FILTERS FOR HEAT SHIMMER DISTORTION
-            ======================================================== */}
-            <svg className="absolute w-0 h-0" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    {/* Active route premium shimmer (stronger waving) */}
-                    <filter id="subtle-heat-shimmer">
-                        <feTurbulence
-                            type="fractalNoise"
-                            baseFrequency="0.03 0.08"
-                            numOctaves="2"
-                            result="noise"
-                        >
-                            <animate
-                                attributeName="baseFrequency"
-                                values="0.03 0.08; 0.03 0.12; 0.03 0.08"
-                                dur="12s"
-                                repeatCount="indefinite"
-                            />
-                        </feTurbulence>
-                        <feDisplacementMap
-                            in="SourceGraphic"
-                            in2="noise"
-                            scale="3.5"
-                            xChannelSelector="R"
-                            yChannelSelector="G"
-                        />
-                    </filter>
-                    {/* Hover-only partial shimmer (very subtle waving) */}
-                    <filter id="subtle-heat-shimmer">
-                        <feTurbulence
-                            type="fractalNoise"
-                            baseFrequency="0.04 0.1"
-                            numOctaves="1"
-                            result="noise"
-                        >
-                            <animate
-                                attributeName="baseFrequency"
-                                values="0.04 0.1; 0.04 0.14; 0.04 0.1"
-                                dur="24s"
-                                repeatCount="indefinite"
-                            />
-                        </feTurbulence>
-                        <feDisplacementMap
-                            in="SourceGraphic"
-                            in2="noise"
-                            scale="1.5"
-                            xChannelSelector="R"
-                            yChannelSelector="G"
-                        />
-                    </filter>
-                </defs>
-            </svg>
-            {/* Main Glass Container */}
-
-            {/* Desktop Navbar */}
-            <div className="hidden md:flex">
-             <div
-                ref={containerRef}
-                className="
-                    relative
-                    flex flex-row
-                    h-[78px]
-                    w-full
-                    items-center
-                    justify-between
-                    gap-2
-                    lg:gap-5
-                    xl:gap-14
-                    overflow-hidden
-                    rounded-[999px]
-                    border border-white/[0.09]
-                    px-4
-                    lg:px-6
-                    xl:px-8
-                    shadow-[
-                            0_28px_70px_rgba(0,0,0,.45),
-                            0_2px_8px_rgba(255,255,255,.03),
-                            inset_0_1px_0_rgba(255,255,255,.08),
-                            inset_0_-10px_24px_rgba(0,0,0,.18)
-                            ]
-                    backdrop-blur-[28px]
-                    transition-colors
-                    duration-500
-                "
+            {/* ============================================================
+                DESKTOP (md+) — Floating Torn Parchment Banner
+            ============================================================ */}
+            <header
+                className="fixed top-2.5 left-1/2 z-[1000] hidden md:block"
+                style={{
+                    width: "min(94%, 1240px)",
+                    transform: "translateX(-50%)",
+                    height: NAV_H,
+                    pointerEvents: "auto",
+                }}
             >
-                {/* ================================
-                    GLASS VISUAL LAYERS
-                ================================ */}
-                {/* Main Glass Background */}
+                {/* ── Torn Aged Parchment SVG Background ────────────────── */}
                 <div
-                    className="pointer-events-none absolute inset-0 rounded-[999px] z-0"
                     style={{
-                        background: `
-                            linear-gradient(
-                                180deg,
-                                rgba(32,32,32,0.22) 0%,
-                                rgba(18,18,18,0.16) 45%,
-                                rgba(8,8,8,0.24) 100%
-                            )
-                        `,
+                        position: "absolute",
+                        inset: 0,
+                        filter: "drop-shadow(0 10px 24px rgba(0,0,0,0.85)) drop-shadow(0 2px 6px rgba(45,18,6,0.6))",
+                        pointerEvents: "none",
                     }}
-                />
-                {/* Large Curved Reflection */}
-                <div
-                    className="pointer-events-none absolute left-1/2 top-0 h-[80px] w-[92%] -translate-x-1/2 rounded-full z-0"
-                    style={{
-                        background: `
-                            radial-gradient(
-                                ellipse at top,
-                                rgba(255,255,255,.16) 0%,
-                                rgba(255,255,255,.07) 28%,
-                                rgba(255,255,255,.025) 55%,
-                                transparent 82%
-                            )
-                        `,
-                        filter: "blur(10px)",
-                    }}
-                />
-                {/* Thin Specular Highlights */}
-                <div className="pointer-events-none absolute top-[2px] left-8 right-8 h-px rounded-full bg-white/15 blur-[0.5px] opacity-80 z-0" />
-                <div className="pointer-events-none absolute top-[14px] left-10 right-10 h-px rounded-full bg-white/10 blur-[1px] opacity-70 z-0" />
-                {/* Bottom Glass Depth */}
-                <div
-                    className="pointer-events-none absolute bottom-0 left-8 right-8 h-[22px] rounded-b-full z-0"
-                    style={{
-                        background: "linear-gradient(to top, rgba(0,0,0,.32), transparent)",
-                        filter: "blur(10px)",
-                    }}
-                />
-                {/* Glass Borders */}
-                <div className="pointer-events-none absolute inset-[1px] rounded-[999px] border border-white/[0.04] z-0" />
-                <div className="pointer-events-none absolute inset-0 rounded-[999px] border border-white/[0.08] z-0" />
-                {/* ================================
-                    DYNAMIC EMBER CANVAS EFFECT
-                ================================ */}
-                <EmberIndicator
-                    left={coords.left}
-                    width={coords.width}
-                />
+                >
+                    <svg
+                        aria-hidden="true"
+                        viewBox={`0 0 ${VB_W} ${VB_H}`}
+                        preserveAspectRatio="none"
+                        style={{
+                            position: "absolute",
+                            top: -BLEED_Y,
+                            left: 0,
+                            width: "100%",
+                            height: VB_H,
+                            overflow: "visible",
+                        }}
+                    >
+                        <defs>
+                            {/* SVG feTurbulence for jagged/charred torn edges */}
+                            <filter id="nav-parch-torn" x="-4%" y="-30%" width="108%" height="160%" colorInterpolationFilters="sRGB">
+                                <feTurbulence type="turbulence" baseFrequency="0.024 0.048" numOctaves="4" seed="14" result="noise" />
+                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G" />
+                            </filter>
 
+                            {/* Aged Tea-Stained Parchment Gradient */}
+                            <linearGradient id="nav-parch-grad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stopColor="#ede1c9" />
+                                <stop offset="30%" stopColor="#e3d4b6" />
+                                <stop offset="70%" stopColor="#d5c39e" />
+                                <stop offset="100%" stopColor="#c5ae82" />
+                            </linearGradient>
 
-                 {/* Left Side */}
-                 <div className="relative z-10 flex items-center">
-    <span
-        className="
-            ember-nav-link
-            active
-            font-manrope
-            text-[18px]
-            xl:text-[20px]
-            font-[700]
-            tracking-[0.12em]
-            uppercase
-        "
-    >
-        Lakshya 5.0
-    </span>
-                 </div>
+                            {/* Burnt toasted edges vignette */}
+                            <radialGradient id="nav-parch-burn" cx="50%" cy="50%" r="76%" gradientUnits="objectBoundingBox">
+                                <stop offset="0%" stopColor="#8a531e" stopOpacity="0" />
+                                <stop offset="65%" stopColor="#633913" stopOpacity="0.08" />
+                                <stop offset="86%" stopColor="#3d1f08" stopOpacity="0.32" />
+                                <stop offset="100%" stopColor="#1a0902" stopOpacity="0.65" />
+                            </radialGradient>
+                        </defs>
 
-                 {/* Right Side */}
-                 <div
-                     className="
-        relative
-        z-10
-        flex
-        items-center
-        gap-2
-        lg:gap-5
-        xl:gap-14
-    "
-                 >
-                     {navItems.map((item, index) => (
-                         <NavLink
-                             key={item.name}
-                             to={item.path}
-                             ref={(el) => {
-                                 linkRefs.current[index] = el;
-                             }}
-                             onMouseEnter={() => setHoveredIndex(index)}
-                             onMouseLeave={() => setHoveredIndex(null)}
-                             className="
-                ember-nav-link
-                rounded-full
-                px-2
-                lg:px-3
-                py-2
+                        {/* Base parchment with torn edge filter */}
+                        <rect
+                            x={8}
+                            y={BLEED_Y}
+                            width={VB_W - 16}
+                            height={NAV_H}
+                            fill="url(#nav-parch-grad)"
+                            filter="url(#nav-parch-torn)"
+                            rx="2"
+                        />
 
-                font-manrope
+                        {/* Burnt edge overlay following the same torn filter */}
+                        <rect
+                            x={8}
+                            y={BLEED_Y}
+                            width={VB_W - 16}
+                            height={NAV_H}
+                            fill="url(#nav-parch-burn)"
+                            filter="url(#nav-parch-torn)"
+                            rx="2"
+                            opacity="0.85"
+                        />
+                    </svg>
 
-                text-[11px]
-                lg:text-[13px]
-                xl:text-[14px]
-
-                font-[600]
-
-                uppercase
-
-                tracking-[0.08em]
-                lg:tracking-[0.12em]
-                xl:tracking-[0.16em]
-            "
-                         >
-                             {item.name}
-                         </NavLink>
-                     ))}
-                 </div>
-
-            </div>
+                    {/* Thin printed horizontal saloon ruler lines on parchment */}
+                    <div
+                        aria-hidden
+                        style={{
+                            position: "absolute",
+                            inset: "6px 14px",
+                            borderTop: "1px solid rgba(64,32,10,0.32)",
+                            borderBottom: "1px solid rgba(64,32,10,0.32)",
+                            pointerEvents: "none",
+                        }}
+                    />
                 </div>
 
-
-            {/* Mobile  Navbar */}
-
-            <div className="md:hidden">
-                <GlassContainer
-                    className={`
-            overflow-hidden
-            px-6
-            transition-all
-            duration-500
-
-            ${
-                        isMobileMenuOpen
-                            ? "h-[420px] rounded-[36px]"
-                            : "h-[72px] rounded-[999px]"
-                    }
-        `}
+                {/* ── Navbar Items & Content ──────────────────────────── */}
+                <div
+                    style={{
+                        position: "relative",
+                        zIndex: 10,
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        padding: "0 28px 0 24px",
+                    }}
                 >
-
-                    <div className="flex h-[72px] items-center justify-between">
-
-        <span
-            className="
-                ember-nav-link
-                active
-                font-manrope
-                text-[16px]
-                font-[700]
-                uppercase
-                tracking-[0.12em]
-            "
-        >
-            Lakshya 5.0
-        </span>
-
-                        <button
-                            onClick={() =>
-                                setIsMobileMenuOpen(!isMobileMenuOpen)
-                            }
-                            className="
-                text-white
-                text-3xl
-                leading-none
-            "
-                        >
-                            {isMobileMenuOpen ? "✕" : "☰"}
-                        </button>
-
-                    </div>
-
-                    <div
-                        className={`
-        overflow-hidden
-        transition-all
-        duration-500
-
-        ${
-                            isMobileMenuOpen
-                                ? "max-h-[320px] opacity-100 pt-6"
-                                : "max-h-0 opacity-0"
-                        }
-    `}
+                    {/* Brand: ★ LAKSHYA 5.0 */}
+                    <NavLink
+                        to="/"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 9,
+                            textDecoration: "none",
+                            flexShrink: 0,
+                            paddingRight: 26,
+                        }}
                     >
-                        <div
-                            className="
-                            flex
-                            flex-col
-                            items-center
-                            gap-4
-
-                        "
+                        <span
+                            style={{
+                                fontFamily: "'Rye', Georgia, serif",
+                                fontSize: 14,
+                                color: "#2b1406",
+                                userSelect: "none",
+                                textShadow: "0 1px 0 rgba(255,245,225,0.7)",
+                            }}
                         >
+                            ★
+                        </span>
+                        <span
+                            style={{
+                                fontFamily: "'Rye', 'Cinzel', Georgia, serif",
+                                fontWeight: 700,
+                                fontSize: "clamp(13px, 1.35vw, 17px)",
+                                letterSpacing: "0.08em",
+                                color: "#241005",
+                                textShadow: "0 1px 0 rgba(255,245,225,0.7), 0 2px 4px rgba(0,0,0,0.25)",
+                            }}
+                        >
+                            LAKSHYA 5.0
+                        </span>
+                    </NavLink>
 
-                            {navItems.map((item) => (
-                                <NavLink
-                                    key={item.name}
-                                    to={item.path}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="ember-nav-link text-lg font-semibold"
-                                >
-                                    {item.name}
-                                </NavLink>
-                            ))}
+                    {/* Subtle divider */}
+                    <div
+                        aria-hidden
+                        style={{
+                            width: 1.5,
+                            height: 32,
+                            background: "linear-gradient(180deg, transparent, rgba(50,22,8,0.38), transparent)",
+                            flexShrink: 0,
+                            marginRight: 12,
+                        }}
+                    />
 
-                        </div>
+                    {/* Navigation Links — Generously spaced */}
+                    <nav
+                        style={{
+                            display: "flex",
+                            alignItems: "stretch",
+                            height: "100%",
+                            flex: 1,
+                            justifyContent: "flex-end",
+                            gap: "clamp(12px, 2.2vw, 36px)",
+                        }}
+                    >
+                        {navItems.map((item) => (
+                            <NavLink
+                                key={item.name}
+                                to={item.path}
+                                className="relative flex items-center justify-center"
+                                style={{
+                                    textDecoration: "none",
+                                    padding: "0 8px",
+                                }}
+                            >
+                                {({ isActive }) => (
+                                    <>
+                                        {/* ── Active Leather Pentagon Patch with Saddle Stitching ── */}
+                                        {isActive && (
+                                            <div
+                                                aria-hidden
+                                                style={{
+                                                    position: "absolute",
+                                                    top: -2,
+                                                    bottom: -15, // Extends below the paper with chevron point
+                                                    width: "calc(100% + 22px)",
+                                                    minWidth: 74,
+                                                    left: "50%",
+                                                    transform: "translateX(-50%)",
+                                                    pointerEvents: "none",
+                                                    zIndex: 1,
+                                                    filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.85)) drop-shadow(0 2px 4px rgba(0,0,0,0.6))",
+                                                }}
+                                            >
+                                                <svg
+                                                    viewBox="0 0 100 120"
+                                                    preserveAspectRatio="none"
+                                                    style={{ width: "100%", height: "100%" }}
+                                                >
+                                                    <defs>
+                                                        {/* Saddle Leather Texture Gradient */}
+                                                        <linearGradient id={`leather-bg-${item.name}`} x1="0" y1="0" x2="0" y2="1">
+                                                            <stop offset="0%" stopColor="#512c19" />
+                                                            <stop offset="25%" stopColor="#432212" />
+                                                            <stop offset="70%" stopColor="#34180b" />
+                                                            <stop offset="100%" stopColor="#220e06" />
+                                                        </linearGradient>
+
+                                                        {/* Leather Specular Highlight / Crease */}
+                                                        <radialGradient id={`leather-crease-${item.name}`} cx="50%" cy="30%" r="65%">
+                                                            <stop offset="0%" stopColor="#874e2a" stopOpacity="0.25" />
+                                                            <stop offset="70%" stopColor="#1e0c04" stopOpacity="0.4" />
+                                                            <stop offset="100%" stopColor="#0d0401" stopOpacity="0.75" />
+                                                        </radialGradient>
+                                                    </defs>
+
+                                                    {/* Outer Pentagon Leather Patch */}
+                                                    <polygon
+                                                        points="0,0 100,0 100,90 50,120 0,90"
+                                                        fill={`url(#leather-bg-${item.name})`}
+                                                        stroke="#1b0a03"
+                                                        strokeWidth="1.5"
+                                                    />
+                                                    <polygon
+                                                        points="0,0 100,0 100,90 50,120 0,90"
+                                                        fill={`url(#leather-crease-${item.name})`}
+                                                    />
+
+                                                    {/* Inner Real Saddle Thread Stitching (White/Cream Dashed Line) */}
+                                                    <polygon
+                                                        points="6,6 94,6 94,86 50,113 6,86"
+                                                        fill="none"
+                                                        stroke="#d1be9d"
+                                                        strokeWidth="1.8"
+                                                        strokeDasharray="4 3"
+                                                        strokeLinecap="round"
+                                                        opacity="0.9"
+                                                    />
+
+                                                    {/* Subtle stitched groove shadow */}
+                                                    <polygon
+                                                        points="6.8,6.8 93.2,6.8 93.2,85.2 50,111.8 6.8,85.2"
+                                                        fill="none"
+                                                        stroke="#110502"
+                                                        strokeWidth="1"
+                                                        strokeDasharray="4 3"
+                                                        strokeLinecap="round"
+                                                        opacity="0.4"
+                                                    />
+                                                </svg>
+                                            </div>
+                                        )}
+
+                                        {/* Link Text */}
+                                        <span
+                                            style={{
+                                                position: "relative",
+                                                zIndex: 10,
+                                                fontFamily: "'Rye', 'Cinzel', Georgia, serif",
+                                                fontWeight: 700,
+                                                fontSize: "clamp(11px, 1.05vw, 13.5px)",
+                                                letterSpacing: "0.14em",
+                                                textTransform: "uppercase",
+                                                whiteSpace: "nowrap",
+                                                color: isActive ? "#eedfc2" : "#2b1406",
+                                                textShadow: isActive
+                                                    ? "0 1px 3px rgba(0,0,0,0.95), 0 -1px 0 rgba(0,0,0,0.7)"
+                                                    : "0 1px 0 rgba(255,248,225,0.75)",
+                                                transition: "color 0.15s ease",
+                                                padding: isActive ? "0 4px" : "0",
+                                            }}
+                                        >
+                                            {item.name}
+                                        </span>
+                                    </>
+                                )}
+                            </NavLink>
+                        ))}
+                    </nav>
+                </div>
+            </header>
+
+            {/* ============================================================
+                MOBILE (< md) — Saloon Bar with Drawer
+            ============================================================ */}
+            <div className="md:hidden fixed top-0 left-0 right-0 z-[1000]">
+                {/* Mobile top bar */}
+                <div
+                    style={{
+                        height: 54,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        padding: "0 16px",
+                        background: "linear-gradient(180deg, #ede1c9 0%, #d5c39e 100%)",
+                        borderBottom: "3px solid #29150b",
+                        boxShadow: "0 4px 16px rgba(0,0,0,0.75)",
+                        position: "relative",
+                    }}
+                >
+                    <NavLink
+                        to="/"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 6,
+                            textDecoration: "none",
+                            position: "relative",
+                            zIndex: 1,
+                        }}
+                    >
+                        <span style={{ fontFamily: "'Rye', serif", fontSize: 11, color: "#2b1406" }}>★</span>
+                        <span
+                            style={{
+                                fontFamily: "'Rye', 'Cinzel', Georgia, serif",
+                                fontWeight: 700,
+                                fontSize: 14,
+                                letterSpacing: "0.08em",
+                                textTransform: "uppercase",
+                                color: "#241005",
+                                textShadow: "0 1px 0 rgba(255,245,225,0.7)",
+                            }}
+                        >
+                            LAKSHYA 5.0
+                        </span>
+                    </NavLink>
+
+                    <button
+                        onClick={() => setMobileOpen((v) => !v)}
+                        aria-label="Toggle menu"
+                        style={{
+                            position: "relative",
+                            zIndex: 1,
+                            background: "rgba(43,20,6,0.14)",
+                            border: "1.5px solid rgba(43,20,6,0.5)",
+                            color: "#2b1406",
+                            width: 32,
+                            height: 32,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontSize: 16,
+                            cursor: "pointer",
+                            borderRadius: 3,
+                        }}
+                    >
+                        {mobileOpen ? "✕" : "☰"}
+                    </button>
+                </div>
+
+                {/* Mobile Drawer */}
+                <div
+                    style={{
+                        overflow: "hidden",
+                        maxHeight: mobileOpen ? 460 : 0,
+                        opacity: mobileOpen ? 1 : 0,
+                        transition: "max-height 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease",
+                        background: "linear-gradient(180deg, #3d2314 0%, #220e06 100%)",
+                        borderBottom: "3px solid #140803",
+                        boxShadow: "0 10px 24px rgba(0,0,0,0.85)",
+                    }}
+                >
+                    <div
+                        style={{
+                            padding: "12px 16px 16px",
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 6,
+                        }}
+                    >
+                        {navItems.map((item) => (
+                            <NavLink
+                                key={item.name}
+                                to={item.path}
+                                onClick={() => setMobileOpen(false)}
+                                style={({ isActive }) => ({
+                                    display: "block",
+                                    width: "100%",
+                                    textAlign: "center",
+                                    padding: "11px 0",
+                                    fontFamily: "'Rye', 'Cinzel', Georgia, serif",
+                                    fontWeight: 700,
+                                    fontSize: 12,
+                                    letterSpacing: "0.18em",
+                                    textTransform: "uppercase",
+                                    textDecoration: "none",
+                                    borderRadius: 4,
+                                    ...(isActive
+                                        ? {
+                                              color: "#eedfc2",
+                                              background: "linear-gradient(180deg, #512c19 0%, #34180b 100%)",
+                                              border: "1px dashed #d1be9d",
+                                              textShadow: "0 1px 3px rgba(0,0,0,0.9)",
+                                          }
+                                        : {
+                                              color: "#cbb493",
+                                              textShadow: "0 1px 2px rgba(0,0,0,0.7)",
+                                          }),
+                                })}
+                            >
+                                {item.name}
+                            </NavLink>
+                        ))}
                     </div>
-
-                </GlassContainer>
+                </div>
             </div>
-
-
-
-        </nav>
+        </>
     );
-};
-export default Navbar;
+}

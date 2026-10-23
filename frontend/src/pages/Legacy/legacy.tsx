@@ -1,82 +1,135 @@
-import "./Legacy.css";
+import "./legacy.css";
 import TimelineSection from "./TimelineSection.tsx";
 import Lakshya5Promo from "./Lakshya5Promo.tsx";
 import { Trophy, Calendar, Users, Zap } from "lucide-react";
 
-
 const stats = [
   {
-    icon: <Calendar size={36} />,
+    icon: <Calendar size={28} className="text-[#ffd580]" />,
     value: "4",
-    title: "YEARS OF EXCELLENCE",
-    desc: "Four successful editions of Lakshaya.",
+    title: "YEARS OF VALOR",
+    desc: "Four glorious chapters etched into the frontier archives.",
   },
   {
-    icon: <Users size={36} />,
+    icon: <Users size={28} className="text-[#ffd580]" />,
     value: "2500+",
-    title: "PARTICIPANTS",
-    desc: "Students competing across all editions.",
+    title: "FRONTIER ATHLETES",
+    desc: "Brave contenders battling across every competitive arena.",
   },
   {
-    icon: <Zap size={36} />,
-    value: "12+",
-    title: "SPORTS",
-    desc: "Sports and cultural competitions.",
+    icon: <Zap size={28} className="text-[#ffd580]" />,
+    value: "20+",
+    title: "SPORTING ARENAS",
+    desc: "High-stakes showdowns, duels, and championship bouts.",
   },
   {
-    icon: <Trophy size={36} />,
+    icon: <Trophy size={28} className="text-[#ffd580]" />,
     value: "50+",
-    title: "INSTITUTES",
-    desc: "Colleges from across the country.",
+    title: "PREMIER INSTITUTES",
+    desc: "Contingents enlisting from every corner of the nation.",
   },
 ];
 
 export default function Legacy() {
   return (
-    <section className="legacy-section">
-
-      <div className="legacy-hero">
-
-        <div className="legacy-badge">
-          🏆 Our Journey
-        </div>
-
-        <h1>
-          Legacy of <span>Excellence</span>
-        </h1>
-
-        <p>
-          Four years of passion, determination, and unforgettable sporting
-          moments that continue to inspire every athlete stepping onto the
-          field.
-        </p>
-
+    <section className="legacy-section relative select-none">
+      {/* =========================================================================
+          WESTERN ATMOSPHERIC BACKDROP & EFFECTS (Inspired by Home & Sports)
+      ========================================================================= */}
+      <div className="legacy-bg-backdrop">
+        <div className="legacy-bg-glow" />
       </div>
 
-      <div className="stats-grid">
+      {/* Western Atmosphere Layer */}
+      <div className="lk-atmosphere" aria-hidden="true">
+        <span className="lk-light-sweep" />
+        <span className="lk-western-seal" />
+        <span className="lk-western-corners" />
+        <span className="lk-frontier-rail">
+          THE ARCHIVES · FOUR EDITIONS OF VALOR · IIT INDORE
+        </span>
 
+        {/* Western Bullet-Hole Impacts */}
+        <span className="lk-bullet-hole lk-bullet-hole-1" />
+        <span className="lk-bullet-hole lk-bullet-hole-2" />
+        <span className="lk-bullet-hole lk-bullet-hole-3" />
+
+        {/* Floating Saloon Dust / Golden Embers */}
+        <span className="lk-dust lk-dust-1" />
+        <span className="lk-dust lk-dust-2" />
+        <span className="lk-dust lk-dust-3" />
+        <span className="lk-dust lk-dust-4" />
+        <span className="lk-dust lk-dust-5" />
+        <span className="lk-dust lk-dust-6" />
+      </div>
+
+      {/* =========================================================================
+          HERO SECTION (WESTERN ARCHIVES BANNER)
+      ========================================================================= */}
+      <div className="legacy-hero relative z-10">
+        {/* Western Edition Badge */}
+        <div className="lk-edition-badge">
+          <span aria-hidden="true">★</span>
+          <span>THE HISTORIC ARCHIVES · IIT INDORE</span>
+          <span aria-hidden="true">★</span>
+        </div>
+
+        <p className="legacy-overline">FOUR EDITIONS OF UNBROKEN VALOR</p>
+
+        {/* Main Western Display Title */}
+        <h1 className="legacy-main-title">
+          <span className="legacy-title-light">LEGACY OF</span>
+          <span className="legacy-title-gold">EXCELLENCE.</span>
+        </h1>
+
+        {/* Ornamental Western Divider */}
+        <div className="lk-brand-divider mx-auto" aria-hidden="true">
+          <span />
+          <b>✥</b>
+          <span />
+        </div>
+
+        <p className="legacy-hero-desc">
+          Four editions of raw grit, relentless determination, and unforgettable sporting
+          glory that paved the frontier trail for every athlete stepping onto our proving grounds.
+        </p>
+      </div>
+
+      {/* =========================================================================
+          STATS GRID (SALOON LEDGER PLAQUES)
+      ========================================================================= */}
+      <div className="stats-grid relative z-10">
         {stats.map((card, index) => (
           <div className="stat-card" key={index}>
+            {/* Western Engraved Corner Brackets */}
+            <span className="lk-card-corners" aria-hidden="true" />
+
+            <div className="stat-card-badge">
+              <span>★ RECORD #{index + 1} ★</span>
+            </div>
 
             <div className="icon-box">
               {card.icon}
             </div>
 
-            <h2>{card.value}</h2>
+            <h2 className="stat-value">{card.value}</h2>
 
-            <h4>{card.title}</h4>
+            <h4 className="stat-title">{card.title}</h4>
 
-            <p>{card.desc}</p>
-
+            <p className="stat-desc">{card.desc}</p>
           </div>
         ))}
-
       </div>
 
+      {/* =========================================================================
+          TIMELINE SECTION (RAILWAY & REVOLVER CYLINDER)
+      ========================================================================= */}
       <TimelineSection />
 
+      {/* =========================================================================
+          LAKSHYA 5.0 PROCLAMATION (GOLD-RUSH PROMO)
+      ========================================================================= */}
       <Lakshya5Promo />
-
     </section>
   );
 }

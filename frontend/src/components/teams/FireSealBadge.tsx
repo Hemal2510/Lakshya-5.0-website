@@ -1,10 +1,8 @@
-import React from "react";
 import {
-    CardContainer,
-    CardBody,
-    CardItem,
+  CardContainer,
+  CardBody,
+  CardItem,
 } from "@/components/ui/3d-card";
-
 
 type Social = {
   instagram?: string;
@@ -27,342 +25,342 @@ const ICONS = {
   instagram: (
     <path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 015.45.53C6.09.28 6.82.11 7.88.06 8.94.01 9.3 0 12 0zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.17 1.17 0 100-2.34 1.17 1.17 0 000 2.34z" />
   ),
-
 };
 
-const DEFAULT_SOCIALS: Social = {
-  instagram: "#",
-  linkedin: "#",
-};
+const DEFAULT_SOCIALS: Social = { instagram: "#", linkedin: "#" };
 
-// Pixel-flash overlay: invisible at rest, softly pops in tile-by-tile the
-// moment you hover (staggered outward from center) in pastel tones, then
-// dissolves away again — pixels are only ever seen mid-transition.
-const PIXEL_COLS = 18;
-const PIXEL_ROWS = 24;
-const PIXEL_PALETTE = ["#ffe3c9", "#ffd4c2", "#f7c9b8", "#fbe8d3", "#e9d3c0"];
+function seedFrom(s: string) {
+  return (s.split("").reduce((a, c) => a + c.charCodeAt(0), 0) % 18) + 2;
+}
 
-function usePixelCells() {
-  return React.useMemo(() => {
-    const cells: { id: string; delay: number; color: string }[] = [];
-    const centerR = (PIXEL_ROWS - 1) / 2;
-    const centerC = (PIXEL_COLS - 1) / 2;
-    const maxDist = Math.hypot(centerR, centerC);
-    for (let r = 0; r < PIXEL_ROWS; r++) {
-      for (let c = 0; c < PIXEL_COLS; c++) {
-        const dist = Math.hypot(r - centerR, c - centerC) / maxDist;
-        const delay = dist * 420 + Math.random() * 140;
-        const color = PIXEL_PALETTE[Math.floor(Math.random() * PIXEL_PALETTE.length)];
-        cells.push({ id: `${r}-${c}`, delay, color });
-      }
-    }
-    return cells;
-  }, []);
+function idFrom(s: string) {
+  return s.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
 }
 
 export default function FireSealBadge({
-  eyebrow = "LAKSHAYA · 2026",
   name = "Suryansh Nagar",
   role = "Co-organiser",
   photoUrl = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
   socials = DEFAULT_SOCIALS,
   scale = 1,
-
+  eyebrow = "LEADERSHIP DISPATCH",
 }: FireSealBadgeProps) {
   const [first, ...rest] = name.split(" ");
   const last = rest.join(" ");
-  const pixelCells = usePixelCells();
 
+  const cardW = Math.round(288 * scale);
+  const cardH = Math.round(414 * scale);
+  const photoW = Math.round(184 * scale);
+  const photoH = Math.round(172 * scale);
 
-    return (
-        <CardContainer
-            className="inter-var"
-            containerClassName="py-0"
-        >
-            <CardBody className="w-auto h-auto bg-transparent">
+  const uid      = idFrom(name);
+  const seed     = seedFrom(name);
+  const filterId = `tpl-f-${uid}`;
+  const gradId   = `tpl-g-${uid}`;
+  const grad2Id  = `tpl-n-${uid}`;
 
-                <div className="fbc-root inline-block overflow-visible">
-      <style>{`
-        @keyframes fbc-rise {
-          0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-          8%   { opacity: .9; }
-          100% { transform: translateY(-560px) translateX(var(--drift, 20px)) scale(.3); opacity: 0; }
-        }
-        @keyframes fbc-spin { to { transform: rotate(360deg); } }
-        @keyframes fbc-pulse { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
-        @keyframes fbc-flicker {
-          0%, 100% { filter: brightness(1); }
-          45% { filter: brightness(1.08); }
-          55% { filter: brightness(.96); }
-        }
-        @keyframes fbc-pixel-pop {
-          0%   { opacity: 0; transform: scale(.6); }
-          40%  { opacity: .55; transform: scale(1); }
-          100% { opacity: 0; transform: scale(1.3); }
-        }
-        .fbc-ember { animation: fbc-rise linear infinite; }
-        .fbc-ring { animation: none ; }
-        .fbc-flicker { animation: fbc-flicker 3.4s ease-in-out infinite; }
-        .fbc-seal { transition: transform 1s cubic-bezier(.22,1,.36,1); }
-        .fbc-group:hover .fbc-seal { transform: translateY(-4px) scale(1.008); }
-        .fbc-group:hover .fbc-ring {animation: none ; }
-        .fbc-group:hover .fbc-ember { animation-duration: 2.4s !important; }
-        .fbc-group:hover .fbc-glow { opacity: 1; transform: scale(1.06); }
-        .fbc-group:hover .fbc-drip { transform: scaleY(1.04); }
-        .fbc-social-item { transform: translateY(14px); opacity: 0; transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .4s ease; }
-        .fbc-group:hover .fbc-social-item { transform: translateY(0); opacity: 1; }
-        .fbc-social-item:nth-child(1) { transition-delay: .05s; }
-        .fbc-social-item:nth-child(2) { transition-delay: .12s; }
-        .fbc-social-item:nth-child(3) { transition-delay: .19s; }
-        .fbc-hex:hover { transform: translateY(-4px) scale(1.08); border-color: #ff7a00; box-shadow: 0 10px 24px -6px rgba(255,122,0,.6); }
+  const bleed = 16;
+  const svgW  = cardW + bleed * 2;
+  const svgH  = cardH + bleed * 2;
 
-        /* black & white by default, color revealed slowly on hover — applied
-           to the elements that should switch (photo, secondary text, fx),
-           NOT the name heading or the outer border/ring, which stay colorful */
-        .fbc-bw {
-          filter: grayscale(1);
-          transition: filter 1.6s ease;
-        }
-        .fbc-group:hover .fbc-bw {
-          filter: grayscale(0);
-        }
+  return (
+    <CardContainer className="inter-var" containerClassName="py-0">
+      <CardBody className="w-auto h-auto bg-transparent">
+        <div className="relative inline-block overflow-visible select-none group">
+          <style>{`
+            .tp-lg-wrap {
+              transition: transform 0.38s cubic-bezier(.22,1,.36,1), filter 0.38s ease;
+            }
+            .group:hover .tp-lg-wrap {
+              transform: translateY(-8px) scale(1.025) rotate(-0.4deg);
+              filter: drop-shadow(0 28px 38px rgba(0,0,0,0.80))
+                      drop-shadow(0  0  26px rgba(140,70,8,0.48));
+            }
+            .tp-photo-lg {
+              filter: grayscale(100%) contrast(1.18) brightness(0.93) sepia(24%);
+              transition: filter 0.62s ease, transform 0.62s cubic-bezier(.22,1,.36,1);
+            }
+            .group:hover .tp-photo-lg {
+              filter: grayscale(0%) contrast(1.04) brightness(1.02) sepia(0%);
+              transform: scale(1.06);
+            }
+            .tp-btn-lg {
+              transition: transform 0.18s ease, background 0.18s ease;
+            }
+            .tp-btn-lg:hover {
+              transform: translateY(-2px);
+              background: rgba(90,46,8,0.24) !important;
+            }
+          `}</style>
 
-        /* scrim that desaturates only the card's own background layer
-           (behind it) without affecting the name text or ring on top of it */
-        .fbc-bg-scrim {
-          backdrop-filter: grayscale(1);
-          -webkit-backdrop-filter: grayscale(1);
-          transition: backdrop-filter 1.6s ease, -webkit-backdrop-filter 1.6s ease;
-        }
-        .fbc-group:hover .fbc-bg-scrim {
-          backdrop-filter: grayscale(0);
-          -webkit-backdrop-filter: grayscale(0);
-        }
+          {/* ===================================================================
+              WANTED POSTER — large (FireSealBadge / Leadership)
 
-        .fbc-photo-img {
-          transform: scale(1);
-          transition: transform 1.6s cubic-bezier(.22,1,.36,1), filter 1.6s ease;
-        }
-        .fbc-group:hover .fbc-photo-img {
-          transform: scale(1.05);
-        }
+              SVG feTurbulence + feDisplacementMap creates the organic torn silhouette.
+              Radial gradient: pale cream centre → rich amber → charred dark edges.
+          =================================================================== */}
 
-        /* pixel flash — invisible at rest, pops per-tile only during hover transition */
-        .fbc-pixel-grid {
-          position: absolute;
-          inset: 0;
-          z-index: 40;
-          display: grid;
-          grid-template-columns: repeat(${PIXEL_COLS}, 1fr);
-          grid-template-rows: repeat(${PIXEL_ROWS}, 1fr);
-          pointer-events: none;
-        }
-        .fbc-pixel {
-          opacity: 0;
-        }
-        .fbc-group:hover .fbc-pixel {
-          animation: fbc-pixel-pop 1.4s ease forwards;
-        }
-      `}</style>
-
-      {/* ambient embers */}
-      <div className="fbc-group relative" style={{ width: 360 * scale, height: 500 * scale }}>
-        <div style={{ transform: `scale(${scale})`, transformOrigin: "top center" }}>
-
-          {/* halo behind the seal */}
-          <div className="fbc-glow fbc-bw pointer-events-none absolute left-1/2 top-[38%] -z-10 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-2xl transition-all duration-500"
-            style={{ background: "radial-gradient(circle, rgba(255,122,0,.55) 0%, transparent 70%)" }} />
-
-          {/* THE SEAL — rectangular card with a colorful outer border */}
           <div
-            className="fbc-seal relative z-[2] mx-auto"
+            className="tp-lg-wrap"
             style={{
-              width: 340,
-              height: 460,
-              borderRadius: 28,
+              position: "relative",
+              width: cardW,
+              minHeight: cardH,
+              filter: `drop-shadow(0 16px 32px rgba(0,0,0,0.74))
+                       drop-shadow(4px 6px 12px rgba(45,16,2,0.58))`,
             }}
           >
-            <div
-              className="h-full w-full overflow-hidden"
+            {/* ── TORN PAPER SVG BACKGROUND ──────────────────────────────── */}
+            <svg
+              aria-hidden="true"
               style={{
-                background:
-                  "linear-gradient(155deg,#ffb627 0%,#e83600 42%,#7a0c02 100%)",
-                padding: 3,
-                borderRadius: "inherit",
+                position: "absolute",
+                top: -bleed,
+                left: -bleed,
+                width: svgW,
+                height: svgH,
+                overflow: "visible",
+                zIndex: 0,
+                pointerEvents: "none",
+              }}
+              viewBox={`0 0 ${svgW} ${svgH}`}
+            >
+              <defs>
+                <filter
+                  id={filterId}
+                  x="-22%"
+                  y="-22%"
+                  width="144%"
+                  height="144%"
+                  colorInterpolationFilters="sRGB"
+                >
+                  <feTurbulence
+                    type="turbulence"
+                    baseFrequency="0.028 0.042"
+                    numOctaves="4"
+                    seed={seed}
+                    result="noise"
+                  />
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="noise"
+                    scale="17"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                  />
+                </filter>
+
+                <radialGradient
+                  id={gradId}
+                  cx="50%"
+                  cy="44%"
+                  r="73%"
+                  gradientUnits="objectBoundingBox"
+                >
+                  {/* Authentic golden wanted poster parchment matching the wheel heads exactly */}
+                  <stop offset="0%"   stopColor="#f8f0d0" />
+                  <stop offset="25%"  stopColor="#f0de9a" />
+                  <stop offset="48%"  stopColor="#d8b45a" />
+                  <stop offset="66%"  stopColor="#9a5c14" />
+                  <stop offset="82%"  stopColor="#521e04" />
+                  <stop offset="93%"  stopColor="#230900" />
+                  <stop offset="100%" stopColor="#0e0400" />
+                </radialGradient>
+
+                <radialGradient
+                  id={grad2Id}
+                  cx="38%"
+                  cy="55%"
+                  r="42%"
+                  gradientUnits="objectBoundingBox"
+                >
+                  <stop offset="0%"   stopColor="#e8c860" stopOpacity="0.18" />
+                  <stop offset="55%"  stopColor="#a06820" stopOpacity="0.08" />
+                  <stop offset="100%" stopColor="#200800" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+
+              {/* Main torn paper shape */}
+              <rect
+                x={bleed}
+                y={bleed}
+                width={cardW}
+                height={cardH}
+                fill={`url(#${gradId})`}
+                filter={`url(#${filterId})`}
+                rx="3"
+              />
+
+              {/* Age stain overlay */}
+              <rect
+                x={bleed}
+                y={bleed}
+                width={cardW}
+                height={cardH}
+                fill={`url(#${grad2Id})`}
+                filter={`url(#${filterId})`}
+                rx="3"
+                opacity="0.55"
+              />
+            </svg>
+
+            {/* ── PAPER FIBRE TEXTURE ────────────────────────────────────── */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 1,
+                pointerEvents: "none",
+                opacity: 0.12,
+                backgroundImage: `
+                  repeating-linear-gradient(0deg, transparent, transparent 2px,
+                    rgba(100,60,10,0.55) 2px, rgba(100,60,10,0.55) 3px),
+                  repeating-linear-gradient(90deg, transparent, transparent 4px,
+                    rgba(100,60,10,0.32) 4px, rgba(100,60,10,0.32) 5px)
+                `,
+              }}
+            />
+
+            {/* ── CARD CONTENT ──────────────────────────────────────────── */}
+            <div
+              className="relative flex flex-col justify-between text-center p-4"
+              style={{
+                width: cardW,
+                minHeight: cardH,
+                zIndex: 2,
+                background: "transparent",
               }}
             >
+              {/* Printed inner frame */}
               <div
-                className="relative h-full w-full overflow-hidden"
+                aria-hidden="true"
                 style={{
-                  borderRadius: "inherit",
-                  background:
-                    "radial-gradient(120% 70% at 50% 100%, rgba(232,54,0,.35) 0%, transparent 60%), linear-gradient(180deg,#0c0603 0%,#160b06 55%,#1e0d05 100%)",
+                  position: "absolute",
+                  inset: 12,
+                  border: "1px solid rgba(80,40,5,0.42)",
+                  pointerEvents: "none",
+                  zIndex: 0,
                 }}
-              >
-                {/* scrim: desaturates the background above, sits below all foreground content */}
-                <div className="fbc-bg-scrim pointer-events-none absolute inset-0" />
+              />
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  inset: 14,
+                  border: "1px solid rgba(80,40,5,0.18)",
+                  pointerEvents: "none",
+                  zIndex: 0,
+                }}
+              />
 
-                {/* heat-line texture */}
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-[0.06]"
+              {/* Corner stars */}
+              <span style={{ position:"absolute", top:10, left:11, color:"#5a2e06", fontSize:9, fontFamily:"serif", pointerEvents:"none", zIndex:3 }}>★</span>
+              <span style={{ position:"absolute", top:10, right:11, color:"#5a2e06", fontSize:9, fontFamily:"serif", pointerEvents:"none", zIndex:3 }}>★</span>
+              <span style={{ position:"absolute", bottom:10, left:11, color:"#5a2e06", fontSize:9, fontFamily:"serif", pointerEvents:"none", zIndex:3 }}>★</span>
+              <span style={{ position:"absolute", bottom:10, right:11, color:"#5a2e06", fontSize:9, fontFamily:"serif", pointerEvents:"none", zIndex:3 }}>★</span>
+
+              {/* ---- HEADER ---- */}
+              <div className="relative z-10 pt-1">
+                <h1
                   style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(115deg, #fff4e0 0 1px, transparent 1px 26px)",
+                    fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif",
+                    fontWeight: 900,
+                    fontSize: Math.max(20, Math.round(24 * scale)),
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    color: "#1a0b02",
+                    textShadow: "1.5px 1.5px 0 rgba(255,248,215,0.70)",
+                    lineHeight: 1,
+                    margin: 0,
                   }}
-                />
-
-                {/* drip accent at the very bottom, thickens on hover */}
-                <div
-                  className="fbc-drip absolute bottom-0 left-1/2 h-16 w-24 -translate-x-1/2 origin-bottom rounded-b-full opacity-70 transition-transform duration-500"
-                  style={{ background: "radial-gradient(circle at 50% 100%, #ff7a00, transparent 70%)" }}
-                />
-
-                <div className="flex h-full flex-col items-center pt-9 px-6 pb-7">
-                  {/* photo — grayscale by default, ring around it stays colorful */}
-                    <CardItem translateZ={90}>
-                        <div className="relative mb-4 h-[170px] w-[170px]">
-                    <div className="fbc-ring absolute inset-0 rounded-full p-[4px]"
-                      style={{ background: "conic-gradient(from 0deg, #ffb627, #e83600, #7a0c02, #ff7a00, #ffb627)" }}>
-                      <div className="h-full w-full overflow-hidden rounded-full border-[3px] border-[#070402] bg-black">
-                        <img src={photoUrl} alt={name} className="fbc-photo-img fbc-bw h-full w-full object-cover" />
-                      </div>
-                    </div>
-
-                  </div>
-                        </CardItem>
-
-                  {/* eyebrow — grayscale by default */}
-                  <p className="fbc-bw mb-1.5 text-center font-mono text-[10px] font-bold tracking-[0.32em] text-[#ffb627]">
+                >
+                  LAKSHYA 5.0
+                </h1>
+                <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:8, marginTop:5 }}>
+                  <span style={{ height:1, width:18, background:"rgba(80,40,5,0.55)", display:"block" }} />
+                  <p style={{ fontFamily:"Georgia,serif", fontWeight:700, fontSize:Math.max(8.5, Math.round(10 * scale)), letterSpacing:"0.24em", color:"#3d1a05", textTransform:"uppercase", margin:0 }}>
                     {eyebrow}
                   </p>
+                  <span style={{ height:1, width:18, background:"rgba(80,40,5,0.55)", display:"block" }} />
+                </div>
+              </div>
 
-                  {/* name — always colorful, even before hover */}
-                    <CardItem translateZ={140}>
-                  <h1
-                    className="mb-2 text-center text-[40px] font-normal uppercase leading-[0.92] tracking-wide"
+              {/* ---- PHOTO FRAME ---- */}
+              <CardItem translateZ={45} className="w-full flex justify-center relative z-10" style={{ margin:"6px 0" }}>
+                <div
+                  style={{
+                    width: photoW,
+                    height: photoH,
+                    border: "2.5px solid #5a2e08",
+                    boxShadow: "inset 0 0 14px rgba(0,0,0,0.70), 0 3px 8px rgba(0,0,0,0.40)",
+                    background: "#1a0e06",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
+                >
+                  <div style={{ position:"absolute", inset:0, boxShadow:"inset 0 0 14px rgba(0,0,0,0.74)", zIndex:10, pointerEvents:"none" }} />
+                  <img src={photoUrl} alt={name} className="tp-photo-lg" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} />
+                </div>
+              </CardItem>
+
+              {/* ---- NAMEPLATE ---- */}
+              <CardItem translateZ={60} className="w-full relative z-10">
+                <div style={{ borderTop:"2px solid #6b3808", borderBottom:"2px solid #6b3808", padding:"4px 10px" }}>
+                  <h2
                     style={{
-                      fontFamily: "'Anton', 'Arial Narrow', sans-serif",
-                      backgroundImage:
-                        "linear-gradient(180deg,#fff4e0 0%,#ff7a00 55%,#e83600 100%)",
-                      WebkitBackgroundClip: "text",
-                      backgroundClip: "text",
-                      color: "transparent",
-                      filter: "drop-shadow(0 2px 10px rgba(232,54,0,.45))",
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      fontWeight: 900,
+                      fontSize: Math.max(15, Math.round(18 * scale)),
+                      letterSpacing: "0.09em",
+                      textTransform: "uppercase",
+                      color: "#160803",
+                      textShadow: "0.5px 0.5px 0 rgba(255,240,200,0.85)",
+                      lineHeight: 1.25,
+                      margin: 0,
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                     }}
                   >
-                    {first}
-                    {last ? <><br />{last}</> : null}
-                  </h1>
-                        </CardItem>
-
-                  {/* role — grayscale by default */}
-                    <CardItem translateZ={40}>
-                  <p className="fbc-bw mb-5 flex items-center justify-center gap-2 text-center font-mono text-[15px] tracking-[0.26em] text-[#ffd9a8]">
-                    <span className="h-px w-4 bg-gradient-to-r from-transparent to-[#ff7a00]" />
-                    {role}
-                    <span className="h-px w-4 bg-gradient-to-l from-transparent to-[#ff7a00]" />
-                  </p>
-                        </CardItem>
-
-                  {/* socials — hidden until hover, rise in staggered */}
-                  <div className="flex justify-center gap-3">
-
-                    {socials?.linkedin && (
-                      <a
-                        href={socials.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="LinkedIn"
-                        className="fbc-social-item fbc-hex flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(255,150,60,.4)] transition-all duration-300"
-                        style={{
-                          background:
-                            "linear-gradient(155deg,rgba(255,122,0,.18),rgba(232,54,0,.05))",
-                        }}
-                      >
-                        <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-[#ffb627]">
-                          {ICONS.linkedin}
-                        </svg>
-                      </a>
-                    )}
-
-                    {socials?.instagram && (
-                      <a
-                        href={socials.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Instagram"
-                        className="fbc-social-item fbc-hex flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(255,150,60,.4)] transition-all duration-300"
-                        style={{
-                          background:
-                            "linear-gradient(155deg,rgba(255,122,0,.18),rgba(232,54,0,.05))",
-                        }}
-                      >
-                        <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-[#ffb627]">
-                          {ICONS.instagram}
-                        </svg>
-                      </a>
-                    )}
-
-                  </div>
+                    {first} {last}
+                  </h2>
                 </div>
+              </CardItem>
 
-                {/* pixel flash — invisible at rest, pops per-tile only during hover transition */}
-                <div className="fbc-pixel-grid">
-                  {pixelCells.map((cell) => (
-                    <div
-                      key={cell.id}
-                      className="fbc-pixel"
-                      style={{
-                        backgroundColor: cell.color,
-                        animationDelay: `${cell.delay}ms`,
-                      }}
-                    />
-                  ))}
-                </div>
+              {/* ---- ROLE ---- */}
+              <div className="relative z-10" style={{ margin:"4px 0" }}>
+                <p style={{ fontFamily:"Georgia,serif", fontStyle:"italic", fontWeight:700, fontSize:Math.max(10.5, Math.round(12 * scale)), letterSpacing:"0.07em", color:"#3d1a05", margin:0, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", maxWidth:240 }}>
+                  {role}
+                </p>
+                <p style={{ fontFamily:"Georgia,serif", fontWeight:700, fontSize:8, letterSpacing:"0.18em", color:"rgba(107,56,8,0.88)", textTransform:"uppercase", margin:"3px 0 0" }}>
+                  — CENTRAL INDIA'S LARGEST SPORTS FEST · IIT INDORE —
+                </p>
+              </div>
+
+              {/* ---- SOCIAL BUTTONS ---- */}
+              <div style={{ position:"relative", zIndex:10, display:"flex", alignItems:"center", justifyContent:"center", gap:8, paddingTop:6, borderTop:"1px solid rgba(107,56,8,0.32)" }}>
+                {socials?.linkedin && (
+                  <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                    className="tp-btn-lg"
+                    style={{ display:"flex", alignItems:"center", gap:5, padding:"3px 12px", border:"1.5px solid #5a2e08", background:"rgba(90,46,8,0.14)", borderRadius:2, fontFamily:"Georgia,serif", fontWeight:700, fontSize:9, letterSpacing:"0.12em", color:"#1a0b02", textDecoration:"none" }}>
+                    <svg viewBox="0 0 24 24" style={{ width:13, height:13, fill:"#5a2e08", flexShrink:0 }}>{ICONS.linkedin}</svg>
+                    <span>LINKEDIN</span>
+                  </a>
+                )}
+                {socials?.instagram && (
+                  <a href={socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                    className="tp-btn-lg"
+                    style={{ display:"flex", alignItems:"center", gap:5, padding:"3px 12px", border:"1.5px solid #5a2e08", background:"rgba(90,46,8,0.14)", borderRadius:2, fontFamily:"Georgia,serif", fontWeight:700, fontSize:9, letterSpacing:"0.12em", color:"#1a0b02", textDecoration:"none" }}>
+                    <svg viewBox="0 0 24 24" style={{ width:13, height:13, fill:"#5a2e08", flexShrink:0 }}>{ICONS.instagram}</svg>
+                    <span>INSTAGRAM</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-</CardBody>
-</CardContainer>
-);
-
-}
-
-function Embers() {
-  const embers = React.useMemo(
-    () =>
-      Array.from({ length: 22 }).map((_, i) => ({
-        id: i,
-        size: 2 + Math.random() * 4,
-        left: Math.random() * 360,
-        drift: Math.random() * 60 - 30,
-        duration: 4 + Math.random() * 4,
-        delay: Math.random() * 6,
-      })),
-    []
-  );
-
-  return (
-    <div className="pointer-events-none absolute -inset-x-20 -top-32 -bottom-32 z-0">
-      {embers.map((e) => (
-        <div
-          key={e.id}
-          className="fbc-ember absolute bottom-0 rounded-full blur-[0.2px]"
-          style={{
-            width: e.size,
-            height: e.size,
-            left: e.left,
-            // @ts-ignore css custom property
-            "--drift": `${e.drift}px`,
-            animationDuration: `${e.duration}s`,
-            animationDelay: `${e.delay}s`,
-            background: "radial-gradient(circle, #fff4e0 0%, #ff7a00 45%, transparent 75%)",
-          }}
-        />
-      ))}
-    </div>
+      </CardBody>
+    </CardContainer>
   );
 }

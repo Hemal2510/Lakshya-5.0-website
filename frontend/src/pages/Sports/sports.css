@@ -1,0 +1,1402 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Cinzel:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  --lk-bg: #090c10;
+  --lk-bg-soft: #120d09;
+  --lk-panel: #18110b;
+  --lk-gold: #e3b86d;
+  --lk-gold-bright: #ffe4aa;
+  --lk-gold-dark: #8d5b20;
+  --lk-gold-burnish: #b77932;
+  --lk-text: #f6edda;
+  --lk-muted: #bdae97;
+  --lk-line: rgba(227, 184, 109, 0.28);
+  --lk-line-dim: rgba(181, 137, 72, 0.16);
+  --lk-serif: "Cinzel", Georgia, serif;
+  --lk-slab: "Alfa Slab One", Georgia, serif;
+  --lk-sans: "Space Grotesk", "Manrope", Arial, sans-serif;
+}
+
+.lk-sports-page {
+  isolation: isolate;
+  position: relative;
+  overflow: clip;
+  min-height: 100vh;
+  color: var(--lk-text);
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(181, 108, 38, 0.18), transparent 45rem),
+    radial-gradient(circle at 12% 35%, rgba(139, 83, 26, 0.08), transparent 30rem),
+    radial-gradient(circle at 88% 65%, rgba(139, 83, 26, 0.08), transparent 30rem),
+    linear-gradient(180deg, #080a0e 0%, #0e0a07 22%, #130d08 48%, #0d0906 80%, #060504 100%);
+  font-family: var(--lk-sans);
+}
+
+.lk-sports-page *,
+.lk-sports-page *::before,
+.lk-sports-page *::after { box-sizing: border-box; }
+.lk-sports-page a { color: inherit; text-decoration: none; }
+.lk-sports-page button,
+.lk-sports-page input { font: inherit; }
+.lk-sports-page button { color: inherit; }
+.lk-sports-page button:focus-visible,
+.lk-sports-page a:focus-visible,
+.lk-sports-page input:focus-visible { outline: 2px solid var(--lk-gold-bright); outline-offset: 4px; }
+.lk-modal-open { overflow: hidden; }
+
+/* Subtle Western grain texture */
+.lk-page-grain {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: 0;
+  opacity: .18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+}
+
+.lk-header-spacer {
+  height: clamp(80px, 8vw, 130px);
+}
+
+/* ==========================================================================
+   WESTERN HERO SECTION
+   ========================================================================== */
+
+.lk-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(540px, 48vw, 720px);
+  max-width: 1600px;
+  margin: 12px auto 0;
+  padding: 85px clamp(24px, 8vw, 140px) 95px;
+  isolation: isolate;
+}
+
+.lk-hero__image {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background-image: url("/images/sports/hero-athletics.webp");
+  background-position: center 42%;
+  background-size: cover;
+  filter: saturate(.58) sepia(.26) contrast(1.12) brightness(.82);
+  transform: scale(1.02);
+  animation: lk-image-reveal 1.25s cubic-bezier(.22,.72,.18,1) both;
+}
+
+.lk-hero__vignette {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8, 10, 14, 0.98) 0%, rgba(11, 9, 7, 0.92) 32%, rgba(14, 10, 7, 0.52) 65%, rgba(14, 10, 7, 0.28) 100%),
+    linear-gradient(0deg, var(--lk-bg) 0%, transparent 22%, rgba(6, 4, 3, 0.2) 75%, var(--lk-bg-soft) 100%);
+}
+
+.lk-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 15px 5.3% 0;
+  border-top: 1px solid rgba(227, 184, 109, 0.22);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   WESTERN ATMOSPHERE (Inspired directly by Home Hero)
+   -------------------------------------------------------------------------- */
+
+.lk-atmosphere {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Sunlight sweep across the arena */
+.lk-light-sweep {
+  position: absolute;
+  inset: 0;
+  opacity: .5;
+  background: linear-gradient(108deg, transparent 28%, rgba(255, 183, 91, .025) 39%, rgba(255, 193, 109, .14) 49%, rgba(255, 179, 83, .025) 58%, transparent 68%);
+  background-size: 230% 100%;
+  animation: lk-light-sweep 18s ease-in-out infinite;
+}
+
+/* Large Weathered Western Seal Medallion */
+.lk-western-seal {
+  position: absolute;
+  right: -90px;
+  top: 50%;
+  width: clamp(230px, 22vw, 340px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(210, 170, 101, 0.22);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 8px rgba(210, 170, 101, 0.04),
+    inset 0 0 0 10px rgba(210, 170, 101, 0.12),
+    0 0 40px rgba(0, 0, 0, 0.35);
+  transform: translateY(-50%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.lk-western-seal::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px dashed rgba(210, 170, 101, 0.22);
+  border-radius: 50%;
+}
+
+.lk-western-seal::after {
+  content: "★";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: Georgia, serif;
+  font-size: clamp(90px, 11vw, 160px);
+  color: rgba(210, 170, 101, 0.08);
+  -webkit-text-stroke: 1px rgba(210, 170, 101, 0.18);
+}
+
+/* Engraved Western Corner Brackets */
+.lk-western-corners {
+  position: absolute;
+  inset: 18px clamp(20px, 5vw, 65px);
+  background:
+    linear-gradient(#bd9559, #bd9559) left top / 42px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) left top / 1px 42px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right top / 42px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right top / 1px 42px no-repeat,
+    linear-gradient(#bd9559, #bd9559) left bottom / 42px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) left bottom / 1px 42px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right bottom / 42px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right bottom / 1px 42px no-repeat;
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+/* Vertical Expedition Rail Inscription */
+.lk-frontier-rail {
+  position: absolute;
+  left: clamp(16px, 2.8vw, 36px);
+  top: 42%;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--lk-serif);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: rgba(227, 184, 109, 0.52);
+  pointer-events: none;
+}
+
+/* Authentic Western Bullet Impacts */
+.lk-bullet-hole {
+  position: absolute;
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  opacity: 0.65;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle,
+      #030303 0 12%,
+      #100e0b 15% 25%,
+      rgba(181, 155, 114, 0.5) 27% 30%,
+      rgba(0, 0, 0, 0.85) 33% 43%,
+      transparent 65%
+    );
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.7));
+}
+
+.lk-bullet-hole::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  background: conic-gradient(
+    from 8deg,
+    transparent 0deg 23deg,
+    rgba(0, 0, 0, 0.8) 24deg 28deg,
+    transparent 29deg 72deg,
+    rgba(172, 139, 91, 0.35) 73deg 76deg,
+    transparent 77deg 133deg,
+    rgba(0, 0, 0, 0.85) 134deg 140deg,
+    transparent 141deg 207deg,
+    rgba(184, 151, 100, 0.35) 208deg 212deg,
+    transparent 213deg 286deg,
+    rgba(0, 0, 0, 0.8) 287deg 293deg,
+    transparent 294deg 360deg
+  );
+  -webkit-mask: radial-gradient(circle, transparent 0 25%, #000 32% 62%, transparent 72%);
+  mask: radial-gradient(circle, transparent 0 25%, #000 32% 62%, transparent 72%);
+}
+
+.lk-bullet-hole-1 { left: 4%; top: 32%; transform: rotate(-14deg) scale(0.9); }
+.lk-bullet-hole-2 { left: 48%; top: 58%; transform: rotate(18deg) scale(1.05); }
+.lk-bullet-hole-3 { right: 18%; top: 22%; transform: rotate(-25deg) scale(0.8); }
+
+/* Floating Saloon Dust / Golden Embers */
+.lk-dust {
+  position: absolute;
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #f4cb7d;
+  box-shadow: 0 0 5px 1px rgba(238, 187, 93, 0.3), 0 0 12px rgba(232, 170, 69, 0.16);
+  opacity: 0;
+  animation: lk-ember-rise 15s linear infinite;
+}
+
+.lk-dust-1 { left: 12%; top: 70%; animation-delay: -2s; }
+.lk-dust-2 { left: 28%; top: 60%; animation-delay: -7s; }
+.lk-dust-3 { left: 45%; top: 82%; animation-delay: -4s; }
+.lk-dust-4 { left: 62%; top: 74%; animation-delay: -11s; }
+.lk-dust-5 { left: 78%; top: 44%; animation-delay: -9s; }
+.lk-dust-6 { left: 34%; top: 38%; animation-delay: -1s; }
+
+/* --------------------------------------------------------------------------
+   HERO CONTENT & WESTERN TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+
+.lk-hero__content {
+  position: relative;
+  z-index: 3;
+  width: min(820px, 100%);
+  animation: lk-rise-in .9s .12s both;
+}
+
+/* Western Edition Badge */
+.lk-edition-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  max-width: 100%;
+  padding: 8px 16px;
+  border: 1px solid rgba(227, 184, 109, 0.74);
+  border-radius: 999px;
+  background: rgba(13, 12, 11, 0.65);
+  color: #f5d292;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  font-family: var(--lk-serif);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.lk-edition-badge > span:first-child,
+.lk-edition-badge > span:last-child {
+  color: var(--lk-gold-bright);
+}
+
+.lk-overline {
+  margin: 22px 0 10px;
+  color: #d9b575;
+  font-family: var(--lk-sans);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+}
+
+/* Western Display Headline */
+.lk-hero-western-title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  line-height: .98;
+}
+
+.lk-hero-title-light {
+  font-family: var(--lk-serif);
+  font-size: clamp(40px, 6.2vw, 86px);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  color: #f6edda;
+  text-shadow: 0 3px 0 rgba(77, 52, 27, .9), 0 8px 28px rgba(0, 0, 0, .85);
+}
+
+/* Antique Gold Metal Gradient for Main Word */
+.lk-hero-title-gold {
+  font-family: var(--lk-serif);
+  font-size: clamp(44px, 7vw, 98px);
+  font-weight: 900;
+  letter-spacing: -.035em;
+  line-height: 1.05;
+  background: linear-gradient(
+    180deg,
+    #fff3c9 0%,
+    #e9c77c 13%,
+    #b77932 30%,
+    #fbe7ad 43%,
+    #d4a14c 54%,
+    #87511f 75%,
+    #e2b766 91%,
+    #fff0bd 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 0.8px #633d19;
+  paint-order: stroke fill;
+  text-shadow:
+    0 1px 0 #fff0bd,
+    0 3px 0 #976227,
+    0 5px 0 #4b2d14,
+    0 8px 16px rgba(0, 0, 0, 0.85);
+  filter: drop-shadow(0 0 18px rgba(210, 157, 68, 0.25));
+}
+
+/* Western Filigree Divider */
+.lk-brand-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(100%, 420px);
+  margin: 18px 0 16px;
+  color: #dcb061;
+}
+
+.lk-brand-divider span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #8b5c29,
+    #e0b15f,
+    #66421e,
+    transparent
+  );
+}
+
+.lk-brand-divider b {
+  font-size: 14px;
+  font-weight: 400;
+  text-shadow: 0 0 8px rgba(216, 166, 81, 0.35);
+}
+
+.lk-hero__copy {
+  max-width: 510px;
+  margin: 0 0 28px;
+  color: #c9bca8;
+  font-size: 14px;
+  line-height: 1.85;
+  text-shadow: 0 2px 10px rgba(0,0,0,.9);
+}
+
+.lk-hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+/* Western Action Button */
+.lk-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 24px;
+  border: 1px solid rgba(179, 130, 60, 0.86);
+  border-radius: 2px;
+  font-family: var(--lk-serif);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  transition: transform .22s ease, filter .22s ease, background-color .22s ease;
+  cursor: pointer;
+}
+
+.lk-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.lk-button--gold {
+  color: #21170b !important;
+  background: linear-gradient(180deg, #f1ce88, #bf8b43);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.lk-button--outline {
+  color: var(--lk-gold-bright);
+  border-color: var(--lk-line);
+  background: rgba(14, 10, 6, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.lk-button--outline:hover {
+  border-color: var(--lk-gold);
+  background: rgba(233, 184, 94, 0.12);
+}
+
+.lk-hero__edition {
+  color: #b39f84;
+  font-family: var(--lk-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.lk-hero__edition b {
+  margin: 0 7px;
+  color: var(--lk-gold);
+}
+
+.lk-hero__index {
+  position: absolute;
+  right: clamp(26px, 6vw, 100px);
+  bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #8c765c;
+  font-family: var(--lk-serif);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.lk-hero__index span {
+  color: var(--lk-gold-bright);
+  font-weight: 700;
+}
+
+.lk-hero__index i {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--lk-gold), rgba(233, 184, 94, 0.15));
+}
+
+/* ==========================================================================
+   SALOON TIMBER MARQUEE
+   ========================================================================== */
+
+.lk-marquee {
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid rgba(179, 130, 60, 0.45);
+  border-bottom: 2px solid rgba(179, 130, 60, 0.45);
+  background: linear-gradient(180deg, #1c1209 0%, #100a06 100%);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7), inset 0 -2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.lk-marquee::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(90deg, transparent 0, transparent 40px, rgba(227, 184, 109, 0.03) 40px, rgba(227, 184, 109, 0.03) 41px);
+}
+
+.lk-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: lk-marquee-slide 34s linear infinite;
+}
+
+.lk-marquee:hover .lk-marquee__track {
+  animation-play-state: paused;
+}
+
+.lk-marquee__group {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 32px;
+  padding: 16px 16px;
+  color: #d1bda2;
+  font-family: var(--lk-serif);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  white-space: nowrap;
+}
+
+.lk-marquee__group b {
+  color: var(--lk-gold);
+  font-size: 12px;
+  text-shadow: 0 0 8px rgba(227, 184, 109, 0.5);
+}
+
+/* ==========================================================================
+   SPORTS DIRECTORY / THE ARENA ROSTER
+   ========================================================================== */
+
+.lk-sport-directory {
+  width: min(1360px, calc(100% - 2 * clamp(22px, 6vw, 90px)));
+  margin: 0 auto;
+  padding: 85px 0 100px;
+}
+
+.lk-section-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--lk-line);
+  color: #a8947b;
+  font-family: var(--lk-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.lk-directory-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 50px 0 38px;
+}
+
+.lk-eyebrow--muted {
+  margin-bottom: 12px;
+  color: #d1a868;
+  font-family: var(--lk-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .22em;
+}
+
+.lk-section-heading {
+  margin: 0;
+  color: var(--lk-text);
+  font-family: var(--lk-serif);
+  font-size: clamp(38px, 5.2vw, 68px);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.05;
+}
+
+.lk-section-heading em {
+  color: var(--lk-gold);
+  font-style: normal;
+  background: linear-gradient(180deg, #fff3c9 0%, #e9c77c 30%, #b77932 70%, #fff0bd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(210, 157, 68, 0.2));
+}
+
+.lk-mobile-break { display: none; }
+
+.lk-directory-heading__copy {
+  width: min(440px, 45%);
+  margin: 0 0 6px;
+  color: var(--lk-muted);
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+/* --------------------------------------------------------------------------
+   FILTER & SEARCH CONTROLS
+   -------------------------------------------------------------------------- */
+
+.lk-directory-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  border-top: 1px solid var(--lk-line-dim);
+  border-bottom: 1px solid var(--lk-line-dim);
+}
+
+.lk-filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+}
+
+/* Saloon Plaque Filter Button */
+.lk-filter {
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid rgba(208, 153, 71, 0.32);
+  border-radius: 999px;
+  color: #bdae97;
+  background: rgba(22, 16, 11, 0.7);
+  font-family: var(--lk-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  transition: all .24s ease;
+  cursor: pointer;
+}
+
+.lk-filter:hover {
+  color: var(--lk-gold-bright);
+  border-color: rgba(227, 184, 109, 0.65);
+  background: rgba(35, 23, 14, 0.85);
+}
+
+.lk-filter.is-active {
+  border-color: #ffd580;
+  color: #1f1408 !important;
+  background: linear-gradient(180deg, #f1ce88, #bf8b43);
+  box-shadow: 0 4px 15px rgba(208, 153, 71, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Expedition Ledger Search Input */
+.lk-search {
+  display: flex;
+  min-width: 260px;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  border: 1px solid rgba(208, 153, 71, 0.35);
+  border-radius: 4px;
+  color: #c9bba7;
+  background: rgba(18, 12, 8, 0.85);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: border-color .22s ease;
+}
+
+.lk-search:focus-within {
+  border-color: var(--lk-gold);
+  box-shadow: 0 0 14px rgba(227, 184, 109, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.lk-search svg {
+  color: var(--lk-gold);
+  flex-shrink: 0;
+}
+
+.lk-search input {
+  width: 100%;
+  min-width: 0;
+  height: 42px;
+  border: 0;
+  outline: 0;
+  color: var(--lk-text);
+  background: transparent;
+  font-family: var(--lk-sans);
+  font-size: 12px;
+}
+
+.lk-search input::placeholder {
+  color: #8c7b67;
+  font-family: var(--lk-serif);
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+
+.lk-search > span {
+  color: #a8947b;
+  font-family: var(--lk-serif);
+  font-size: 12px;
+}
+
+.lk-results-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 0 16px;
+  color: #9c8a74;
+  font-family: var(--lk-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.lk-results-note svg {
+  color: var(--lk-gold);
+}
+
+/* ==========================================================================
+   SPORT CARDS / WESTERN SALOON PLAQUES
+   ========================================================================== */
+
+.lk-sport-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+  padding-top: 10px;
+}
+
+.lk-sport-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 330px;
+  grid-column: span 4;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 24px;
+  border: 1px solid rgba(214, 165, 88, 0.28);
+  border-radius: 6px;
+  text-align: left;
+  background: #160f0a;
+  isolation: isolate;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  transition: border-color .35s ease, transform .35s cubic-bezier(.2,.75,.2,1), box-shadow .35s ease;
+  animation: lk-card-reveal .55s both;
+}
+
+.lk-sport-card--featured {
+  min-height: 430px;
+  grid-column: span 6;
+}
+
+.lk-sport-card:hover {
+  z-index: 2;
+  transform: translateY(-5px);
+  border-color: rgba(255, 213, 128, 0.75);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 25px rgba(227, 184, 109, 0.22);
+}
+
+/* Engraved Western Corners on Cards */
+.lk-card-corners {
+  position: absolute;
+  inset: 10px;
+  background:
+    linear-gradient(#bd9559, #bd9559) left top / 16px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) left top / 1px 16px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right top / 16px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right top / 1px 16px no-repeat,
+    linear-gradient(#bd9559, #bd9559) left bottom / 16px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) left bottom / 1px 16px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right bottom / 16px 1px no-repeat,
+    linear-gradient(#bd9559, #bd9559) right bottom / 1px 16px no-repeat;
+  opacity: 0.35;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+
+.lk-sport-card:hover .lk-card-corners {
+  opacity: 0.75;
+}
+
+.lk-sport-card__image,
+.lk-sport-card__scrim {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lk-sport-card__image {
+  object-fit: cover;
+  filter: saturate(.72) sepia(.2) contrast(1.1) brightness(.88);
+  transition: transform .7s cubic-bezier(.2,.75,.2,1), filter .5s ease;
+}
+
+.lk-sport-card:hover .lk-sport-card__image {
+  transform: scale(1.06);
+  filter: saturate(.92) sepia(.08) contrast(1.12) brightness(.96);
+}
+
+/* Saloon Vignette Scrim */
+.lk-sport-card__scrim {
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(14, 10, 6, 0.74) 0%, rgba(14, 10, 6, 0.12) 32%, rgba(14, 10, 6, 0.25) 50%, rgba(10, 7, 4, 0.96) 100%);
+}
+
+.lk-sport-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  color: #f1d09a;
+  font-family: var(--lk-serif);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+/* Brass Spur Arrow Medallion */
+.lk-sport-card__arrow {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(245, 216, 163, 0.5);
+  border-radius: 50%;
+  color: #f5d9a6;
+  background: rgba(18, 12, 7, 0.65);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: all .25s ease;
+}
+
+.lk-sport-card:hover .lk-sport-card__arrow {
+  color: #1b1006;
+  background: var(--lk-gold-bright);
+  border-color: #ffd580;
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.lk-sport-card__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Stamped Dispatch Pills */
+.lk-sport-card__format {
+  margin-bottom: 6px;
+  padding: 3px 8px;
+  border: 1px solid rgba(227, 184, 109, 0.35);
+  border-radius: 3px;
+  background: rgba(14, 10, 6, 0.7);
+  color: #e5cfb0;
+  font-family: var(--lk-serif);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.lk-sport-card__venue {
+  margin-bottom: 10px;
+  color: #e9b85e;
+  font-family: var(--lk-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.lk-sport-card__name {
+  color: #fff6e5;
+  font-family: var(--lk-serif);
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  text-shadow: 0 3px 18px rgba(0,0,0,.65);
+  transition: color .25s ease;
+}
+
+.lk-sport-card:hover .lk-sport-card__name {
+  color: #ffe8b5;
+  text-shadow: 0 0 18px rgba(245, 158, 11, 0.4);
+}
+
+.lk-sport-card__discover {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(235, 206, 159, 0.32);
+  color: #dfcaa8;
+  font-family: var(--lk-serif);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  opacity: .88;
+  transition: opacity .2s ease;
+}
+
+.lk-sport-card__discover i {
+  color: var(--lk-gold);
+  font-size: 15px;
+  font-style: normal;
+}
+
+.lk-sport-card:hover .lk-sport-card__discover {
+  opacity: 1;
+  color: #fff0bd;
+}
+
+/* Empty State */
+.lk-empty-state {
+  display: flex;
+  min-height: 290px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 48px 24px;
+  border: 1px dashed var(--lk-line);
+  border-radius: 6px;
+  text-align: center;
+  background: rgba(18, 12, 8, 0.7);
+}
+
+.lk-empty-state__mark {
+  color: var(--lk-gold);
+  font-size: 28px;
+}
+
+.lk-empty-state h3 {
+  margin: 14px 0 8px;
+  font-family: var(--lk-serif);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+
+.lk-empty-state p {
+  margin: 0 0 24px;
+  color: var(--lk-muted);
+  font-size: 13px;
+}
+
+/* ==========================================================================
+   WESTERN BOTTOM CALLOUT
+   ========================================================================== */
+
+.lk-bottom-cta {
+  position: relative;
+  display: flex;
+  min-height: 400px;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 75px max(calc((100% - 1140px) / 2), 8vw);
+  border-top: 2px solid var(--lk-line);
+  background:
+    radial-gradient(ellipse at 85% 55%, rgba(181, 108, 38, 0.16), transparent 35rem),
+    linear-gradient(90deg, #130d08 0%, #0d0805 75%, #080503 100%);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.lk-bottom-cta__rule {
+  position: absolute;
+  top: 0;
+  left: 8%;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--lk-gold), transparent);
+}
+
+.lk-bottom-heading {
+  margin: 0;
+  color: var(--lk-text);
+  font-family: var(--lk-serif);
+  font-size: clamp(48px, 6.2vw, 82px);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.02;
+  position: relative;
+  z-index: 2;
+}
+
+.lk-bottom-heading em {
+  font-style: normal;
+  background: linear-gradient(180deg, #fff3c9 0%, #e9c77c 30%, #b77932 70%, #fff0bd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(210, 157, 68, 0.25));
+}
+
+.lk-bottom-cta > p:not(.lk-eyebrow) {
+  position: relative;
+  z-index: 2;
+  max-width: 440px;
+  margin: 18px 0 22px;
+  color: var(--lk-muted);
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.lk-text-link {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 8px 18px;
+  border: 1px solid rgba(227, 184, 109, 0.5);
+  border-radius: 999px;
+  background: rgba(18, 12, 7, 0.65);
+  color: var(--lk-gold-bright) !important;
+  font-family: var(--lk-serif);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  transition: all .24s ease;
+}
+
+.lk-text-link span {
+  font-size: 14px;
+  transition: transform .2s ease;
+}
+
+.lk-text-link:hover {
+  background: rgba(227, 184, 109, 0.15);
+  border-color: #ffd580;
+}
+
+.lk-text-link:hover span {
+  transform: translateY(-3px);
+}
+
+/* Western Seal Medallion Watermark on Bottom Right */
+.lk-bottom-western-seal {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(220px, 28vw, 380px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lk-seal-ring-outer {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(210, 170, 101, 0.25);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 8px rgba(210, 170, 101, 0.05);
+}
+
+.lk-seal-ring-inner {
+  position: absolute;
+  inset: 24px;
+  border: 1px dashed rgba(210, 170, 101, 0.22);
+  border-radius: 50%;
+}
+
+.lk-seal-star {
+  font-size: clamp(80px, 12vw, 150px);
+  color: rgba(210, 170, 101, 0.08);
+  -webkit-text-stroke: 1px rgba(210, 170, 101, 0.2);
+}
+
+.lk-seal-text {
+  position: absolute;
+  bottom: 12%;
+  font-family: var(--lk-serif);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .24em;
+  color: rgba(227, 184, 109, 0.5);
+}
+
+.lk-bullet-hole-bottom {
+  right: 28%;
+  top: 25%;
+  transform: rotate(32deg) scale(0.9);
+}
+
+/* ==========================================================================
+   SPORT DOSSIER MODAL
+   ========================================================================== */
+
+.lk-modal-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(10px);
+  animation: lk-fade-in .2s ease both;
+}
+
+.lk-sport-modal {
+  position: relative;
+  display: grid;
+  width: min(860px, 100%);
+  max-height: min(720px, calc(100vh - 48px));
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  overflow: auto;
+  border: 1px solid rgba(217, 165, 85, 0.55);
+  border-radius: 8px;
+  background: #140d08;
+  box-shadow: 0 35px 120px rgba(0, 0, 0, 0.85), 0 0 40px rgba(210, 157, 68, 0.15);
+  animation: lk-modal-up .28s cubic-bezier(.2,.75,.2,1) both;
+}
+
+.lk-modal-close {
+  position: absolute;
+  z-index: 5;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(233, 184, 94, 0.5);
+  border-radius: 50%;
+  color: var(--lk-gold-bright);
+  background: rgba(14, 10, 6, 0.8);
+  font-size: 26px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.lk-modal-close:hover {
+  background: var(--lk-gold-bright);
+  color: #1a1006;
+}
+
+.lk-sport-modal__image-wrap {
+  position: relative;
+  min-height: 450px;
+  overflow: hidden;
+  background: #251a0d;
+}
+
+.lk-sport-modal__image,
+.lk-sport-modal__image-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lk-sport-modal__image {
+  object-fit: cover;
+  filter: saturate(.72) sepia(.2) contrast(1.1);
+}
+
+.lk-sport-modal__image-shade {
+  background:
+    linear-gradient(0deg, rgba(14, 10, 6, 0.9) 0%, transparent 68%),
+    linear-gradient(90deg, transparent, rgba(14, 10, 6, 0.4));
+}
+
+.lk-sport-modal__number {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  color: var(--lk-gold-bright);
+  font-family: var(--lk-serif);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+}
+
+.lk-sport-modal__body {
+  position: relative;
+  padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 44px);
+}
+
+.lk-sport-modal__body .lk-eyebrow {
+  margin-bottom: 12px;
+}
+
+.lk-sport-modal__body h2 {
+  margin: 0;
+  color: var(--lk-text);
+  font-family: var(--lk-serif);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+
+.lk-sport-modal__body h2 span {
+  color: var(--lk-gold);
+}
+
+.lk-sport-modal__format {
+  margin: 10px 0 18px;
+  color: var(--lk-gold);
+  font-family: var(--lk-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.lk-sport-modal__description {
+  margin: 0 0 26px;
+  color: #bfb29f;
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.lk-modal-info-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(208, 153, 71, 0.22);
+}
+
+.lk-modal-info-line span {
+  color: #9c8a74;
+  font-family: var(--lk-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.lk-modal-info-line b {
+  color: #e3cca8;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.lk-modal-done {
+  width: 100%;
+  margin-top: 22px;
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes lk-rise-in {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lk-image-reveal {
+  from { opacity: .35; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes lk-card-reveal {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lk-marquee-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes lk-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes lk-modal-up {
+  from { opacity: 0; transform: translateY(14px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes lk-light-sweep {
+  0%, 64% { background-position: 135% 0; }
+  100% { background-position: -70% 0; }
+}
+
+@keyframes lk-ember-rise {
+  0% { transform: translate3d(0, 25px, 0) scale(0.65); opacity: 0; }
+  22% { opacity: 0.55; }
+  72% { opacity: 0.3; }
+  100% { transform: translate3d(24px, -110px, 0) scale(1.15); opacity: 0; }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1120px) {
+  .lk-sport-directory { width: calc(100% - 64px); }
+  .lk-sport-card { min-height: 300px; }
+  .lk-sport-card--featured { min-height: 370px; }
+}
+
+@media (max-width: 820px) {
+  .lk-hero { min-height: 600px; padding: 90px 30px 95px; }
+  .lk-hero__image { background-position: 58% center; }
+  .lk-hero__vignette {
+    background:
+      linear-gradient(90deg, rgba(8, 10, 14, 0.95), rgba(11, 9, 7, 0.72) 58%, rgba(14, 10, 7, 0.4)),
+      linear-gradient(0deg, var(--lk-bg) 0%, transparent 24%, var(--lk-bg-soft) 100%);
+  }
+  .lk-hero-western-title .lk-hero-title-light { font-size: clamp(36px, 8.5vw, 68px); }
+  .lk-hero-western-title .lk-hero-title-gold { font-size: clamp(40px, 9.2vw, 76px); }
+  .lk-frontier-rail { display: none; }
+  .lk-directory-heading { align-items: flex-start; flex-direction: column; gap: 20px; padding-top: 40px; }
+  .lk-directory-heading__copy { width: min(540px, 100%); }
+  .lk-directory-tools { align-items: stretch; flex-direction: column; gap: 16px; }
+  .lk-search { min-width: 0; }
+  .lk-sport-grid { gap: 12px; }
+  .lk-sport-card { grid-column: span 6; min-height: 310px; }
+  .lk-sport-card--featured { min-height: 340px; }
+  .lk-sport-modal { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+  .lk-sport-modal__image-wrap { min-height: 420px; }
+}
+
+@media (max-width: 560px) {
+  .lk-hero { min-height: 600px; align-items: flex-end; padding: 85px 20px 85px; }
+  .lk-hero__image { background-position: 60% center; }
+  .lk-hero__vignette {
+    background:
+      linear-gradient(90deg, rgba(8, 10, 14, 0.92), rgba(14, 10, 7, 0.45)),
+      linear-gradient(0deg, rgba(8, 10, 14, 0.98) 0%, rgba(14, 10, 7, 0.6) 55%, rgba(14, 10, 7, 0.1) 100%);
+  }
+  .lk-hero::after { inset-inline: 15px; }
+  .lk-edition-badge { font-size: 8.5px; padding: 6px 12px; }
+  .lk-overline { font-size: 9px; }
+  .lk-hero-western-title .lk-hero-title-light { font-size: clamp(34px, 9.8vw, 54px); }
+  .lk-hero-western-title .lk-hero-title-gold { font-size: clamp(38px, 11vw, 60px); }
+  .lk-hero__copy { margin: 18px 0 24px; font-size: 13px; }
+  .lk-hero__actions { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .lk-button { min-height: 46px; }
+  .lk-hero__index { right: 20px; bottom: 24px; }
+  .lk-marquee__group { gap: 20px; padding-block: 13px; font-size: 10px; }
+  .lk-sport-directory { width: calc(100% - 32px); padding: 55px 0 65px; }
+  .lk-section-topline { align-items: flex-start; flex-direction: column; gap: 8px; font-size: 8.5px; }
+  .lk-directory-heading { padding: 32px 0 24px; }
+  .lk-section-heading { font-size: clamp(36px, 11vw, 54px); }
+  .lk-mobile-break { display: initial; }
+  .lk-directory-heading__copy { font-size: 12px; }
+  .lk-filter-list { gap: 6px; }
+  .lk-filter { min-height: 35px; padding-inline: 12px; font-size: 9px; }
+  .lk-results-note { align-items: flex-start; flex-direction: column; gap: 7px; font-size: 8.5px; }
+  .lk-sport-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .lk-sport-card, .lk-sport-card--featured { grid-column: auto; min-height: 330px; }
+  .lk-sport-card--featured { min-height: 360px; }
+  .lk-sport-card__name { font-size: 36px; }
+  .lk-bottom-cta { min-height: 410px; padding: 60px 22px; }
+  .lk-bottom-heading { font-size: 56px; }
+  .lk-bottom-western-seal { display: none; }
+  .lk-modal-backdrop { align-items: start; padding: 12px; }
+  .lk-sport-modal { display: block; max-height: calc(100vh - 24px); margin: auto 0; }
+  .lk-sport-modal__image-wrap { min-height: 230px; }
+  .lk-sport-modal__body { padding: 26px 22px 24px; }
+  .lk-sport-modal__body h2 { font-size: 34px; }
+  .lk-sport-modal__description { margin-bottom: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lk-sports-page *, .lk-sports-page *::before, .lk-sports-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

@@ -1,0 +1,289 @@
+/* ==========================================================================
+   LAKSHYA 5.0 - WESTERN FRONTIER TEAM & LEADERSHIP STYLING
+   Cohesive aesthetic matching Home Hero and Sports Coliseum
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --lk-team-bg: #07090d;
+  --lk-team-gold: #e3b86d;
+  --lk-team-gold-bright: #ffe4aa;
+  --lk-team-gold-dark: #8d5b20;
+  --lk-team-amber: #d49b55;
+  --lk-team-soot: #0c0401;
+  --lk-team-charred: #240b03;
+  --lk-team-ember: #dc5512;
+  --lk-team-parchment: #dbc29f;
+}
+
+.lk-team-page {
+  isolation: isolate;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #f6edda;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(181, 108, 38, 0.22) 0%, transparent 48rem),
+    radial-gradient(circle at 15% 30%, rgba(139, 83, 26, 0.12) 0%, transparent 32rem),
+    radial-gradient(circle at 85% 60%, rgba(139, 83, 26, 0.12) 0%, transparent 32rem),
+    linear-gradient(180deg, #07090d 0%, #0d0906 18%, #140d08 45%, #0e0906 78%, #060504 100%);
+  font-family: 'Space Grotesk', Georgia, sans-serif;
+}
+
+/* Background Scene with Frontier Panorama */
+.lk-team-scene {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lk-team-scene-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(650px, 60vh, 900px);
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.38;
+  filter: saturate(0.75) sepia(0.28) contrast(1.15) brightness(0.72);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 65%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 65%, transparent 100%);
+}
+
+/* Frontier Atmosphere & Lighting Sweeps */
+.lk-team-atmosphere {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lk-team-light-sweep {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 183, 91, 0.02) 36%,
+    rgba(255, 193, 109, 0.08) 50%,
+    rgba(255, 179, 83, 0.02) 64%,
+    transparent 78%
+  );
+  background-size: 250% 100%;
+  animation: lk-team-sweep 18s ease-in-out infinite;
+}
+
+@keyframes lk-team-sweep {
+  0% { background-position: -120% 0; }
+  50% { background-position: 120% 0; }
+  100% { background-position: -120% 0; }
+}
+
+/* Authentic Paper & Western Canvas Grain */
+.lk-team-grain {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+}
+
+/* Floating Golden Dust Particles / Embers */
+.lk-team-dust {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, #ffe299 0%, #dc6a1e 100%);
+  box-shadow: 0 0 8px #dc6a1e;
+  animation: lk-team-dust-float 12s ease-in-out infinite;
+}
+
+@keyframes lk-team-dust-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(30px, -140px, 0) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   WESTERN TYPOGRAPHY & EMBELLISHMENTS
+   ========================================================================== */
+
+.lk-western-ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 20px;
+  background: linear-gradient(180deg, #1c1008 0%, #120904 100%);
+  border: 1px solid rgba(227, 184, 109, 0.45);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.8), inset 0 0 12px rgba(212, 155, 85, 0.2);
+  border-radius: 2px;
+}
+
+.lk-western-title {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  background: linear-gradient(180deg, #ffffff 0%, #fff2d6 30%, #ffd066 68%, #c58632 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 18px rgba(181, 108, 38, 0.45));
+  text-transform: uppercase;
+}
+
+.lk-western-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 12px 0 24px;
+}
+
+.lk-western-divider-line {
+  height: 1px;
+  width: 50px;
+  background: linear-gradient(90deg, transparent, #e3b86d);
+}
+
+.lk-western-divider-line.right {
+  background: linear-gradient(90deg, #e3b86d, transparent);
+}
+
+.lk-western-divider-star {
+  font-size: 13px;
+  color: #e3b86d;
+  filter: drop-shadow(0 0 6px rgba(227, 184, 109, 0.8));
+  user-select: none;
+}
+
+.lk-section-heading {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #ffe4aa;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 155, 85, 0.35);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   BURNT PARCHMENT PAPER BADGE EFFECTS
+   Realistic charred & singed edge styling
+   ========================================================================== */
+
+/* Outer burnt paper container with tactile charred perimeter */
+.burnt-paper-card {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  border-radius: 4px;
+  /* Charcoal soot edge border */
+  border: 2px solid #1c0802;
+  /* Multi-layer burnt vignette & shadow */
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.96),
+    0 4px 12px rgba(0, 0, 0, 0.85),
+    inset 0 0 26px rgba(12, 4, 1, 0.96),
+    inset 0 0 52px rgba(38, 12, 3, 0.72),
+    inset 0 0 85px rgba(95, 34, 8, 0.45);
+}
+
+/* Hover: tactile lift with smoldering burnt ember glow along singed rim */
+.group:hover .burnt-paper-card {
+  transform: translateY(-7px) scale(1.025);
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.98),
+    0 0 32px rgba(220, 85, 18, 0.42),
+    0 0 60px rgba(180, 60, 8, 0.22),
+    inset 0 0 30px rgba(12, 4, 1, 0.98),
+    inset 0 0 16px rgba(255, 85, 15, 0.28),
+    inset 0 0 60px rgba(45, 14, 4, 0.8);
+}
+
+/* Scorched burnt rim pseudo-overlays */
+.burnt-edge-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    /* Top edge burn marks */
+    radial-gradient(ellipse at 50% 0%, rgba(10, 3, 1, 0.95) 0%, rgba(35, 11, 2, 0.75) 18%, transparent 42%),
+    /* Bottom edge burn marks */
+    radial-gradient(ellipse at 50% 100%, rgba(10, 3, 1, 0.96) 0%, rgba(38, 12, 2, 0.78) 20%, transparent 44%),
+    /* Left edge singes */
+    radial-gradient(ellipse at 0% 35%, rgba(12, 4, 1, 0.92) 0%, rgba(45, 14, 3, 0.7) 16%, transparent 38%),
+    radial-gradient(ellipse at 0% 75%, rgba(12, 4, 1, 0.88) 0%, rgba(45, 14, 3, 0.65) 14%, transparent 35%),
+    /* Right edge singes */
+    radial-gradient(ellipse at 100% 45%, rgba(12, 4, 1, 0.94) 0%, rgba(45, 14, 3, 0.72) 18%, transparent 40%),
+    radial-gradient(ellipse at 100% 85%, rgba(12, 4, 1, 0.88) 0%, rgba(45, 14, 3, 0.65) 15%, transparent 35%);
+  z-index: 5;
+}
+
+/* Smoldering ember ash effect on hover */
+.burnt-paper-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  box-shadow: inset 0 0 8px rgba(255, 105, 25, 0.6), 0 0 14px rgba(255, 80, 10, 0.35);
+  z-index: 6;
+}
+
+.group:hover .burnt-paper-card::after {
+  opacity: 1;
+}
+
+/* Authentic photo treatment */
+.burnt-photo {
+  filter: grayscale(100%) contrast(1.2) brightness(0.9) sepia(26%);
+  transition: filter 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .burnt-photo {
+  filter: grayscale(0%) contrast(1.05) brightness(1.02) sepia(0%);
+  transform: scale(1.07);
+}
+
+/* Vintage Button Styling */
+.burnt-btn {
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.burnt-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.85), 0 0 10px rgba(212, 155, 85, 0.3);
+}
+
+/* Compass Dial in TeamWheel center */
+.lk-compass-dial {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(212, 155, 85, 0.22);
+  box-shadow: 0 0 50px rgba(212, 155, 85, 0.05), inset 0 0 40px rgba(212, 155, 85, 0.04);
+}
