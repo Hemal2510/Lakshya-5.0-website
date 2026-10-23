@@ -1,32 +1,32 @@
-import "./Legacy.css";
+import "./legacy.css";
 import TimelineSection from "./TimelineSection.tsx";
 import Lakshya5Promo from "./Lakshya5Promo.tsx";
 import { Trophy, Calendar, Users, Zap } from "lucide-react";
 
 const stats = [
   {
-    icon: <Calendar size={30} className="text-[#ffd580]" />,
+    icon: <Calendar size={28} className="text-[#ffd580]" />,
     value: "4",
     title: "YEARS OF VALOR",
-    desc: "Four glorious editions etched into the frontier archives.",
+    desc: "Four glorious chapters etched into the frontier archives.",
   },
   {
-    icon: <Users size={30} className="text-[#ffd580]" />,
+    icon: <Users size={28} className="text-[#ffd580]" />,
     value: "2500+",
     title: "FRONTIER ATHLETES",
-    desc: "Brave contenders competing across every arena.",
+    desc: "Brave contenders battling across every competitive arena.",
   },
   {
-    icon: <Zap size={30} className="text-[#ffd580]" />,
+    icon: <Zap size={28} className="text-[#ffd580]" />,
     value: "20+",
     title: "SPORTING ARENAS",
-    desc: "Fierce duels, matches, and championship showdowns.",
+    desc: "High-stakes showdowns, duels, and championship bouts.",
   },
   {
-    icon: <Trophy size={30} className="text-[#ffd580]" />,
+    icon: <Trophy size={28} className="text-[#ffd580]" />,
     value: "50+",
     title: "PREMIER INSTITUTES",
-    desc: "Contingents enlisting from all across the territory.",
+    desc: "Contingents enlisting from every corner of the nation.",
   },
 ];
 
@@ -34,42 +34,64 @@ export default function Legacy() {
   return (
     <section className="legacy-section relative select-none">
       {/* =========================================================================
-          WARM & BRIGHT RETRO WESTERN BACKGROUND
+          WESTERN ATMOSPHERIC BACKDROP & EFFECTS (Inspired by Home & Sports)
       ========================================================================= */}
       <div className="legacy-bg-backdrop">
-        {/* Warm Saloon & Sunset Canyon Radial Glows */}
         <div className="legacy-bg-glow" />
+      </div>
 
-        {/* Subtle Horizontal Timber / Railway Track Lines */}
-        <div className="legacy-bg-stripes" />
+      {/* Western Atmosphere Layer */}
+      <div className="lk-atmosphere" aria-hidden="true">
+        <span className="lk-light-sweep" />
+        <span className="lk-western-seal" />
+        <span className="lk-western-corners" />
+        <span className="lk-frontier-rail">
+          THE ARCHIVES · FOUR EDITIONS OF VALOR · IIT INDORE
+        </span>
+
+        {/* Western Bullet-Hole Impacts */}
+        <span className="lk-bullet-hole lk-bullet-hole-1" />
+        <span className="lk-bullet-hole lk-bullet-hole-2" />
+        <span className="lk-bullet-hole lk-bullet-hole-3" />
+
+        {/* Floating Saloon Dust / Golden Embers */}
+        <span className="lk-dust lk-dust-1" />
+        <span className="lk-dust lk-dust-2" />
+        <span className="lk-dust lk-dust-3" />
+        <span className="lk-dust lk-dust-4" />
+        <span className="lk-dust lk-dust-5" />
+        <span className="lk-dust lk-dust-6" />
       </div>
 
       {/* =========================================================================
-          HERO SECTION (WESTERN DISPATCH BANNER)
+          HERO SECTION (WESTERN ARCHIVES BANNER)
       ========================================================================= */}
       <div className="legacy-hero relative z-10">
-        {/* Top Western Badge */}
-        <div className="legacy-badge">
-          <span className="badge-star">★</span>
+        {/* Western Edition Badge */}
+        <div className="lk-edition-badge">
+          <span aria-hidden="true">★</span>
           <span>THE HISTORIC ARCHIVES · IIT INDORE</span>
-          <span className="badge-star">★</span>
+          <span aria-hidden="true">★</span>
         </div>
 
-        {/* Main Western Title */}
+        <p className="legacy-overline">FOUR EDITIONS OF UNBROKEN VALOR</p>
+
+        {/* Main Western Display Title */}
         <h1 className="legacy-main-title">
-          LEGACY OF <span className="gold-text">EXCELLENCE</span>
+          <span className="legacy-title-light">LEGACY OF</span>
+          <span className="legacy-title-gold">EXCELLENCE.</span>
         </h1>
 
-        {/* Woodcut Decorative Divider */}
-        <div className="flex justify-center items-center gap-3 my-4 text-[#a35e2b] text-sm font-serif select-none">
-          <span>════════════</span>
-          <span className="text-[#ffd580] text-lg">❖</span>
-          <span>════════════</span>
+        {/* Ornamental Western Divider */}
+        <div className="lk-brand-divider mx-auto" aria-hidden="true">
+          <span />
+          <b>✥</b>
+          <span />
         </div>
 
         <p className="legacy-hero-desc">
           Four editions of raw grit, relentless determination, and unforgettable sporting
-          glory that paved the road for every athlete stepping onto our proving grounds.
+          glory that paved the frontier trail for every athlete stepping onto our proving grounds.
         </p>
       </div>
 
@@ -79,14 +101,12 @@ export default function Legacy() {
       <div className="stats-grid relative z-10">
         {stats.map((card, index) => (
           <div className="stat-card" key={index}>
-            {/* Corner Brass Star Rivets */}
-            <span className="card-rivet top-left">★</span>
-            <span className="card-rivet top-right">★</span>
-            <span className="card-rivet bottom-left">★</span>
-            <span className="card-rivet bottom-right">★</span>
+            {/* Western Engraved Corner Brackets */}
+            <span className="lk-card-corners" aria-hidden="true" />
 
-            {/* Inner Border */}
-            <div className="stat-card-inner-border" />
+            <div className="stat-card-badge">
+              <span>★ RECORD #{index + 1} ★</span>
+            </div>
 
             <div className="icon-box">
               {card.icon}

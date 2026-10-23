@@ -33,47 +33,39 @@ export default function Lakshya5Promo() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative overflow-hidden rounded-2xl border-2 border-[#8c531b]/60 bg-gradient-to-b from-[#1c120a]/95 via-[#130b06]/95 to-[#0a0502]/98 p-8 md:p-14 text-center backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.8),inset_0_0_40px_rgba(184,84,31,0.15)]"
+        className="relative overflow-hidden rounded-2xl border border-[rgba(227,184,109,0.38)] bg-gradient-to-b from-[#1c1209]/95 via-[#130b06]/98 to-[#090503] p-8 md:p-14 text-center backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(210,157,68,0.15)]"
       >
-        {/* Ornate Corner Star Rivets */}
-        <span className="card-rivet top-left">★</span>
-        <span className="card-rivet top-right">★</span>
-        <span className="card-rivet bottom-left">★</span>
-        <span className="card-rivet bottom-right">★</span>
+        {/* Western Corner Brackets */}
+        <span className="lk-card-corners" aria-hidden="true" />
 
         {/* Inner Ornate Border */}
-        <div className="pointer-events-none absolute inset-3 rounded-xl border border-[#d49b55]/20 border-dashed" />
+        <div className="pointer-events-none absolute inset-3 rounded-xl border border-[rgba(227,184,109,0.18)] border-dashed" />
 
         {/* Ambient Warm Gas-Lamp Glow */}
-        <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-gradient-to-b from-[#b8541f]/25 to-transparent blur-3xl" />
+        <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[radial-gradient(circle,rgba(217,119,6,0.2)_0%,transparent_70%)] blur-3xl" />
 
         {/* Top Western Badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#d49b55]/40 bg-[#3d2010]/60 px-5 py-1.5 text-xs md:text-sm font-semibold tracking-widest text-[#fce09b] shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
-          <span className="text-[#f5c879]">★</span>
-          <span style={{ fontFamily: "'Cinzel', serif" }}>THE NEXT CHAPTER · 5TH GRAND EDITION</span>
-          <span className="text-[#f5c879]">★</span>
+        <div className="lk-edition-badge mb-5">
+          <span aria-hidden="true">★</span>
+          <span>THE NEXT CHAPTER · 5TH GRAND EDITION</span>
+          <span aria-hidden="true">★</span>
         </div>
 
         {/* Title */}
-        <h2
-          className="mt-6 text-3xl sm:text-4xl md:text-6xl font-black tracking-wider text-[#fff4df]"
-          style={{ fontFamily: "'Cinzel Decorative', 'Rye', serif" }}
-        >
-          LAKSHYA <span className="gold-text">5.0</span>
+        <h2 className="promo-main-title mt-4">
+          <span className="promo-title-light">LAKSHYA</span>{" "}
+          <span className="promo-title-gold">5.0</span>
         </h2>
 
-        {/* Woodcut Decorative Divider */}
-        <div className="flex justify-center items-center gap-3 my-4 text-[#8a4a22]/80 text-sm font-serif select-none">
-          <span>════════════</span>
-          <span className="text-[#d49b55] text-lg">❖</span>
-          <span>════════════</span>
+        {/* Ornamental Western Divider */}
+        <div className="lk-brand-divider mx-auto my-4" aria-hidden="true">
+          <span />
+          <b>✥</b>
+          <span />
         </div>
 
-        <p
-          className="mx-auto max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-[#c7b299]"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-        >
-          Four editions built the foundation — now, we ignite the ultimate frontier proving grounds.
+        <p className="mx-auto max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-[#c7b299] font-serif">
+          Four editions forged the bedrock — now, we ignite the ultimate frontier proving grounds.
           Lakshya 5.0 returns bigger, bolder, and more fiercely contested than ever at IIT Indore.
         </p>
 
@@ -82,21 +74,16 @@ export default function Lakshya5Promo() {
           {highlights5.map((item, index) => (
             <div
               key={index}
-              className="group relative rounded-xl border border-[#6b3c14]/50 bg-[#160d07]/80 p-4 sm:p-6 backdrop-blur-md transition-all duration-300 hover:border-[#d49b55]/70 hover:bg-[#20130a]/90 hover:-translate-y-1 shadow-[0_4px_16px_rgba(0,0,0,0.5)]"
+              className="group relative rounded-xl border border-[rgba(227,184,109,0.22)] bg-[#140c07]/85 p-4 sm:p-6 backdrop-blur-md transition-all duration-300 hover:border-[#ffd580] hover:bg-[#20120a] hover:-translate-y-1 shadow-[0_6px_20px_rgba(0,0,0,0.6)]"
             >
-              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg border border-[#8c531b]/40 bg-[#2b170c]/80 transition-transform group-hover:scale-110 group-hover:border-[#d49b55]">
+              <span className="lk-card-corners" aria-hidden="true" />
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg border border-[rgba(227,184,109,0.35)] bg-[#2b170c]/80 transition-transform group-hover:scale-110 group-hover:border-[#ffd580] shadow-inner">
                 {item.icon}
               </div>
-              <div
-                className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#fff0d0]"
-                style={{ fontFamily: "'Cinzel', 'Rye', serif" }}
-              >
+              <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#fff0d0] font-serif">
                 {item.value}
               </div>
-              <div
-                className="mt-1 text-[10px] sm:text-xs font-semibold tracking-wider text-[#a88d72]"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
+              <div className="mt-1 text-[10px] sm:text-xs font-semibold tracking-wider text-[#b89f84] font-sans">
                 {item.label}
               </div>
             </div>
@@ -107,18 +94,16 @@ export default function Lakshya5Promo() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             to="/sports"
-            className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#d49b55] via-[#f5c879] to-[#b88339] px-8 py-3.5 text-sm md:text-base font-black text-[#1c1109] tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(245,200,121,0.4)] border border-[#ffd580]"
-            style={{ fontFamily: "'Cinzel', serif" }}
+            className="lk-button lk-button--gold"
           >
             <span>EXPLORE 5.0 ARENAS</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight size={16} />
           </Link>
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-full border border-[#8c531b] bg-[#24150b]/80 px-8 py-3.5 text-sm md:text-base font-bold text-[#e6c594] tracking-wider transition-all duration-300 hover:bg-[#382011] hover:border-[#d49b55] hover:text-[#fff]"
-            style={{ fontFamily: "'Cinzel', serif" }}
+            className="lk-button lk-button--outline"
           >
-            REGISTER NOW
+            RETURN TO CAMPUS HOME
           </Link>
         </div>
       </motion.div>

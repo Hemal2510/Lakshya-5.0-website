@@ -39,6 +39,7 @@ export default function TimelineCard({
       {/* ================= VIDEO (SALOON THEATER SCREEN) ================= */}
       <div className="timeline-video">
         <div className="saloon-theater-box">
+          <span className="lk-card-corners" aria-hidden="true" />
           {/* Header Bar */}
           <div className="theater-header-bar">
             <div className="flex items-center gap-2">
@@ -77,20 +78,21 @@ export default function TimelineCard({
         {/* Western Engraved Brass Year Plaque */}
         <div className={`year-pill ${reverse ? "year-right" : "year-left"}`}>
           <span className="year-star">★</span>
-          <span>EST. {year}</span>
+          <span>EST. {year} · EDITION 0{season}</span>
           <span className="year-star">★</span>
         </div>
 
         <div className="content-card">
+          <span className="lk-card-corners" aria-hidden="true" />
           {/* Parchment Inner Border Frame */}
           <div className="parchment-inner-border" />
 
           {/* Chamber Rounds Status Header */}
           <div className="flex items-center justify-between gap-2 mb-4 select-none">
-            <div className="flex items-center gap-2 text-[#9a5d2c] text-xs font-serif">
-              <span>═════</span>
-              <span className="text-[#d49b55]">❖</span>
-              <span>═════</span>
+            <div className="lk-brand-divider my-0 max-w-[140px]" aria-hidden="true">
+              <span />
+              <b>✥</b>
+              <span />
             </div>
             <div className="chamber-status-badge">
               <span className="bullet-indicator">
@@ -117,7 +119,7 @@ export default function TimelineCard({
           <ul className="dispatch-list">
             {highlights.map((item, i) => (
               <li key={i}>
-                <span className="bullet-star">✦</span>
+                <span className="bullet-star">★</span>
                 <span>{item}</span>
               </li>
             ))}

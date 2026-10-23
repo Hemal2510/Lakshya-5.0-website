@@ -76,23 +76,26 @@ export default function TimelineSection() {
         transition={{ duration: 0.8 }}
       >
         {/* Brass Header Badge */}
-        <div className="timeline-badge">
-          <span>★ THE HISTORIC TRAIL ★</span>
+        <div className="lk-edition-badge mb-4">
+          <span aria-hidden="true">★</span>
+          <span>THE HISTORIC TRAIL · FOUR CHAPTERS</span>
+          <span aria-hidden="true">★</span>
         </div>
 
         {/* Title */}
-        <h2>
-          LAKSHYA <span className="gold-text">THROUGH THE AGES</span>
+        <h2 className="timeline-main-title">
+          <span className="timeline-title-light">LAKSHYA</span>{" "}
+          <span className="timeline-title-gold">THROUGH THE AGES.</span>
         </h2>
 
-        {/* Woodcut Decorative Divider */}
-        <div className="flex justify-center items-center gap-3 my-4 text-[#a35e2b] text-sm font-serif select-none">
-          <span>═════════</span>
-          <span className="text-[#ffd580] text-lg">❖</span>
-          <span>═════════</span>
+        {/* Ornamental Western Divider */}
+        <div className="lk-brand-divider mx-auto my-4" aria-hidden="true">
+          <span />
+          <b>✥</b>
+          <span />
         </div>
 
-        <p>
+        <p className="timeline-header-copy">
           Every edition inscribed into the archives tells a tale of courage, grit, and triumph.
           Follow the trail through the milestones that forged the legend of Lakshya.
         </p>
