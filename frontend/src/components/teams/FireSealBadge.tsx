@@ -1,7 +1,7 @@
 import {
-    CardContainer,
-    CardBody,
-    CardItem,
+  CardContainer,
+  CardBody,
+  CardItem,
 } from "@/components/ui/3d-card";
 
 type Social = {
@@ -27,10 +27,15 @@ const ICONS = {
   ),
 };
 
-const DEFAULT_SOCIALS: Social = {
-  instagram: "#",
-  linkedin: "#",
-};
+const DEFAULT_SOCIALS: Social = { instagram: "#", linkedin: "#" };
+
+function seedFrom(s: string) {
+  return (s.split("").reduce((a, c) => a + c.charCodeAt(0), 0) % 18) + 2;
+}
+
+function idFrom(s: string) {
+  return s.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
+}
 
 export default function FireSealBadge({
   name = "Suryansh Nagar",
@@ -43,212 +48,315 @@ export default function FireSealBadge({
   const [first, ...rest] = name.split(" ");
   const last = rest.join(" ");
 
-  const cardW = Math.round(290 * scale);
-  const cardH = Math.round(415 * scale);
-  const photoW = Math.round(185 * scale);
-  const photoH = Math.round(175 * scale);
+  const cardW = Math.round(288 * scale);
+  const cardH = Math.round(414 * scale);
+  const photoW = Math.round(184 * scale);
+  const photoH = Math.round(172 * scale);
+
+  const uid      = idFrom(name);
+  const seed     = seedFrom(name);
+  const filterId = `tpl-f-${uid}`;
+  const gradId   = `tpl-g-${uid}`;
+  const grad2Id  = `tpl-n-${uid}`;
+
+  const bleed = 16;
+  const svgW  = cardW + bleed * 2;
+  const svgH  = cardH + bleed * 2;
 
   return (
     <CardContainer className="inter-var" containerClassName="py-0">
       <CardBody className="w-auto h-auto bg-transparent">
         <div className="relative inline-block overflow-visible select-none group">
           <style>{`
-            /* Realistic paper lift on hover with tactile lighting */
-            .real-leader-paper {
-              transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s ease;
+            .tp-lg-wrap {
+              transition: transform 0.38s cubic-bezier(.22,1,.36,1), filter 0.38s ease;
             }
-            .group:hover .real-leader-paper {
-              transform: translateY(-7px) scale(1.02);
-              box-shadow: 
-                0 25px 50px rgba(0,0,0,0.95), 
-                0 0 40px rgba(212,155,85,0.45), 
-                inset 0 0 38px rgba(70, 30, 8, 0.55);
+            .group:hover .tp-lg-wrap {
+              transform: translateY(-8px) scale(1.025) rotate(-0.4deg);
+              filter: drop-shadow(0 28px 38px rgba(0,0,0,0.80))
+                      drop-shadow(0  0  26px rgba(140,70,8,0.48));
             }
-
-            /* PHOTO ALONE: Black & White sepia developing smoothly into full vibrant color on hover */
-            .leader-photo {
-              filter: grayscale(100%) contrast(1.22) brightness(0.92) sepia(22%);
-              transition: filter 0.65s ease, transform 0.65s cubic-bezier(.22,1,.36,1);
+            .tp-photo-lg {
+              filter: grayscale(100%) contrast(1.18) brightness(0.93) sepia(24%);
+              transition: filter 0.62s ease, transform 0.62s cubic-bezier(.22,1,.36,1);
             }
-            .group:hover .leader-photo {
-              filter: grayscale(0%) contrast(1.04) brightness(1) sepia(0%);
+            .group:hover .tp-photo-lg {
+              filter: grayscale(0%) contrast(1.04) brightness(1.02) sepia(0%);
               transform: scale(1.06);
             }
-
-            .leader-btn {
-              transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+            .tp-btn-lg {
+              transition: transform 0.18s ease, background 0.18s ease;
             }
-            .leader-btn:hover {
-              transform: translateY(-1.5px);
-              box-shadow: 0 5px 12px rgba(0,0,0,0.6);
+            .tp-btn-lg:hover {
+              transform: translateY(-2px);
+              background: rgba(90,46,8,0.24) !important;
             }
           `}</style>
 
-          {/* =========================================================================
-              LEADERSHIP REALISTIC AGED DUSTY BROWN WESTERN PAPER POSTER
-          ========================================================================= */}
+          {/* ===================================================================
+              WANTED POSTER — large (FireSealBadge / Leadership)
+
+              SVG feTurbulence + feDisplacementMap creates the organic torn silhouette.
+              Radial gradient: pale cream centre → rich amber → charred dark edges.
+          =================================================================== */}
+
           <div
-            className="real-leader-paper relative z-10 rounded-xs p-4 text-center overflow-hidden flex flex-col justify-between"
+            className="tp-lg-wrap"
             style={{
+              position: "relative",
               width: cardW,
               minHeight: cardH,
-              /* Dusty Antique Brown Multi-Layer Parchment with Burnt Edges & Stains */
-              background: `
-                radial-gradient(ellipse at 50% 12%, rgba(244, 224, 194, 0.95) 0%, rgba(218, 187, 148, 0.92) 45%, rgba(184, 143, 98, 0.95) 80%, rgba(98, 54, 20, 0.98) 100%),
-                radial-gradient(circle at 12% 18%, rgba(80, 38, 10, 0.24) 0%, transparent 40%),
-                radial-gradient(circle at 88% 82%, rgba(65, 28, 8, 0.3) 0%, transparent 45%),
-                linear-gradient(175deg, #dbc29f 0%, #c3986a 50%, #ab7c4b 100%)
-              `,
-              border: "2.5px solid #3d1e0a",
-              boxShadow: `
-                0 16px 38px rgba(0,0,0,0.92), 
-                0 6px 16px rgba(0,0,0,0.75),
-                inset 0 0 32px rgba(70, 30, 8, 0.52), 
-                inset 0 0 65px rgba(35, 12, 4, 0.38)
-              `,
+              filter: `drop-shadow(0 16px 32px rgba(0,0,0,0.74))
+                       drop-shadow(4px 6px 12px rgba(45,16,2,0.58))`,
             }}
           >
-            {/* Realistic Paper Fiber & Crease Texture Overlays */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-[0.17]"
+            {/* ── TORN PAPER SVG BACKGROUND ──────────────────────────────── */}
+            <svg
+              aria-hidden="true"
               style={{
+                position: "absolute",
+                top: -bleed,
+                left: -bleed,
+                width: svgW,
+                height: svgH,
+                overflow: "visible",
+                zIndex: 0,
+                pointerEvents: "none",
+              }}
+              viewBox={`0 0 ${svgW} ${svgH}`}
+            >
+              <defs>
+                <filter
+                  id={filterId}
+                  x="-22%"
+                  y="-22%"
+                  width="144%"
+                  height="144%"
+                  colorInterpolationFilters="sRGB"
+                >
+                  <feTurbulence
+                    type="turbulence"
+                    baseFrequency="0.028 0.042"
+                    numOctaves="4"
+                    seed={seed}
+                    result="noise"
+                  />
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="noise"
+                    scale="17"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                  />
+                </filter>
+
+                <radialGradient
+                  id={gradId}
+                  cx="50%"
+                  cy="44%"
+                  r="73%"
+                  gradientUnits="objectBoundingBox"
+                >
+                  {/* Authentic golden wanted poster parchment matching the wheel heads exactly */}
+                  <stop offset="0%"   stopColor="#f8f0d0" />
+                  <stop offset="25%"  stopColor="#f0de9a" />
+                  <stop offset="48%"  stopColor="#d8b45a" />
+                  <stop offset="66%"  stopColor="#9a5c14" />
+                  <stop offset="82%"  stopColor="#521e04" />
+                  <stop offset="93%"  stopColor="#230900" />
+                  <stop offset="100%" stopColor="#0e0400" />
+                </radialGradient>
+
+                <radialGradient
+                  id={grad2Id}
+                  cx="38%"
+                  cy="55%"
+                  r="42%"
+                  gradientUnits="objectBoundingBox"
+                >
+                  <stop offset="0%"   stopColor="#e8c860" stopOpacity="0.18" />
+                  <stop offset="55%"  stopColor="#a06820" stopOpacity="0.08" />
+                  <stop offset="100%" stopColor="#200800" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+
+              {/* Main torn paper shape */}
+              <rect
+                x={bleed}
+                y={bleed}
+                width={cardW}
+                height={cardH}
+                fill={`url(#${gradId})`}
+                filter={`url(#${filterId})`}
+                rx="3"
+              />
+
+              {/* Age stain overlay */}
+              <rect
+                x={bleed}
+                y={bleed}
+                width={cardW}
+                height={cardH}
+                fill={`url(#${grad2Id})`}
+                filter={`url(#${filterId})`}
+                rx="3"
+                opacity="0.55"
+              />
+            </svg>
+
+            {/* ── PAPER FIBRE TEXTURE ────────────────────────────────────── */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 1,
+                pointerEvents: "none",
+                opacity: 0.12,
                 backgroundImage: `
-                  repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(80, 38, 10, 0.55) 2px, rgba(80, 38, 10, 0.55) 3px),
-                  repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(80, 38, 10, 0.35) 3px, rgba(80, 38, 10, 0.35) 4px)
+                  repeating-linear-gradient(0deg, transparent, transparent 2px,
+                    rgba(100,60,10,0.55) 2px, rgba(100,60,10,0.55) 3px),
+                  repeating-linear-gradient(90deg, transparent, transparent 4px,
+                    rgba(100,60,10,0.32) 4px, rgba(100,60,10,0.32) 5px)
                 `,
               }}
             />
 
-            {/* Subtle Diagonal Paper Fold Highlight */}
+            {/* ── CARD CONTENT ──────────────────────────────────────────── */}
             <div
-              className="absolute inset-0 pointer-events-none opacity-[0.1]"
+              className="relative flex flex-col justify-between text-center p-4"
               style={{
-                background: "linear-gradient(135deg, transparent 46%, rgba(255,255,255,0.6) 49%, rgba(0,0,0,0.45) 52%, transparent 55%)",
+                width: cardW,
+                minHeight: cardH,
+                zIndex: 2,
+                background: "transparent",
               }}
-            />
-
-            {/* Weathered Double Etched Inner Frame */}
-            <div className="absolute inset-2 border-2 border-[#47220b]/85 pointer-events-none rounded-xs" />
-            <div className="absolute inset-2.5 border border-[#663515]/50 pointer-events-none rounded-xs" />
-
-            {/* Corner Star Rivets */}
-            <span className="absolute top-2.5 left-2.5 text-[#47220b] text-[10px] pointer-events-none select-none font-serif">★</span>
-            <span className="absolute top-2.5 right-2.5 text-[#47220b] text-[10px] pointer-events-none select-none font-serif">★</span>
-            <span className="absolute bottom-2.5 left-2.5 text-[#47220b] text-[10px] pointer-events-none select-none font-serif">★</span>
-            <span className="absolute bottom-2.5 right-2.5 text-[#47220b] text-[10px] pointer-events-none select-none font-serif">★</span>
-
-            {/* TOP HEADER: Bold Woodcut Slab-Serif Branding */}
-            <div className="relative z-10 pt-1">
-              <h1
-                className="font-serif font-black uppercase leading-none tracking-[0.2em] text-[#160b04]"
-                style={{
-                  fontSize: Math.max(22, Math.round(26 * scale)),
-                  fontFamily: "'Playfair Display', 'Georgia', serif",
-                  textShadow: "1px 1px 0px rgba(255,245,230,0.5)",
-                }}
-              >
-                LAKSHYA 5.0
-              </h1>
-              
-              {/* Header Ribbon / Subtitle with dash accents */}
-              <div className="mt-1 flex items-center justify-center gap-2">
-                <span className="h-px w-5 bg-[#5c2d10]/80" />
-                <p
-                  className="font-serif font-black tracking-[0.26em] text-[#3d1a07] uppercase"
-                  style={{ fontSize: Math.max(8.5, Math.round(10 * scale)) }}
-                >
-                  {eyebrow}
-                </p>
-                <span className="h-px w-5 bg-[#5c2d10]/80" />
-              </div>
-            </div>
-
-            {/* WEATHERED PHOTO FRAME (Woodcut Border with Bevel) */}
-            <CardItem translateZ={50} className="w-full flex justify-center my-1.5">
+            >
+              {/* Printed inner frame */}
               <div
-                className="relative p-1.5 bg-[#140a04] border-2 border-[#331808] shadow-[inset_0_0_12px_rgba(0,0,0,0.95),0_3px_10px_rgba(0,0,0,0.48)] rounded-xs overflow-hidden"
-                style={{ width: photoW, height: photoH }}
-              >
-                {/* Vintage Photo Inner Vignette Shadow */}
-                <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_15px_rgba(0,0,0,0.8)] z-10" />
-
-                <div className="w-full h-full overflow-hidden bg-[#180e07]">
-                  <img
-                    src={photoUrl}
-                    alt={name}
-                    className="leader-photo w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </CardItem>
-
-            {/* BOXED WOODCUT NAMEPLATE */}
-            <CardItem translateZ={65} className="w-full relative z-10 px-1">
-              <div
-                className="py-1.5 px-2.5 rounded-xs border-2 border-[#331808] shadow-[inset_0_0_10px_rgba(75,35,8,0.3),0_2px_5px_rgba(0,0,0,0.28)]"
+                aria-hidden="true"
                 style={{
-                  background: "linear-gradient(180deg, #f5ecd8 0%, #e6d3b6 100%)",
+                  position: "absolute",
+                  inset: 12,
+                  border: "1px solid rgba(80,40,5,0.42)",
+                  pointerEvents: "none",
+                  zIndex: 0,
                 }}
-              >
-                <h2
-                  className="font-serif font-black uppercase tracking-[0.09em] text-[#120803] leading-tight truncate"
+              />
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  inset: 14,
+                  border: "1px solid rgba(80,40,5,0.18)",
+                  pointerEvents: "none",
+                  zIndex: 0,
+                }}
+              />
+
+              {/* Corner stars */}
+              <span style={{ position:"absolute", top:10, left:11, color:"#5a2e06", fontSize:9, fontFamily:"serif", pointerEvents:"none", zIndex:3 }}>★</span>
+              <span style={{ position:"absolute", top:10, right:11, color:"#5a2e06", fontSize:9, fontFamily:"serif", pointerEvents:"none", zIndex:3 }}>★</span>
+              <span style={{ position:"absolute", bottom:10, left:11, color:"#5a2e06", fontSize:9, fontFamily:"serif", pointerEvents:"none", zIndex:3 }}>★</span>
+              <span style={{ position:"absolute", bottom:10, right:11, color:"#5a2e06", fontSize:9, fontFamily:"serif", pointerEvents:"none", zIndex:3 }}>★</span>
+
+              {/* ---- HEADER ---- */}
+              <div className="relative z-10 pt-1">
+                <h1
                   style={{
-                    fontSize: Math.max(15, Math.round(18 * scale)),
-                    fontFamily: "'Playfair Display', 'Georgia', serif",
-                    textShadow: "0.5px 0.5px 0px rgba(255,255,255,0.7)",
+                    fontFamily: "'Playfair Display', 'Cinzel', Georgia, serif",
+                    fontWeight: 900,
+                    fontSize: Math.max(20, Math.round(24 * scale)),
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    color: "#1a0b02",
+                    textShadow: "1.5px 1.5px 0 rgba(255,248,215,0.70)",
+                    lineHeight: 1,
+                    margin: 0,
                   }}
                 >
-                  {first} {last}
-                </h2>
+                  LAKSHYA 5.0
+                </h1>
+                <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:8, marginTop:5 }}>
+                  <span style={{ height:1, width:18, background:"rgba(80,40,5,0.55)", display:"block" }} />
+                  <p style={{ fontFamily:"Georgia,serif", fontWeight:700, fontSize:Math.max(8.5, Math.round(10 * scale)), letterSpacing:"0.24em", color:"#3d1a05", textTransform:"uppercase", margin:0 }}>
+                    {eyebrow}
+                  </p>
+                  <span style={{ height:1, width:18, background:"rgba(80,40,5,0.55)", display:"block" }} />
+                </div>
               </div>
-            </CardItem>
 
-            {/* ROLE & DETAILS */}
-            <div className="relative z-10 my-1">
-              <p
-                className="font-serif italic font-black tracking-[0.08em] text-[#331505] truncate max-w-[240px] mx-auto"
-                style={{ fontSize: Math.max(11, Math.round(12.5 * scale)) }}
-              >
-                {role}
-              </p>
-              <p
-                className="font-serif font-bold text-[8.5px] tracking-[0.2em] text-[#5c2d10] uppercase mt-0.5"
-              >
-                — CENTRAL INDIA'S LARGEST SPORTS FEST · IIT INDORE —
-              </p>
-            </div>
-
-            {/* VINTAGE WAX STAMP SOCIAL BUTTONS */}
-            <div className="relative z-10 flex items-center justify-center gap-2 pt-1.5 border-t border-[#5c2d10]/35">
-              {socials?.linkedin && (
-                <a
-                  href={socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="leader-btn flex items-center gap-1.5 px-3 py-1 border border-[#331505] bg-[#1a0b03] hover:bg-[#331505] text-[#f4e4cf] text-[9.5px] font-serif font-bold tracking-wider rounded-xs shadow-xs"
+              {/* ---- PHOTO FRAME ---- */}
+              <CardItem translateZ={45} className="w-full flex justify-center relative z-10" style={{ margin:"6px 0" }}>
+                <div
+                  style={{
+                    width: photoW,
+                    height: photoH,
+                    border: "2.5px solid #5a2e08",
+                    boxShadow: "inset 0 0 14px rgba(0,0,0,0.70), 0 3px 8px rgba(0,0,0,0.40)",
+                    background: "#1a0e06",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
                 >
-                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 fill-[#d49b55]">
-                    {ICONS.linkedin}
-                  </svg>
-                  <span>LINKEDIN</span>
-                </a>
-              )}
+                  <div style={{ position:"absolute", inset:0, boxShadow:"inset 0 0 14px rgba(0,0,0,0.74)", zIndex:10, pointerEvents:"none" }} />
+                  <img src={photoUrl} alt={name} className="tp-photo-lg" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} />
+                </div>
+              </CardItem>
 
-              {socials?.instagram && (
-                <a
-                  href={socials.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="leader-btn flex items-center gap-1.5 px-3 py-1 border border-[#331505] bg-[#1a0b03] hover:bg-[#331505] text-[#f4e4cf] text-[9.5px] font-serif font-bold tracking-wider rounded-xs shadow-xs"
-                >
-                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 fill-[#d49b55]">
-                    {ICONS.instagram}
-                  </svg>
-                  <span>INSTAGRAM</span>
-                </a>
-              )}
+              {/* ---- NAMEPLATE ---- */}
+              <CardItem translateZ={60} className="w-full relative z-10">
+                <div style={{ borderTop:"2px solid #6b3808", borderBottom:"2px solid #6b3808", padding:"4px 10px" }}>
+                  <h2
+                    style={{
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      fontWeight: 900,
+                      fontSize: Math.max(15, Math.round(18 * scale)),
+                      letterSpacing: "0.09em",
+                      textTransform: "uppercase",
+                      color: "#160803",
+                      textShadow: "0.5px 0.5px 0 rgba(255,240,200,0.85)",
+                      lineHeight: 1.25,
+                      margin: 0,
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    {first} {last}
+                  </h2>
+                </div>
+              </CardItem>
+
+              {/* ---- ROLE ---- */}
+              <div className="relative z-10" style={{ margin:"4px 0" }}>
+                <p style={{ fontFamily:"Georgia,serif", fontStyle:"italic", fontWeight:700, fontSize:Math.max(10.5, Math.round(12 * scale)), letterSpacing:"0.07em", color:"#3d1a05", margin:0, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", maxWidth:240 }}>
+                  {role}
+                </p>
+                <p style={{ fontFamily:"Georgia,serif", fontWeight:700, fontSize:8, letterSpacing:"0.18em", color:"rgba(107,56,8,0.88)", textTransform:"uppercase", margin:"3px 0 0" }}>
+                  — CENTRAL INDIA'S LARGEST SPORTS FEST · IIT INDORE —
+                </p>
+              </div>
+
+              {/* ---- SOCIAL BUTTONS ---- */}
+              <div style={{ position:"relative", zIndex:10, display:"flex", alignItems:"center", justifyContent:"center", gap:8, paddingTop:6, borderTop:"1px solid rgba(107,56,8,0.32)" }}>
+                {socials?.linkedin && (
+                  <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                    className="tp-btn-lg"
+                    style={{ display:"flex", alignItems:"center", gap:5, padding:"3px 12px", border:"1.5px solid #5a2e08", background:"rgba(90,46,8,0.14)", borderRadius:2, fontFamily:"Georgia,serif", fontWeight:700, fontSize:9, letterSpacing:"0.12em", color:"#1a0b02", textDecoration:"none" }}>
+                    <svg viewBox="0 0 24 24" style={{ width:13, height:13, fill:"#5a2e08", flexShrink:0 }}>{ICONS.linkedin}</svg>
+                    <span>LINKEDIN</span>
+                  </a>
+                )}
+                {socials?.instagram && (
+                  <a href={socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                    className="tp-btn-lg"
+                    style={{ display:"flex", alignItems:"center", gap:5, padding:"3px 12px", border:"1.5px solid #5a2e08", background:"rgba(90,46,8,0.14)", borderRadius:2, fontFamily:"Georgia,serif", fontWeight:700, fontSize:9, letterSpacing:"0.12em", color:"#1a0b02", textDecoration:"none" }}>
+                    <svg viewBox="0 0 24 24" style={{ width:13, height:13, fill:"#5a2e08", flexShrink:0 }}>{ICONS.instagram}</svg>
+                    <span>INSTAGRAM</span>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </div>
