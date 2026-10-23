@@ -178,7 +178,7 @@ export default function LakshyaFrontierHero({
           <div className="lkh-actions lkh-reveal lkh-delay-3">
             <Link
             className="lkh-action lkh-action-primary"
-            to="/sports"
+            to={sportsHref.startsWith("#") ? "/sports" : sportsHref}
             >
               EXPLORE THE GAMES <span aria-hidden="true">↗</span>
             </Link>

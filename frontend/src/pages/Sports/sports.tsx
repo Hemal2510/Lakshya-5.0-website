@@ -113,297 +113,253 @@ export default function SportsPage() {
       <div className="lk-page-grain" aria-hidden="true" />
       <div className="lk-header-spacer" aria-hidden="true" style={{ height: "clamp(75px, 7.6vw, 135px)" }} />
 
+      {/* Western Hero Section */}
       <section className="lk-hero" aria-labelledby="lk-hero-title">
-
         <div className="lk-hero__image" aria-hidden="true" />
-
         <div className="lk-hero__vignette" aria-hidden="true" />
 
+        {/* Western Atmosphere Layer (Inspired by Home Hero) */}
+        <div className="lk-atmosphere" aria-hidden="true">
+          <span className="lk-light-sweep" />
+          <span className="lk-western-seal" />
+          <span className="lk-western-corners" />
+          <span className="lk-frontier-rail">
+            ARENA ROSTER · LAKSHYA V · IIT INDORE
+          </span>
+
+          {/* Western Bullet-Hole Impacts */}
+          <span className="lk-bullet-hole lk-bullet-hole-1" />
+          <span className="lk-bullet-hole lk-bullet-hole-2" />
+          <span className="lk-bullet-hole lk-bullet-hole-3" />
+
+          {/* Floating Saloon Dust / Golden Embers */}
+          <span className="lk-dust lk-dust-1" />
+          <span className="lk-dust lk-dust-2" />
+          <span className="lk-dust lk-dust-3" />
+          <span className="lk-dust lk-dust-4" />
+          <span className="lk-dust lk-dust-5" />
+          <span className="lk-dust lk-dust-6" />
+        </div>
+
         <div className="lk-hero__content">
+          <div className="lk-edition-badge">
+            <span aria-hidden="true">★</span>
+            <span>THE FRONTIER ARENA · LAKSHYA 5.0</span>
+            <span aria-hidden="true">★</span>
+          </div>
 
-          <p className="lk-eyebrow"><span /> LAKSHYA 5.0 <i /> THE COMPETITION</p>
+          <p className="lk-overline">WHERE GRIT MEETS GLORY · IIT INDORE</p>
 
-          <h1 id="lk-hero-title">WINNING ISN'T<br /><em>FOR EVERYONE.</em></h1>
+          <h1 id="lk-hero-title" className="lk-hero-western-title">
+            <span className="lk-hero-title-light">WHERE GRIT</span>
+            <span className="lk-hero-title-gold">MEETS GLORY.</span>
+          </h1>
+
+          <div className="lk-brand-divider" aria-hidden="true">
+            <span />
+            <b>✥</b>
+            <span />
+          </div>
 
           <p className="lk-hero__copy">
-
-            It takes the early mornings. The last reps. The choice to show up again.
-
-            This is where effort finds its arena.
-
+            Thirteen battlegrounds carved into the frontier dust. The early mornings, the relentless drills,
+            and the fierce pursuit of triumph. This is where legends stake their claim.
           </p>
 
           <div className="lk-hero__actions">
-
             <a className="lk-button lk-button--gold" href="#sports">
-
-              EXPLORE THE SPORTS <ArrowDown />
-
+              EXPLORE THE ARENAS <ArrowDown />
             </a>
-
-            <span className="lk-hero__edition">IIT INDORE <b>·</b> SPORTS FESTIVAL</span>
-
+            <span className="lk-hero__edition">
+              IIT INDORE <b>·</b> CENTRAL INDIA'S PREMIER SPORTS SPECTACLE
+            </span>
           </div>
-
         </div>
 
-        <div className="lk-hero__vertical-label" aria-hidden="true">EARN YOUR MOMENT — LAKSHYA 5.0</div>
-
-        <div className="lk-hero__index" aria-hidden="true"><span>01</span><i /> 04</div>
-
+        <div className="lk-hero__index" aria-hidden="true">
+          <span>★ 01</span><i /> 13 ARENAS
+        </div>
       </section>
 
+      {/* Saloon Timber Marquee */}
       <div className="lk-marquee" aria-label="Sports at Lakshya">
-
         <div className="lk-marquee__track">
-
           {[0, 1].map((copy) => (
-
             <div className="lk-marquee__group" key={copy} aria-hidden={copy === 1 ? "true" : undefined}>
-
-              <span>CRICKET</span><b>✦</b><span>FOOTBALL</span><b>✦</b><span>HOCKEY</span><b>✦</b>
-
-              <span>BASKETBALL</span><b>✦</b><span>ATHLETICS</span><b>✦</b><span>BADMINTON</span><b>✦</b>
-
-              <span>CHESS</span><b>✦</b>
-
+              <span>CRICKET</span><b>★</b><span>FOOTBALL</span><b>★</b><span>HOCKEY</span><b>★</b>
+              <span>BASKETBALL</span><b>★</b><span>ATHLETICS</span><b>★</b><span>BADMINTON</span><b>★</b>
+              <span>CHESS</span><b>★</b><span>VOLLEYBALL</span><b>★</b><span>WATERPOLO</span><b>★</b>
+              <span>AQUATICS</span><b>★</b><span>TABLE TENNIS</span><b>★</b><span>TENNIS</span><b>★</b>
+              <span>SQUASH</span><b>★</b>
             </div>
-
           ))}
-
         </div>
-
       </div>
 
+      {/* Sports Directory */}
       <section className="lk-sport-directory" id="sports" aria-labelledby="lk-sports-title">
-
         <div className="lk-section-topline">
-
-          <span>02 / THE LINE-UP</span>
-
-          <span>THIRTEEN DISCIPLINES. ONE SPIRIT.</span>
-
+          <span>✦ CHAPTER II · THE ARENA ROSTER ✦</span>
+          <span>THIRTEEN DISCIPLINES · ONE UNYIELDING SPIRIT</span>
         </div>
 
         <div className="lk-directory-heading">
-
           <div>
-
-            <p className="lk-eyebrow lk-eyebrow--muted">FIND YOUR ARENA</p>
-
-            <h2 id="lk-sports-title">CHOOSE <em>YOUR</em><br className="lk-mobile-break" /> SPORT.</h2>
-
+            <p className="lk-eyebrow lk-eyebrow--muted">★ CHOOSE YOUR BATTLEGROUND ★</p>
+            <h2 id="lk-sports-title" className="lk-section-heading">
+              CHOOSE <em>YOUR</em><br className="lk-mobile-break" /> ARENA.
+            </h2>
           </div>
 
           <p className="lk-directory-heading__copy">
-
-            From the opening whistle to the final move, every discipline has its own way of testing you.
-
-            Find your game and make it count.
-
+            From the opening sprint to the championship standoff, every discipline tests your endurance, skill, and iron resolve. Find your arena and carve your name.
           </p>
-
         </div>
 
         <div className="lk-directory-tools">
-
           <div className="lk-filter-list" role="group" aria-label="Filter sports by category">
-
             {CATEGORY_FILTERS.map((filter) => (
-
               <button
-
                 type="button"
-
                 key={filter.value}
-
                 className={`lk-filter${activeFilter === filter.value ? " is-active" : ""}`}
-
                 aria-pressed={activeFilter === filter.value}
-
                 onClick={() => setActiveFilter(filter.value)}
-
               >
-
-                {filter.label}
-
+                {filter.label.toUpperCase()}
               </button>
-
             ))}
-
           </div>
 
           <label className="lk-search">
-
             <SearchIcon />
-
             <input
-
               type="search"
-
               value={query}
-
               onChange={(event) => setQuery(event.target.value)}
-
-              placeholder="Find a sport"
-
-              aria-label="Find a sport"
-
+              placeholder="Search arena or discipline..."
+              aria-label="Search arena or discipline"
             />
-
             <span>↵</span>
-
           </label>
-
         </div>
 
         <div className="lk-results-note" aria-live="polite">
-
-          <span>{String(filteredSports.length).padStart(2, "0")} SPORTS FOUND</span>
-
+          <span>★ {String(filteredSports.length).padStart(2, "0")} ARENAS IN ROSTER</span>
           <span>SELECT A DISCIPLINE TO EXPLORE <ArrowUpRight size={14} /></span>
-
         </div>
 
         {filteredSports.length > 0 ? (
-
           <div className="lk-sport-grid">
-
             {filteredSports.map((sport, index) => (
-
               <button
-
                 type="button"
-
                 className={`lk-sport-card${index < 2 && activeFilter === "all" && query.length === 0 ? " lk-sport-card--featured" : ""}`}
-
                 key={sport.id}
-
                 onClick={() => setSelectedSport(sport)}
-
                 aria-label={`Explore ${sport.name}`}
-
               >
+                {/* Western Corner Brackets for Saloon Plaque Look */}
+                <span className="lk-card-corners" aria-hidden="true" />
 
                 <img
-
                   className="lk-sport-card__image"
-
                   src={sport.image}
-
                   alt=""
-
                   loading={index > 2 ? "lazy" : "eager"}
-
                   style={{ objectPosition: sport.imagePosition ?? "center" }}
-
                 />
 
                 <span className="lk-sport-card__scrim" aria-hidden="true" />
 
                 <span className="lk-sport-card__top">
-
-                  <span>{sport.number} / {sport.categoryLabel}</span>
-
+                  <span>★ {sport.number} / {sport.categoryLabel}</span>
                   <span className="lk-sport-card__arrow"><ArrowUpRight size={19} /></span>
-
                 </span>
 
                 <span className="lk-sport-card__bottom">
-
                   <span className="lk-sport-card__format">
-  {sport.format}
-</span>
+                    {sport.format}
+                  </span>
 
-<span className="lk-sport-card__venue">
-  VENUE / {sport.venue}
-</span>
+                  <span className="lk-sport-card__venue">
+                    GROUND / {sport.venue.toUpperCase()} ARENA
+                  </span>
 
-<span className="lk-sport-card__name">
-  {sport.name}
-</span>
-                  <span className="lk-sport-card__discover">EXPLORE SPORT <i>↗</i></span>
+                  <span className="lk-sport-card__name">
+                    {sport.name}
+                  </span>
 
+                  <span className="lk-sport-card__discover">
+                    EXPLORE ARENA <i>↗</i>
+                  </span>
                 </span>
-
               </button>
-
             ))}
-
           </div>
-
         ) : (
-
           <div className="lk-empty-state">
-
-            <span className="lk-empty-state__mark">✦</span>
-
-            <h3>NO MATCHES FOUND</h3>
-
-            <p>Try another sport name or choose a different category.</p>
-
+            <span className="lk-empty-state__mark">★</span>
+            <h3>NO ARENAS FOUND</h3>
+            <p>Try another discipline name or choose a different category from the roster.</p>
             <button type="button" className="lk-button lk-button--outline" onClick={() => { setQuery(""); setActiveFilter("all"); }}>
-
-              RESET FILTERS <ArrowUpRight size={16} />
-
+              RESET ROSTER FILTERS <ArrowUpRight size={16} />
             </button>
-
           </div>
-
         )}
-
       </section>
 
+      {/* Western Bottom Callout */}
       <section className="lk-bottom-cta" id="competition-info" aria-label="Competition information">
-
         <div className="lk-bottom-cta__rule" />
+        <span className="lk-bottom-seal" aria-hidden="true">★</span>
+        <span className="lk-bullet-hole lk-bullet-hole-bottom" aria-hidden="true" />
 
-        <p className="lk-eyebrow lk-eyebrow--muted">THE NEXT MOVE IS YOURS</p>
+        <p className="lk-eyebrow lk-eyebrow--muted">★ THE NEXT MOVE IS YOURS ★</p>
 
-        <h2>MAKE YOUR<br /><em>MARK.</em></h2>
+        <h2 className="lk-bottom-heading">
+          MAKE YOUR<br />
+          <em>MARK.</em>
+        </h2>
 
-        <p>Fixtures, venues, and registration information will be added when officially announced.</p>
+        <div className="lk-brand-divider" aria-hidden="true">
+          <span />
+          <b>✥</b>
+          <span />
+        </div>
 
-        <a className="lk-text-link" href="#sports">BACK TO THE LINE-UP <span>↑</span></a>
+        <p>Official fixtures, tournament schedules, and athlete registration dockets will be announced shortly.</p>
 
-       {/* Kinetic Lakshya gold streak */}
-<div className="lk-kinetic-mark" aria-hidden="true">
-  <span className="lk-kinetic-mark__streak lk-kinetic-mark__streak--one" />
-  <span className="lk-kinetic-mark__streak lk-kinetic-mark__streak--two" />
-  <span className="lk-kinetic-mark__streak lk-kinetic-mark__streak--three" />
+        <a className="lk-text-link" href="#sports">
+          RETURN TO ARENA ROSTER <span>↑</span>
+        </a>
 
-  <div className="lk-kinetic-mark__wordmark">
-    <span>LAKSHYA</span>
-    <span className="lk-kinetic-mark__edition">5.0</span>
-  </div>
-</div>
+        {/* Western Seal Medallion Watermark */}
+        <div className="lk-bottom-western-seal" aria-hidden="true">
+          <span className="lk-seal-ring-outer" />
+          <span className="lk-seal-ring-inner" />
+          <span className="lk-seal-star">★</span>
+          <span className="lk-seal-text">LAKSHYA 5.0 · IIT INDORE</span>
+        </div>
       </section>
 
+      {/* Sport Detail Modal / Dossier */}
       {selectedSport && (
-
         <div className="lk-modal-backdrop" role="presentation" onMouseDown={(event) => {
-
           if (event.target === event.currentTarget) setSelectedSport(null);
-
         }}>
-
           <section className="lk-sport-modal" role="dialog" aria-modal="true" aria-labelledby="lk-modal-title">
-
             <button type="button" className="lk-modal-close" onClick={() => setSelectedSport(null)} aria-label="Close sport details">×</button>
 
             <div className="lk-sport-modal__image-wrap">
-
               <img src={selectedSport.image} alt="" className="lk-sport-modal__image" />
-
               <span className="lk-sport-modal__image-shade" />
-
-              <span className="lk-sport-modal__number">{selectedSport.number} / LAKSHYA 5.0</span>
-
+              <span className="lk-sport-modal__number">★ {selectedSport.number} / LAKSHYA V DISCIPLINE</span>
             </div>
 
             <div className="lk-sport-modal__body">
-
-              <p className="lk-eyebrow lk-eyebrow--muted">{selectedSport.categoryLabel}</p>
+              <span className="lk-card-corners" aria-hidden="true" />
+              <p className="lk-eyebrow lk-eyebrow--muted">★ {selectedSport.categoryLabel} ★</p>
 
               <h2 id="lk-modal-title">{selectedSport.name.toUpperCase()}<span>.</span></h2>
 
@@ -411,22 +367,22 @@ export default function SportsPage() {
 
               <p className="lk-sport-modal__description">{selectedSport.description}</p>
 
-              <div className="lk-modal-info-line"><span>FIXTURES</span><b>TO BE ANNOUNCED</b></div>
+              <div className="lk-modal-info-line">
+                <span>FIXTURES</span>
+                <b>PENDING OFFICIAL DISPATCH</b>
+              </div>
 
-              <div className="lk-modal-info-line"><span>VENUE</span><b>{selectedSport.venue}</b></div>
+              <div className="lk-modal-info-line">
+                <span>ARENA GROUNDS</span>
+                <b>{selectedSport.venue.toUpperCase()} ARENA</b>
+              </div>
 
               <button type="button" className="lk-button lk-button--gold lk-modal-done" onClick={() => setSelectedSport(null)}>
-
-                BACK TO ALL SPORTS <ArrowUpRight size={16} />
-
+                RETURN TO ALL ARENAS <ArrowUpRight size={16} />
               </button>
-
             </div>
-
           </section>
-
         </div>
-
       )}
 
     </main>
