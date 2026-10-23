@@ -32,6 +32,7 @@ import photo25 from "../../data/TeamsPhoto/photo25.jpeg";
 import photo26 from "../../data/TeamsPhoto/photo26.jpeg";
 import photo27 from "../../data/TeamsPhoto/photo27.jpeg";
 import herobg from "../../data/TeamsPhoto/collage.png";
+import boomtownFrontierBg from "@/assets/gallery-boomtown-bg.jpg";
 
 const photos = [
   photo1, photo2, photo3, photo4, photo5,
@@ -94,6 +95,29 @@ export default function Gallery() {
       {/* =========================================================================
           ATMOSPHERIC DARK WESTERN BACKGROUND (Matches Legacy & Footer)
       ========================================================================= */}
+      {/* =========================================================================
+          WESTERN FRONTIER CANYON PANORAMA (Team Page Vibe)
+      ========================================================================= */}
+      <div className="lk-gallery-scene">
+        <img
+          src={boomtownFrontierBg}
+          alt="Frontier Boomtown Saloon Street"
+          className="lk-gallery-scene-image"
+        />
+      </div>
+
+      {/* Western Atmosphere Layer (Team Page Vibe) */}
+      <div className="lk-gallery-atmosphere" aria-hidden="true">
+        <div className="lk-gallery-light-sweep" />
+        <div className="lk-gallery-dust" style={{ top: "16%", left: "12%", animationDelay: "0s" }} />
+        <div className="lk-gallery-dust" style={{ top: "28%", left: "84%", animationDelay: "3s" }} />
+        <div className="lk-gallery-dust" style={{ top: "50%", left: "20%", animationDelay: "6s" }} />
+        <div className="lk-gallery-dust" style={{ top: "68%", left: "78%", animationDelay: "1.5s" }} />
+        <div className="lk-gallery-dust" style={{ top: "82%", left: "35%", animationDelay: "4.5s" }} />
+      </div>
+
+      <div className="lk-gallery-grain" aria-hidden="true" />
+
       <div className="gallery-bg-backdrop">
         <div className="gallery-bg-glow" />
         <div className="gallery-bg-stripes" />

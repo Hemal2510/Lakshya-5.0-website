@@ -2,6 +2,7 @@ import "./legacy.css";
 import TimelineSection from "./TimelineSection.tsx";
 import Lakshya5Promo from "./Lakshya5Promo.tsx";
 import { Trophy, Calendar, Users, Zap } from "lucide-react";
+import legacyFrontierBg from "@/assets/legacy-frontier-bg.jpg";
 
 const stats = [
   {
@@ -36,6 +37,17 @@ export default function Legacy() {
       {/* =========================================================================
           WESTERN ATMOSPHERIC BACKDROP & EFFECTS (Inspired by Home & Sports)
       ========================================================================= */}
+      {/* =========================================================================
+          WESTERN FRONTIER PANORAMA (Team Page Vibe with Steam Locomotive)
+      ========================================================================= */}
+      <div className="lk-legacy-scene">
+        <img
+          src={legacyFrontierBg}
+          alt="Legacy Frontier Locomotive"
+          className="lk-legacy-scene-image"
+        />
+      </div>
+
       <div className="legacy-bg-backdrop">
         <div className="legacy-bg-glow" />
       </div>

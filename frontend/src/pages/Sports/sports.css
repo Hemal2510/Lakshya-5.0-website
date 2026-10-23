@@ -76,10 +76,10 @@
   position: absolute;
   z-index: -2;
   inset: 0;
-  background-image: url("/images/sports/hero-athletics.webp");
-  background-position: center 42%;
+  background-image: url("/images/sports/sports-frontier-bg.jpg");
+  background-position: center 36%;
   background-size: cover;
-  filter: saturate(.58) sepia(.26) contrast(1.12) brightness(.82);
+  filter: saturate(.82) sepia(.18) contrast(1.12) brightness(.88);
   transform: scale(1.02);
   animation: lk-image-reveal 1.25s cubic-bezier(.22,.72,.18,1) both;
 }

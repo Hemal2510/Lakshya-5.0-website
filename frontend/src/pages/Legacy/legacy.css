@@ -40,6 +40,29 @@
   box-sizing: border-box;
 }
 
+/* Frontier Background Scene with Locomotive Panorama */
+.lk-legacy-scene {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lk-legacy-scene-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(650px, 65vh, 920px);
+  object-fit: cover;
+  object-position: center 32%;
+  opacity: 0.38;
+  filter: saturate(0.75) sepia(0.25) contrast(1.15) brightness(0.72);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 65%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 65%, transparent 100%);
+}
+
 .legacy-bg-backdrop {
   position: absolute;
   inset: 0;
