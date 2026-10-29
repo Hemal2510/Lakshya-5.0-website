@@ -90,9 +90,6 @@ export default function Team() {
         ----------------------------------------------------------------------- */}
         <section className="w-full flex flex-col items-center mb-20 sm:mb-24">
           <div className="text-center mb-10">
-            <h2 className="lk-section-heading text-lg sm:text-2xl">
-              EXECUTIVE LEADERSHIP
-            </h2>
             <div className="lk-western-divider my-2">
               <span className="lk-western-divider-line" />
               <span className="lk-western-divider-star">★</span>

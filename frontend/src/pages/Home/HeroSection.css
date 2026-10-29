@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Western Bang Bang';
+  src: url('/fonts/western-bang-bang/WesternBangBang-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Western Bang Bang';
+  src: url('/fonts/western-bang-bang/WesternBangBang-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Lakshya frontier hero. All selectors are namespaced to avoid altering your navbar or other sections. */
 .lkh-hero {
   --lkh-gold: #e3b86d;
@@ -398,10 +414,11 @@
 
 /* Main LAKSHYA lettering */
 .lkh-brand-name {
-  font-family: "Alfa Slab One", Rockwell, Georgia, serif;
+  font-family: "Western Bang Bang", Georgia, serif;
+  font-style: italic;
   font-size: clamp(3.1rem, 6.2vw, 6.8rem);
   font-weight: 400;
-  letter-spacing: -0.035em;
+  letter-spacing: 0.02em;
   line-height: 1.14;
 
   /* Antique gold metal */
@@ -422,8 +439,8 @@
   color: transparent;
 
   /* Engraved edge and raised lettering */
-  -webkit-text-stroke: 0.8px #633d19;
-  paint-order: stroke fill;
+  /* Distressed woodcut letters */
+  letter-spacing: 0.04em;
 
   text-shadow:
     0 1px 0 #fff0bd,
@@ -438,10 +455,11 @@
 .lkh-brand-version {
   display: inline-block;
   position: relative;
-  font-family: "Cinzel", Georgia, serif;
-  font-size: clamp(1.8rem, 2.8vw, 3rem);
+  font-family: "Western Bang Bang", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(2.2rem, 3.5vw, 4.2rem);
   font-weight: 900;
-  letter-spacing: -0.045em;
+  letter-spacing: 0.02em;
   line-height: 1;
   color: #e6bd70;
 
@@ -485,7 +503,8 @@
 /* Slogan beneath the main wordmark */
 .lkh-brand-tagline {
   margin: 0 0 20px;
-  font-family: "Cinzel", Georgia, serif;
+  font-family: "Western Bang Bang", Georgia, serif;
+  font-style: italic;
   font-size: clamp(0.78rem, 1.25vw, 1rem);
   font-weight: 800;
   letter-spacing: 0.15em;
@@ -504,7 +523,7 @@
 
   .lkh-brand-name {
     font-size: clamp(2.4rem, 10vw, 3.8rem);
-    letter-spacing: -0.045em;
+    letter-spacing: 0.02em;
   }
 
   .lkh-brand-version {

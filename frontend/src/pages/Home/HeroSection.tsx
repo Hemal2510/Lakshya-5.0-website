@@ -140,11 +140,7 @@ export default function LakshyaFrontierHero({
             <img className="lkh-hero-emblem lkh-reveal" src={logoSrc} alt="Lakshya emblem" />
           ) : null}
 
-          <div className="lkh-edition-badge lkh-reveal">
-            <span aria-hidden="true">★</span>
-            <span>FIVE EDITIONS. ONE LEGACY.</span>
-            <span aria-hidden="true">★</span>
-          </div>
+
 
           <p className="lkh-overline lkh-reveal lkh-delay-1">
             THE FRONTIER IS YOURS TO CLAIM
