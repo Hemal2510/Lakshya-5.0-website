@@ -6,16 +6,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Rye&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-  --frontier-black: #07090d;
-  --frontier-coal: #100c08;
-  --frontier-leather: #21150b;
+  --frontier-black: #050811;
+  --frontier-coal: #080d17;
+  --frontier-leather: #0d1525;
   --frontier-parchment: #ead9b8;
   --frontier-muted: #c6b69b;
   --frontier-gold: #d8a43b;
   --frontier-gold-bright: #ffe4aa;
-  --frontier-brass: #8c6427;
-  --frontier-rust: #71351b;
-  --frontier-line: rgba(199, 146, 48, 0.44);
+  --frontier-brass: #6b89b4;
+  --frontier-rust: #1d3356;
+  --frontier-line: rgba(90, 140, 205, 0.28);
 }
 
 .sponsors-page {
@@ -273,8 +273,8 @@
   overflow: hidden;
   border-bottom: 1px solid var(--frontier-line);
   background:
-    radial-gradient(ellipse at 50% 50%, rgba(181, 108, 38, 0.12) 0%, transparent 60%),
-    linear-gradient(90deg, rgba(16, 11, 7, 0.96) 0%, rgba(10, 7, 5, 0.98) 100%);
+    radial-gradient(ellipse at 50% 50%, rgba(30, 70, 145, 0.18) 0%, transparent 65%),
+    linear-gradient(90deg, rgba(8, 14, 25, 0.98) 0%, rgba(5, 9, 16, 0.99) 100%);
 }
 
 .featured-partner__texture {
@@ -311,8 +311,8 @@
   padding: 24px 32px;
   border-radius: 12px;
   border: 1.5px solid rgba(220, 171, 80, 0.45);
-  background: rgba(35, 20, 10, 0.45);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), inset 0 0 25px rgba(212, 155, 85, 0.1);
+  background: rgba(10, 18, 32, 0.65);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), inset 0 0 25px rgba(45, 95, 175, 0.16);
 }
 
 .featured-partner__brand .partner-mark__image {
@@ -454,35 +454,35 @@
   border: 1px solid var(--card-line);
   border-radius: 8px;
   background:
-    radial-gradient(ellipse at 50% 8%, rgba(192, 132, 37, 0.12), transparent 55%),
-    linear-gradient(145deg, #18110b 0%, #0d0906 72%);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 0 24px rgba(0, 0, 0, 0.35);
+    radial-gradient(ellipse at 50% 8%, rgba(45, 95, 175, 0.18), transparent 60%),
+    linear-gradient(145deg, #0d1525 0%, #060a13 75%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), inset 0 0 24px rgba(10, 25, 55, 0.45);
   transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
 }
 
 .partner-card--silver {
-  --card-line: rgba(151, 144, 127, 0.55);
+  --card-line: rgba(140, 170, 210, 0.4);
   min-height: 160px;
   background:
-    radial-gradient(ellipse at 50% 8%, rgba(190, 183, 166, 0.08), transparent 55%),
-    linear-gradient(145deg, #16120e 0%, #0c0906 72%);
+    radial-gradient(ellipse at 50% 8%, rgba(65, 115, 185, 0.14), transparent 60%),
+    linear-gradient(145deg, #0b1320 0%, #050811 75%);
 }
 
 .partner-card--associate {
-  --card-line: rgba(152, 107, 31, 0.48);
+  --card-line: rgba(110, 145, 190, 0.35);
   min-height: 145px;
   background:
-    radial-gradient(ellipse at 50% 8%, rgba(192, 132, 37, 0.07), transparent 55%),
-    linear-gradient(145deg, #140f09 0%, #0c0906 72%);
+    radial-gradient(ellipse at 50% 8%, rgba(55, 100, 165, 0.12), transparent 60%),
+    linear-gradient(145deg, #09101c 0%, #04070e 75%);
 }
 
 .partner-card:hover {
   z-index: 2;
   border-color: rgba(241, 187, 73, 0.95);
   box-shadow:
-    0 12px 34px rgba(0, 0, 0, 0.8),
-    0 0 24px rgba(210, 151, 42, 0.22),
-    inset 0 0 26px rgba(202, 144, 42, 0.08);
+    0 12px 34px rgba(0, 0, 0, 0.85),
+    0 0 24px rgba(70, 130, 220, 0.25),
+    inset 0 0 26px rgba(45, 95, 175, 0.15);
   transform: translateY(-5px);
 }
 

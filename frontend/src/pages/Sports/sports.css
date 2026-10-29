@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Cinzel:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
 
 :root {
-  --lk-bg: #090c10;
-  --lk-bg-soft: #120d09;
-  --lk-panel: #18110b;
+  --lk-bg: #050811;
+  --lk-bg-soft: #080d18;
+  --lk-panel: #0d1627;
   --lk-gold: #e3b86d;
   --lk-gold-bright: #ffe4aa;
   --lk-gold-dark: #8d5b20;
@@ -24,10 +24,10 @@
   min-height: 100vh;
   color: var(--lk-text);
   background:
-    radial-gradient(ellipse at 50% -10%, rgba(181, 108, 38, 0.18), transparent 45rem),
-    radial-gradient(circle at 12% 35%, rgba(139, 83, 26, 0.08), transparent 30rem),
-    radial-gradient(circle at 88% 65%, rgba(139, 83, 26, 0.08), transparent 30rem),
-    linear-gradient(180deg, #080a0e 0%, #0e0a07 22%, #130d08 48%, #0d0906 80%, #060504 100%);
+    radial-gradient(ellipse at 50% -10%, rgba(25, 55, 115, 0.22), transparent 45rem),
+    radial-gradient(circle at 12% 35%, rgba(18, 38, 78, 0.12), transparent 30rem),
+    radial-gradient(circle at 88% 65%, rgba(18, 38, 78, 0.12), transparent 30rem),
+    linear-gradient(180deg, #050811 0%, #080d17 22%, #0c1220 48%, #080d17 80%, #04070d 100%);
   font-family: var(--lk-sans);
 }
 
@@ -490,7 +490,7 @@
   overflow: hidden;
   border-top: 2px solid rgba(179, 130, 60, 0.45);
   border-bottom: 2px solid rgba(179, 130, 60, 0.45);
-  background: linear-gradient(180deg, #1c1209 0%, #100a06 100%);
+  background: linear-gradient(180deg, #0d1728 0%, #060b14 100%);
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7), inset 0 -2px 6px rgba(0, 0, 0, 0.7);
 }
 
@@ -632,7 +632,7 @@
   border: 1px solid rgba(208, 153, 71, 0.32);
   border-radius: 999px;
   color: #bdae97;
-  background: rgba(22, 16, 11, 0.7);
+  background: rgba(13, 22, 38, 0.75);
   font-family: var(--lk-serif);
   font-size: 10px;
   font-weight: 700;
@@ -644,7 +644,7 @@
 .lk-filter:hover {
   color: var(--lk-gold-bright);
   border-color: rgba(227, 184, 109, 0.65);
-  background: rgba(35, 23, 14, 0.85);
+  background: rgba(22, 35, 60, 0.85);
 }
 
 .lk-filter.is-active {
@@ -664,7 +664,7 @@
   border: 1px solid rgba(208, 153, 71, 0.35);
   border-radius: 4px;
   color: #c9bba7;
-  background: rgba(18, 12, 8, 0.85);
+  background: rgba(11, 18, 32, 0.85);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
   transition: border-color .22s ease;
 }
@@ -746,7 +746,7 @@
   border: 1px solid rgba(214, 165, 88, 0.28);
   border-radius: 6px;
   text-align: left;
-  background: #160f0a;
+  background: #0b1424;
   isolation: isolate;
   cursor: pointer;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);

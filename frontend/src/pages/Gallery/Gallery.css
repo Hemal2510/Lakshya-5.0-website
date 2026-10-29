@@ -6,7 +6,12 @@
     position: relative;
     min-height: 100vh;
     /* Transparent to reveal canyon panorama */
-    color: #e6c594;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(20, 50, 110, 0.25) 0%, transparent 50rem),
+        radial-gradient(circle at 15% 35%, rgba(15, 35, 75, 0.15) 0%, transparent 35rem),
+        radial-gradient(circle at 85% 65%, rgba(15, 35, 75, 0.15) 0%, transparent 35rem),
+        linear-gradient(180deg, #050811 0%, #080d17 20%, #0c1220 50%, #080d17 80%, #04070d 100%);
+    color: #e2eaf4;
     overflow-x: hidden;
     user-select: none;
 }
@@ -121,13 +126,13 @@
     inset: 0;
     background: 
         /* Soft Saloon Gas-Lamp Glow at Top */
-        radial-gradient(ellipse at 50% 0%, rgba(200, 95, 25, 0.22) 0%, rgba(120, 50, 15, 0.1) 40%, transparent 70%),
+        radial-gradient(ellipse at 50% 0%, rgba(25, 60, 130, 0.22) 0%, rgba(15, 35, 80, 0.1) 40%, transparent 70%),
         /* Left Canyon Ambient Spot */
-        radial-gradient(circle at 15% 35%, rgba(220, 120, 30, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 15% 35%, rgba(20, 45, 95, 0.14) 0%, transparent 45%),
         /* Right Canyon Ambient Spot */
-        radial-gradient(circle at 85% 65%, rgba(200, 100, 25, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 65%, rgba(20, 45, 95, 0.14) 0%, transparent 45%),
         /* Soft Horizon Glow */
-        radial-gradient(ellipse at 50% 100%, rgba(160, 70, 20, 0.15) 0%, transparent 60%);
+        radial-gradient(ellipse at 50% 100%, rgba(15, 35, 75, 0.15) 0%, transparent 60%);
 }
 
 .gallery-bg-stripes {
