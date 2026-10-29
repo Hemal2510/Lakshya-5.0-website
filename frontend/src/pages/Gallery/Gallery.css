@@ -32,8 +32,8 @@
     height: clamp(650px, 65vh, 920px);
     object-fit: cover;
     object-position: center 32%;
-    opacity: 0.42;
-    filter: saturate(0.8) sepia(0.22) contrast(1.15) brightness(0.76);
+    opacity: 0.52;
+    filter: saturate(1.05) contrast(1.1) brightness(0.85);
     mask-image: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 65%, transparent 100%);
     -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 65%, transparent 100%);
 }

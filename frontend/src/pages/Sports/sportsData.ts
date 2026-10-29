@@ -31,7 +31,7 @@ export const SPORTS: Sport[] = [
     format: "Team competition",
     description:
       "Read the game, own the moment, and make every delivery count. Check back for official match fixtures and competition details.",
-    image: "/images/sports/cricket.webp",
+    image: "/images/sports/cricket.jpeg",
     imagePosition: "center 48%",
   },
   {
@@ -44,7 +44,7 @@ export const SPORTS: Sport[] = [
     format: "Team competition",
     description:
       "Pace, pressure, and the search for the winning goal. Official fixtures and tournament information will be published here.",
-    image: "/images/sports/football.webp",
+    image: "/images/sports/football.jpeg",
     imagePosition: "center 52%",
   },
   {
@@ -57,7 +57,7 @@ export const SPORTS: Sport[] = [
     format: "Team competition",
     description:
       "Quick transitions, sharp passing, and a relentless attack. Return here for confirmed match and venue information.",
-    image: "/images/sports/hockey.webp",
+    image: "/images/sports/hockey.jpeg",
     imagePosition: "center center",
   },
   {
@@ -70,7 +70,7 @@ export const SPORTS: Sport[] = [
     format: "Men's + Women's",
     description:
       "Power at the net and teamwork in every rally. Men's and women's competitions are represented separately in the category label.",
-    image: "/images/sports/volleyball.webp",
+    image: "/images/sports/vollyball.jpeg",
     imagePosition: "center center",
   },
   {
@@ -83,7 +83,7 @@ export const SPORTS: Sport[] = [
     format: "Men's + Women's",
     description:
       "Fast breaks, fearless finishes, and the next big play. Follow this page for official competition updates.",
-    image: "/images/sports/basketball.webp",
+    image: "/images/sports/basketball.jpeg",
     imagePosition: "center center",
   },
   {
@@ -109,7 +109,7 @@ export const SPORTS: Sport[] = [
     format: "Individual + team events",
     description:
       "Speed, rhythm, and precision in the water. Check back for event categories, schedules, and pool-side updates.",
-    image: "/images/sports/aquatics.webp",
+    image: "/images/sports/aquatics.jpeg",
     imagePosition: "center 48%",
   },
   {
@@ -122,7 +122,7 @@ export const SPORTS: Sport[] = [
     format: "Track + field events",
     description:
       "Every fraction, every stride, every finish line. Official event lists and schedules will be shown here once announced.",
-    image: "/images/sports/athletics.webp",
+    image: "/images/sports/atheletics.jpeg",
     imagePosition: "center 45%",
   },
   {
@@ -135,7 +135,7 @@ export const SPORTS: Sport[] = [
     format: "Racket sport",
     description:
       "Explosive movement and split-second decisions. Official draws, match schedules, and venue details will be added here.",
-    image: "/images/sports/badminton.webp",
+    image: "/images/sports/badmiton.jpeg",
     imagePosition: "center center",
   },
   {
@@ -148,7 +148,7 @@ export const SPORTS: Sport[] = [
     format: "Racket sport",
     description:
       "A compact court. Relentless movement. Tactical precision. Return for official match details and competition updates.",
-    image: "/images/sports/racket-sport.webp",
+    image: "/images/sports/squash.jpeg",
     imagePosition: "center center",
   },
   {
@@ -161,7 +161,7 @@ export const SPORTS: Sport[] = [
     format: "Racket sport",
     description:
       "Serve with intent. Play every point. Find official tournament and match information here when released.",
-    image: "/images/sports/racket-sport.webp",
+    image: "/images/sports/tennis.jpeg",
     imagePosition: "center 42%",
   },
   {
@@ -174,7 +174,7 @@ export const SPORTS: Sport[] = [
     format: "Racket sport",
     description:
       "Quick hands, sharp angles, and relentless focus. Official draws and scheduling information will be listed here.",
-    image: "/images/sports/table-tennis.webp",
+    image: "/images/sports/tabletennis.jpeg",
     imagePosition: "center center",
   },
   {
@@ -190,6 +190,32 @@ export const SPORTS: Sport[] = [
     image: "/images/sports/chess.webp",
     imagePosition: "center center",
   },
+    {
+        id: "powerlifting",
+        number: "14",
+        name: "Powerlifting",
+        venue: "Indoor",
+        category: "individual",
+        categoryLabel: "STRENGTH",
+        format: "Individual competition",
+        description:
+            "Push your limits, showcase raw strength, and rise to the challenge. Competition rules, weight categories, and schedule details will be announced here.",
+        image: "/images/sports/bodybuilding.jpeg",
+        imagePosition: "center center",
+    },
+    {
+        id: "weightlifting",
+        number: "15",
+        name: "Weightlifting",
+        venue: "Indoor",
+        category: "individual",
+        categoryLabel: "STRENGTH",
+        format: "Individual competition",
+        description:
+            "Lift with power, master your technique, and push beyond your limits. Competition rules, weight categories, and schedule details will be announced here.",
+        image: "/images/sports/bodybuilding.jpeg",
+        imagePosition: "center center",
+    },
 ];
 
 export const CATEGORY_FILTERS: { label: string; value: "all" | SportCategory }[] = [

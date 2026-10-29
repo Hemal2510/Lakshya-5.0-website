@@ -122,10 +122,10 @@ export default function About() {
             </div>
             <div className="badge-info">
               <div className="badge-stat-num">
-                <CountUp end={2500} suffix="+" />
+                <CountUp end={4500} suffix="+" />
               </div>
               <span className="badge-stat-title">ATHLETES & CONTENDERS</span>
-              <span className="badge-stat-sub">Across 50+ Top Universities</span>
+              <span className="badge-stat-sub">Across 200+ Top Universities</span>
             </div>
           </div>
 
@@ -136,7 +136,7 @@ export default function About() {
             </div>
             <div className="badge-info">
               <div className="badge-stat-num">
-                <CountUp end={12} suffix="+" />
+                <CountUp end={14} suffix="+" />
               </div>
               <span className="badge-stat-title">SPORTING DISCIPLINES</span>
               <span className="badge-stat-sub">High-Stakes Arena Battles</span>
@@ -150,7 +150,7 @@ export default function About() {
             </div>
             <div className="badge-info">
               <div className="badge-stat-num">
-                <CountUp end={50} suffix="+" />
+                <CountUp end={200} suffix="+" />
               </div>
               <span className="badge-stat-title">PREMIER INSTITUTES</span>
               <span className="badge-stat-sub">Nationwide Delegation</span>
@@ -238,4 +238,4 @@ export default function About() {
     </section>
   );
 }
-
+
