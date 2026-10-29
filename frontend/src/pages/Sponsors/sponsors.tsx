@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties } from "react";
-import canyonFrontierBg from "../../assets/canyon-frontier-bg.jpg";
+import sponsorsFrontierBg from "../../assets/sponsors-frontier-bg.jpg";
 import "./sponsors.css";
 
 /* ============================================================
@@ -275,8 +275,8 @@ export default function SponsorsPage() {
       ========================================================================= */}
       <div className="lk-sponsors-scene" aria-hidden="true">
         <img
-          src={canyonFrontierBg}
-          alt="Frontier Canyon Vista"
+          src={sponsorsFrontierBg}
+          alt="Western Frontier Sponsors Horizon"
           className="lk-sponsors-scene-image"
         />
       </div>

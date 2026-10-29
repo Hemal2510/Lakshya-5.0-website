@@ -64,10 +64,10 @@
   height: clamp(680px, 75vh, 940px);
   object-fit: cover;
   object-position: center 30%;
-  opacity: 0.40;
-  filter: saturate(0.8) sepia(0.22) contrast(1.15) brightness(0.76);
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 65%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 65%, transparent 100%);
+  opacity: 0.46;
+  filter: saturate(0.95) contrast(1.12) brightness(0.82);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.60) 65%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.60) 65%, transparent 100%);
 }
 
 .lk-sponsors-atmosphere {
@@ -306,9 +306,9 @@
 
 .featured-partner__brand {
   display: grid;
-  min-height: 155px;
+  min-height: 180px;
   place-items: center;
-  padding: 20px;
+  padding: 24px 32px;
   border-radius: 12px;
   border: 1.5px solid rgba(220, 171, 80, 0.45);
   background: rgba(35, 20, 10, 0.45);
@@ -316,11 +316,11 @@
 }
 
 .featured-partner__brand .partner-mark__image {
-  max-width: 220px;
-  max-height: 85px;
+  max-width: 340px;
+  max-height: 125px;
   object-fit: contain;
   border-radius: 6px;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.8));
 }
 
 .featured-partner__eyebrow {
@@ -432,17 +432,17 @@
 .partner-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
+  gap: 18px;
 }
 
 .partner-grid--silver {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  gap: 16px;
 }
 
 .partner-grid--associate {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  gap: 16px;
 }
 
 /* ── 5. The Elegant Western Partner Card with Corner Brackets ── */
@@ -450,7 +450,7 @@
   --card-line: rgba(178, 126, 38, 0.65);
   position: relative;
   min-width: 0;
-  min-height: 220px;
+  min-height: 175px;
   border: 1px solid var(--card-line);
   border-radius: 8px;
   background:
@@ -462,7 +462,7 @@
 
 .partner-card--silver {
   --card-line: rgba(151, 144, 127, 0.55);
-  min-height: 195px;
+  min-height: 160px;
   background:
     radial-gradient(ellipse at 50% 8%, rgba(190, 183, 166, 0.08), transparent 55%),
     linear-gradient(145deg, #16120e 0%, #0c0906 72%);
@@ -470,7 +470,7 @@
 
 .partner-card--associate {
   --card-line: rgba(152, 107, 31, 0.48);
-  min-height: 165px;
+  min-height: 145px;
   background:
     radial-gradient(ellipse at 50% 8%, rgba(192, 132, 37, 0.07), transparent 55%),
     linear-gradient(145deg, #140f09 0%, #0c0906 72%);
@@ -495,7 +495,7 @@
   width: 100%;
   height: 100%;
   min-height: inherit;
-  padding: 24px 18px 18px;
+  padding: 16px 16px 14px;
   overflow: hidden;
   border-radius: inherit;
   text-align: center;
@@ -518,8 +518,8 @@
 
 .partner-card__seal {
   position: absolute;
-  top: 12px;
-  right: 14px;
+  top: 10px;
+  right: 12px;
   color: rgba(218, 164, 59, 0.45);
   font-size: 11px;
   transition: color 180ms ease, transform 300ms ease;
@@ -532,26 +532,38 @@
 
 .partner-card__mark-wrap {
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 88px;
-  padding: 6px 0 10px;
+  min-height: 96px;
+  padding: 4px 6px 6px;
 }
 
 .partner-mark__image {
   display: block;
-  max-width: min(85%, 210px);
-  max-height: 74px;
+  width: auto;
+  max-width: min(92%, 240px);
+  max-height: 96px;
   object-fit: contain;
   border-radius: 6px;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.65));
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.7));
   transition: transform 300ms ease, filter 300ms ease;
+}
+
+.partner-card--silver .partner-mark__image {
+  max-width: min(90%, 200px);
+  max-height: 84px;
+}
+
+.partner-card--associate .partner-mark__image {
+  max-width: min(88%, 180px);
+  max-height: 74px;
 }
 
 .partner-card:hover .partner-mark__image {
   transform: scale(1.05);
-  filter: drop-shadow(0 4px 12px rgba(245, 158, 11, 0.35));
+  filter: drop-shadow(0 4px 14px rgba(245, 158, 11, 0.4));
 }
 
 .partner-mark__fallback {
