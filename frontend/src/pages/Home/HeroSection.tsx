@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import frontierBackground from "../../assets/cowboy-night-bg.jpg";
+import frontierBackground from "../../assets/night-cowboy-hero-uhd.webp";
 import "./HeroSection.css";
 import { Link } from "react-router-dom";
 
@@ -82,6 +82,42 @@ export default function LakshyaFrontierHero({
   sportsHref = "#sports",
 }: LakshyaFrontierHeroProps) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => getTimeLeft(eventTime));
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    let animId: number;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Relative offset from window center (-1 to 1)
+      const nx = (e.clientX / window.innerWidth - 0.5) * 2;
+      const ny = (e.clientY / window.innerHeight - 0.5) * 2;
+      // Moving in the direction of the cursor for panoramic feel
+      targetX = nx * 38;
+      targetY = ny * 22;
+    };
+
+    const updateLoop = () => {
+      currentX += (targetX - currentX) * 0.07;
+      currentY += (targetY - currentY) * 0.07;
+      setParallax({
+        x: Math.round(currentX * 100) / 100,
+        y: Math.round(currentY * 100) / 100,
+      });
+      animId = requestAnimationFrame(updateLoop);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    animId = requestAnimationFrame(updateLoop);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animId);
+    };
+  }, []);
 
   useEffect(() => {
     const update = (): void => setTimeLeft(getTimeLeft(eventTime));
@@ -101,7 +137,14 @@ export default function LakshyaFrontierHero({
     <section className="lkh-hero" id="lakshya-home" aria-label="Lakshya 5.0 home">
       {/* Animated scenery layer */}
       <div className="lkh-scene" aria-hidden="true">
-        <img className="lkh-scene-image" src={frontierBackground} alt="" />
+        <img
+          className="lkh-scene-image"
+          src={frontierBackground}
+          alt="Frontier Landscape"
+          style={{
+            transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0) scale(1.09)`,
+          }}
+        />
       </div>
       <div className="lkh-shade" aria-hidden="true" />
 

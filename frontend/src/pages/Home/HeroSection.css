@@ -44,17 +44,15 @@
 }
 .lkh-scene-image {
   position: absolute;
-  top: -7%;
-  left: -7%;
-  width: 114%;
-  height: 114%;
+  top: -8%;
+  left: -8%;
+  width: 116%;
+  height: 116%;
   max-width: none;
   object-fit: cover;
-  object-position: center 53%;
-  filter: brightness(.83) saturate(.88) contrast(1.06);
-  transform: translate3d(-1.2%, .3%, 0) scale(1.06);
-  transform-origin: center;
-  animation: lkh-camera-drift 28s ease-in-out infinite alternate;
+  object-position: center 50%;
+  filter: brightness(0.92) saturate(1.06) contrast(1.04);
+  transform-origin: center center;
   will-change: transform;
 }
 .lkh-shade {
