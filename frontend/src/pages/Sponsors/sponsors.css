@@ -1,51 +1,37 @@
 /* ==========================================================================
-   LAKSHYA 5.0 - WESTERN SPONSORS & ALLIES STYLING
-   Authentic Frontier aesthetic matching Home, Team, Legacy, and Gallery
+   LAKSHYA 5.0 - OUR PAST SPONSORS
+   Clean, modern Western frontier styling matching Home, Legacy, and Team
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Rye&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Rye&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-  --frontier-black: #050811;
-  --frontier-coal: #080d17;
-  --frontier-leather: #0d1525;
-  --frontier-parchment: #ead9b8;
-  --frontier-muted: #c6b69b;
-  --frontier-gold: #d8a43b;
-  --frontier-gold-bright: #ffe4aa;
-  --frontier-brass: #6b89b4;
-  --frontier-rust: #1d3356;
-  --frontier-line: rgba(90, 140, 205, 0.28);
+  --sp-bg: #050811;
+  --sp-gold: #e3b86d;
+  --sp-gold-bright: #ffe4aa;
+  --sp-gold-dark: #8d5b20;
+  --sp-amber: #d49b55;
+  --sp-soot: #060a12;
+  --sp-charred: #0f182a;
 }
 
 .sponsors-page {
   position: relative;
   isolation: isolate;
-  overflow: clip;
-  width: 100%;
-  color: var(--frontier-parchment);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #f6edda;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(20, 48, 98, 0.28) 0%, transparent 48rem),
-    radial-gradient(circle at 15% 30%, rgba(14, 32, 68, 0.18) 0%, transparent 32rem),
-    radial-gradient(circle at 85% 60%, rgba(14, 32, 68, 0.18) 0%, transparent 32rem),
-    linear-gradient(180deg, #050811 0%, #080c16 18%, #0c101a 45%, #080b13 78%, #04060a 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(20, 48, 98, 0.25) 0%, transparent 48rem),
+    radial-gradient(circle at 15% 30%, rgba(14, 32, 68, 0.16) 0%, transparent 32rem),
+    radial-gradient(circle at 85% 60%, rgba(14, 32, 68, 0.16) 0%, transparent 32rem),
+    linear-gradient(180deg, #050811 0%, #070d18 18%, #0b1220 45%, #070c17 78%, #04060b 100%);
   font-family: 'Space Grotesk', Georgia, sans-serif;
-  font-size: 15px;
-}
-
-.sponsors-page *,
-.sponsors-page *::before,
-.sponsors-page *::after {
-  box-sizing: border-box;
-}
-
-.sponsors-page a {
-  color: inherit;
-  text-decoration: none;
+  padding-bottom: 90px;
 }
 
 /* ==========================================================================
-   1. CINEMATIC CANYON HERO BACKDROP & ATMOSPHERE
+   1. BACKGROUND SCENE & ATMOSPHERE
    ========================================================================== */
 
 .lk-sponsors-scene {
@@ -61,13 +47,13 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: clamp(680px, 75vh, 940px);
+  height: clamp(550px, 55vh, 850px);
   object-fit: cover;
-  object-position: center 30%;
-  opacity: 0.54;
-  filter: saturate(1.04) contrast(1.1) brightness(0.88);
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.65) 65%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.65) 65%, transparent 100%);
+  object-position: center 35%;
+  opacity: 0.36;
+  filter: saturate(0.85) contrast(1.12) brightness(0.8);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
 }
 
 .lk-sponsors-atmosphere {
@@ -85,19 +71,37 @@
   background: linear-gradient(
     115deg,
     transparent 20%,
-    rgba(102, 163, 255, 0.02) 36%,
-    rgba(148, 197, 255, 0.08) 50%,
-    rgba(102, 163, 255, 0.02) 64%,
+    rgba(255, 183, 91, 0.02) 36%,
+    rgba(255, 193, 109, 0.08) 50%,
+    rgba(255, 179, 83, 0.02) 64%,
     transparent 78%
   );
   background-size: 250% 100%;
-  animation: lk-sponsors-sweep 18s ease-in-out infinite;
+  animation: lk-sp-sweep 18s ease-in-out infinite;
 }
 
-@keyframes lk-sponsors-sweep {
+@keyframes lk-sp-sweep {
   0% { background-position: -120% 0; }
   50% { background-position: 120% 0; }
   100% { background-position: -120% 0; }
+}
+
+.lk-sponsors-dust {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, #ffe299 0%, #dc6a1e 100%);
+  box-shadow: 0 0 8px #dc6a1e;
+  animation: lk-sp-dust 14s ease-in-out infinite;
+}
+
+@keyframes lk-sp-dust {
+  0% { transform: translate3d(0, 0, 0) scale(0.8); opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.5; }
+  100% { transform: translate3d(25px, -130px, 0) scale(1.1); opacity: 0; }
 }
 
 .lk-sponsors-grain {
@@ -109,565 +113,444 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
 }
 
-.lk-sponsors-dust {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(circle, #ffe299 0%, #dc6a1e 100%);
-  box-shadow: 0 0 8px #dc6a1e;
-  animation: lk-sponsors-dust-float 12s ease-in-out infinite;
-}
-
-@keyframes lk-sponsors-dust-float {
-  0% { transform: translate3d(0, 0, 0) scale(0.8); opacity: 0; }
-  20% { opacity: 0.8; }
-  80% { opacity: 0.6; }
-  100% { transform: translate3d(30px, -140px, 0) scale(1.1); opacity: 0; }
-}
-
 /* ==========================================================================
-   2. HERO SECTION
+   2. CLEAN, MINIMAL HERO SECTION
    ========================================================================== */
 
-.sponsors-hero {
+.sp-hero {
   position: relative;
-  z-index: 2;
-  display: flex;
+  z-index: 10;
+  padding-top: clamp(130px, 14vw, 165px);
+  padding-bottom: 30px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.sp-hero-ribbon {
+  display: inline-flex;
   align-items: center;
-  min-height: clamp(600px, 72vh, 820px);
-  padding: 145px clamp(24px, 5.1vw, 100px) 90px;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(193, 138, 35, 0.45);
+  gap: 10px;
+  padding: 6px 20px;
+  background: linear-gradient(180deg, #18111a 0%, #0d0d18 100%);
+  border: 1px solid rgba(227, 184, 109, 0.45);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.8), inset 0 0 12px rgba(212, 155, 85, 0.2);
+  border-radius: 2px;
+  margin-bottom: 16px;
 }
 
-.sponsors-hero__content {
-  position: relative;
-  z-index: 3;
-  width: min(760px, 85%);
-}
-
-.sponsors-breadcrumb {
-  margin: 0;
+.sp-hero-ribbon span {
   font-family: 'Cinzel', serif;
-  color: var(--frontier-gold);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.28em;
+  color: #e0b070;
   text-transform: uppercase;
 }
 
-.sponsors-breadcrumb i {
-  margin: 0 10px;
-  font-style: normal;
-  opacity: 0.6;
-}
-
-.sponsors-hero__chapter {
-  margin: 14px 0 10px;
-  font-family: 'Cinzel', serif;
-  color: var(--frontier-gold-bright);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  opacity: 0.85;
-}
-
-.sponsors-hero__title {
-  margin: 12px 0 18px;
+.sp-hero-title {
+  margin: 0;
   font-family: 'Rye', Georgia, serif;
-  font-size: clamp(2.8rem, 6.2vw, 5.8rem);
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   line-height: 1.15;
   text-transform: uppercase;
   color: #fff7ea;
   text-shadow:
-    0 2px 0 rgba(0, 0, 0, 0.65),
-    0 8px 24px rgba(0, 0, 0, 0.85);
+    0 2px 0 rgba(0, 0, 0, 0.7),
+    0 6px 20px rgba(0, 0, 0, 0.9);
 }
 
-.sponsors-hero__title span {
-  display: block;
-}
-
-.sponsors-hero__title em {
-  display: block;
-  font-style: normal;
-  background: linear-gradient(180deg, #fff7ea 0%, #f7dfbe 40%, #d49b55 80%, #9a6522 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
-}
-
-.sponsors-hero__description {
-  max-width: 620px;
-  margin: 0 0 28px;
-  color: #c9bca4;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(14px, 1.2vw, 17px);
-  line-height: 1.8;
-  letter-spacing: 0.02em;
-}
-
-.frontier-link {
-  display: inline-flex;
+.sp-divider {
+  display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 14px;
+  margin: 14px auto 16px;
+}
+
+.sp-divider-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(227, 184, 109, 0.6));
+}
+
+.sp-divider-line.right {
+  background: linear-gradient(90deg, rgba(227, 184, 109, 0.6), transparent);
+}
+
+.sp-divider-star {
+  color: var(--sp-gold);
+  font-size: 13px;
+}
+
+.sp-hero-subtitle {
+  font-family: 'Space Grotesk', Georgia, sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  color: #c9baa2;
+  line-height: 1.6;
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+/* Section Header Typography */
+.sp-section-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.sp-badge-kicker {
+  display: block;
   font-family: 'Cinzel', serif;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.24em;
+  color: var(--sp-gold);
+  margin-bottom: 6px;
   text-transform: uppercase;
-  color: var(--frontier-gold);
-  padding: 8px 0;
-  border-bottom: 1.5px solid rgba(216, 164, 59, 0.5);
+}
+
+.sp-section-heading {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #fff2d6;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   3. MAIN TITLE SPONSOR (GRAND PLAQUE SPOTLIGHT)
+   ========================================================================== */
+
+.sp-main-section {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  margin: 20px auto 60px;
+  padding: 0 20px;
+}
+
+.sp-main-card {
+  position: relative;
+  padding: 34px 32px 30px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(227, 184, 109, 0.55);
+  background: linear-gradient(145deg, #10192a 0%, #080e18 100%);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.88),
+    0 0 35px rgba(212, 155, 85, 0.16),
+    inset 0 1px 0 rgba(255, 230, 170, 0.2);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.sp-main-card:hover {
+  transform: translateY(-5px);
+  border-color: #ffd580;
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.95),
+    0 0 45px rgba(227, 184, 109, 0.35);
+}
+
+.sp-main-logo-wrap {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.sp-main-logo-img {
+  display: block;
+  max-width: min(88%, 340px);
+  max-height: 130px;
+  object-fit: contain;
+  border-radius: 8px;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.85));
+  transition: transform 0.4s ease;
+}
+
+.sp-main-card:hover .sp-main-logo-img {
+  transform: scale(1.05);
+}
+
+.sp-main-role {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  color: var(--sp-gold);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.sp-main-name {
+  margin: 0 0 10px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 700;
+  color: #ffe8b5;
+}
+
+.sp-main-desc {
+  max-width: 540px;
+  margin: 0 auto 22px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #c9baa2;
+}
+
+.sp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 26px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #2b1b0e 0%, #170e06 100%);
+  border: 1px solid rgba(227, 184, 109, 0.55);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), inset 0 0 12px rgba(212, 155, 85, 0.2);
+  color: #ffe4aa;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
   transition: all 0.25s ease;
 }
 
-.frontier-link:hover {
-  color: var(--frontier-gold-bright);
-  border-bottom-color: var(--frontier-gold-bright);
-  transform: translateX(4px);
+.sp-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #382413 0%, #201309 100%);
+  border-color: #ffd580;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 20px rgba(227, 184, 109, 0.4);
 }
 
-.frontier-link__arrow {
-  transition: transform 0.25s ease;
+.sp-btn-arrow {
+  font-size: 13px;
+  transition: transform 0.2s ease;
 }
 
-.frontier-link:hover .frontier-link__arrow {
-  transform: translateX(4px);
-}
-
-.sponsors-hero__bottomline {
-  position: absolute;
-  bottom: 24px;
-  left: clamp(24px, 5.1vw, 100px);
-  right: clamp(24px, 5.1vw, 100px);
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Cinzel', serif;
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  color: rgba(227, 184, 109, 0.55);
-  border-top: 1px solid rgba(227, 184, 109, 0.22);
-  padding-top: 14px;
+.sp-btn:hover .sp-btn-arrow {
+  transform: translate(2px, -2px);
 }
 
 /* ==========================================================================
-   3. FEATURED / PRESENTING TITLE PARTNER
+   4. ASSOCIATE SPONSORS (CLEAN SEAMLESS GRID - NO OUTER BOX)
    ========================================================================== */
 
-.featured-partner {
+.sp-associate-section {
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  max-width: 1360px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+
+.sp-grid {
   display: grid;
-  grid-template-columns: minmax(180px, 0.9fr) minmax(220px, 0.85fr) minmax(260px, 1.15fr);
-  align-items: center;
-  gap: clamp(25px, 4vw, 70px);
-  min-height: 255px;
-  padding: 48px clamp(24px, 5.1vw, 100px);
-  overflow: hidden;
-  border-bottom: 1px solid var(--frontier-line);
-  background:
-    radial-gradient(ellipse at 50% 50%, rgba(30, 70, 145, 0.18) 0%, transparent 65%),
-    linear-gradient(90deg, rgba(8, 14, 25, 0.98) 0%, rgba(5, 9, 16, 0.99) 100%);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 30px;
 }
 
-.featured-partner__texture {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(114deg, transparent 0 70%, rgba(208, 153, 51, 0.12) 70.1%, transparent 70.3%);
-}
-
-.featured-partner__label h2 {
-  margin: 10px 0 8px;
-  font-family: 'Rye', Georgia, serif;
-  font-size: clamp(20px, 2.1vw, 32px);
-  font-weight: 400;
-  line-height: 1.25;
-  color: #fff4e0;
-  letter-spacing: 0.03em;
-}
-
-.featured-partner__label p,
-.featured-partner__details p {
-  max-width: 360px;
-  margin: 0;
-  color: #bdb09b;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 13.5px;
-  line-height: 1.7;
-}
-
-.featured-partner__brand {
-  display: grid;
-  min-height: 180px;
-  place-items: center;
-  padding: 24px 32px;
-  border-radius: 12px;
-  border: 1.5px solid rgba(220, 171, 80, 0.45);
-  background: rgba(10, 18, 32, 0.65);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), inset 0 0 25px rgba(45, 95, 175, 0.16);
-}
-
-.featured-partner__brand .partner-mark__image {
-  max-width: 340px;
-  max-height: 125px;
-  object-fit: contain;
-  border-radius: 6px;
-  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.8));
-}
-
-.featured-partner__eyebrow {
-  font-family: 'Cinzel', serif;
-  color: var(--frontier-gold);
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
-
-.featured-partner__details h3 {
-  margin: 8px 0 8px;
-  font-family: 'Cinzel', Georgia, serif;
-  font-size: clamp(22px, 2.2vw, 34px);
-  font-weight: 700;
-  color: #ffe6b2;
-}
-
-.featured-partner__details .frontier-link {
-  margin-top: 16px;
-}
-
-/* ==========================================================================
-   4. PARTNER ROSTERS & CARDS
-   ========================================================================== */
-
-.partner-rosters {
-  position: relative;
-  z-index: 2;
-  padding: 24px 0 70px;
-  background:
-    radial-gradient(ellipse at 84% 7%, rgba(128, 80, 23, 0.09), transparent 28%),
-    #090806;
-}
-
-.partner-rosters::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  content: '';
-  background: linear-gradient(90deg, transparent, rgba(215, 163, 58, 0.72), transparent);
-}
-
-.partner-rosters__intro {
-  max-width: 1680px;
-  margin: 0 auto;
-  padding: 45px clamp(24px, 5.1vw, 100px) 15px;
-}
-
-.section-kicker {
-  display: block;
-  font-family: 'Cinzel', serif;
-  color: var(--frontier-gold);
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-}
-
-.partner-rosters__intro p {
-  margin: 6px 0 0;
-  color: #bfae96;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 15px;
-  letter-spacing: 0.02em;
-}
-
-.partner-section {
-  max-width: 1680px;
-  margin: 0 auto;
-  padding: 38px clamp(24px, 5.1vw, 100px) 0;
-}
-
-.partner-section__heading {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 24px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(199, 146, 48, 0.25);
-}
-
-.partner-section__heading h2 {
-  margin: 4px 0 0;
-  font-family: 'Rye', Georgia, serif;
-  font-size: clamp(19px, 1.9vw, 26px);
-  font-weight: 400;
-  color: #fff4e0;
-  letter-spacing: 0.04em;
-}
-
-.partner-section__count {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  color: rgba(216, 164, 59, 0.75);
-}
-
-.partner-section__count span {
-  color: var(--frontier-gold-bright);
-}
-
-/* Grids */
-.partner-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.partner-grid--silver {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.partner-grid--associate {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-/* ── 5. The Elegant Western Partner Card with Corner Brackets ── */
-.partner-card {
-  --card-line: rgba(178, 126, 38, 0.65);
-  position: relative;
-  min-width: 0;
-  min-height: 175px;
-  border: 1px solid var(--card-line);
-  border-radius: 8px;
-  background:
-    radial-gradient(ellipse at 50% 8%, rgba(45, 95, 175, 0.18), transparent 60%),
-    linear-gradient(145deg, #0d1525 0%, #060a13 75%);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), inset 0 0 24px rgba(10, 25, 55, 0.45);
-  transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
-}
-
-.partner-card--silver {
-  --card-line: rgba(140, 170, 210, 0.4);
-  min-height: 160px;
-  background:
-    radial-gradient(ellipse at 50% 8%, rgba(65, 115, 185, 0.14), transparent 60%),
-    linear-gradient(145deg, #0b1320 0%, #050811 75%);
-}
-
-.partner-card--associate {
-  --card-line: rgba(110, 145, 190, 0.35);
-  min-height: 145px;
-  background:
-    radial-gradient(ellipse at 50% 8%, rgba(55, 100, 165, 0.12), transparent 60%),
-    linear-gradient(145deg, #09101c 0%, #04070e 75%);
-}
-
-.partner-card:hover {
-  z-index: 2;
-  border-color: rgba(241, 187, 73, 0.95);
-  box-shadow:
-    0 12px 34px rgba(0, 0, 0, 0.85),
-    0 0 24px rgba(70, 130, 220, 0.25),
-    inset 0 0 26px rgba(45, 95, 175, 0.15);
-  transform: translateY(-5px);
-}
-
-.partner-card__inner {
+.sp-card {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  min-height: inherit;
-  padding: 16px 16px 14px;
-  overflow: hidden;
-  border-radius: inherit;
   text-align: center;
+  min-height: 200px;
+  padding: 22px 18px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(227, 184, 109, 0.32);
+  background: linear-gradient(145deg, #0e1626 0%, #060a12 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 230, 170, 0.1);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Brass Corner Brackets */
-.partner-card__corner {
+.sp-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 213, 128, 0.85);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(227, 184, 109, 0.28);
+}
+
+/* Brass Corner Notches */
+.sp-corner {
   position: absolute;
-  z-index: 1;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
-.partner-card__corner--tl { top: 6px; left: 6px; border-top: 1.5px solid #b88a3d; border-left: 1.5px solid #b88a3d; }
-.partner-card__corner--tr { top: 6px; right: 6px; border-top: 1.5px solid #b88a3d; border-right: 1.5px solid #b88a3d; }
-.partner-card__corner--bl { bottom: 6px; left: 6px; border-bottom: 1.5px solid #b88a3d; border-left: 1.5px solid #b88a3d; }
-.partner-card__corner--br { bottom: 6px; right: 6px; border-bottom: 1.5px solid #b88a3d; border-right: 1.5px solid #b88a3d; }
+.sp-corner--tl { top: 6px; left: 6px; border-top: 1.5px solid #b88a3d; border-left: 1.5px solid #b88a3d; }
+.sp-corner--tr { top: 6px; right: 6px; border-top: 1.5px solid #b88a3d; border-right: 1.5px solid #b88a3d; }
+.sp-corner--bl { bottom: 6px; left: 6px; border-bottom: 1.5px solid #b88a3d; border-left: 1.5px solid #b88a3d; }
+.sp-corner--br { bottom: 6px; right: 6px; border-bottom: 1.5px solid #b88a3d; border-right: 1.5px solid #b88a3d; }
 
-.partner-card__seal {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  color: rgba(218, 164, 59, 0.45);
-  font-size: 11px;
-  transition: color 180ms ease, transform 300ms ease;
+.sp-card:hover .sp-corner {
+  opacity: 1;
+  border-color: #ffd580;
 }
 
-.partner-card:hover .partner-card__seal {
-  color: #ffd580;
-  transform: rotate(45deg) scale(1.2);
-}
-
-.partner-card__mark-wrap {
+/* Large Prominent Logo */
+.sp-card-logo-wrap {
+  width: 100%;
+  height: 105px;
   display: flex;
-  flex: 1;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-height: 96px;
-  padding: 4px 6px 6px;
+  padding: 4px 6px;
 }
 
-.partner-mark__image {
+.sp-card-logo-img {
   display: block;
-  width: auto;
-  max-width: min(92%, 240px);
-  max-height: 96px;
+  max-width: 88%;
+  max-height: 90px;
   object-fit: contain;
   border-radius: 6px;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.7));
-  transition: transform 300ms ease, filter 300ms ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.75));
+  transition: transform 0.35s ease;
 }
 
-.partner-card--silver .partner-mark__image {
-  max-width: min(90%, 200px);
-  max-height: 84px;
+.sp-card:hover .sp-card-logo-img {
+  transform: scale(1.08);
 }
 
-.partner-card--associate .partner-mark__image {
-  max-width: min(88%, 180px);
-  max-height: 74px;
-}
-
-.partner-card:hover .partner-mark__image {
-  transform: scale(1.05);
-  filter: drop-shadow(0 4px 14px rgba(245, 158, 11, 0.4));
-}
-
-.partner-mark__fallback {
-  display: block;
-  font-family: 'Cinzel', serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #f3e5ab;
-  letter-spacing: 0.08em;
-}
-
-.partner-card__rule {
-  display: block;
-  width: 36px;
+.sp-card-divider {
+  width: 32px;
   height: 1px;
-  margin: 0 auto 10px;
-  background: linear-gradient(90deg, transparent, #b68a3c, transparent);
-  transition: width 250ms ease;
+  background: linear-gradient(90deg, transparent, rgba(227, 184, 109, 0.45), transparent);
+  margin: 12px auto 8px;
+  transition: width 0.3s ease;
 }
 
-.partner-card:hover .partner-card__rule {
-  width: 65px;
+.sp-card:hover .sp-card-divider {
+  width: 60px;
 }
 
-.partner-card__role {
-  display: block;
-  font-family: 'Cinzel', serif;
-  color: #d6be9c;
+.sp-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sp-card-role {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 9.5px;
   font-weight: 700;
   letter-spacing: 0.16em;
-  line-height: 1.5;
+  color: var(--sp-gold);
   text-transform: uppercase;
 }
 
-.partner-card__visit {
-  display: block;
-  max-height: 0;
-  margin-top: 0;
-  overflow: hidden;
+.sp-card-name {
+  margin: 0;
   font-family: 'Cinzel', serif;
-  color: #ffd580;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #f6edda;
+  letter-spacing: 0.04em;
+}
+
+.sp-card-hover-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Cinzel', serif;
   font-size: 8.5px;
   font-weight: 800;
   letter-spacing: 0.18em;
+  color: #ffd580;
   opacity: 0;
-  transform: translateY(4px);
-  transition: max-height 200ms ease, margin 200ms ease, opacity 200ms ease, transform 200ms ease;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.25s ease;
 }
 
-.partner-card:hover .partner-card__visit,
-.partner-card:focus-within .partner-card__visit {
+.sp-card:hover .sp-card-hover-visit {
+  opacity: 1;
   max-height: 20px;
-  margin-top: 8px;
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   5. REVEAL ANIMATIONS
+   ========================================================================== */
+
+.sp-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sp-reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* ==========================================================================
-   RESPONSIVE LAYOUT
+   6. RESPONSIVE BREAKPOINTS
    ========================================================================== */
 
-@media (max-width: 1024px) {
-  .featured-partner {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    text-align: center;
-  }
-  .featured-partner__brand {
-    border: 1.5px solid rgba(220, 171, 80, 0.45);
-  }
-  .featured-partner__label p,
-  .featured-partner__details p {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  .partner-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .partner-grid--silver {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .partner-grid--associate {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+@media (max-width: 1100px) {
+  .sp-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
   }
 }
 
-@media (max-width: 640px) {
-  .sponsors-hero {
-    padding-top: 110px;
-    padding-bottom: 60px;
+@media (max-width: 768px) {
+  .sp-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
-  .sponsors-hero__content {
-    width: 100%;
+
+  .sp-card {
+    min-height: 180px;
+    padding: 18px 12px 14px;
   }
-  .sponsors-hero__title {
-    font-size: 2.8rem;
+
+  .sp-card-logo-wrap {
+    height: 90px;
   }
-  .sponsors-hero__bottomline {
-    display: none;
+
+  .sp-card-logo-img {
+    max-height: 75px;
   }
-  .partner-grid,
-  .partner-grid--silver,
-  .partner-grid--associate {
+
+  .sp-main-card {
+    padding: 24px 20px;
+  }
+
+  .sp-main-logo-wrap {
+    height: 110px;
+  }
+
+  .sp-main-logo-img {
+    max-height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
