@@ -10,7 +10,7 @@
   font-family: 'Western Bang Bang';
   src: url('/fonts/western-bang-bang/WesternBangBang-Italic.ttf') format('truetype');
   font-weight: normal;
-  font-style: italic;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -415,11 +415,11 @@
 /* Main LAKSHYA lettering */
 .lkh-brand-name {
   font-family: "Western Bang Bang", Georgia, serif;
-  font-style: italic;
-  font-size: clamp(3.1rem, 6.2vw, 6.8rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.14;
+  font-style: normal;
+  font-size: clamp(3.8rem, 7.8vw, 8.4rem);
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  line-height: 1.05;
 
   /* Antique gold metal */
   background: linear-gradient(
@@ -456,8 +456,8 @@
   display: inline-block;
   position: relative;
   font-family: "Western Bang Bang", Georgia, serif;
-  font-style: italic;
-  font-size: clamp(2.2rem, 3.5vw, 4.2rem);
+  font-style: normal;
+  font-size: clamp(3.2rem, 5.8vw, 6.4rem);
   font-weight: 900;
   letter-spacing: 0.02em;
   line-height: 1;
@@ -504,7 +504,7 @@
 .lkh-brand-tagline {
   margin: 0 0 20px;
   font-family: "Western Bang Bang", Georgia, serif;
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(0.78rem, 1.25vw, 1rem);
   font-weight: 800;
   letter-spacing: 0.15em;

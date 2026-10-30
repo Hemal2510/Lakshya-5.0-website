@@ -1,6 +1,5 @@
 import "./legacy.css";
 import TimelineSection from "./TimelineSection.tsx";
-import Lakshya5Promo from "./Lakshya5Promo.tsx";
 import { Trophy, Calendar, Users, Zap } from "lucide-react";
 import legacyFrontierBg from "@/assets/legacy-frontier-bg.jpg";
 
@@ -139,9 +138,7 @@ export default function Legacy() {
       <TimelineSection />
 
       {/* =========================================================================
-          LAKSHYA 5.0 PROCLAMATION (GOLD-RUSH PROMO)
       ========================================================================= */}
-      <Lakshya5Promo />
     </section>
   );
 }

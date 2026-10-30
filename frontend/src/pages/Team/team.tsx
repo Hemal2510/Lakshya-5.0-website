@@ -153,12 +153,12 @@ export default function Team() {
         </section>
 
         {/* -----------------------------------------------------------------------
-            HEADS OF COMMITTEES (TeamWheel - No Center Logo, Zero Overlap, Burnt Edges)
+            EXECUTIVE DIRECTORS & LEADS (TeamWheel - No Center Logo, Zero Overlap, Burnt Edges)
         ----------------------------------------------------------------------- */}
         <section className="w-full flex flex-col items-center justify-center mb-20 sm:mb-28">
           <div className="text-center mb-10 sm:mb-14">
             <h2 className="lk-section-heading text-xl sm:text-3xl">
-              HEADS OF COMMITTEES
+              EXECUTIVE DIRECTORS & LEADS
             </h2>
             <div className="lk-western-divider my-2">
               <span className="lk-western-divider-line" />
@@ -166,7 +166,7 @@ export default function Team() {
               <span className="lk-western-divider-line right" />
             </div>
             <p className="text-[11px] sm:text-xs font-serif italic tracking-[0.22em] text-[#d49b55]/85 uppercase">
-              — DIRECTING COMMITTEES & FRONTIER OPERATIONS —
+              — ORCHESTRATING EXPEDITIONS & FRONTIER OPERATIONS —
             </p>
           </div>
 

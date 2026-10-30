@@ -13,7 +13,7 @@ import Live from "../pages/Live/live";
 
 export default function AppRoutes() {
     const location = useLocation();
-    const hideFooter = ["/sports", "/live"].includes(location.pathname);
+    const hideFooter = ["/live"].includes(location.pathname);
 
     return (
         <div className="relative min-h-screen flex flex-col justify-between">

@@ -148,11 +148,11 @@ export default function SportsPage() {
             <span aria-hidden="true">★</span>
           </div>
 
-          <p className="lk-overline">WHERE GRIT MEETS GLORY · IIT INDORE</p>
+          <p className="lk-overline">CHASE WHAT LIES BEYOND · IIT INDORE</p>
 
           <h1 id="lk-hero-title" className="lk-hero-western-title">
-            <span className="lk-hero-title-light">WHERE GRIT</span>
-            <span className="lk-hero-title-gold">MEETS GLORY.</span>
+            <span className="lk-hero-title-light">CHASE WHAT</span>
+            <span className="lk-hero-title-gold">LIES BEYOND</span>
           </h1>
 
           <div className="lk-brand-divider" aria-hidden="true">
@@ -309,39 +309,7 @@ export default function SportsPage() {
         )}
       </section>
 
-      {/* Western Bottom Callout */}
-      <section className="lk-bottom-cta" id="competition-info" aria-label="Competition information">
-        <div className="lk-bottom-cta__rule" />
-        <span className="lk-bottom-seal" aria-hidden="true">★</span>
-        <span className="lk-bullet-hole lk-bullet-hole-bottom" aria-hidden="true" />
-
-        <p className="lk-eyebrow lk-eyebrow--muted">★ THE NEXT MOVE IS YOURS ★</p>
-
-        <h2 className="lk-bottom-heading">
-          MAKE YOUR<br />
-          <em>MARK.</em>
-        </h2>
-
-        <div className="lk-brand-divider" aria-hidden="true">
-          <span />
-          <b>✥</b>
-          <span />
-        </div>
-
-        <p>Official fixtures, tournament schedules, and athlete registration dockets will be announced shortly.</p>
-
-        <a className="lk-text-link" href="#sports">
-          RETURN TO ARENA ROSTER <span>↑</span>
-        </a>
-
-        {/* Western Seal Medallion Watermark */}
-        <div className="lk-bottom-western-seal" aria-hidden="true">
-          <span className="lk-seal-ring-outer" />
-          <span className="lk-seal-ring-inner" />
-          <span className="lk-seal-star">★</span>
-          <span className="lk-seal-text">LAKSHYA 5.0 · IIT INDORE</span>
-        </div>
-      </section>
+      
 
       {/* Sport Detail Modal / Dossier */}
       {selectedSport && (

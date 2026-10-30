@@ -3,7 +3,7 @@ import frontierBackground from "../../assets/frontier-bg.webp";
 import "./HeroSection.css";
 import { Link } from "react-router-dom";
 
-const DEFAULT_EVENT_TIME = "2027-01-15T09:00:00+05:30"; // 15 Jan 2027, 9:00 AM IST
+const DEFAULT_EVENT_TIME = "2027-01-29T09:00:00+05:30"; // 29 Jan 2027, 9:00 AM IST
 
 type TimeLeft = {
   days: string;

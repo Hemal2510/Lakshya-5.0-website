@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Camera, X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import { Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
 import "./Gallery.css";
 
 import photo1 from "../../data/TeamsPhoto/photo1.jpeg";
@@ -224,14 +224,6 @@ export default function Gallery() {
                     loading="lazy"
                     className="tintype-img"
                   />
-
-                  {/* Darkroom Inspect Overlay */}
-                  <div className="tintype-hover-overlay">
-                    <span className="tintype-inspect-badge">
-                      <ZoomIn className="w-3.5 h-3.5 text-[#ffd580]" />
-                      <span>INSPECT PRINT</span>
-                    </span>
-                  </div>
                 </div>
 
                 {/* Bottom Aged Cardstock Caption Plate */}
@@ -331,9 +323,6 @@ export default function Gallery() {
                   {/* Lightbox Footer Bar */}
                   <div className="lightbox-footer">
                     <span>LAKSHYA 5.0 · IIT INDORE DAGUERREOTYPE ARCHIVE</span>
-                    <span className="font-mono text-xs text-[#ffd580] bg-[#3a1d0b] px-2.5 py-0.5 rounded-full border border-[#80451a]">
-                      PRINT {selectedPhotoIndex + 1} OF {galleryItems.length}
-                    </span>
                   </div>
                 </motion.div>
               </motion.div>
