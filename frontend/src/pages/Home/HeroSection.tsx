@@ -96,13 +96,13 @@ export default function LakshyaFrontierHero({
       const nx = (e.clientX / window.innerWidth - 0.5) * 2;
       const ny = (e.clientY / window.innerHeight - 0.5) * 2;
       // Moving in the direction of the cursor for panoramic feel
-      targetX = nx * 38;
-      targetY = ny * 22;
+      targetX = nx * 85;
+      targetY = ny * 45;
     };
 
     const updateLoop = () => {
-      currentX += (targetX - currentX) * 0.07;
-      currentY += (targetY - currentY) * 0.07;
+      currentX += (targetX - currentX) * 0.14;
+      currentY += (targetY - currentY) * 0.14;
       setParallax({
         x: Math.round(currentX * 100) / 100,
         y: Math.round(currentY * 100) / 100,
@@ -142,7 +142,7 @@ export default function LakshyaFrontierHero({
           src={frontierBackground}
           alt="Frontier Landscape"
           style={{
-            transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0) scale(1.09)`,
+            transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0) scale(1.12)`,
           }}
         />
       </div>

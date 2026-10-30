@@ -44,13 +44,13 @@
 }
 .lkh-scene-image {
   position: absolute;
-  top: -8%;
-  left: -8%;
-  width: 116%;
-  height: 116%;
+  top: -12%;
+  left: -12%;
+  width: 124%;
+  height: 124%;
   max-width: none;
   object-fit: cover;
-  object-position: center 50%;
+  object-position: center 74%;
   filter: brightness(0.92) saturate(1.06) contrast(1.04);
   transform-origin: center center;
   will-change: transform;
