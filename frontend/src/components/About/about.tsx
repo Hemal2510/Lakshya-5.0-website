@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Trophy, Users, Landmark } from "lucide-react";
+import { ChevronLeft, ChevronRight, Trophy, Users, Landmark, Coins } from "lucide-react";
 import CountUp from "../ui/CountUp.tsx";
 import "./about.css";
 
@@ -154,6 +154,20 @@ export default function About() {
               </div>
               <span className="badge-stat-title">PREMIER INSTITUTES</span>
               <span className="badge-stat-sub">Nationwide Delegation</span>
+            </div>
+          </div>
+
+          {/* Badge 4: Prize Pool & Bounty */}
+          <div className="western-badge-card">
+            <div className="badge-sun-icon">
+              <Coins className="w-5 h-5 text-[#f5b041]" />
+            </div>
+            <div className="badge-info">
+              <div className="badge-stat-num">
+                <span>₹4.5L+</span>
+              </div>
+              <span className="badge-stat-title">PRIZE POOL & BOUNTY</span>
+              <span className="badge-stat-sub">Championship Purse</span>
             </div>
           </div>
         </motion.div>

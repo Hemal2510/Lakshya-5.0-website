@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import frontierBackground from "../../assets/frontier-bg.webp";
+import frontierBackground from "../../assets/cowboy-night-bg.jpg";
 import "./HeroSection.css";
 import { Link } from "react-router-dom";
 

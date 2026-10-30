@@ -2,7 +2,7 @@ import FireSealBadge from "../../components/teams/FireSealBadge.tsx";
 import TeamInfiniteScroll from "../../components/teams/TeamInfiniteScroll";
 import TeamWheel from "../../components/teams/TeamWheel";
 import { motion } from "framer-motion";
-import frontierBg from "@/assets/frontier-bg.webp";
+import frontierBg from "@/assets/cowboy-night-bg.jpg";
 import "./team.css";
 
 import {

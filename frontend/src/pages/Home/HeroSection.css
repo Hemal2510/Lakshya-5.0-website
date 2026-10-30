@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
 @font-face {
   font-family: 'Western Bang Bang';
   src: url('/fonts/western-bang-bang/WesternBangBang-Regular.ttf') format('truetype');
@@ -414,7 +415,7 @@
 
 /* Main LAKSHYA lettering */
 .lkh-brand-name {
-  font-family: "Western Bang Bang", Georgia, serif;
+  font-family: 'Rye', Georgia, serif;
   font-style: normal;
   font-size: clamp(3.8rem, 7.8vw, 8.4rem);
   font-weight: 900;
@@ -455,7 +456,7 @@
 .lkh-brand-version {
   display: inline-block;
   position: relative;
-  font-family: "Western Bang Bang", Georgia, serif;
+  font-family: 'Rye', Georgia, serif;
   font-style: normal;
   font-size: clamp(3.2rem, 5.8vw, 6.4rem);
   font-weight: 900;
@@ -503,7 +504,7 @@
 /* Slogan beneath the main wordmark */
 .lkh-brand-tagline {
   margin: 0 0 20px;
-  font-family: "Western Bang Bang", Georgia, serif;
+  font-family: 'Rye', Georgia, serif;
   font-style: normal;
   font-size: clamp(0.78rem, 1.25vw, 1rem);
   font-weight: 800;
