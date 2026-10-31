@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
 @font-face {
   font-family: 'Western Bang Bang';
@@ -413,62 +414,64 @@
 
 /* Main LAKSHYA lettering */
 .lkh-brand-name {
-  font-family: 'Rye', Georgia, serif;
+  font-family: 'Cinzel Decorative', 'Cinzel', Georgia, serif;
   font-style: normal;
-  font-size: clamp(3.8rem, 7.8vw, 8.4rem);
+  font-size: clamp(3.4rem, 7.2vw, 7.6rem);
   font-weight: 900;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
   line-height: 1.05;
 
-  /* Antique gold metal */
+  /* Crystalline Ice-Blue & Azure Gradient matching official brand mark */
   background: linear-gradient(
     180deg,
-    #fff3c9 0%,
-    #e9c77c 13%,
-    #b77932 30%,
-    #fbe7ad 43%,
-    #d4a14c 54%,
-    #87511f 75%,
-    #e2b766 91%,
-    #fff0bd 100%
+    #ffffff 0%,
+    #dcf3ff 16%,
+    #7cd2ff 36%,
+    #2196f3 58%,
+    #0f58a8 80%,
+    #38bdf8 100%
   );
-
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 
-  /* Engraved edge and raised lettering */
-  /* Distressed woodcut letters */
-  letter-spacing: 0.04em;
-
+  /* Engraved edge and raised luminous glow */
   text-shadow:
-    0 1px 0 #fff0bd,
-    0 3px 0 #976227,
-    0 5px 0 #4b2d14,
-    0 8px 12px rgb(0 0 0 / 75%);
+    0 2px 0 rgba(0, 0, 0, 0.85),
+    0 0 24px rgba(56, 189, 248, 0.6),
+    0 0 50px rgba(2, 132, 199, 0.38);
 
-  filter: drop-shadow(0 0 12px rgb(210 157 68 / 10%));
+  filter: drop-shadow(0 6px 22px rgba(0, 0, 0, 0.9));
 }
 
 /* Separate, refined edition number */
 .lkh-brand-version {
   display: inline-block;
   position: relative;
-  font-family: 'Rye', Georgia, serif;
+  font-family: 'Cinzel Decorative', 'Cinzel', Georgia, serif;
   font-style: normal;
   font-size: clamp(3.2rem, 5.8vw, 6.4rem);
   font-weight: 900;
   letter-spacing: 0.02em;
   line-height: 1;
-  color: #e6bd70;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #cbeeff 20%,
+    #38bdf8 60%,
+    #0284c7 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 
   padding-left: 0.22em;
-  border-left: 1px solid rgb(222 172 89 / 75%);
+  border-left: 1px solid rgba(56, 189, 248, 0.6);
 
   text-shadow:
-    0 1px 0 #fff0bc,
-    0 3px 0 #8e5c25,
-    0 5px 10px rgb(0 0 0 / 75%);
+    0 2px 0 rgba(0, 0, 0, 0.85),
+    0 0 20px rgba(56, 189, 248, 0.5);
 }
 
 /* Ornamental separator */
@@ -501,16 +504,15 @@
 
 /* Slogan beneath the main wordmark */
 .lkh-brand-tagline {
-  margin: 0 0 20px;
-  font-family: 'Rye', Georgia, serif;
-  font-style: normal;
-  font-size: clamp(0.78rem, 1.25vw, 1rem);
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  line-height: 1.8;
-  color: #f0d7a3;
-
-  text-shadow: 0 2px 8px rgb(0 0 0 / 90%);
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: #7dd3fc;
+  text-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 /* Mobile */
