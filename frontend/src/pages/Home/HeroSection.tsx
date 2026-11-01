@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import frontierBackground from "../../assets/night-cowboy-hero-uhd.webp";
 import "./HeroSection.css";
 import { Link } from "react-router-dom";
+import LakshyaWordmarkVector from "../../components/shared/LakshyaWordmarkVector";
 
 const DEFAULT_EVENT_TIME = "2027-01-29T09:00:00+05:30"; // 29 Jan 2027, 9:00 AM IST
 
@@ -190,23 +191,14 @@ export default function LakshyaFrontierHero({
           </p>
 
           
-<h1 className="lkh-brand-title lkh-reveal lkh-delay-1">
-  <span className="lkh-brand-name">LAKSHYA</span>
-  <span className="lkh-brand-version">5.0</span>
-</h1>
-
-<div
-  className="lkh-brand-divider lkh-reveal lkh-delay-2"
-  aria-hidden="true"
->
-  <span />
-  <b>✥</b>
-  <span />
-</div>
-
-<p className="lkh-brand-tagline lkh-reveal lkh-delay-2">
-  CHASE WHAT LIES BEYOND
-</p>
+          <div
+            className="lkh-brand-wordmark-wrap lkh-reveal lkh-delay-1"
+            role="heading"
+            aria-level={1}
+            aria-label="Lakshya 5.0 - Chase What Lies Beyond"
+          >
+            <LakshyaWordmarkVector className="lkh-vector-wordmark" />
+          </div>
 
 
           <p className="lkh-description lkh-reveal lkh-delay-2">

@@ -12,6 +12,12 @@ export type Sport = {
   image: string;
   imagePosition?: string;
   accent?: string;
+  /** Registration fee / price (e.g. '₹500 / Team', '₹200 / Entry') */
+  registrationFee: string;
+  /** Prize pool / bounty (e.g. '₹25,000', '₹50,000') */
+  prizePool: string;
+  /** Link to downloadable/viewable official rule book (e.g. Google Drive link or PDF) */
+  rulebookUrl: string;
 };
 
 /**
@@ -33,6 +39,9 @@ export const SPORTS: Sport[] = [
       "Read the game, own the moment, and make every delivery count. Check back for official match fixtures and competition details.",
     image: "/images/sports/cricket.jpeg",
     imagePosition: "center 48%",
+    registrationFee: "₹1,500 / Team",
+    prizePool: "₹45,000",
+    rulebookUrl: "#",
   },
   {
     id: "football",
@@ -46,6 +55,9 @@ export const SPORTS: Sport[] = [
       "Pace, pressure, and the search for the winning goal. Official fixtures and tournament information will be published here.",
     image: "/images/sports/football.jpeg",
     imagePosition: "center 52%",
+    registrationFee: "₹1,500 / Team",
+    prizePool: "₹40,000",
+    rulebookUrl: "#",
   },
   {
     id: "hockey",
@@ -59,6 +71,9 @@ export const SPORTS: Sport[] = [
       "Quick transitions, sharp passing, and a relentless attack. Return here for confirmed match and venue information.",
     image: "/images/sports/hockey.jpeg",
     imagePosition: "center center",
+    registrationFee: "₹1,200 / Team",
+    prizePool: "₹35,000",
+    rulebookUrl: "#",
   },
   {
     id: "volleyball",
@@ -72,6 +87,9 @@ export const SPORTS: Sport[] = [
       "Power at the net and teamwork in every rally. Men's and women's competitions are represented separately in the category label.",
     image: "/images/sports/vollyball.jpeg",
     imagePosition: "center center",
+    registrationFee: "₹800 / Team",
+    prizePool: "₹25,000",
+    rulebookUrl: "#",
   },
   {
     id: "basketball",
@@ -85,6 +103,9 @@ export const SPORTS: Sport[] = [
       "Fast breaks, fearless finishes, and the next big play. Follow this page for official competition updates.",
     image: "/images/sports/basketball.jpeg",
     imagePosition: "center center",
+    registrationFee: "₹1,000 / Team",
+    prizePool: "₹30,000",
+    rulebookUrl: "#",
   },
   {
     id: "waterpolo",
@@ -98,6 +119,9 @@ export const SPORTS: Sport[] = [
       "A high-intensity contest where stamina, teamwork, and timing matter. Official event information will be added when available.",
     image: "/images/sports/waterpolo.webp",
     imagePosition: "center center",
+    registrationFee: "₹800 / Team",
+    prizePool: "₹20,000",
+    rulebookUrl: "#",
   },
   {
     id: "aquatics",
@@ -111,6 +135,9 @@ export const SPORTS: Sport[] = [
       "Speed, rhythm, and precision in the water. Check back for event categories, schedules, and pool-side updates.",
     image: "/images/sports/aquatics.jpeg",
     imagePosition: "center 48%",
+    registrationFee: "₹300 / Entry",
+    prizePool: "₹25,000",
+    rulebookUrl: "#",
   },
   {
     id: "athletics",
@@ -124,6 +151,9 @@ export const SPORTS: Sport[] = [
       "Every fraction, every stride, every finish line. Official event lists and schedules will be shown here once announced.",
     image: "/images/sports/atheletics.jpeg",
     imagePosition: "center 45%",
+    registrationFee: "₹250 / Entry",
+    prizePool: "₹30,000",
+    rulebookUrl: "#",
   },
   {
     id: "badminton",
@@ -137,6 +167,9 @@ export const SPORTS: Sport[] = [
       "Explosive movement and split-second decisions. Official draws, match schedules, and venue details will be added here.",
     image: "/images/sports/badmiton.jpeg",
     imagePosition: "center center",
+    registrationFee: "₹400 / Player",
+    prizePool: "₹20,000",
+    rulebookUrl: "#",
   },
   {
     id: "squash",
@@ -150,6 +183,9 @@ export const SPORTS: Sport[] = [
       "A compact court. Relentless movement. Tactical precision. Return for official match details and competition updates.",
     image: "/images/sports/squash.jpeg",
     imagePosition: "center center",
+    registrationFee: "₹400 / Player",
+    prizePool: "₹15,000",
+    rulebookUrl: "#",
   },
   {
     id: "tennis",
@@ -163,6 +199,9 @@ export const SPORTS: Sport[] = [
       "Serve with intent. Play every point. Find official tournament and match information here when released.",
     image: "/images/sports/tennis.jpeg",
     imagePosition: "center 42%",
+    registrationFee: "₹400 / Player",
+    prizePool: "₹20,000",
+    rulebookUrl: "#",
   },
   {
     id: "table-tennis",
@@ -176,6 +215,9 @@ export const SPORTS: Sport[] = [
       "Quick hands, sharp angles, and relentless focus. Official draws and scheduling information will be listed here.",
     image: "/images/sports/tabletennis.jpeg",
     imagePosition: "center center",
+    registrationFee: "₹350 / Player",
+    prizePool: "₹15,000",
+    rulebookUrl: "#",
   },
   {
     id: "chess",
@@ -189,6 +231,9 @@ export const SPORTS: Sport[] = [
       "Think ahead, stay composed, and find the decisive move. Tournament format and schedule details will be announced here.",
     image: "/images/sports/chess.webp",
     imagePosition: "center center",
+    registrationFee: "₹250 / Entry",
+    prizePool: "₹15,000",
+    rulebookUrl: "#",
   },
     {
         id: "powerlifting",
@@ -202,6 +247,9 @@ export const SPORTS: Sport[] = [
             "Push your limits, showcase raw strength, and rise to the challenge. Competition rules, weight categories, and schedule details will be announced here.",
         image: "/images/sports/bodybuilding.jpeg",
         imagePosition: "center center",
+    registrationFee: "₹300 / Entry",
+    prizePool: "₹15,000",
+    rulebookUrl: "#",
     },
     {
         id: "weightlifting",
@@ -215,6 +263,9 @@ export const SPORTS: Sport[] = [
             "Lift with power, master your technique, and push beyond your limits. Competition rules, weight categories, and schedule details will be announced here.",
         image: "/images/sports/bodybuilding.jpeg",
         imagePosition: "center center",
+    registrationFee: "₹300 / Entry",
+    prizePool: "₹15,000",
+    rulebookUrl: "#",
     },
 ];
 

@@ -554,3 +554,296 @@
     gap: 14px;
   }
 }
+
+
+/* ==========================================================================
+   5. BECOME A PARTNER / CTA SECTION
+   ========================================================================== */
+
+.sp-cta-section {
+  position: relative;
+  z-index: 2;
+  width: min(92%, 1100px);
+  margin: 64px auto 20px;
+}
+
+.sp-cta-card {
+  position: relative;
+  padding: clamp(32px, 5vw, 48px) clamp(24px, 4vw, 40px);
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(227, 184, 109, 0.12) 0%, transparent 70%),
+    linear-gradient(180deg, #121929 0%, #0a0f1c 100%);
+  border: 1px solid rgba(227, 184, 109, 0.45);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.sp-cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.sp-cta-heading {
+  margin: 0;
+  font-family: 'Rye', serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #fff4d6;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+}
+
+.sp-cta-desc {
+  margin: 4px 0 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  line-height: 1.6;
+  color: #d1c8b4;
+}
+
+.sp-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 32px;
+  background: linear-gradient(180deg, #f5d491 0%, #d49b55 100%);
+  color: #1a1005;
+  border: 1px solid #ffd899;
+  border-radius: 2px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: transform 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease;
+}
+
+.sp-cta-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 12px 28px rgba(227, 184, 109, 0.35);
+}
+
+.sp-cta-btn-arrow {
+  font-size: 15px;
+  transition: transform 0.22s ease;
+}
+
+.sp-cta-btn:hover .sp-cta-btn-arrow {
+  transform: translateX(4px);
+}
+
+.sp-cta-subtext {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--sp-gold);
+}
+
+.sp-cta-subtext b {
+  font-size: 8px;
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   6. INTERACTIVE CONTACT MODAL (DOSSIER)
+   ========================================================================== */
+
+.sp-contact-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(3, 5, 10, 0.82);
+  backdrop-filter: blur(10px);
+  animation: sp-modal-fade 0.25s ease forwards;
+}
+
+@keyframes sp-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sp-contact-modal {
+  position: relative;
+  width: min(94%, 640px);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: clamp(28px, 4vw, 40px);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(227, 184, 109, 0.16) 0%, transparent 65%),
+    linear-gradient(180deg, #141c2c 0%, #0d1320 100%);
+  border: 1px solid rgba(227, 184, 109, 0.65);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  animation: sp-modal-rise 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes sp-modal-rise {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.sp-contact-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(227, 184, 109, 0.4);
+  color: var(--sp-gold);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sp-contact-close:hover {
+  background: rgba(227, 184, 109, 0.2);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.sp-contact-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.sp-contact-title {
+  margin: 6px 0 8px;
+  font-family: 'Rye', serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #fff4d6;
+}
+
+.sp-contact-subtitle {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #bfb6a4;
+}
+
+.sp-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 580px) {
+  .sp-contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sp-contact-box {
+  padding: 16px 14px;
+  background: rgba(5, 8, 17, 0.65);
+  border: 1px solid rgba(227, 184, 109, 0.25);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.sp-contact-box:hover {
+  border-color: rgba(227, 184, 109, 0.6);
+}
+
+.sp-contact-box-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--sp-gold);
+  text-transform: uppercase;
+}
+
+.sp-contact-box-val {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f7efdf;
+  word-break: break-all;
+}
+
+.sp-contact-link {
+  color: #ffd899;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sp-contact-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.sp-contact-box-sub {
+  font-size: 11px;
+  color: #a0998a;
+  margin-top: 2px;
+}
+
+.sp-contact-address {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #d1c8b4;
+}
+
+.sp-contact-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.sp-btn--primary {
+  background: linear-gradient(180deg, #f5d491 0%, #d49b55 100%);
+  color: #1a1005 !important;
+  border: 1px solid #ffd899;
+  font-weight: 800;
+}
+
+.sp-btn--primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.sp-btn--secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e3cca8;
+  border: 1px solid rgba(227, 184, 109, 0.4);
+  font-weight: 700;
+}
+
+.sp-btn--secondary:hover {
+  background: rgba(227, 184, 109, 0.18);
+  color: #fff;
+  transform: translateY(-2px);
+}

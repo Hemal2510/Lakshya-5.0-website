@@ -3,12 +3,12 @@ import sponsorsFrontierBg from "../../assets/sponsors-frontier-bg.jpg";
 import "./sponsors.css";
 
 /* ============================================================
-   LAKSHYA 5.0 - OUR PAST SPONSORS
+   LAKSHYA 5.0 - OUR PAST SPONSORS & PARTNERS
    ────────────────────────────────────────────────────────────
    • Clean, minimal Western Hero: "OUR PAST SPONSORS"
-   • 1 Prominent Main Sponsor (Plum BodyLovin' Grand Title Patron)
-   • Seamless Associate Sponsors Grid (No Gold/Silver split, No outer box)
-   • Enlarged, high-prominence brand logos with Western corner accents
+   • All 15 past sponsors treated with equal prominence in a unified grid
+   • Western corner-notched cards with high-prominence logo badges
+   • Western "Become a Partner" CTA section with interactive Contact Dossier
    ============================================================ */
 
 export type Sponsor = {
@@ -19,17 +19,14 @@ export type Sponsor = {
   description?: string;
 };
 
-/* ── 1. Grand Title Patron ── */
-const MAIN_SPONSOR: Sponsor = {
-  name: "Plum BodyLovin'",
-  role: "GRAND TITLE PATRON",
-  logo: "/images/sponsors/sponsor_title.jpg",
-  description: "Grand Title Patron of Lakshya — fueling the spirit, grit, and glory across every championship proving ground.",
-  website: "https://plumgoodness.com/",
-};
-
-/* ── 2. Unified Associate Sponsors Roster ── */
-const ASSOCIATE_SPONSORS: Sponsor[] = [
+/* ── Unified Past Sponsors Roster (All Treated Equally) ── */
+const ALL_PAST_SPONSORS: Sponsor[] = [
+  {
+    name: "Plum BodyLovin'",
+    role: "TITLE PATRON",
+    logo: "/images/sponsors/sponsor_title.jpg",
+    website: "https://plumgoodness.com/",
+  },
   {
     name: "ICICI Bank",
     role: "BANKING PARTNER",
@@ -109,6 +106,7 @@ const ASSOCIATE_SPONSORS: Sponsor[] = [
 
 export default function SponsorsPage() {
   const [revealReady, setRevealReady] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
 
   useEffect(() => {
     setRevealReady(true);
@@ -182,69 +180,11 @@ export default function SponsorsPage() {
       </section>
 
       {/* =========================================================================
-          3. MAIN TITLE SPONSOR (GRAND PLAQUE SPOTLIGHT)
-      ========================================================================= */}
-      <section className="sp-main-section sp-reveal">
-        <div className="sp-section-header">
-          <span className="sp-badge-kicker">★ THE HEADLINER ★</span>
-          <h2 className="sp-section-heading">GRAND TITLE PATRON</h2>
-        </div>
-
-        <div className="sp-main-card">
-          {/* Corner Filigree Brackets */}
-          <span className="sp-corner sp-corner--tl" aria-hidden="true" />
-          <span className="sp-corner sp-corner--tr" aria-hidden="true" />
-          <span className="sp-corner sp-corner--bl" aria-hidden="true" />
-          <span className="sp-corner sp-corner--br" aria-hidden="true" />
-
-          {/* Large Prominent Logo Box */}
-          <div className="sp-main-logo-wrap">
-            <img
-              src={MAIN_SPONSOR.logo}
-              alt={MAIN_SPONSOR.name}
-              className="sp-main-logo-img"
-            />
-          </div>
-
-          {/* Details */}
-          <div className="sp-main-info">
-            <span className="sp-main-role">{MAIN_SPONSOR.role}</span>
-            <h3 className="sp-main-name">{MAIN_SPONSOR.name}</h3>
-            {MAIN_SPONSOR.description && (
-              <p className="sp-main-desc">{MAIN_SPONSOR.description}</p>
-            )}
-
-            {MAIN_SPONSOR.website && (
-              <a
-                href={MAIN_SPONSOR.website}
-                target="_blank"
-                rel="noreferrer"
-                className="sp-btn"
-              >
-                <span>VISIT OFFICIAL PARTNER</span>
-                <span className="sp-btn-arrow">↗</span>
-              </a>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          4. ASSOCIATE SPONSORS (SEAMLESS CLEAN GRID - NO BOX WRAPPER)
+          3. UNIFIED PAST SPONSORS GRID (ALL TREATED EQUALLY)
       ========================================================================= */}
       <section className="sp-associate-section">
-        <div className="sp-section-header sp-reveal">
-          <span className="sp-badge-kicker">★ OFFICIAL PARTNERS & ALLIES ★</span>
-          <h2 className="sp-section-heading">ASSOCIATE SPONSORS</h2>
-          <div className="sp-divider">
-            <span className="sp-divider-line" />
-            <span className="sp-divider-star">✦</span>
-            <span className="sp-divider-line right" />
-          </div>
-        </div>
-
         <div className="sp-grid">
-          {ASSOCIATE_SPONSORS.map((sponsor, index) => {
+          {ALL_PAST_SPONSORS.map((sponsor, index) => {
             const cardContent = (
               <>
                 {/* 4 Engraved Corner Notches */}
@@ -286,7 +226,7 @@ export default function SponsorsPage() {
                 target="_blank"
                 rel="noreferrer"
                 className="sp-card sp-reveal"
-                style={{ animationDelay: `${index * 45}ms` }}
+                style={{ animationDelay: `${index * 35}ms` }}
               >
                 {cardContent}
               </a>
@@ -294,7 +234,7 @@ export default function SponsorsPage() {
               <div
                 key={sponsor.name + index}
                 className="sp-card sp-reveal"
-                style={{ animationDelay: `${index * 45}ms` }}
+                style={{ animationDelay: `${index * 35}ms` }}
               >
                 {cardContent}
               </div>
@@ -302,6 +242,154 @@ export default function SponsorsPage() {
           })}
         </div>
       </section>
+
+      {/* =========================================================================
+          4. BECOME A PARTNER / SPONSOR LAKSHYA 5.0 CTA
+      ========================================================================= */}
+      <section className="sp-cta-section sp-reveal" aria-labelledby="sp-cta-title">
+        <div className="sp-cta-card">
+          <span className="sp-corner sp-corner--tl" aria-hidden="true" />
+          <span className="sp-corner sp-corner--tr" aria-hidden="true" />
+          <span className="sp-corner sp-corner--bl" aria-hidden="true" />
+          <span className="sp-corner sp-corner--br" aria-hidden="true" />
+
+          <div className="sp-cta-content">
+            <span className="sp-badge-kicker">★ YOUR STORY. OUR NEXT CHAPTER. ★</span>
+            <h2 id="sp-cta-title" className="sp-cta-heading">
+              BACK THE NEXT GENERATION
+            </h2>
+            <div className="sp-divider">
+              <span className="sp-divider-line" />
+              <span className="sp-divider-star">✦</span>
+              <span className="sp-divider-line right" />
+            </div>
+            <p className="sp-cta-desc">
+              Partner with Lakshya 5.0 and stand behind Central India’s biggest celebration of collegiate sport.
+              Connect with 4,000+ athletes and 20,000+ passionate spectators on the frontier.
+            </p>
+            <button
+              type="button"
+              className="sp-cta-btn"
+              onClick={() => setShowContactModal(true)}
+            >
+              <span>BECOME A PARTNER</span>
+              <span className="sp-cta-btn-arrow">⟶</span>
+            </button>
+            <div className="sp-cta-subtext">
+              <span>LAKSHYA 5.0</span>
+              <b>✦</b>
+              <span>IIT INDORE</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          5. INTERACTIVE CONTACT MODAL (DOSSIER)
+      ========================================================================= */}
+      {showContactModal && (
+        <div
+          className="sp-contact-backdrop"
+          role="presentation"
+          onMouseDown={(e) => {
+            if (e.target === e.currentTarget) setShowContactModal(false);
+          }}
+        >
+          <div
+            className="sp-contact-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="sp-contact-title"
+          >
+            <button
+              type="button"
+              className="sp-contact-close"
+              onClick={() => setShowContactModal(false)}
+              aria-label="Close contact details"
+            >
+              ✕
+            </button>
+
+            <span className="sp-corner sp-corner--tl" aria-hidden="true" />
+            <span className="sp-corner sp-corner--tr" aria-hidden="true" />
+            <span className="sp-corner sp-corner--bl" aria-hidden="true" />
+            <span className="sp-corner sp-corner--br" aria-hidden="true" />
+
+            <div className="sp-contact-header">
+              <span className="sp-badge-kicker">★ SPONSORSHIP SECRETARIAT ★</span>
+              <h3 id="sp-contact-title" className="sp-contact-title">
+                GET IN TOUCH
+              </h3>
+              <p className="sp-contact-subtitle">
+                Reach out to discuss partnerships, brand integration, and customized packages for Lakshya 5.0.
+              </p>
+            </div>
+
+            <div className="sp-contact-grid">
+              {/* Card 1: Official Email */}
+              <div className="sp-contact-box">
+                <span className="sp-contact-box-label">OFFICIAL EMAIL</span>
+                <a
+                  href="mailto:sponsorship.lakshya@iiti.ac.in"
+                  className="sp-contact-box-val sp-contact-link"
+                >
+                  sponsorship.lakshya@iiti.ac.in
+                </a>
+                <span className="sp-contact-box-sub">Direct queries & proposals</span>
+              </div>
+
+              {/* Card 2: Convener Phone */}
+              <div className="sp-contact-box">
+                <span className="sp-contact-box-label">SPONSORSHIP HEAD</span>
+                <a
+                  href="tel:+919876543210"
+                  className="sp-contact-box-val sp-contact-link"
+                >
+                  +91 98765 43210
+                </a>
+                <span className="sp-contact-box-sub">Available Mon–Sat (9 AM – 8 PM)</span>
+              </div>
+
+              {/* Card 3: Sports Secretariat */}
+              <div className="sp-contact-box">
+                <span className="sp-contact-box-label">SPORTS COUNCIL</span>
+                <a
+                  href="mailto:sports.secy@iiti.ac.in"
+                  className="sp-contact-box-val sp-contact-link"
+                >
+                  sports.secy@iiti.ac.in
+                </a>
+                <span className="sp-contact-box-sub">General Secretary, Sports</span>
+              </div>
+
+              {/* Card 4: Postal Address */}
+              <div className="sp-contact-box">
+                <span className="sp-contact-box-label">CAMPUS ADDRESS</span>
+                <p className="sp-contact-address">
+                  Sports Complex, IIT Indore, Khandwa Road, Simrol, Indore 453552
+                </p>
+              </div>
+            </div>
+
+            <div className="sp-contact-actions">
+              <a
+                href="mailto:sponsorship.lakshya@iiti.ac.in?subject=Lakshya%205.0%20Sponsorship%20Inquiry"
+                className="sp-btn sp-btn--primary"
+              >
+                <span>SEND AN EMAIL</span>
+                <span className="sp-btn-arrow">↗</span>
+              </a>
+              <button
+                type="button"
+                className="sp-btn sp-btn--secondary"
+                onClick={() => setShowContactModal(false)}
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

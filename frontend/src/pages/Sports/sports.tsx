@@ -336,18 +336,32 @@ export default function SportsPage() {
               <p className="lk-sport-modal__description">{selectedSport.description}</p>
 
               <div className="lk-modal-info-line">
-                <span>FIXTURES</span>
-                <b>PENDING OFFICIAL DISPATCH</b>
+                <span>REGISTRATION FEE</span>
+                <b>{selectedSport.registrationFee}</b>
               </div>
 
               <div className="lk-modal-info-line">
-                <span>ARENA GROUNDS</span>
-                <b>{selectedSport.venue.toUpperCase()} ARENA</b>
+                <span>PRIZE POOL</span>
+                <b>{selectedSport.prizePool}</b>
               </div>
 
-              <button type="button" className="lk-button lk-button--gold lk-modal-done" onClick={() => setSelectedSport(null)}>
-                RETURN TO ALL ARENAS <ArrowUpRight size={16} />
-              </button>
+              <div className="lk-sport-modal__actions">
+                <a
+                  href={selectedSport.rulebookUrl || "#"}
+                  target={selectedSport.rulebookUrl && selectedSport.rulebookUrl !== "#" ? "_blank" : undefined}
+                  rel="noreferrer noopener"
+                  className="lk-button lk-button--gold lk-modal-rulebook-btn"
+                >
+                  RULE BOOK <ArrowUpRight size={16} />
+                </a>
+                <button
+                  type="button"
+                  className="lk-button lk-button--outline lk-modal-close-btn"
+                  onClick={() => setSelectedSport(null)}
+                >
+                  CLOSE
+                </button>
+              </div>
             </div>
           </section>
         </div>

@@ -398,6 +398,25 @@
 }
 
 /* ============================================
+   LAKSHYA 5.0 — VECTOR BRAND WORDMARK
+   ============================================ */
+
+.lkh-brand-wordmark-wrap {
+  display: block;
+  width: clamp(340px, 46vw, 620px);
+  max-width: 100%;
+  margin: 12px 0 16px;
+  filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.95));
+}
+
+.lkh-vector-wordmark {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.35));
+}
+
+/* ============================================
    LAKSHYA 5.0 — PREMIUM WESTERN WORDMARK
    ============================================ */
 
@@ -517,6 +536,12 @@
 
 /* Mobile */
 @media (max-width: 600px) {
+  .lkh-brand-wordmark-wrap {
+    width: 100%;
+    max-width: 380px;
+    margin: 8px 0 14px;
+  }
+
   .lkh-brand-title {
     gap: 8px;
     margin-top: 10px;
