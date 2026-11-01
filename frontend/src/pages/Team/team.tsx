@@ -171,7 +171,7 @@ export default function Team() {
           </div>
 
           {/* The Spaced Wheel (Desktop Circular Wheel / Mobile Staggered Grid) */}
-          <div className="w-full overflow-x-auto overflow-y-visible flex justify-center py-4">
+          <div className="w-full overflow-hidden flex justify-center py-4 lk-wheel-container">
             <TeamWheel
               members={heads}
               radius={500}

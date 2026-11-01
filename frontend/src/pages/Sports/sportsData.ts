@@ -34,13 +34,13 @@ export const SPORTS: Sport[] = [
     venue: "Outdoor",
     category: "field",
     categoryLabel: "FIELD SPORT",
-    format: "Team competition",
+    format: "16 Players / Squad",
     description:
       "Read the game, own the moment, and make every delivery count. Check back for official match fixtures and competition details.",
     image: "/images/sports/cricket.jpeg",
     imagePosition: "center 48%",
     registrationFee: "₹1,500 / Team",
-    prizePool: "₹45,000",
+    prizePool: "₹40,000",
     rulebookUrl: "#",
   },
   {
@@ -50,7 +50,7 @@ export const SPORTS: Sport[] = [
     venue: "Outdoor",
     category: "field",
     categoryLabel: "FIELD SPORT",
-    format: "Team competition",
+    format: "16 Players / Squad",
     description:
       "Pace, pressure, and the search for the winning goal. Official fixtures and tournament information will be published here.",
     image: "/images/sports/football.jpeg",
@@ -66,13 +66,13 @@ export const SPORTS: Sport[] = [
     venue: "Outdoor",
     category: "field",
     categoryLabel: "FIELD SPORT",
-    format: "Team competition",
+    format: "16 Players / Squad",
     description:
       "Quick transitions, sharp passing, and a relentless attack. Return here for confirmed match and venue information.",
     image: "/images/sports/hockey.jpeg",
     imagePosition: "center center",
     registrationFee: "₹1,200 / Team",
-    prizePool: "₹35,000",
+    prizePool: "₹30,000",
     rulebookUrl: "#",
   },
   {
@@ -82,13 +82,13 @@ export const SPORTS: Sport[] = [
     venue: "Indoor",
     category: "court",
     categoryLabel: "COURT SPORT",
-    format: "Men's + Women's",
+    format: "12 Players / Team",
     description:
       "Power at the net and teamwork in every rally. Men's and women's competitions are represented separately in the category label.",
     image: "/images/sports/vollyball.jpeg",
     imagePosition: "center center",
     registrationFee: "₹800 / Team",
-    prizePool: "₹25,000",
+    prizePool: "₹50,000",
     rulebookUrl: "#",
   },
   {
@@ -98,13 +98,13 @@ export const SPORTS: Sport[] = [
     venue: "Indoor",
     category: "court",
     categoryLabel: "COURT SPORT",
-    format: "Men's + Women's",
+    format: "12 Players / Team",
     description:
       "Fast breaks, fearless finishes, and the next big play. Follow this page for official competition updates.",
     image: "/images/sports/basketball.jpeg",
     imagePosition: "center center",
     registrationFee: "₹1,000 / Team",
-    prizePool: "₹30,000",
+    prizePool: "₹50,000",
     rulebookUrl: "#",
   },
   {
@@ -114,19 +114,19 @@ export const SPORTS: Sport[] = [
     venue: "Indoor",
     category: "water",
     categoryLabel: "AQUATICS",
-    format: "Team competition",
+    format: "13 Players / Team",
     description:
       "A high-intensity contest where stamina, teamwork, and timing matter. Official event information will be added when available.",
     image: "/images/sports/waterpolo.webp",
     imagePosition: "center center",
     registrationFee: "₹800 / Team",
-    prizePool: "₹20,000",
+    prizePool: "₹15,000",
     rulebookUrl: "#",
   },
   {
     id: "aquatics",
     number: "07",
-    name: "Aquatics",
+    name: "Swimming (Aquatics)",
     venue: "Indoor",
     category: "water",
     categoryLabel: "AQUATICS",
@@ -136,7 +136,7 @@ export const SPORTS: Sport[] = [
     image: "/images/sports/aquatics.jpeg",
     imagePosition: "center 48%",
     registrationFee: "₹300 / Entry",
-    prizePool: "₹25,000",
+    prizePool: "₹44,000",
     rulebookUrl: "#",
   },
   {
@@ -152,7 +152,7 @@ export const SPORTS: Sport[] = [
     image: "/images/sports/atheletics.jpeg",
     imagePosition: "center 45%",
     registrationFee: "₹250 / Entry",
-    prizePool: "₹30,000",
+    prizePool: "₹62,000",
     rulebookUrl: "#",
   },
   {
@@ -168,7 +168,7 @@ export const SPORTS: Sport[] = [
     image: "/images/sports/badmiton.jpeg",
     imagePosition: "center center",
     registrationFee: "₹400 / Player",
-    prizePool: "₹20,000",
+    prizePool: "₹27,000",
     rulebookUrl: "#",
   },
   {
@@ -190,7 +190,7 @@ export const SPORTS: Sport[] = [
   {
     id: "tennis",
     number: "11",
-    name: "Tennis",
+    name: "Lawn Tennis",
     venue: "Outdoor",
     category: "court",
     categoryLabel: "COURT SPORT",
@@ -216,7 +216,7 @@ export const SPORTS: Sport[] = [
     image: "/images/sports/tabletennis.jpeg",
     imagePosition: "center center",
     registrationFee: "₹350 / Player",
-    prizePool: "₹15,000",
+    prizePool: "₹20,000",
     rulebookUrl: "#",
   },
   {
@@ -232,7 +232,7 @@ export const SPORTS: Sport[] = [
     image: "/images/sports/chess.webp",
     imagePosition: "center center",
     registrationFee: "₹250 / Entry",
-    prizePool: "₹15,000",
+    prizePool: "₹12,000",
     rulebookUrl: "#",
   },
     {
@@ -248,7 +248,7 @@ export const SPORTS: Sport[] = [
         image: "/images/sports/bodybuilding.jpeg",
         imagePosition: "center center",
     registrationFee: "₹300 / Entry",
-    prizePool: "₹15,000",
+    prizePool: "₹25,000",
     rulebookUrl: "#",
     },
     {
@@ -264,7 +264,7 @@ export const SPORTS: Sport[] = [
         image: "/images/sports/bodybuilding.jpeg",
         imagePosition: "center center",
     registrationFee: "₹300 / Entry",
-    prizePool: "₹15,000",
+    prizePool: "₹25,000",
     rulebookUrl: "#",
     },
 ];

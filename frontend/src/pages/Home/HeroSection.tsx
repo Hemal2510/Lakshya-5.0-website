@@ -213,8 +213,16 @@ export default function LakshyaFrontierHero({
             >
               EXPLORE THE GAMES <span aria-hidden="true">↗</span>
             </Link>
-            <a className="lkh-action lkh-action-secondary" href="#lakshya-countdown">
-              COUNTDOWN <span aria-hidden="true">↓</span>
+            <a
+              className="lkh-action lkh-action-register"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Register for Lakshya 5.0"
+            >
+              <span className="lkh-register-sparkle" aria-hidden="true">✦</span>
+              <span className="lkh-register-text">REGISTRATION</span>
+              <span className="lkh-register-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
