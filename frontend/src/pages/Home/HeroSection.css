@@ -215,19 +215,21 @@
 .lkh-action-primary { color: #21170b !important; background: linear-gradient(180deg, #f1ce88, #bf8b43); box-shadow: 0 8px 23px rgba(0, 0, 0, .25); }
 .lkh-action-secondary { color: #f1d29a !important; background: rgba(8, 9, 10, .44); border-color: rgba(226, 183, 107, .56); }
 
-/* Special Hero Registration CTA */
+/* Special Hero Registration CTA — Clean Ivory/White Western Vibe */
 .lkh-action-register {
   position: relative;
   overflow: hidden;
   color: #ffffff !important;
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.92) 0%, rgba(2, 132, 199, 0.88) 50%, rgba(30, 58, 138, 0.95) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.85);
+  background: rgba(14, 16, 20, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow:
-    0 0 16px rgba(56, 189, 248, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    0 8px 24px rgba(0, 0, 0, 0.4);
+    0 0 16px rgba(255, 255, 255, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.45);
   letter-spacing: 0.16em;
   font-weight: 800;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -241,7 +243,7 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.32) 50%,
     transparent 100%
   );
   transform: skewX(-25deg);
@@ -255,22 +257,28 @@
 
 .lkh-action-register:hover {
   transform: translateY(-2px) scale(1.03);
-  background: linear-gradient(135deg, rgba(56, 189, 248, 1) 0%, rgba(14, 165, 233, 0.95) 50%, rgba(37, 99, 235, 1) 100%);
-  box-shadow:
-    0 0 28px rgba(56, 189, 248, 0.75),
-    0 0 48px rgba(2, 132, 199, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.16);
   border-color: #ffffff;
+  box-shadow:
+    0 0 24px rgba(255, 255, 255, 0.38),
+    0 0 45px rgba(245, 230, 205, 0.22),
+    inset 0 1px 0 #ffffff;
 }
 
 .lkh-register-sparkle {
-  color: #7dd3fc;
+  color: #ffffff;
   font-size: 11px !important;
   animation: lkh-sparkle-pulse 2s infinite ease-in-out;
 }
 
+.lkh-register-text {
+  color: #ffffff;
+}
+
 .lkh-register-arrow {
   font-size: 14px !important;
+  color: #ffffff;
   transition: transform 0.25s ease;
 }
 
@@ -279,8 +287,8 @@
 }
 
 @keyframes lkh-sparkle-pulse {
-  0%, 100% { opacity: 0.7; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.25); filter: drop-shadow(0 0 6px #38bdf8); }
+  0%, 100% { opacity: 0.75; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.25); filter: drop-shadow(0 0 6px #ffffff); }
 }
 .lkh-action:hover { transform: translateY(-2px); filter: brightness(1.08); }
 .lkh-action:focus-visible { outline: 2px solid #ffe6b2; outline-offset: 4px; }

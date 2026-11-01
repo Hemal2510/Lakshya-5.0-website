@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import sponsorsFrontierBg from "../../assets/sponsors-frontier-bg.jpg";
-import sponsorsMapBg from "./assets/sponsors-frontier-map-blue.png";
+import sponsorsPartnershipBg from "./assets/sponsors-partnership-frontier.jpg";
 import "./sponsors.css";
 
 /* ============================================================
@@ -249,7 +249,7 @@ export default function SponsorsPage() {
           4. BECOME A PARTNER / SPONSOR LAKSHYA 5.0 (VINTAGE COMPASS MAP HERO)
       ========================================================================= */}
       <section className="sponsors-cta sp-reveal" aria-labelledby="sponsors-cta-title">
-        <div className="sponsors-cta__image" style={{ backgroundImage: `url(${sponsorsMapBg})` }} aria-hidden="true" />
+        <div className="sponsors-cta__image" style={{ backgroundImage: `url(${sponsorsPartnershipBg})` }} aria-hidden="true" />
         <div className="sponsors-cta__shade" aria-hidden="true" />
         <div className="sponsors-cta__content">
           <span className="section-kicker">YOUR STORY. OUR NEXT CHAPTER.</span>
