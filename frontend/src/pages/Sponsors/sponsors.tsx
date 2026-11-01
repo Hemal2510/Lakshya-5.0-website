@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import sponsorsFrontierBg from "../../assets/sponsors-frontier-bg.jpg";
+import sponsorsMapBg from "./assets/sponsors-frontier-map.png";
 import "./sponsors.css";
 
 /* ============================================================
@@ -187,11 +188,7 @@ export default function SponsorsPage() {
           {ALL_PAST_SPONSORS.map((sponsor, index) => {
             const cardContent = (
               <>
-                {/* 4 Engraved Corner Notches */}
-                <span className="sp-corner sp-corner--tl" aria-hidden="true" />
-                <span className="sp-corner sp-corner--tr" aria-hidden="true" />
-                <span className="sp-corner sp-corner--bl" aria-hidden="true" />
-                <span className="sp-corner sp-corner--br" aria-hidden="true" />
+
 
                 {/* Big Prominent Logo Mark */}
                 <div className="sp-card-logo-wrap">
@@ -247,7 +244,7 @@ export default function SponsorsPage() {
           4. BECOME A PARTNER / SPONSOR LAKSHYA 5.0 (VINTAGE COMPASS MAP HERO)
       ========================================================================= */}
       <section className="sponsors-cta sp-reveal" aria-labelledby="sponsors-cta-title">
-        <div className="sponsors-cta__image" aria-hidden="true" />
+        <div className="sponsors-cta__image" style={{ backgroundImage: `url(${sponsorsMapBg})` }} aria-hidden="true" />
         <div className="sponsors-cta__shade" aria-hidden="true" />
         <div className="sponsors-cta__content">
           <span className="section-kicker">YOUR STORY. OUR NEXT CHAPTER.</span>
