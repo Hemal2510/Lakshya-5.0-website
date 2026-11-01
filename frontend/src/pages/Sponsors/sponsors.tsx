@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import sponsorsFrontierBg from "../../assets/sponsors-frontier-bg.jpg";
-import sponsorsMapBg from "./assets/sponsors-frontier-map.png";
+import sponsorsMapBg from "./assets/sponsors-frontier-map-blue.png";
 import "./sponsors.css";
 
 /* ============================================================
@@ -188,6 +188,11 @@ export default function SponsorsPage() {
           {ALL_PAST_SPONSORS.map((sponsor, index) => {
             const cardContent = (
               <>
+                {/* 4 Engraved Corner Notches */}
+                <span className="sp-corner sp-corner--tl" aria-hidden="true" />
+                <span className="sp-corner sp-corner--tr" aria-hidden="true" />
+                <span className="sp-corner sp-corner--bl" aria-hidden="true" />
+                <span className="sp-corner sp-corner--br" aria-hidden="true" />
 
 
                 {/* Big Prominent Logo Mark */}
