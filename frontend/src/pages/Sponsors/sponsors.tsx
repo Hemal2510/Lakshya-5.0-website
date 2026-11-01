@@ -244,43 +244,33 @@ export default function SponsorsPage() {
       </section>
 
       {/* =========================================================================
-          4. BECOME A PARTNER / SPONSOR LAKSHYA 5.0 CTA
+          4. BECOME A PARTNER / SPONSOR LAKSHYA 5.0 (VINTAGE COMPASS MAP HERO)
       ========================================================================= */}
-      <section className="sp-cta-section sp-reveal" aria-labelledby="sp-cta-title">
-        <div className="sp-cta-card">
-          <span className="sp-corner sp-corner--tl" aria-hidden="true" />
-          <span className="sp-corner sp-corner--tr" aria-hidden="true" />
-          <span className="sp-corner sp-corner--bl" aria-hidden="true" />
-          <span className="sp-corner sp-corner--br" aria-hidden="true" />
-
-          <div className="sp-cta-content">
-            <span className="sp-badge-kicker">★ YOUR STORY. OUR NEXT CHAPTER. ★</span>
-            <h2 id="sp-cta-title" className="sp-cta-heading">
-              BACK THE NEXT GENERATION
-            </h2>
-            <div className="sp-divider">
-              <span className="sp-divider-line" />
-              <span className="sp-divider-star">✦</span>
-              <span className="sp-divider-line right" />
-            </div>
-            <p className="sp-cta-desc">
-              Partner with Lakshya 5.0 and stand behind Central India’s biggest celebration of collegiate sport.
-              Connect with 4,000+ athletes and 20,000+ passionate spectators on the frontier.
-            </p>
-            <button
-              type="button"
-              className="sp-cta-btn"
-              onClick={() => setShowContactModal(true)}
-            >
-              <span>BECOME A PARTNER</span>
-              <span className="sp-cta-btn-arrow">⟶</span>
-            </button>
-            <div className="sp-cta-subtext">
-              <span>LAKSHYA 5.0</span>
-              <b>✦</b>
-              <span>IIT INDORE</span>
-            </div>
-          </div>
+      <section className="sponsors-cta sp-reveal" aria-labelledby="sponsors-cta-title">
+        <div className="sponsors-cta__image" aria-hidden="true" />
+        <div className="sponsors-cta__shade" aria-hidden="true" />
+        <div className="sponsors-cta__content">
+          <span className="section-kicker">YOUR STORY. OUR NEXT CHAPTER.</span>
+          <h2 id="sponsors-cta-title">
+            BACK THE NEXT<br /><em>GENERATION.</em>
+          </h2>
+          <p>
+            Partner with Lakshya and stand behind a celebration of sport,
+            student talent, and limitless ambition.
+          </p>
+          <button
+            type="button"
+            className="frontier-button"
+            onClick={() => setShowContactModal(true)}
+          >
+            <span>BECOME A PARTNER</span><span aria-hidden="true">⟶</span>
+          </button>
+          <span className="sponsors-cta__signature">
+            LAKSHYA 5.0 <i>✦</i> IIT INDORE
+          </span>
+        </div>
+        <div className="sponsors-cta__coordinates" aria-hidden="true">
+          22°31' N&nbsp; / &nbsp;75°55' E
         </div>
       </section>
 
