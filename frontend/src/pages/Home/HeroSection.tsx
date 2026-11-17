@@ -245,7 +245,7 @@ export default function LakshyaFrontierHero({
           </div>
 
           <p className="lkh-countdown-footnote">
-            15 JANUARY 2027 · 09:00 AM IST
+            29 JANUARY 2027 ·
           </p>
         </section>
       </div>

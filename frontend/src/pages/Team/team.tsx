@@ -158,7 +158,7 @@ export default function Team() {
         <section className="w-full flex flex-col items-center justify-center mb-20 sm:mb-28">
           <div className="text-center mb-10 sm:mb-14">
             <h2 className="lk-section-heading text-xl sm:text-3xl">
-              EXECUTIVE DIRECTORS & LEADS
+              HEADS AND CO-HEADS
             </h2>
             <div className="lk-western-divider my-2">
               <span className="lk-western-divider-line" />

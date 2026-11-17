@@ -364,13 +364,7 @@ export default function SponsorsPage() {
             </div>
 
             <div className="sp-contact-actions">
-              <a
-                href="mailto:sponsorship.lakshya@iiti.ac.in?subject=Lakshya%205.0%20Sponsorship%20Inquiry"
-                className="sp-btn sp-btn--primary"
-              >
-                <span>SEND AN EMAIL</span>
-                <span className="sp-btn-arrow">↗</span>
-              </a>
+              
               <button
                 type="button"
                 className="sp-btn sp-btn--secondary"
